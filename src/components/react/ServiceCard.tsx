@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
-import type { ReactNode, PointerEvent as ReactPointerEvent } from 'react';
+import type { PointerEvent as ReactPointerEvent } from 'react';
 import { useRef } from 'react';
 
 interface ServiceCardProps {
@@ -8,7 +8,7 @@ interface ServiceCardProps {
   title: string;
   description: string;
   bullets: string[];
-  icon: ReactNode;
+  iconPath: string;
 }
 
 export default function ServiceCard({
@@ -17,7 +17,7 @@ export default function ServiceCard({
   title,
   description,
   bullets,
-  icon,
+  iconPath,
 }: ServiceCardProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -82,7 +82,19 @@ export default function ServiceCard({
       {/* Header row */}
       <div className="relative z-10 flex items-start justify-between">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-accent-400">
-          {icon}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d={iconPath} />
+          </svg>
         </div>
         <span className="font-mono text-xs tracking-widest text-zinc-500">{number}</span>
       </div>
