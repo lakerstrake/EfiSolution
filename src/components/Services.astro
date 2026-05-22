@@ -1,0 +1,120 @@
+---
+import ServiceCard from './react/ServiceCard.tsx';
+
+const services = [
+  {
+    number: '01 / Desarrollo',
+    title: 'Webs de Alta Conversión',
+    description:
+      'Plataformas hechas a mano con Astro y arquitectura island. LCP < 1s, cero peso muerto, SEO técnico impecable.',
+    bullets: [
+      'Lighthouse 100 en SEO, performance y accesibilidad',
+      'Diseño UX guiado por datos y mapas de calor',
+      'Estructura semántica indexable y schema.org',
+    ],
+    iconPath:
+      'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+  },
+  {
+    number: '02 / Backend',
+    title: 'Arquitectura a Medida',
+    description:
+      'APIs robustas en Python y Java. Procesamiento, automatización y modelos listos para escalar a miles de peticiones por segundo.',
+    bullets: [
+      'FastAPI, Spring Boot, microservicios y colas',
+      'Bases de datos relacionales y vectoriales',
+      'Observabilidad: métricas, logs, alertas',
+    ],
+    iconPath:
+      'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+  },
+  {
+    number: '03 / Hardware',
+    title: 'Infraestructura & IoT',
+    description:
+      'Mecatrónica aplicada al negocio. Soluciones físicas integradas a tu software: sensores, dashboards y automatización industrial.',
+    bullets: [
+      'Diseño electrónico y firmware embebido',
+      'Integración cloud ↔ dispositivo en tiempo real',
+      'Cumplimiento, seguridad y trazabilidad',
+    ],
+    iconPath:
+      'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
+  },
+];
+---
+
+<section
+  id="servicios"
+  class="section-padding relative"
+  aria-labelledby="services-title"
+>
+  <div class="container-x">
+    <!-- Header -->
+    <div class="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Servicios
+        </span>
+        <h2
+          id="services-title"
+          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-white"
+        >
+          Tres pilares. <span class="text-gradient">Una sola obsesión:</span> que tu negocio venda más.
+        </h2>
+      </div>
+      <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-400">
+        No vendemos horas; entregamos sistemas. Cada proyecto incluye estrategia,
+        diseño, código y entrenamiento para tu equipo.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+      {services.map((s, i) => (
+        <ServiceCard
+          client:visible
+          index={i}
+          number={s.number}
+          title={s.title}
+          description={s.description}
+          bullets={s.bullets}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d={s.iconPath} />
+            </svg>
+          }
+        />
+      ))}
+    </div>
+
+    <!-- Footnote / process strip -->
+    <div class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] md:grid-cols-4">
+      {[
+        { k: '01', v: 'Auditoría', d: '48h' },
+        { k: '02', v: 'Diseño UX', d: '1–2 sem' },
+        { k: '03', v: 'Desarrollo', d: '3–6 sem' },
+        { k: '04', v: 'Lanzamiento', d: 'Día 1' },
+      ].map((step) => (
+        <div class="flex items-center justify-between bg-zinc-950/60 px-5 py-5">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs text-zinc-500">{step.k}</span>
+            <span class="text-sm font-medium text-zinc-200">{step.v}</span>
+          </div>
+          <span class="text-xs text-zinc-500">{step.d}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

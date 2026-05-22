@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://efisolution.com/sitemap-index.xml

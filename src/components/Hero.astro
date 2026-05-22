@@ -1,0 +1,100 @@
+---
+import CTAButton from './react/CTAButton.tsx';
+---
+
+<section
+  id="inicio"
+  class="relative isolate overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-52 lg:pb-40"
+  aria-labelledby="hero-title"
+>
+  <!-- Decorative glow -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10">
+    <div class="mx-auto h-[480px] w-[860px] max-w-[120%] -translate-y-1/3 rounded-full bg-accent-500/20 blur-[140px] opacity-60"></div>
+  </div>
+
+  <div class="container-x">
+    <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+      <!-- Eyebrow / badge -->
+      <span class="eyebrow animate-fade-up" style="animation-delay: 50ms; opacity: 0;">
+        <span class="eyebrow-dot"></span>
+        Agencia tecnológica · Juan Manuel & Sarai
+      </span>
+
+      <!-- Headline -->
+      <h1
+        id="hero-title"
+        class="mt-8 font-display text-fluid-5xl font-semibold leading-[1.02] tracking-tightest animate-fade-up"
+        style="animation-delay: 150ms; opacity: 0;"
+      >
+        <span class="text-white">Cada segundo de carga</span>
+        <br />
+        <span class="text-gradient">cuesta una venta.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p
+        class="mt-7 max-w-2xl text-fluid-lg leading-relaxed text-zinc-400 animate-fade-up"
+        style="animation-delay: 280ms; opacity: 0;"
+      >
+        Las plantillas genéricas hunden tu facturación. En
+        <span class="text-zinc-200">Efi Solution</span> construimos plataformas web de
+        <span class="text-zinc-200">velocidad extrema</span> y código impecable, diseñadas
+        para enamorar a tu usuario y escalar tu negocio.
+      </p>
+
+      <!-- CTAs -->
+      <div
+        class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 animate-fade-up"
+        style="animation-delay: 400ms; opacity: 0;"
+      >
+        <CTAButton
+          client:visible
+          href="#contacto"
+          variant="primary"
+          size="lg"
+          ariaLabel="Agendar auditoría de rendimiento gratuita"
+        >
+          Agendar Auditoría de Rendimiento
+        </CTAButton>
+        <CTAButton
+          client:visible
+          href="#caso-classify"
+          variant="ghost"
+          size="lg"
+          icon={false}
+        >
+          Ver caso de éxito
+        </CTAButton>
+      </div>
+
+      <!-- Trust strip / micro-proof -->
+      <div
+        class="mt-16 flex flex-col items-center gap-6 animate-fade-up"
+        style="animation-delay: 550ms; opacity: 0;"
+      >
+        <p class="text-xs uppercase tracking-[0.22em] text-zinc-500">
+          Métricas que nuestros clientes ven en 30 días
+        </p>
+        <div class="grid w-full max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] backdrop-blur-md">
+          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">0.8s</span>
+            <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">LCP promedio</span>
+          </div>
+          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">+38%</span>
+            <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">Conversión</span>
+          </div>
+          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">100<span class="text-accent-400">/</span>100</span>
+            <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">Lighthouse</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom hairline -->
+  <div class="container-x mt-24">
+    <div class="hairline"></div>
+  </div>
+</section>
