@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────────────────────── */
 @layer base {
   :root {
     color-scheme: dark;
     --accent-rgb: 77, 124, 254;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
   }
 
   html {
@@ -13,29 +18,50 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* clip instead of hidden — avoids creating a stacking context
+       that breaks position:fixed on iOS Safari */
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-200 font-sans antialiased selection:bg-accent-500/30 selection:text-white;
+    @apply bg-zinc-950 text-zinc-200 font-sans antialiased;
+    @apply selection:bg-accent-500/30 selection:text-white;
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -10%, rgba(77, 124, 254, 0.12), transparent 70%),
       radial-gradient(ellipse 60% 40% at 100% 110%, rgba(77, 124, 254, 0.06), transparent 70%);
     background-attachment: fixed;
-    overflow-x: hidden;
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  /* Headings: always Space Grotesk — safety net for unclassed elements */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-feature-settings: "liga" 1, "calt" 1, "ss01" 1;
   }
-  ::-webkit-scrollbar-track { background: rgb(9 9 11); }
-  ::-webkit-scrollbar-thumb {
+
+  body {
+    font-family: var(--font-body);
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar (Chromium) */
+  ::-webkit-scrollbar          { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track    { background: rgb(9 9 11); }
+  ::-webkit-scrollbar-thumb    {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     border: 2px solid rgb(9 9 11);
   }
   ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
 
+  /* Focus ring: consistent across browsers, high-contrast friendly */
+  :focus-visible {
+    outline: 2px solid rgba(var(--accent-rgb), 0.8);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Reduced-motion: disable all animations at OS level */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -46,17 +72,30 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* Prevent invisible text if font animation fires before CSS loads */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-up {
+      animation-fill-mode: forwards;
+    }
+  }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   COMPONENTS
+───────────────────────────────────────────────────────────── */
 @layer components {
+  /* Horizontal content container */
   .container-x {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
+  /* Glassmorphism card surface */
   .glass {
     @apply border border-white/10 bg-white/[0.02] backdrop-blur-xl;
   }
 
+  /* Gradient text */
   .text-gradient {
     background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 40%, #4d7cfe 100%);
     -webkit-background-clip: text;
@@ -64,32 +103,88 @@
     color: transparent;
   }
 
+  /* Hairline separator */
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
   }
 
+  /* Consistent section vertical rhythm */
   .section-padding {
     @apply py-24 md:py-32 lg:py-40;
   }
 
+  /* Eyebrow badge */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-zinc-300;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10
+           bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium
+           uppercase tracking-[0.18em] text-zinc-300;
   }
 
   .eyebrow-dot {
-    @apply h-1.5 w-1.5 rounded-full bg-accent-500 shadow-[0_0_10px_2px_rgba(77,124,254,0.6)];
+    @apply h-1.5 w-1.5 flex-none rounded-full bg-accent-500;
+    box-shadow: 0 0 10px 2px rgba(77, 124, 254, 0.6);
   }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   UTILITIES
+───────────────────────────────────────────────────────────── */
 @layer utilities {
+  /* Fade mask — bottom edge bleeds to transparent */
   .mask-fade-b {
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
+
+  /* Subtle dot-grid background texture */
   .grid-bg {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to right,  rgba(255, 255, 255, 0.045) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
     background-size: 56px 56px;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   AMBIENT BACKGROUND (layout-level decorative elements)
+───────────────────────────────────────────────────────────── */
+.site-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-ambient__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  background-image:
+    linear-gradient(to right,  rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.site-ambient__glow {
+  position: absolute;
+  top: -10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 640px;
+  width: 1080px;
+  max-width: 120%;
+  border-radius: 9999px;
+  background-color: rgba(77, 124, 254, 0.07);
+  filter: blur(120px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NAVBAR scroll state (JS adds .is-scrolled to #site-header)
+───────────────────────────────────────────────────────────── */
+#site-header.is-scrolled nav {
+  background-color: rgb(9 9 11 / 0.88);
+  border-color: rgb(255 255 255 / 0.14);
 }

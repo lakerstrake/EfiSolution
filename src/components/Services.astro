@@ -12,8 +12,7 @@ const services = [
       'Diseño UX guiado por datos y mapas de calor',
       'Estructura semántica indexable y schema.org',
     ],
-    iconPath:
-      'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+    iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
   },
   {
     number: '02 / Backend',
@@ -25,8 +24,7 @@ const services = [
       'Bases de datos relacionales y vectoriales',
       'Observabilidad: métricas, logs, alertas',
     ],
-    iconPath:
-      'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+    iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
   },
   {
     number: '03 / Hardware',
@@ -42,6 +40,13 @@ const services = [
       'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
   },
 ];
+
+const steps = [
+  { k: '01', v: 'Auditoría',    d: '48 h'   },
+  { k: '02', v: 'Diseño UX',   d: '1–2 sem' },
+  { k: '03', v: 'Desarrollo',  d: '3–6 sem' },
+  { k: '04', v: 'Lanzamiento', d: 'Día 1'   },
+];
 ---
 
 <section
@@ -50,7 +55,7 @@ const services = [
   aria-labelledby="services-title"
 >
   <div class="container-x">
-    <!-- Header -->
+    <!-- ── Section header ───────────────────────────────────── -->
     <div class="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
         <span class="eyebrow">
@@ -59,9 +64,12 @@ const services = [
         </span>
         <h2
           id="services-title"
-          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-white"
+          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05]
+                 tracking-tightest text-white"
         >
-          Tres pilares. <span class="text-gradient">Una sola obsesión:</span> que tu negocio venda más.
+          Tres pilares.
+          <span class="text-gradient">Una sola obsesión:</span>
+          que tu negocio venda más.
         </h2>
       </div>
       <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-400">
@@ -70,37 +78,45 @@ const services = [
       </p>
     </div>
 
-    <!-- Cards grid -->
-    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+    <!-- ── Service cards ────────────────────────────────────── -->
+    <ul
+      class="mt-16 grid list-none gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7"
+      aria-label="Lista de servicios"
+    >
       {services.map((s, i) => (
-        <ServiceCard
-          client:visible
-          index={i}
-          number={s.number}
-          title={s.title}
-          description={s.description}
-          bullets={s.bullets}
-          iconPath={s.iconPath}
-        />
+        <li class="flex">
+          <ServiceCard
+            client:visible
+            index={i}
+            number={s.number}
+            title={s.title}
+            description={s.description}
+            bullets={s.bullets}
+            iconPath={s.iconPath}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
 
-    <!-- Footnote / process strip -->
-    <div class="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] md:grid-cols-4">
-      {[
-        { k: '01', v: 'Auditoría', d: '48h' },
-        { k: '02', v: 'Diseño UX', d: '1–2 sem' },
-        { k: '03', v: 'Desarrollo', d: '3–6 sem' },
-        { k: '04', v: 'Lanzamiento', d: 'Día 1' },
-      ].map((step) => (
-        <div class="flex items-center justify-between bg-zinc-950/60 px-5 py-5">
+    <!-- ── Process strip (ordered, semantic) ─────────────────── -->
+    <ol
+      class="mt-16 grid list-none grid-cols-2 gap-px overflow-hidden rounded-2xl
+             border border-white/10 bg-white/[0.015] md:grid-cols-4"
+      aria-label="Proceso de trabajo"
+    >
+      {steps.map((step) => (
+        <li class="flex items-center justify-between bg-zinc-950/60 px-5 py-5">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs text-zinc-500">{step.k}</span>
+            <span aria-hidden="true" class="font-mono text-xs text-zinc-500">
+              {step.k}
+            </span>
             <span class="text-sm font-medium text-zinc-200">{step.v}</span>
           </div>
-          <span class="text-xs text-zinc-500">{step.d}</span>
-        </div>
+          <span class="text-xs text-zinc-500">
+            <span class="sr-only">Duración: </span>{step.d}
+          </span>
+        </li>
       ))}
-    </div>
+    </ol>
   </div>
 </section>

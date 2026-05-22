@@ -5,18 +5,20 @@ const team = [
   {
     name: 'Juan Manuel',
     role: 'Ingeniería & Arquitectura',
-    bio:
-      'Mecatrónico y Full-Stack. Construye sistemas que pesan poco y rinden mucho. Python, Java, Astro. Obsesionado con el milisegundo.',
+    bio: 'Mecatrónico y Full-Stack. Construye sistemas que pesan poco y rinden mucho. Python, Java, Astro. Obsesionado con el milisegundo.',
     initials: 'JM',
   },
   {
     name: 'Sarai',
     role: 'UX & Estrategia',
-    bio:
-      'Diseña experiencias con empatía y método. Estructura el contenido para que tu cliente entienda — y compre — sin fricción.',
+    bio: 'Diseña experiencias con empatía y método. Estructura el contenido para que tu cliente entienda — y compre — sin fricción.',
     initials: 'SA',
   },
 ];
+
+// Colombia: country code 57
+const whatsappNumber = '573000000000'; // Replace with real number
+const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una auditoría de rendimiento gratuita.');
 ---
 
 <section
@@ -25,106 +27,146 @@ const team = [
   aria-labelledby="cta-title"
 >
   <div class="container-x">
-    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-zinc-900/40 via-zinc-950/60 to-zinc-950">
-      <!-- Glow corner -->
-      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-        <div class="absolute left-1/2 top-0 h-80 w-[600px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent-500/20 blur-[120px]"></div>
+    <div
+      class="relative overflow-hidden rounded-3xl border border-white/10
+             bg-gradient-to-b from-zinc-900/40 via-zinc-950/60 to-zinc-950"
+    >
+      <!-- Ambient glow -->
+      <div aria-hidden="true"
+           class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute left-1/2 top-0 h-80 w-[600px] -translate-x-1/2
+                    -translate-y-1/3 rounded-full bg-accent-500/20 blur-[120px]">
+        </div>
       </div>
 
       <div class="grid gap-12 p-8 sm:p-12 lg:grid-cols-12 lg:gap-16 lg:p-16">
-        <!-- Headline + CTA -->
+        <!-- ── Left: headline + CTAs ──────────────────────────── -->
         <div class="lg:col-span-7">
           <span class="eyebrow">
             <span class="eyebrow-dot"></span>
             Hablemos
           </span>
+
           <h2
             id="cta-title"
-            class="mt-6 font-display text-fluid-5xl font-semibold leading-[1.02] tracking-tightest text-white"
+            class="mt-6 font-display text-fluid-5xl font-semibold
+                   leading-[1.02] tracking-tightest text-white"
           >
-            Tu próximo cliente <br />
+            Tu próximo cliente<br />
             <span class="text-gradient">ya está buscándote.</span>
           </h2>
+
           <p class="mt-6 max-w-xl text-fluid-lg leading-relaxed text-zinc-400">
-            En <span class="text-zinc-200">30 minutos</span> auditamos tu sitio actual y te
-            entregamos un plan claro — sin tecnicismos, sin compromiso. Si trabajamos
-            juntos, en 30 días tu web carga más rápido y vende más.
+            En <span class="text-zinc-200">30 minutos</span> auditamos tu sitio actual
+            y te entregamos un plan claro — sin tecnicismos, sin compromiso.
+            Si trabajamos juntos, en 30 días tu web carga más rápido y vende más.
           </p>
 
           <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <CTAButton
               client:visible
-              href="mailto:hola@efisolution.com?subject=Auditor%C3%ADa%20de%20Rendimiento"
+              href={`mailto:hola@efisolution.com?subject=Auditor%C3%ADa%20de%20Rendimiento`}
               variant="primary"
               size="lg"
+              ariaLabel="Agendar auditoría de rendimiento gratuita por correo"
             >
               Agendar Auditoría Gratuita
             </CTAButton>
             <CTAButton
               client:visible
-              href="https://wa.me/521000000000"
+              href={`https://wa.me/${whatsappNumber}?text=${whatsappMsg}`}
               variant="ghost"
               size="lg"
               icon={false}
+              ariaLabel="Escribir a Efi Solution por WhatsApp"
             >
               Escribir por WhatsApp
             </CTAButton>
           </div>
 
-          <ul class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400">
-            <li class="inline-flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
-              Respondemos en menos de 12 horas
-            </li>
-            <li class="inline-flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
-              Auditoría sin costo
-            </li>
-            <li class="inline-flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
-              Trabajamos Colombia &amp; LATAM
-            </li>
+          <ul
+            class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400"
+            aria-label="Beneficios del contacto"
+          >
+            {[
+              'Respondemos en menos de 12 horas',
+              'Auditoría sin costo',
+              'Trabajamos Colombia & LATAM',
+            ].map((item) => (
+              <li class="inline-flex items-center gap-2">
+                <span aria-hidden="true"
+                      class="h-1.5 w-1.5 flex-none rounded-full bg-accent-500"></span>
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
 
-        <!-- Team cards -->
-        <div class="grid gap-4 lg:col-span-5">
+        <!-- ── Right: team cards ──────────────────────────────── -->
+        <div class="grid content-start gap-4 lg:col-span-5">
           {team.map((p) => (
-            <article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] p-6 backdrop-blur-md transition-colors duration-500 hover:border-white/20">
+            <article
+              class="group relative overflow-hidden rounded-2xl border border-white/10
+                     bg-white/[0.025] p-6 backdrop-blur-md
+                     transition-colors duration-500 hover:border-white/20"
+              aria-label={`${p.name} — ${p.role}`}
+            >
               <div class="flex items-center gap-4">
-                <div class="relative flex h-14 w-14 flex-none items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-accent-500/20 to-transparent font-display text-base font-semibold text-white">
-                  <span class="absolute inset-0 rounded-2xl bg-accent-500/10 opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100"></span>
+                <div
+                  aria-hidden="true"
+                  class="relative flex h-14 w-14 flex-none items-center justify-center
+                         rounded-2xl border border-white/10
+                         bg-gradient-to-br from-accent-500/20 to-transparent
+                         font-display text-base font-semibold text-white"
+                >
+                  <span class="absolute inset-0 rounded-2xl bg-accent-500/10 opacity-0
+                               blur-md transition-opacity duration-500
+                               group-hover:opacity-100"></span>
                   <span class="relative">{p.initials}</span>
                 </div>
                 <div>
-                  <p class="font-display text-fluid-lg font-semibold tracking-tight text-white">
+                  <p class="font-display text-fluid-lg font-semibold
+                            tracking-tight text-white">
                     {p.name}
                   </p>
-                  <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">{p.role}</p>
+                  <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">
+                    {p.role}
+                  </p>
                 </div>
               </div>
-              <p class="mt-5 text-sm leading-relaxed text-zinc-400">
-                {p.bio}
-              </p>
+              <p class="mt-5 text-sm leading-relaxed text-zinc-400">{p.bio}</p>
             </article>
           ))}
 
-          <!-- Closing micro line -->
           <p class="mt-2 text-center text-xs text-zinc-500 sm:text-left">
-            Dos personas. Cero intermediarios. Trato directo con quien construye tu plataforma.
+            Dos personas. Cero intermediarios. Trato directo con quien construye
+            tu plataforma.
           </p>
         </div>
       </div>
     </div>
-
-    <!-- Foot bar -->
-    <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-zinc-500 sm:flex-row">
-      <p>
-        © {new Date().getFullYear()} Efi Solution. Construido con Astro · Hecho en Colombia.
-      </p>
-      <p>
-        <a href="mailto:hola@efisolution.com" class="hover:text-zinc-300 transition-colors">hola@efisolution.com</a>
-      </p>
-    </div>
   </div>
 </section>
+
+<!-- Semantic footer landmark — separate from the section above -->
+<footer class="container-x" aria-label="Información del sitio">
+  <div
+    class="mt-14 flex flex-col items-center justify-between gap-4
+           border-t border-white/5 pb-10 pt-8 text-xs text-zinc-500 sm:flex-row"
+  >
+    <p>
+      &copy; {new Date().getFullYear()} Efi Solution.
+      Construido con Astro &middot; Hecho en Colombia.
+    </p>
+    <p>
+      <a
+        href="mailto:hola@efisolution.com"
+        class="transition-colors hover:text-zinc-300
+               focus-visible:outline-none focus-visible:ring-2
+               focus-visible:ring-accent-400 focus-visible:rounded"
+      >
+        hola@efisolution.com
+      </a>
+    </p>
+  </div>
+</footer>

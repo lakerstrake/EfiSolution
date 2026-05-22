@@ -2,6 +2,16 @@
 import CTAButton from './react/CTAButton.tsx';
 ---
 
+<!--
+  Noscript safety: the fade-up animation sets opacity:0 as initial state.
+  If CSS animations are unsupported (rare) or JS is off, restore visibility.
+-->
+<noscript>
+  <style>
+    .animate-fade-up { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
+
 <section
   id="inicio"
   class="relative isolate overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32 lg:pt-52 lg:pb-40"

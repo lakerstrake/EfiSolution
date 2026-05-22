@@ -1,0 +1,19 @@
+{
+  "name": "Efi Solution",
+  "short_name": "Efi Solution",
+  "description": "Agencia tecnológica de élite. Webs ultrarrápidas que escalan tu facturación.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#0a0a0b",
+  "lang": "es-CO",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
