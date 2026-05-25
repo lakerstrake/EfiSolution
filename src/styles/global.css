@@ -221,3 +221,17 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-enter { animation: none; opacity: 1; transform: none; }
 }
+
+/* ── View Transition: near-instant language switch ──────────────────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 120ms;
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0ms;
+  }
+}

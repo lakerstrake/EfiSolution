@@ -157,54 +157,60 @@ const langs: Array<{ code: Locale; label: string }> = [
 </style>
 
 <script>
-  const header = document.getElementById('site-header') as HTMLElement | null;
-  if (header && header.dataset.bound !== 'true') {
-    header.dataset.bound = 'true';
-    const themeToggle = document.getElementById('theme-toggle');
-    const btn = document.getElementById('hamburger');
-    const menu = document.getElementById('mobile-nav');
+  // AbortController cancels ALL listeners from the previous page before re-binding,
+  // so every navigation gets a clean slate regardless of how many times we navigate.
+  let _navCtrl: AbortController | null = null;
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        header.classList.toggle('is-scrolled', window.scrollY > 18);
-      },
-      { passive: true }
-    );
+  function initNavbar(): void {
+    _navCtrl?.abort();
+    _navCtrl = new AbortController();
+    const { signal } = _navCtrl;
 
+    const header      = document.getElementById('site-header') as HTMLElement | null;
+    const themeToggle = document.getElementById('theme-toggle') as HTMLElement | null;
+    const btn         = document.getElementById('hamburger')    as HTMLButtonElement | null;
+    const menu        = document.getElementById('mobile-nav')   as HTMLElement | null;
+
+    if (!header) return;
+
+    // ── Scroll: sticky header ────────────────────────────────────────────────
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 18);
+    onScroll(); // apply immediately on each navigation
+    window.addEventListener('scroll', onScroll, { passive: true, signal });
+
+    // ── Theme toggle ─────────────────────────────────────────────────────────
     themeToggle?.addEventListener('click', () => {
       const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'light' : 'dark';
-      document.documentElement.classList.toggle('dark', newTheme === 'dark');
-      localStorage.setItem('theme', newTheme);
+      const next   = isDark ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      localStorage.setItem('theme', next);
+      document.getElementById('meta-theme-color')
+        ?.setAttribute('content', next === 'dark' ? '#09090b' : '#f8fafc');
+    }, { signal });
 
-      const metaThemeColor = document.getElementById('meta-theme-color');
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#09090b' : '#f8fafc');
-      }
-    });
-
-    function closeMenu() {
-      if (!btn || !menu) return;
-      btn.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      menu.classList.add('hidden');
-    }
+    // ── Mobile menu ──────────────────────────────────────────────────────────
+    const closeMenu = () => {
+      btn?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
+      menu?.classList.add('hidden');
+    };
 
     btn?.addEventListener('click', () => {
-      if (!menu || !btn) return;
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      menu.setAttribute('aria-hidden', String(expanded));
-      menu.classList.toggle('hidden', expanded);
-    });
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      menu?.setAttribute('aria-hidden', String(isOpen));
+      menu?.classList.toggle('hidden', isOpen);
+    }, { signal });
 
-    menu?.querySelectorAll('[data-mobile-close]').forEach((item) => {
-      item.addEventListener('click', () => setTimeout(closeMenu, 100));
+    menu?.querySelectorAll('[data-mobile-close]').forEach((el) => {
+      el.addEventListener('click', () => setTimeout(closeMenu, 100), { signal });
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeMenu();
-    });
+    }, { signal });
   }
+
+  // Fires on initial load AND after every View Transition navigation
+  document.addEventListener('astro:page-load', initNavbar);
 </script>

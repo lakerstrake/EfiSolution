@@ -159,17 +159,20 @@ const websiteSchema = {
     </main>
 
     <script is:inline>
-      (() => {
-        const bar = document.getElementById('scroll-progress');
+      (function () {
+        // Body is replaced on every View Transition, so this inline script re-runs.
+        // Clean up the previous navigation's listener before adding a new one.
+        if (window._spCleanup) { window._spCleanup(); }
+        var bar = document.getElementById('scroll-progress');
         if (!bar) return;
-        const onScroll = () => {
-          const scrollTop = window.scrollY || document.documentElement.scrollTop;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-          bar.style.transform = `scaleX(${progress})`;
+        var fn = function () {
+          var t = window.scrollY || document.documentElement.scrollTop;
+          var h = document.documentElement.scrollHeight - window.innerHeight;
+          bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(t / h, 1) : 0) + ')';
         };
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
+        fn();
+        window.addEventListener('scroll', fn, { passive: true });
+        window._spCleanup = function () { window.removeEventListener('scroll', fn); };
       })();
     </script>
 
@@ -193,7 +196,7 @@ const websiteSchema = {
         );
         document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       }
-      initReveal();
+      // astro:page-load fires on first load AND after every navigation
       document.addEventListener('astro:page-load', initReveal);
     </script>
   </body>
