@@ -103,7 +103,7 @@ export default function ServiceCard({
         {title}
       </h3>
 
-      <p className="relative z-10 mt-3 text-fluid-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="relative z-10 mt-3 text-fluid-sm leading-relaxed text-zinc-700 dark:text-zinc-400">
         {description}
       </p>
 

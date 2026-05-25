@@ -24,7 +24,7 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
       >
         Proyectos reales de <span class="text-gradient">velocidad extrema</span>
       </h2>
-      <p class="mt-4 text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p class="mt-4 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
         Cada línea de código está optimizada para que tu cliente no espere y tu negocio crezca. Explora nuestros desarrollos más destacados.
       </p>
     </div>
@@ -84,111 +84,138 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
         class="case-study-slide active grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
       >
         <!-- Left: narrative -->
-        <div class="lg:col-span-7">
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Caso de Éxito
-            </span>
-            <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-medium tracking-widest text-zinc-600 dark:text-zinc-400 uppercase">
-              Edtech · Colombia
-            </span>
-          </div>
-
-          <div class="mt-6 flex items-center gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">Cliente</p>
-              <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                Classify <span class="text-accent-500 dark:text-accent-400">·</span> Gestión Escolar
-              </h3>
-            </div>
-          </div>
-
-          <!-- Story blocks -->
-          <div class="mt-10 space-y-8">
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Problema</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Classify operaba sobre un panel WordPress saturado de plugins. Cargaba en
-                <span class="font-semibold text-zinc-950 dark:text-white">5.4 segundos</span> en celular, perdía padres de familia
-                en pleno proceso de inscripción y el equipo administrativo necesitaba un
-                respaldo manual cada semana.
-              </p>
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Caso de Éxito
+              </span>
+              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
+                Edtech · Colombia
+              </span>
             </div>
 
-            <div class="hairline"></div>
-
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Nuestra Solución</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Reescribimos la plataforma desde cero con <span class="font-semibold text-zinc-950 dark:text-white">arquitectura island</span>
-                en Astro, un backend en <span class="font-semibold text-zinc-950 dark:text-white">FastAPI</span> con tareas asíncronas,
-                base de datos PostgreSQL y entrega global por edge CDN. El panel se rediseñó
-                con Sarai bajo un sistema de UX basado en pruebas reales con profesores y padres.
-              </p>
-
-              <div class="mt-5 flex flex-wrap gap-2">
-                {classifyStack.map((t) => (
-                  <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-700 dark:text-zinc-300">
-                    {t}
-                  </span>
-                ))}
+            <div class="mt-6 flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
+                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
+                  Classify <span class="text-accent-500 dark:text-accent-400">·</span> Gestión Escolar
+                </h3>
               </div>
             </div>
 
-            <div class="hairline"></div>
+            <!-- Story blocks -->
+            <div class="mt-10 space-y-8">
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Classify operaba sobre un panel WordPress saturado de plugins. Cargaba en
+                  <span class="font-semibold text-zinc-950 dark:text-white">5.4 segundos</span> en celular, perdía padres de familia
+                  en pleno proceso de inscripción y el equipo administrativo necesitaba un
+                  respaldo manual cada semana.
+                </p>
+              </div>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-accent-500 dark:text-accent-400 font-semibold">Colaboración</p>
-              <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-600 dark:text-zinc-400 italic">
-                Desarrollado en rol de colaboradores junto a Cristobal Beltrán, Alejandro Guasca, Jhon Jairo López y Yeferson Ramírez.
-              </p>
-            </div>
+              <div class="hairline"></div>
 
-            <div class="hairline"></div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Reescribimos la plataforma desde cero con <span class="font-semibold text-zinc-950 dark:text-white">arquitectura island</span>
+                  en Astro, un backend en <span class="font-semibold text-zinc-950 dark:text-white">FastAPI</span> con tareas asíncronas,
+                  base de datos PostgreSQL y entrega global por edge CDN. El panel se rediseñó
+                  con Sarai bajo un sistema de UX basado en pruebas reales con profesores y padres.
+                </p>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Resultado</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                En el primer trimestre, las inscripciones digitales se cuadruplicaron, el
-                tiempo de carga bajó a <span class="font-semibold text-zinc-950 dark:text-white">0.4 segundos</span>, y el
-                equipo redujo el trabajo administrativo en un <span class="font-semibold text-zinc-950 dark:text-white">70%</span>.
-              </p>
-            </div>
-
-            <!-- Testimonial -->
-            <figure class="relative mt-2 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-              <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-              </svg>
-              <blockquote class="text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-200">
-                “Pensábamos contratar a dos personas más para atender solicitudes. Después
-                del rediseño, ese mismo equipo procesa cuatro veces más inscripciones sin
-                horas extra. Efi Solution no entregó una web: nos entregó un sistema.”
-              </blockquote>
-              <figcaption class="mt-5 flex items-center gap-3 text-sm">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-800 dark:text-white">
-                  CR
-                </span>
-                <div>
-                  <p class="font-semibold text-zinc-800 dark:text-zinc-100">Carlos Rivera</p>
-                  <p class="text-xs text-zinc-500">Director · Classify</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {classifyStack.map((t) => (
+                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              </figcaption>
-            </figure>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
+                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
+                  Desarrollado en rol de colaboradores junto a Cristobal Beltrán, Alejandro Guasca, Jhon Jairo López y Yeferson Ramírez.
+                </p>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  En el primer trimestre, las inscripciones digitales se cuadruplicaron, el
+                  tiempo de carga bajó a <span class="font-semibold text-zinc-950 dark:text-white">0.4 segundos</span>, y el
+                  equipo redujo el trabajo administrativo en un <span class="font-semibold text-zinc-950 dark:text-white">70%</span>.
+                </p>
+              </div>
+            </div>
           </div>
+
+          <!-- Testimonial -->
+          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
+            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
+            </svg>
+            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
+              “Pensábamos contratar a dos personas más para atender solicitudes. Después
+              del rediseño, ese mismo equipo procesa cuatro veces más inscripciones sin
+              horas extra. Efi Solution no entregó una web: nos entregó un sistema.”
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3 text-sm">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
+                CR
+              </span>
+              <div>
+                <p class="font-bold text-zinc-900 dark:text-zinc-100">Carlos Rivera</p>
+                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Director · Classify</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
 
-        <!-- Right: stats -->
-        <aside class="lg:col-span-5 flex flex-col justify-between">
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/30 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Impacto medible</p>
+        <!-- Right: Screenshot Mockup + Stats -->
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+          <!-- Premium Browser Mockup with Screenshot -->
+          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
+            <!-- Browser Header Bar -->
+            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
+              <div class="flex gap-1.5 flex-none">
+                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
+              </div>
+              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
+                https://classify.efisolution.com
+              </div>
+            </div>
+            <!-- Mockup Image Area -->
+            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
+              <img
+                src="/classify_mockup.png"
+                alt="Pantallazo del sistema educativo Classify"
+                class="h-full w-full object-cover object-top select-none"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Impact Metrics block -->
+          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
+            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
             <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
               <StatCounter client:visible value={92} suffix="%" label="Reducción carga" />
               <StatCounter client:visible value={4.7} decimals={1} suffix="x" label="Más solicitudes" />
@@ -200,17 +227,17 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
 
             <!-- Mini "before / after" stat -->
             <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-400 dark:text-zinc-500 line-through decoration-zinc-700">
+              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
+                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-400">
                   5.4s
                 </p>
-                <p class="mt-1 text-xs text-zinc-500">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
               </div>
               <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-500 dark:text-accent-300">Después</p>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
                 <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.4s</p>
-                <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
               </div>
             </div>
           </div>
@@ -224,104 +251,131 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
         class="case-study-slide grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
       >
         <!-- Left: narrative -->
-        <div class="lg:col-span-7">
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Caso de Éxito
-            </span>
-            <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-medium tracking-widest text-zinc-600 dark:text-zinc-400 uppercase">
-              Social Impact · Colombia
-            </span>
-          </div>
-
-          <div class="mt-6 flex items-center gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">Cliente</p>
-              <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                Navegador Social
-              </h3>
-            </div>
-          </div>
-
-          <!-- Story blocks -->
-          <div class="mt-10 space-y-8">
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Problema</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Los ciudadanos requerían consultar información social, subsidios e iniciativas locales ágilmente desde celulares con
-                <span class="font-semibold text-zinc-950 dark:text-white">planes de datos mínimos y señal inestable</span>. Una página pesada tradicional consumía los megas de los usuarios en segundos o directamente fallaba en cargar.
-              </p>
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Caso de Éxito
+              </span>
+              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
+                Social Impact · Colombia
+              </span>
             </div>
 
-            <div class="hairline"></div>
-
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Nuestra Solución</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Diseñamos y desarrollamos junto con Sarai una plataforma optimizada en
-                <span class="font-semibold text-zinc-950 dark:text-white">JavaScript puro y CSS a medida</span>. Implementamos enrutamiento veloz y renderizado de componentes directamente sobre el Edge Runtime usando <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Workers</span>, garantizando respuestas ultra-rápidas globales y nula latencia de base de datos.
-              </p>
-
-              <div class="mt-5 flex flex-wrap gap-2">
-                {navegadorStack.map((t) => (
-                  <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-700 dark:text-zinc-300">
-                    {t}
-                  </span>
-                ))}
+            <div class="mt-6 flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
+                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
+                  Navegador Social
+                </h3>
               </div>
             </div>
 
-            <div class="hairline"></div>
+            <!-- Story blocks -->
+            <div class="mt-10 space-y-8">
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Los ciudadanos requerían consultar información social, subsidios e iniciativas locales ágilmente desde celulares con
+                  <span class="font-semibold text-zinc-950 dark:text-white">planes de datos mínimos y señal inestable</span>. Una página pesada tradicional consumía los megas de los usuarios en segundos o directamente fallaba en cargar.
+                </p>
+              </div>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-accent-500 dark:text-accent-400 font-semibold">Colaboración</p>
-              <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-600 dark:text-zinc-400 italic">
-                Desarrollado y diseñado en rol principal por Juan Manuel & Sarai.
-              </p>
-            </div>
+              <div class="hairline"></div>
 
-            <div class="hairline"></div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Diseñamos y desarrollamos junto con Sarai una plataforma optimizada en
+                  <span class="font-semibold text-zinc-950 dark:text-white">JavaScript puro y CSS a medida</span>. Implementamos enrutamiento veloz y renderizado de componentes directamente sobre el Edge Runtime usando <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Workers</span>, garantizando respuestas ultra-rápidas globales y nula latencia de base de datos.
+                </p>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Resultado</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Carga instantánea de la interfaz en menos de <span class="font-semibold text-zinc-950 dark:text-white">200 milisegundos</span>. Los usuarios bajo red 3G móvil lenta pueden navegar libremente sin pérdidas de señal, logrando una tasa de conversión de búsquedas exitosas del 98%.
-              </p>
-            </div>
-
-            <!-- Testimonial -->
-            <figure class="relative mt-2 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-              <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-              </svg>
-              <blockquote class="text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-200">
-                “Lograr que una web con datos geográficos y sociales cargue de inmediato bajo señal inestable es un éxito enorme. Efi Solution creó una obra de arte optimizada en código puro que ayuda a miles diariamente.”
-              </blockquote>
-              <figcaption class="mt-5 flex items-center gap-3 text-sm">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-800 dark:text-white">
-                  SA
-                </span>
-                <div>
-                  <p class="font-semibold text-zinc-800 dark:text-zinc-100">Sarai</p>
-                  <p class="text-xs text-zinc-500">Co-Líder & Head of UX · Efi Solution</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {navegadorStack.map((t) => (
+                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              </figcaption>
-            </figure>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
+                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
+                  Desarrollado y diseñado en rol principal por Juan Manuel & Sarai.
+                </p>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Carga instantánea de la interfaz en menos de <span class="font-semibold text-zinc-950 dark:text-white">200 milisegundos</span>. Los usuarios bajo red 3G móvil lenta pueden navegar libremente sin pérdidas de señal, logrando una tasa de conversión de búsquedas exitosas del 98%.
+                </p>
+              </div>
+            </div>
           </div>
+
+          <!-- Testimonial -->
+          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
+            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
+            </svg>
+            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
+              “Lograr que una web con datos geográficos y sociales cargue de inmediato bajo señal inestable es un éxito enorme. Efi Solution creó una obra de arte optimizada en código puro que ayuda a miles diariamente.”
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3 text-sm">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
+                SA
+              </span>
+              <div>
+                <p class="font-bold text-zinc-900 dark:text-zinc-100">Sarai</p>
+                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Co-Líder & Head of UX · Efi Solution</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
 
-        <!-- Right: stats -->
-        <aside class="lg:col-span-5 flex flex-col justify-between">
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/30 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Impacto medible</p>
+        <!-- Right: Screenshot Mockup + Stats -->
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+          <!-- Premium Browser Mockup with Screenshot -->
+          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
+            <!-- Browser Header Bar -->
+            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
+              <div class="flex gap-1.5 flex-none">
+                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
+              </div>
+              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
+                https://navegador-social.workers.dev
+              </div>
+            </div>
+            <!-- Mockup Image Area -->
+            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
+              <img
+                src="/navegador_social_mockup.png"
+                alt="Pantallazo del Navegador Social en celular y web"
+                class="h-full w-full object-cover object-top select-none"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Impact Metrics block -->
+          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
+            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
             <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
               <StatCounter client:visible value={200} suffix="ms" label="Respuesta Edge" />
               <StatCounter client:visible value={100} suffix="%" label="Accesibilidad" />
@@ -333,34 +387,35 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
 
             <!-- Mini "before / after" stat -->
             <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-400 dark:text-zinc-500 line-through decoration-zinc-700">
+              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
+                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-700">
                   3.8s
                 </p>
-                <p class="mt-1 text-xs text-zinc-500">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
               </div>
               <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-500 dark:text-accent-300">Después</p>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
                 <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.2s</p>
-                <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
               </div>
             </div>
 
-            <!-- Live Preview Action -->
+            <!-- Direct URL Link (Opens in new tab) -->
             <div class="mt-8">
-              <button
-                type="button"
-                data-url="https://navegador-social.jmlagos2003.workers.dev/"
-                data-title="Navegador Social"
-                class="live-preview-trigger w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
+              <a
+                href="https://navegador-social.jmlagos2003.workers.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
                 </svg>
-                Previsualizar en Vivo
-              </button>
+                Visitar Sitio en Vivo
+              </a>
             </div>
           </div>
         </aside>
@@ -373,103 +428,130 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
         class="case-study-slide grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
       >
         <!-- Left: narrative -->
-        <div class="lg:col-span-7">
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Caso de Éxito
-            </span>
-            <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-medium tracking-widest text-zinc-600 dark:text-zinc-400 uppercase">
-              Geospatial · Colombia
-            </span>
-          </div>
-
-          <div class="mt-6 flex items-center gap-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
-                <line x1="9" y1="3" x2="9" y2="18" />
-                <line x1="15" y1="6" x2="15" y2="21" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">Cliente</p>
-              <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                Mapa de Kennedy
-              </h3>
-            </div>
-          </div>
-
-          <!-- Story blocks -->
-          <div class="mt-10 space-y-8">
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Problema</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Los portales cartográficos y mapas interactivos pesados
-                <span class="font-semibold text-zinc-950 dark:text-white">saturan la memoria del navegador y congelan los celulares</span> debido a la pesada carga de librerías y tiles vectoriales masivas en tiempo real.
-              </p>
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Caso de Éxito
+              </span>
+              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
+                Geospatial · Colombia
+              </span>
             </div>
 
-            <div class="hairline"></div>
-
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Nuestra Solución</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Desarrollamos una aplicación interactiva ultraligera basada en <span class="font-semibold text-zinc-950 dark:text-white">Leaflet.js</span>. Compilamos el ecosistema frontend con Vite y Tailwind CSS, y distribuimos las capas de información local asíncronamente bajo demanda sobre servidores distribuidos de <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Pages</span>.
-              </p>
-
-              <div class="mt-5 flex flex-wrap gap-2">
-                {kennedyStack.map((t) => (
-                  <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-700 dark:text-zinc-300">
-                    {t}
-                  </span>
-                ))}
+            <div class="mt-6 flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                  <line x1="9" y1="3" x2="9" y2="18" />
+                  <line x1="15" y1="6" x2="15" y2="21" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
+                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
+                  Mapa de Kennedy
+                </h3>
               </div>
             </div>
 
-            <div class="hairline"></div>
+            <!-- Story blocks -->
+            <div class="mt-10 space-y-8">
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Los portales cartográficos y mapas interactivos pesados
+                  <span class="font-semibold text-zinc-950 dark:text-white">saturan la memoria del navegador y congelan los celulares</span> debido a la pesada carga de librerías y tiles vectoriales masivas en tiempo real.
+                </p>
+              </div>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-accent-500 dark:text-accent-400 font-semibold">Colaboración</p>
-              <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-600 dark:text-zinc-400 italic">
-                Desarrollado y diseñado en rol principal por Juan Manuel.
-              </p>
-            </div>
+              <div class="hairline"></div>
 
-            <div class="hairline"></div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  Desarrollamos una aplicación interactiva ultraligera basada en <span class="font-semibold text-zinc-950 dark:text-white">Leaflet.js</span>. Compilamos el ecosistema frontend con Vite y Tailwind CSS, y distribuimos las capas de información local asíncronamente bajo demanda sobre servidores distribuidos de <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Pages</span>.
+                </p>
 
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">El Resultado</p>
-              <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                La geolocalización asíncrona responde en menos de <span class="font-semibold text-zinc-950 dark:text-white">0.5 segundos</span>. El mapa corre a 60fps constantes en teléfonos de media y baja gama, permitiendo registrar y consultar puntos comerciales o de seguridad sin lageos de pantalla.
-              </p>
-            </div>
-
-            <!-- Testimonial -->
-            <figure class="relative mt-2 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-              <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-              </svg>
-              <blockquote class="text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-200">
-                “Teníamos mucho temor de que un mapa interactivo no corriera fluido en smartphones modestos de nuestros vecinos. El código optimizado de Efi Solution logró que se mueva sumamente suave y cargue instantáneamente.”
-              </blockquote>
-              <figcaption class="mt-5 flex items-center gap-3 text-sm">
-                <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-800 dark:text-white">
-                  JM
-                </span>
-                <div>
-                  <p class="font-semibold text-zinc-800 dark:text-zinc-100">Juan Manuel</p>
-                  <p class="text-xs text-zinc-500">Líder de Ingeniería · Efi Solution</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {kennedyStack.map((t) => (
+                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              </figcaption>
-            </figure>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
+                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
+                  Desarrollado y diseñado en rol principal por Juan Manuel.
+                </p>
+              </div>
+
+              <div class="hairline"></div>
+
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
+                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  La geolocalización asíncrona responde en menos de <span class="font-semibold text-zinc-950 dark:text-white">0.5 segundos</span>. El mapa corre a 60fps constantes en teléfonos de media y baja gama, permitiendo registrar y consultar puntos comerciales o de seguridad sin lageos de pantalla.
+                </p>
+              </div>
+            </div>
           </div>
+
+          <!-- Testimonial -->
+          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
+            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
+            </svg>
+            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
+              “Teníamos mucho temor de que un mapa interactivo no corriera fluido en smartphones modestos de nuestros vecinos. El código optimizado de Efi Solution logró que se mueva sumamente suave y cargue instantáneamente.”
+            </blockquote>
+            <figcaption class="mt-5 flex items-center gap-3 text-sm">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
+                JM
+              </span>
+              <div>
+                <p class="font-bold text-zinc-900 dark:text-zinc-100">Juan Manuel</p>
+                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Líder de Ingeniería · Efi Solution</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
 
-        <!-- Right: stats -->
-        <aside class="lg:col-span-5 flex flex-col justify-between">
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/30 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">Impacto medible</p>
+        <!-- Right: Screenshot Mockup + Stats -->
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+          <!-- Premium Browser Mockup with Screenshot -->
+          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-950 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
+            <!-- Browser Header Bar -->
+            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
+              <div class="flex gap-1.5 flex-none">
+                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
+                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
+              </div>
+              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
+                https://mapa-kennedy.pages.dev
+              </div>
+            </div>
+            <!-- Mockup Image Area -->
+            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
+              <img
+                src="/mapa_kennedy_mockup.png"
+                alt="Pantallazo del Mapa de Kennedy interactivo"
+                class="h-full w-full object-cover object-top select-none"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Impact Metrics block -->
+          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
+            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
             <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
               <StatCounter client:visible value={0.5} decimals={1} suffix="s" label="GPS Latencia" />
               <StatCounter client:visible value={60} suffix="fps" label="Fluidez Render" />
@@ -481,34 +563,35 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
 
             <!-- Mini "before / after" stat -->
             <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-400 dark:text-zinc-500 line-through decoration-zinc-700">
+              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
+                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-700">
                   4.5s
                 </p>
-                <p class="mt-1 text-xs text-zinc-500">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
               </div>
               <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-500 dark:text-accent-300">Después</p>
+                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
                 <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.5s</p>
-                <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">Tiempo de carga (móvil)</p>
+                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
               </div>
             </div>
 
-            <!-- Live Preview Action -->
+            <!-- Direct URL Link (Opens in new tab) -->
             <div class="mt-8">
-              <button
-                type="button"
-                data-url="https://mapa-kennedy.pages.dev/"
-                data-title="Mapa de Kennedy"
-                class="live-preview-trigger w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
+              <a
+                href="https://mapa-kennedy.pages.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
                 </svg>
-                Previsualizar en Vivo
-              </button>
+                Visitar Sitio en Vivo
+              </a>
             </div>
           </div>
         </aside>
@@ -543,24 +626,6 @@ const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloud
       const activeSlide = document.getElementById(targetId);
       if (activeSlide) {
         activeSlide.classList.add('active');
-      }
-    });
-  });
-
-  // ── Dispatch window event to trigger React previewer modal ───────────────
-  const previewButtons = document.querySelectorAll('.live-preview-trigger');
-  
-  previewButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const url = (btn as HTMLElement).dataset.url;
-      const title = (btn as HTMLElement).dataset.title;
-      
-      if (url && title) {
-        window.dispatchEvent(
-          new CustomEvent('open-preview', {
-            detail: { url, title },
-          })
-        );
       }
     });
   });

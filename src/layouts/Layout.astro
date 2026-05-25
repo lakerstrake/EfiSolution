@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import LivePreviewModal from '../components/react/LivePreviewModal.tsx';
 
 export interface Props {
   title?: string;
@@ -176,7 +175,5 @@ const websiteSchema = {
     <main id="contenido" class="relative isolate" tabindex="-1">
       <slot />
     </main>
-
-    <LivePreviewModal client:load />
   </body>
 </html>
