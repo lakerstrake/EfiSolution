@@ -66,7 +66,7 @@ export default function ServiceCard({
         transformPerspective: 1200,
         transformStyle: 'preserve-3d',
       }}
-      className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-gradient-to-b from-white/70 to-zinc-50/50 dark:from-white/[0.04] dark:to-white/[0.01] p-7 backdrop-blur-xl transition-all duration-500 hover:border-zinc-300 dark:hover:border-white/20 shadow-sm md:p-8"
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950/45 bg-gradient-to-b from-white/70 to-zinc-50/50 dark:from-white/[0.04] dark:to-white/[0.01] p-7 backdrop-blur-xl transition-all duration-500 hover:border-zinc-300 dark:hover:border-white/20 shadow-sm md:p-8"
     >
       {/* Spotlight */}
       <motion.div
