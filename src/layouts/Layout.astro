@@ -100,11 +100,7 @@ const websiteSchema = {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href={fontsUrl} />
-    <link rel="stylesheet" href={fontsUrl} media="print" onload="this.media='all';this.onload=null" />
-    <noscript>
-      <link rel="stylesheet" href={fontsUrl} />
-    </noscript>
+    <link rel="stylesheet" href={fontsUrl} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
