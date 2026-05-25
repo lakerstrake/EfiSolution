@@ -35,7 +35,7 @@ export default function CTAButton({
 
   const variants = {
     primary:
-      'bg-accent-500 text-white shadow-[0_8px_30px_-8px_rgba(77,124,254,0.5)] hover:bg-accent-600 dark:hover:bg-accent-400',
+      'bg-accent-500 text-white shadow-[0_10px_34px_-8px_rgba(11,84,253,0.55)] hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200',
     ghost:
       'border border-zinc-200 dark:border-white/15 bg-white/60 dark:bg-white/[0.02] text-zinc-800 dark:text-zinc-100 backdrop-blur-md hover:border-zinc-300 dark:hover:border-white/30 hover:bg-zinc-50 dark:hover:bg-white/[0.05]',
   };

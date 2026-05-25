@@ -33,7 +33,7 @@ const siteContent = {
       ctaPrimary: 'Agendar auditoria gratuita',
       ctaGhost: 'Ver proyectos',
       metrics: [
-        { value: '0.9s', label: 'LCP objetivo' },
+        { value: '0.9s', label: 'TIEMPO DE CARGA' },
         { value: '+35%', label: 'Mejora conversion' },
         { value: '100/100', label: 'Score Lighthouse' },
         { value: '48h', label: 'Auditoria inicial' },
@@ -44,8 +44,8 @@ const siteContent = {
       titleA: 'El rendimiento no es un detalle tecnico.',
       titleB: 'Es una ventaja competitiva.',
       description: 'Cuando la web responde rapido, el usuario confia mas, explora mas y compra con menos friccion.',
-      statA: 'Abandono en movil cuando la carga supera 3 segundos.',
-      statB: 'Caida estimada de conversion por cada segundo extra.',
+      statA: 'de los usuarios abandonan si la carga supera los 3 segundos',
+      statB: 'de caida en conversiones por cada segundo de retraso',
       sequenceLabel: 'Secuencia problema impacto solucion',
       blocks: [
         {
@@ -95,10 +95,10 @@ const siteContent = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnostico', d: '48h' },
-        { k: '02', v: 'Definicion', d: '1 sem' },
-        { k: '03', v: 'Construccion', d: '3-6 sem' },
-        { k: '04', v: 'Lanzamiento', d: 'Dia 1' },
+        { k: '01', v: 'Diagnostico', d: '48h', desc: 'Analisis profundo de metricas y cuellos de botella.' },
+        { k: '02', v: 'Definicion', d: '1 sem', desc: 'Estructuracion de la arquitectura y plan de accion.' },
+        { k: '03', v: 'Construccion', d: '3-6 sem', desc: 'Desarrollo backend y frontend optimizado.' },
+        { k: '04', v: 'Lanzamiento', d: 'Dia 1', desc: 'Despliegue, pruebas de estres y monitoreo.' },
       ],
     },
     cases: {
@@ -132,6 +132,7 @@ const siteContent = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
+          // TODO: reemplazar por un unico mockup de telefono limpio para mantener el estilo minimalista.
           image: '/navegador_social_mockup.png',
           url: null,
           summary: 'Portal ligero para consulta ciudadana en dispositivos con conectividad limitada y bajo consumo de datos.',
@@ -297,10 +298,10 @@ const siteContent = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnosis', d: '48h' },
-        { k: '02', v: 'Planning', d: '1 wk' },
-        { k: '03', v: 'Build', d: '3-6 wk' },
-        { k: '04', v: 'Launch', d: 'Day 1' },
+        { k: '01', v: 'Diagnosis', d: '48h', desc: 'Deep analysis of metrics and bottlenecks.' },
+        { k: '02', v: 'Planning', d: '1 wk', desc: 'Architecture definition and action plan.' },
+        { k: '03', v: 'Build', d: '3-6 wk', desc: 'Optimized backend and frontend development.' },
+        { k: '04', v: 'Launch', d: 'Day 1', desc: 'Deployment, stress testing and monitoring.' },
       ],
     },
     cases: {
@@ -499,10 +500,10 @@ const siteContent = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnostico', d: '48h' },
-        { k: '02', v: 'Planejamento', d: '1 sem' },
-        { k: '03', v: 'Construcao', d: '3-6 sem' },
-        { k: '04', v: 'Lancamento', d: 'Dia 1' },
+        { k: '01', v: 'Diagnostico', d: '48h', desc: 'Analise profunda de metricas e gargalos.' },
+        { k: '02', v: 'Planejamento', d: '1 sem', desc: 'Estruturacao da arquitetura e plano de acao.' },
+        { k: '03', v: 'Construcao', d: '3-6 sem', desc: 'Desenvolvimento backend e frontend otimizado.' },
+        { k: '04', v: 'Lancamento', d: 'Dia 1', desc: 'Deploy, testes de estresse e monitoramento.' },
       ],
     },
     cases: {

@@ -10,6 +10,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getSiteContent(locale);
 const { version } = pkg;
+const contactEmail = 'contacto@efisolution.com';
 const mailSubjects: Record<Locale, string> = {
   es: 'Auditoria de sitio',
   en: 'Website audit',
@@ -60,7 +61,7 @@ const syncDate = formatBogotaDate(new Date());
           <div class="mt-9">
             <CTAButton
               client:visible
-              href={`mailto:jmlagos2003@gmail.com?subject=${mailSubject}`}
+              href={`mailto:${contactEmail}?subject=${mailSubject}`}
               variant="primary"
               size="lg"
               ariaLabel={t.contact.ctaAria}
@@ -106,7 +107,7 @@ const syncDate = formatBogotaDate(new Date());
       <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
         {t.footer.commitLabel}: {syncSha}
       </span>
-      <a href="mailto:jmlagos2003@gmail.com" class="transition-colors hover:text-zinc-900 dark:hover:text-white">jmlagos2003@gmail.com</a>
+      <a href={`mailto:${contactEmail}`} class="transition-colors hover:text-zinc-900 dark:hover:text-white">{contactEmail}</a>
     </p>
   </div>
 </footer>
