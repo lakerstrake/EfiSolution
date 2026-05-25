@@ -1,184 +1,101 @@
 ---
 const links = [
-  { href: '#servicios',     label: 'Servicios' },
-  { href: '#casos',         label: 'Casos'     },
-  { href: '#contacto',      label: 'Contacto'  },
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#casos', label: 'Casos' },
+  { href: '#contacto', label: 'Contacto' },
 ];
 ---
 
-<header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
   <div class="container-x">
     <nav
-      class="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-zinc-200/50 dark:border-white/10
-             bg-white/75 dark:bg-zinc-950/60 px-4 py-3 shadow-soft-xl backdrop-blur-xl transition-all duration-300"
-      aria-label="Navegación principal"
+      class="header-shell flex items-center justify-between rounded-2xl border border-zinc-200/70 bg-white/75 px-4 py-3 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-zinc-950/65"
+      aria-label="Navegacion principal"
     >
-      <!-- ── Logo ────────────────────────────────────────────── -->
-      <a
-        href="/"
-        class="group flex flex-none items-center gap-2.5 rounded-md
-               focus-visible:outline-none focus-visible:ring-2
-               focus-visible:ring-accent-400 focus-visible:ring-offset-2
-               focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
-        aria-label="Efi Solution — Inicio"
-      >
-        <span class="relative flex h-7 w-7 flex-none items-center justify-center
-                     rounded-lg bg-accent-500/15 ring-1 ring-accent-500/30">
-          <span aria-hidden="true"
-                class="absolute inset-0 rounded-lg bg-accent-500/20 blur-md"></span>
-          <svg
-            viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"
-            class="relative text-accent-500 dark:text-accent-300"
-            fill="none" stroke="currentColor"
-            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-          >
+      <a href="/" class="inline-flex items-center gap-2.5 rounded-md">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-accent-500/30 bg-accent-500/10 text-accent-500">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
           </svg>
         </span>
-        <span class="font-display text-sm font-semibold tracking-tight text-zinc-900 dark:text-white">
-          Efi<span class="text-accent-500 dark:text-accent-400">.</span>Solution
-        </span>
+        <span class="font-display text-sm font-semibold text-zinc-900 dark:text-white">Efi Solution</span>
       </a>
 
-      <!-- ── Desktop nav links ────────────────────────────────── -->
       <ul class="hidden items-center gap-1 md:flex" role="list">
-        {links.map((l) => (
+        {links.map((link) => (
           <li>
             <a
-              href={l.href}
-              class="rounded-full px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-400 transition-colors
-                     hover:bg-zinc-100 dark:hover:bg-white/[0.04] hover:text-zinc-900 dark:hover:text-white
-                     focus-visible:outline-none focus-visible:ring-2
-                     focus-visible:ring-accent-400 focus-visible:ring-offset-1
-                     focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+              href={link.href}
+              class="rounded-full px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
-              {l.label}
+              {link.label}
             </a>
           </li>
         ))}
       </ul>
 
-      <!-- ── Right side: Theme Toggle + CTA + Hamburger ───────── -->
       <div class="flex items-center gap-2">
-        <!-- Theme Toggle Button -->
         <button
           id="theme-toggle"
           type="button"
           aria-label="Alternar tema claro y oscuro"
-          class="relative flex h-9 w-9 flex-none items-center justify-center rounded-xl
-                 border border-zinc-200/80 dark:border-white/10
-                 bg-white/50 dark:bg-white/[0.03] text-zinc-600 dark:text-zinc-300
-                 transition-all hover:bg-zinc-100 hover:text-zinc-900
-                 dark:hover:bg-white/[0.08] dark:hover:text-white
-                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400"
+          class="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/70 text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white"
         >
-          <!-- Sun Icon (visible in Dark Mode) -->
-          <svg
-            id="theme-toggle-sun"
-            class="h-[18px] w-[18px] hidden dark:block text-amber-400 transition-transform duration-300 hover:rotate-45"
-            fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-          >
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          <svg id="icon-moon" class="h-[18px] w-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
           </svg>
-          <!-- Moon Icon (visible in Light Mode) -->
-          <svg
-            id="theme-toggle-moon"
-            class="h-[18px] w-[18px] block dark:hidden text-indigo-600 transition-transform duration-300 hover:-rotate-12"
-            fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-          >
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          <svg id="icon-sun" class="hidden h-[18px] w-[18px] text-amber-400 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
           </svg>
         </button>
 
         <a
           href="#contacto"
-          class="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 dark:border-white/10
-                 bg-white/[0.5] dark:bg-white/[0.04] px-4 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-100
-                 transition-all hover:border-accent-500/40 hover:bg-accent-500/10 hover:text-accent-600 dark:hover:text-white
-                 focus-visible:outline-none focus-visible:ring-2
-                 focus-visible:ring-accent-400 focus-visible:ring-offset-2
-                 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+          class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600 md:inline-flex"
         >
-          Auditoría
-          <span
-            aria-hidden="true"
-            class="inline-block h-1.5 w-1.5 flex-none rounded-full bg-accent-500
-                   animate-pulse-slow"
-            style="box-shadow: 0 0 8px 2px rgba(77,124,254,0.7);"
-          ></span>
+          Solicitar auditoria
         </a>
 
-        <!-- Hamburger button — mobile only -->
         <button
           id="hamburger"
           type="button"
-          aria-label="Abrir menú de navegación"
+          aria-label="Abrir menu"
           aria-expanded="false"
           aria-controls="mobile-nav"
-          class="group relative flex h-9 w-9 flex-none items-center justify-center
-                 rounded-xl border border-zinc-200/80 dark:border-white/10 bg-white/[0.5] dark:bg-white/[0.03] text-zinc-600 dark:text-zinc-300
-                 transition-colors hover:border-zinc-300 dark:hover:border-white/20 hover:text-zinc-950 dark:hover:text-white md:hidden
-                 focus-visible:outline-none focus-visible:ring-2
-                 focus-visible:ring-accent-400 focus-visible:ring-offset-2
-                 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+          class="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/70 text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white md:hidden"
         >
-          <!-- Animated hamburger → X icon via aria-expanded CSS -->
-          <span aria-hidden="true" class="flex h-4 w-4 flex-col items-center justify-between">
-            <span class="hamburger-bar block h-px w-full origin-center bg-current
-                         transition-all duration-300 ease-in-out"></span>
-            <span class="hamburger-bar block h-px w-full bg-current
-                         transition-all duration-300 ease-in-out"></span>
-            <span class="hamburger-bar block h-px w-full origin-center bg-current
-                         transition-all duration-300 ease-in-out"></span>
+          <span class="flex h-4 w-4 flex-col items-center justify-between" aria-hidden="true">
+            <span class="hamburger-bar h-px w-full bg-current transition-all duration-300"></span>
+            <span class="hamburger-bar h-px w-full bg-current transition-all duration-300"></span>
+            <span class="hamburger-bar h-px w-full bg-current transition-all duration-300"></span>
           </span>
         </button>
       </div>
     </nav>
   </div>
 
-  <!-- ── Mobile menu panel ─────────────────────────────────────── -->
-  <div
-    id="mobile-nav"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Menú de navegación"
-    aria-hidden="true"
-    class="container-x mt-2 hidden"
-  >
-    <div class="rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-white/95 dark:bg-zinc-950/95 px-3 py-3 shadow-soft-xl
-                backdrop-blur-xl">
-      <ul class="flex flex-col" role="list">
-        {links.map((l) => (
+  <div id="mobile-nav" class="container-x mt-2 hidden" aria-hidden="true">
+    <div class="rounded-2xl border border-zinc-200/80 bg-white/95 p-3 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/95">
+      <ul class="space-y-1" role="list">
+        {links.map((link) => (
           <li>
             <a
-              href={l.href}
+              href={link.href}
               data-mobile-close
-              class="flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium
-                     text-zinc-700 dark:text-zinc-300 transition-colors hover:bg-zinc-100 dark:hover:bg-white/[0.04] hover:text-zinc-950 dark:hover:text-white
-                     focus-visible:outline-none focus-visible:ring-2
-                     focus-visible:ring-accent-400 focus-visible:ring-inset"
+              class="block rounded-xl px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/[0.05]"
             >
-              {l.label}
+              {link.label}
             </a>
           </li>
         ))}
-
-        <li class="mt-2 border-t border-zinc-200/80 dark:border-white/[0.06] pt-2">
+        <li class="pt-2">
           <a
             href="#contacto"
             data-mobile-close
-            class="flex w-full items-center justify-center gap-2 rounded-xl
-                   bg-accent-500 px-4 py-3 text-sm font-semibold text-white
-                   transition-colors hover:bg-accent-600
-                   focus-visible:outline-none focus-visible:ring-2
-                   focus-visible:ring-accent-400 focus-visible:ring-offset-2
-                   focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+            class="flex items-center justify-center rounded-xl bg-accent-500 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600"
           >
-            Agendar Auditoría Gratuita
-            <span aria-hidden="true"
-                  class="h-1.5 w-1.5 flex-none rounded-full bg-white/70
-                         animate-pulse-slow"></span>
+            Solicitar auditoria
           </a>
         </li>
       </ul>
@@ -187,97 +104,63 @@ const links = [
 </header>
 
 <style>
-  /* Hamburger → X animation driven by aria-expanded */
-  #hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+  #hamburger[aria-expanded='true'] .hamburger-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
-  #hamburger[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+  #hamburger[aria-expanded='true'] .hamburger-bar:nth-child(2) {
     opacity: 0;
-    transform: scaleX(0);
   }
-  #hamburger[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+  #hamburger[aria-expanded='true'] .hamburger-bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
 </style>
 
 <script>
-  const header  = document.getElementById('site-header') as HTMLElement | null;
-  const nav     = header?.querySelector('nav') as HTMLElement | null;
-  const btn     = document.getElementById('hamburger')  as HTMLButtonElement | null;
-  const menu    = document.getElementById('mobile-nav') as HTMLElement | null;
+  const header = document.getElementById('site-header');
+  const themeToggle = document.getElementById('theme-toggle');
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-nav');
 
-  // ── Scroll state: dynamically adjust container size and visual styling ─────
-  window.addEventListener('scroll', () => {
-    const isScrolled = window.scrollY > 20;
-    
-    if (header && nav) {
-      if (isScrolled) {
-        header.classList.add('is-scrolled', 'bg-white/80', 'dark:bg-zinc-950/80', 'backdrop-blur-xl', 'border-b', 'border-zinc-200/50', 'dark:border-white/10', 'py-2.5', 'shadow-sm');
-        nav.classList.remove('mt-4', 'rounded-2xl', 'border-zinc-200/50', 'dark:border-white/10', 'bg-white/75', 'dark:bg-zinc-950/60', 'shadow-soft-xl', 'px-4', 'py-3', 'backdrop-blur-xl');
-        nav.classList.add('mt-0', 'rounded-none', 'border-0', 'bg-transparent', 'shadow-none', 'px-0', 'py-1.5', 'backdrop-blur-none');
-      } else {
-        header.classList.remove('is-scrolled', 'bg-white/80', 'dark:bg-zinc-950/80', 'backdrop-blur-xl', 'border-b', 'border-zinc-200/50', 'dark:border-white/10', 'py-2.5', 'shadow-sm');
-        nav.classList.remove('mt-0', 'rounded-none', 'border-0', 'bg-transparent', 'shadow-none', 'px-0', 'py-1.5', 'backdrop-blur-none');
-        nav.classList.add('mt-4', 'rounded-2xl', 'border-zinc-200/50', 'dark:border-white/10', 'bg-white/75', 'dark:bg-zinc-950/60', 'shadow-soft-xl', 'px-4', 'py-3', 'backdrop-blur-xl');
-      }
-    }
-  }, { passive: true });
+  window.addEventListener(
+    'scroll',
+    () => {
+      header?.classList.toggle('is-scrolled', window.scrollY > 18);
+    },
+    { passive: true }
+  );
 
-  // ── Theme toggle logic ───────────────────────────────────────────────────
-  const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement | null;
-  
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.contains('dark');
     const newTheme = isDark ? 'light' : 'dark';
-    
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
     localStorage.setItem('theme', newTheme);
-    
-    // Update meta theme color tag dynamically
+
     const metaThemeColor = document.getElementById('meta-theme-color');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#0a0a0b' : '#fafafa');
+      metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#09090b' : '#f8fafc');
     }
   });
 
-  // ── Toggle mobile menu ───────────────────────────────────────────────────
-  function openMenu(): void {
-    if (!btn || !menu) return;
-    btn.setAttribute('aria-expanded', 'true');
-    menu.setAttribute('aria-hidden', 'false');
-    menu.classList.remove('hidden');
-    (menu.querySelector('a') as HTMLElement | null)?.focus();
-  }
-
-  function closeMenu(): void {
+  function closeMenu() {
     if (!btn || !menu) return;
     btn.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
     menu.classList.add('hidden');
   }
 
-  btn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  btn?.addEventListener('click', () => {
+    if (!menu) return;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu.setAttribute('aria-hidden', String(expanded));
+    menu.classList.toggle('hidden', expanded);
   });
 
-  // Close on any nav link click
-  menu?.querySelectorAll<HTMLAnchorElement>('[data-mobile-close]').forEach((el) => {
-    el.addEventListener('click', () => {
-      setTimeout(closeMenu, 150);
-    });
+  menu?.querySelectorAll('[data-mobile-close]').forEach((item) => {
+    item.addEventListener('click', () => setTimeout(closeMenu, 100));
   });
 
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (menu && !header?.contains(e.target as Node)) closeMenu();
-  });
-
-  // Close on Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
-      closeMenu();
-      btn.focus();
-    }
+    if (e.key === 'Escape') closeMenu();
   });
 </script>

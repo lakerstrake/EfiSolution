@@ -1,98 +1,58 @@
 ---
-// PAS: Problema → Agitación → Solución
 const blocks = [
   {
     tag: 'Problema',
-    headline: 'Tu web carga en 5 segundos.',
-    body:
-      'Acabas de perder al 40% de tus visitantes antes de que vieran tu primer producto. Y peor: Google lo nota, y deja de mostrarte.',
+    headline: 'Web lenta, ventas bajas.',
+    body: 'Si el sitio tarda en cargar, el usuario se va antes de conocer tu oferta.',
   },
   {
-    tag: 'Agitación',
-    headline: 'Las plantillas no escalan.',
-    body:
-      'Plugins encimados, JavaScript inflado, hosting compartido y un diseño que ya viste en cinco competidores. Eso no es tu marca: es ruido.',
+    tag: 'Impacto',
+    headline: 'Mas rebote y mas costo de adquisicion.',
+    body: 'La lentitud reduce conversion, afecta SEO y encarece cada visita pagada.',
   },
   {
-    tag: 'Solución',
-    headline: 'Arquitectura a medida.',
-    body:
-      'Construimos cada componente desde cero. Cero peso muerto. SEO técnico impecable. Una experiencia que tu cliente recuerda y tu balance agradece.',
+    tag: 'Solucion',
+    headline: 'Arquitectura limpia desde el dia uno.',
+    body: 'Disenamos y construimos para rendimiento real: menos peso, mas claridad y mejor experiencia.',
   },
 ];
 ---
 
-<section
-  id="problema"
-  class="section-padding relative"
-  aria-labelledby="problem-title"
->
+<section id="problema" class="section-padding" aria-labelledby="problem-title">
   <div class="container-x">
-    <!-- Sticky-ish heading column on desktop -->
-    <div class="grid gap-16 lg:grid-cols-12 lg:gap-20">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
         <span class="eyebrow">
           <span class="eyebrow-dot"></span>
-          El costo real de la lentitud
+          Diagnostico
         </span>
-        <h2
-          id="problem-title"
-          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-zinc-900 dark:text-white"
-        >
-          Cada milisegundo que <span class="text-gradient">esperan tus usuarios</span> es dinero que ya no entra a tu caja.
+
+        <h2 id="problem-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
+          El rendimiento no es un detalle tecnico. <span class="text-accent-500">Es una ventaja competitiva.</span>
         </h2>
-        <p class="mt-6 max-w-md text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-          Google y Amazon llevan años publicándolo: una página que carga lento no solo
-          frustra. Convierte menos, posiciona peor y eleva tu costo por adquisición.
+
+        <p class="mt-5 max-w-md text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
+          Cuando la web responde rapido, el usuario confia mas, explora mas y compra con menos friccion.
         </p>
 
-        <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-200 dark:bg-white/[0.015] shadow-sm">
-          <div class="bg-white/60 dark:bg-zinc-950/60 p-5">
+        <div class="kpi-grid mt-8 grid-cols-2">
+          <div class="kpi-item">
             <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">53%</p>
-            <p class="mt-1 text-xs text-zinc-500">
-              de visitas móviles abandonan webs que tardan más de 3s en cargar.
-            </p>
+            <p class="mt-1 text-xs text-zinc-500">Abandono en movil cuando la carga supera 3 segundos.</p>
           </div>
-          <div class="bg-white/60 dark:bg-zinc-950/60 p-5">
-            <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">1s</p>
-            <p class="mt-1 text-xs text-zinc-500">
-              de retraso reduce la conversión en hasta 7% (Akamai, Google).
-            </p>
+          <div class="kpi-item">
+            <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">7%</p>
+            <p class="mt-1 text-xs text-zinc-500">Caida estimada de conversion por cada segundo extra.</p>
           </div>
         </div>
       </div>
 
-      <!-- PAS sequence -->
-      <ol class="relative lg:col-span-7" aria-label="Problema, agitación y solución">
-        <span
-          aria-hidden="true"
-          class="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-zinc-200/50 via-zinc-400/80 to-zinc-200/50 dark:from-white/5 dark:via-white/15 dark:to-white/5 sm:left-[19px]"
-        ></span>
-
-        {blocks.map((b, i) => (
-          <li class="relative pl-12 sm:pl-16 [&:not(:last-child)]:pb-12">
-            <span
-              aria-hidden="true"
-              class={`absolute left-0 top-1 flex h-[30px] w-[30px] items-center justify-center rounded-full border ${
-                i === 2
-                  ? 'border-accent-500/40 bg-accent-500/10 text-accent-600 dark:text-accent-300 font-semibold'
-                  : 'border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950 text-zinc-400 dark:text-zinc-500'
-              } font-mono text-[11px] sm:h-[38px] sm:w-[38px] sm:text-xs shadow-sm`}
-            >
-              0{i + 1}
-            </span>
-
-            <div class="flex flex-col gap-3">
-              <span class={`text-xs uppercase tracking-[0.22em] font-semibold ${i === 2 ? 'text-accent-500 dark:text-accent-400' : 'text-zinc-400 dark:text-zinc-500'}`}>
-                {b.tag}
-              </span>
-              <h3 class="font-display text-fluid-2xl font-semibold leading-tight text-zinc-900 dark:text-white">
-                {b.headline}
-              </h3>
-              <p class="max-w-lg text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-                {b.body}
-              </p>
-            </div>
+      <ol class="space-y-7 lg:col-span-7" aria-label="Secuencia problema impacto solucion">
+        {blocks.map((block, index) => (
+          <li class="surface p-6 sm:p-7">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">0{index + 1} � {block.tag}</p>
+            <h3 class="mt-3 font-display text-fluid-2xl font-semibold text-zinc-900 dark:text-white">{block.headline}</h3>
+            <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">{block.body}</p>
           </li>
         ))}
       </ol>

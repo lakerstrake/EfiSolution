@@ -1,632 +1,220 @@
 ---
 import StatCounter from './react/StatCounter.tsx';
 
-const classifyStack = ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Tailwind', 'Cloudflare'];
-const navegadorStack = ['HTML5', 'Vanilla CSS', 'JavaScript', 'Cloudflare Workers', 'Edge Runtime'];
-const kennedyStack = ['Leaflet.js', 'Vite', 'Tailwind CSS', 'JavaScript', 'Cloudflare Pages'];
+const cases = [
+  {
+    key: 'classify',
+    name: 'Classify',
+    sector: 'Edtech',
+    image: '/classify_mockup.png',
+    url: 'https://classify.efisolution.com',
+    summary:
+      'Plataforma escolar reconstruida desde cero para eliminar friccion en inscripciones y mejorar rendimiento en movil.',
+    result:
+      'Carga movil reducida de 5.4s a 0.4s y crecimiento de solicitudes en el primer trimestre.',
+    stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
+    metrics: [
+      { value: 92, suffix: '%', label: 'Menos tiempo de carga' },
+      { value: 4.7, suffix: 'x', decimals: 1, label: 'Mas solicitudes' },
+      { value: 100, suffix: '/100', label: 'Lighthouse' },
+      { value: 70, suffix: '%', label: 'Menos carga operativa' },
+    ],
+  },
+  {
+    key: 'navegador',
+    name: 'Navegador Social',
+    sector: 'Impacto social',
+    image: '/navegador_social_mockup.png',
+    url: null,
+    summary:
+      'Portal ligero para consulta ciudadana en dispositivos con conectividad limitada y bajo consumo de datos.',
+    result:
+      'Mejor acceso a informacion publica y navegacion estable incluso en celulares de gama media-baja.',
+    stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
+    metrics: [
+      { value: 0.3, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
+      { value: 100, suffix: '/100', label: 'Lighthouse' },
+      { value: 93, suffix: '%', label: 'Menos rebote' },
+      { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
+    ],
+  },
+  {
+    key: 'kennedy',
+    name: 'Mapa de Kennedy',
+    sector: 'Geodatos',
+    image: '/mapa_kennedy_mockup.png',
+    url: 'https://mapa-kennedy.pages.dev/',
+    summary:
+      'Mapa interactivo optimizado para consulta rapida de puntos de interes sin congelar el navegador.',
+    result:
+      'Experiencia fluida a 60fps con carga por demanda para reducir peso y mejorar usabilidad.',
+    stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
+    metrics: [
+      { value: 0.5, suffix: 's', decimals: 1, label: 'Latencia GPS' },
+      { value: 60, suffix: 'fps', label: 'Fluidez' },
+      { value: 500, suffix: '+', label: 'Puntos activos' },
+      { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
+    ],
+  },
+  {
+    key: 'calculadora',
+    name: 'Calculadora de Liquidacion',
+    sector: 'Fintech',
+    image: '/calculadora_liquidacion_mockup.png',
+    url: 'https://calculadora-liquidacion.pages.dev/',
+    summary:
+      'Herramienta laboral para simulaciones instantaneas con formulas legales colombianas.',
+    result:
+      'Calculos en menos de 100ms y reduccion sustancial de errores operativos.',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
+    metrics: [
+      { value: 100, suffix: 'ms', label: 'Tiempo de calculo' },
+      { value: 100, suffix: '/100', label: 'Lighthouse' },
+      { value: 95, suffix: '%', label: 'Ahorro operativo' },
+      { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
+    ],
+  },
+];
 ---
 
-<section
-  id="casos"
-  class="section-padding relative scroll-mt-24"
-  aria-labelledby="cases-main-title"
->
+<section id="casos" class="section-padding scroll-mt-24" aria-labelledby="cases-title">
   <div class="container-x">
-    <!-- Section header -->
-    <div class="mx-auto max-w-3xl text-center mb-16">
-      <span class="eyebrow animate-fade-up">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="eyebrow">
         <span class="eyebrow-dot"></span>
-        Casos de Éxito
+        Casos de exito
       </span>
-      <h2
-        id="cases-main-title"
-        class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-zinc-900 dark:text-white"
-      >
-        Proyectos reales de <span class="text-gradient">velocidad extrema</span>
+      <h2 id="cases-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
+        Resultados reales con producto, diseno y performance.
       </h2>
       <p class="mt-4 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-        Cada línea de código está optimizada para que tu cliente no espere y tu negocio crezca. Explora nuestros desarrollos más destacados.
+        Selecciona un proyecto para ver contexto, stack y metricas de impacto.
       </p>
     </div>
 
-    <!-- Interactive Tab Selector -->
-    <div class="mb-10 flex flex-wrap justify-center gap-2.5 sm:gap-3" role="tablist" aria-label="Seleccionar caso de éxito">
-      <button
-        data-tab="classify"
-        role="tab"
-        aria-selected="true"
-        aria-controls="slide-classify"
-        class="case-study-tab active inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-white/10
-               bg-white/60 dark:bg-white/[0.02] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400
-               hover:text-zinc-950 dark:hover:text-white hover:border-zinc-300 dark:hover:border-white/20 transition-all duration-300
-               [&.active]:border-accent-500 [&.active]:bg-accent-500/10 [&.active]:text-accent-600 dark:[&.active]:text-accent-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400"
-      >
-        Classify
-      </button>
-      <button
-        data-tab="navegador"
-        role="tab"
-        aria-selected="false"
-        aria-controls="slide-navegador"
-        class="case-study-tab inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-white/10
-               bg-white/60 dark:bg-white/[0.02] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400
-               hover:text-zinc-950 dark:hover:text-white hover:border-zinc-300 dark:hover:border-white/20 transition-all duration-300
-               [&.active]:border-accent-500 [&.active]:bg-accent-500/10 [&.active]:text-accent-600 dark:[&.active]:text-accent-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400"
-      >
-        Navegador Social
-      </button>
-      <button
-        data-tab="kennedy"
-        role="tab"
-        aria-selected="false"
-        aria-controls="slide-kennedy"
-        class="case-study-tab inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-white/10
-               bg-white/60 dark:bg-white/[0.02] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400
-               hover:text-zinc-950 dark:hover:text-white hover:border-zinc-300 dark:hover:border-white/20 transition-all duration-300
-               [&.active]:border-accent-500 [&.active]:bg-accent-500/10 [&.active]:text-accent-600 dark:[&.active]:text-accent-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400"
-      >
-        Mapa de Kennedy
-      </button>
+    <div class="mt-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Seleccion de proyectos">
+      {cases.map((entry, index) => (
+        <button
+          data-tab={entry.key}
+          role="tab"
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`slide-${entry.key}`}
+          class={`case-tab rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-colors ${
+            index === 0
+              ? 'active border-accent-500 bg-accent-500/10 text-accent-600 dark:text-accent-400'
+              : 'border-zinc-200 bg-white/70 text-zinc-600 hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:text-white'
+          }`}
+        >
+          {entry.name}
+        </button>
+      ))}
     </div>
 
-    <!-- Main Card Body Container -->
-    <div class="relative overflow-hidden rounded-3xl border border-zinc-200/80 dark:border-white/10 bg-white/70 dark:bg-zinc-950 dark:bg-gradient-to-b dark:from-white/[0.03] dark:to-transparent shadow-soft-xl">
-      <!-- Decorative glows inside the case study card -->
+    <div class="surface relative mt-8 overflow-hidden p-6 sm:p-8 lg:p-10">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-        <div class="absolute -left-32 top-0 h-80 w-80 rounded-full bg-accent-500/10 dark:bg-accent-500/15 blur-[120px]"></div>
-        <div class="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-accent-500/5 dark:bg-accent-500/10 blur-[120px]"></div>
+        <div class="absolute -left-20 top-0 h-72 w-72 rounded-full bg-accent-500/10 blur-[110px]"></div>
+        <div class="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent-500/10 blur-[110px]"></div>
       </div>
 
-      <!-- ─── 1. SLIDE CLASSIFY ──────────────────────────────────────────────── -->
-      <div
-        id="slide-classify"
-        role="tabpanel"
-        class="case-study-slide active grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
-      >
-        <!-- Left: narrative -->
-        <div class="lg:col-span-7 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="eyebrow">
-                <span class="eyebrow-dot"></span>
-                Caso de Éxito
-              </span>
-              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
-                Edtech · Colombia
-              </span>
+      {cases.map((entry, index) => (
+        <article
+          id={`slide-${entry.key}`}
+          role="tabpanel"
+          class={`case-panel grid gap-8 lg:grid-cols-12 lg:gap-10 ${index === 0 ? 'active' : 'hidden'}`}
+        >
+          <div class="lg:col-span-7">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">{entry.sector}</p>
+            <h3 class="mt-2 font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">{entry.name}</h3>
+
+            <p class="mt-5 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">{entry.summary}</p>
+
+            <div class="hairline my-6"></div>
+
+            <p class="text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <span class="font-semibold text-zinc-900 dark:text-white">Resultado:</span> {entry.result}
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {entry.stack.map((tech) => (
+                <span class="rounded-md border border-zinc-200 bg-zinc-100/80 px-2.5 py-1 text-[11px] font-medium text-zinc-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300">
+                  {tech}
+                </span>
+              ))}
             </div>
 
-            <div class="mt-6 flex items-center gap-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
-                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                  Classify <span class="text-accent-500 dark:text-accent-400">·</span> Gestión Escolar
-                </h3>
-              </div>
-            </div>
-
-            <!-- Story blocks -->
-            <div class="mt-10 space-y-8">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Classify operaba sobre un panel WordPress saturado de plugins. Cargaba en
-                  <span class="font-semibold text-zinc-950 dark:text-white">5.4 segundos</span> en celular, perdía padres de familia
-                  en pleno proceso de inscripción y el equipo administrativo necesitaba un
-                  respaldo manual cada semana.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Reescribimos la plataforma desde cero con <span class="font-semibold text-zinc-950 dark:text-white">arquitectura island</span>
-                  en Astro, un backend en <span class="font-semibold text-zinc-950 dark:text-white">FastAPI</span> con tareas asíncronas,
-                  base de datos PostgreSQL y entrega global por edge CDN. El panel se rediseñó
-                  con Sarai bajo un sistema de UX basado en pruebas reales con profesores y padres.
-                </p>
-
-                <div class="mt-5 flex flex-wrap gap-2">
-                  {classifyStack.map((t) => (
-                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
-                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
-                  Desarrollado en rol de colaboradores junto a Cristobal Beltrán, Alejandro Guasca, Jhon Jairo López y Yeferson Ramírez.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  En el primer trimestre, las inscripciones digitales se cuadruplicaron, el
-                  tiempo de carga bajó a <span class="font-semibold text-zinc-950 dark:text-white">0.4 segundos</span>, y el
-                  equipo redujo el trabajo administrativo en un <span class="font-semibold text-zinc-950 dark:text-white">70%</span>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial -->
-          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-            </svg>
-            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
-              “Pensábamos contratar a dos personas más para atender solicitudes. Después
-              del rediseño, ese mismo equipo procesa cuatro veces más inscripciones sin
-              horas extra. Efi Solution no entregó una web: nos entregó un sistema.”
-            </blockquote>
-            <figcaption class="mt-5 flex items-center gap-3 text-sm">
-              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
-                CR
-              </span>
-              <div>
-                <p class="font-bold text-zinc-900 dark:text-zinc-100">Carlos Rivera</p>
-                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Director · Classify</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Right: Screenshot Mockup + Stats -->
-        <aside class="lg:col-span-5 flex flex-col gap-6">
-          <!-- Premium Browser Mockup with Screenshot -->
-          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
-            <!-- Browser Header Bar -->
-            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
-              <div class="flex gap-1.5 flex-none">
-                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
-              </div>
-              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
-                https://classify.efisolution.com
-              </div>
-            </div>
-            <!-- Mockup Image Area -->
-            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
-              <img
-                src="/classify_mockup.png"
-                alt="Pantallazo del sistema educativo Classify"
-                class="h-full w-full object-cover object-top select-none"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <!-- Impact Metrics block -->
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
-            <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
-              <StatCounter client:visible value={92} suffix="%" label="Reducción carga" />
-              <StatCounter client:visible value={4.7} decimals={1} suffix="x" label="Más solicitudes" />
-              <StatCounter client:visible value={100} suffix="/100" label="Lighthouse prod" />
-              <StatCounter client:visible value={70} suffix="%" label="Ahorro admin" />
-            </div>
-
-            <div class="mt-8 hairline"></div>
-
-            <!-- Mini "before / after" stat -->
-            <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-400">
-                  5.4s
-                </p>
-                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
-              </div>
-              <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.4s</p>
-                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <!-- ─── 2. SLIDE NAVEGADOR SOCIAL ──────────────────────────────────────── -->
-      <div
-        id="slide-navegador"
-        role="tabpanel"
-        class="case-study-slide grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
-      >
-        <!-- Left: narrative -->
-        <div class="lg:col-span-7 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="eyebrow">
-                <span class="eyebrow-dot"></span>
-                Caso de Éxito
-              </span>
-              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
-                Social Impact · Colombia
-              </span>
-            </div>
-
-            <div class="mt-6 flex items-center gap-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
-                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                  Navegador Social
-                </h3>
-              </div>
-            </div>
-
-            <!-- Story blocks -->
-            <div class="mt-10 space-y-8">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Los ciudadanos requerían consultar información social, subsidios e iniciativas locales ágilmente desde celulares con
-                  <span class="font-semibold text-zinc-950 dark:text-white">planes de datos mínimos y señal inestable</span>. Una página pesada tradicional consumía los megas de los usuarios en segundos o directamente fallaba en cargar.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Diseñamos y desarrollamos junto con Sarai una plataforma optimizada en
-                  <span class="font-semibold text-zinc-950 dark:text-white">JavaScript puro y CSS a medida</span>. Implementamos enrutamiento veloz y renderizado de componentes directamente sobre el Edge Runtime usando <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Workers</span>, garantizando respuestas ultra-rápidas globales y nula latencia de base de datos.
-                </p>
-
-                <div class="mt-5 flex flex-wrap gap-2">
-                  {navegadorStack.map((t) => (
-                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
-                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
-                  Desarrollado y diseñado en rol principal por Juan Manuel & Sarai.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Carga instantánea de la interfaz en menos de <span class="font-semibold text-zinc-950 dark:text-white">200 milisegundos</span>. Los usuarios bajo red 3G móvil lenta pueden navegar libremente sin pérdidas de señal, logrando una tasa de conversión de búsquedas exitosas del 98%.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial -->
-          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-            </svg>
-            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
-              “Lograr que una web con datos geográficos y sociales cargue de inmediato bajo señal inestable es un éxito enorme. Efi Solution creó una obra de arte optimizada en código puro que ayuda a miles diariamente.”
-            </blockquote>
-            <figcaption class="mt-5 flex items-center gap-3 text-sm">
-              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
-                SA
-              </span>
-              <div>
-                <p class="font-bold text-zinc-900 dark:text-zinc-100">Sarai</p>
-                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Co-Líder & Head of UX · Efi Solution</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Right: Screenshot Mockup + Stats -->
-        <aside class="lg:col-span-5 flex flex-col gap-6">
-          <!-- Premium Browser Mockup with Screenshot -->
-          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
-            <!-- Browser Header Bar -->
-            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
-              <div class="flex gap-1.5 flex-none">
-                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
-              </div>
-              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
-                https://navegador-social.workers.dev
-              </div>
-            </div>
-            <!-- Mockup Image Area -->
-            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
-              <img
-                src="/navegador_social_mockup.png"
-                alt="Pantallazo del Navegador Social en celular y web"
-                class="h-full w-full object-cover object-top select-none"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <!-- Impact Metrics block -->
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
-            <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
-              <StatCounter client:visible value={200} suffix="ms" label="Respuesta Edge" />
-              <StatCounter client:visible value={100} suffix="%" label="Accesibilidad" />
-              <StatCounter client:visible value={98} suffix="%" label="Fidelización" />
-              <StatCounter client:visible value={0} suffix="kb" label="Librerías pesadas" />
-            </div>
-
-            <div class="mt-8 hairline"></div>
-
-            <!-- Mini "before / after" stat -->
-            <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-700">
-                  3.8s
-                </p>
-                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
-              </div>
-              <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.2s</p>
-                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
-              </div>
-            </div>
-
-            <!-- Direct URL Link (Opens in new tab) -->
-            <div class="mt-8">
+            {entry.url && (
               <a
-                href="https://navegador-social.jmlagos2003.workers.dev/"
+                href={entry.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
+                class="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
               >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
+                Ver sitio en vivo
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                Visitar Sitio en Vivo
               </a>
-            </div>
+            )}
           </div>
-        </aside>
-      </div>
 
-      <!-- ─── 3. SLIDE MAPA DE KENNEDY ───────────────────────────────────────── -->
-      <div
-        id="slide-kennedy"
-        role="tabpanel"
-        class="case-study-slide grid gap-10 p-7 sm:p-10 md:gap-14 md:p-14 lg:grid-cols-12 lg:gap-16 [&:not(.active)]:hidden"
-      >
-        <!-- Left: narrative -->
-        <div class="lg:col-span-7 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="eyebrow">
-                <span class="eyebrow-dot"></span>
-                Caso de Éxito
-              </span>
-              <span class="rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-widest text-zinc-700 dark:text-zinc-400 uppercase">
-                Geospatial · Colombia
-              </span>
-            </div>
-
-            <div class="mt-6 flex items-center gap-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-accent-500 dark:text-accent-300">
-                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
-                  <line x1="9" y1="3" x2="9" y2="18" />
-                  <line x1="15" y1="6" x2="15" y2="21" />
-                </svg>
+          <aside class="space-y-5 lg:col-span-5">
+            <div class="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+              <div class="flex items-center gap-2 border-b border-zinc-200 px-3 py-2 dark:border-white/10">
+                <span class="h-2 w-2 rounded-full bg-red-500/60"></span>
+                <span class="h-2 w-2 rounded-full bg-amber-500/60"></span>
+                <span class="h-2 w-2 rounded-full bg-emerald-500/60"></span>
               </div>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">Cliente</p>
-                <h3 class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
-                  Mapa de Kennedy
-                </h3>
+              <div class="aspect-[16/10] w-full overflow-hidden">
+                <img src={entry.image} alt={`Vista del proyecto ${entry.name}`} class="h-full w-full object-cover object-top" loading="lazy" />
               </div>
             </div>
 
-            <!-- Story blocks -->
-            <div class="mt-10 space-y-8">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Problema</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Los portales cartográficos y mapas interactivos pesados
-                  <span class="font-semibold text-zinc-950 dark:text-white">saturan la memoria del navegador y congelan los celulares</span> debido a la pesada carga de librerías y tiles vectoriales masivas en tiempo real.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Nuestra Solución</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  Desarrollamos una aplicación interactiva ultraligera basada en <span class="font-semibold text-zinc-950 dark:text-white">Leaflet.js</span>. Compilamos el ecosistema frontend con Vite y Tailwind CSS, y distribuimos las capas de información local asíncronamente bajo demanda sobre servidores distribuidos de <span class="font-semibold text-zinc-950 dark:text-white">Cloudflare Pages</span>.
-                </p>
-
-                <div class="mt-5 flex flex-wrap gap-2">
-                  {kennedyStack.map((t) => (
-                    <span class="rounded-md border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-800 dark:text-zinc-300 font-medium">
-                      {t}
-                    </span>
-                  ))}
+            <div class="kpi-grid grid-cols-2">
+              {entry.metrics.map((metric) => (
+                <div class="kpi-item">
+                  <StatCounter
+                    client:visible
+                    value={metric.value}
+                    suffix={metric.suffix}
+                    label={metric.label}
+                    decimals={metric.decimals ?? 0}
+                  />
                 </div>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-accent-600 dark:text-accent-400 font-bold">Colaboración</p>
-                <p class="mt-2 text-fluid-sm leading-relaxed text-zinc-800 dark:text-zinc-300 italic font-medium">
-                  Desarrollado y diseñado en rol principal por Juan Manuel.
-                </p>
-              </div>
-
-              <div class="hairline"></div>
-
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">El Resultado</p>
-                <p class="mt-3 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                  La geolocalización asíncrona responde en menos de <span class="font-semibold text-zinc-950 dark:text-white">0.5 segundos</span>. El mapa corre a 60fps constantes en teléfonos de media y baja gama, permitiendo registrar y consultar puntos comerciales o de seguridad sin lageos de pantalla.
-                </p>
-              </div>
+              ))}
             </div>
-          </div>
-
-          <!-- Testimonial -->
-          <figure class="relative mt-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/50 dark:bg-white/[0.025] p-6 sm:p-7">
-            <svg aria-hidden="true" class="absolute -top-3 left-6 h-6 w-6 text-accent-500 dark:text-accent-400/75" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v4H3v2h6v-8H7V9h2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v4-4v2h6v-8h-2V9h2z" />
-            </svg>
-            <blockquote class="text-fluid-base leading-relaxed text-zinc-800 dark:text-zinc-200 font-medium">
-              “Teníamos mucho temor de que un mapa interactivo no corriera fluido en smartphones modestos de nuestros vecinos. El código optimizado de Efi Solution logró que se mueva sumamente suave y cargue instantáneamente.”
-            </blockquote>
-            <figcaption class="mt-5 flex items-center gap-3 text-sm">
-              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.05] font-display text-xs font-semibold text-zinc-900 dark:text-white">
-                JM
-              </span>
-              <div>
-                <p class="font-bold text-zinc-900 dark:text-zinc-100">Juan Manuel</p>
-                <p class="text-xs font-semibold text-zinc-500 dark:text-zinc-500">Líder de Ingeniería · Efi Solution</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Right: Screenshot Mockup + Stats -->
-        <aside class="lg:col-span-5 flex flex-col gap-6">
-          <!-- Premium Browser Mockup with Screenshot -->
-          <div class="relative overflow-hidden rounded-2xl border border-zinc-300 dark:border-white/10 bg-zinc-100 dark:bg-zinc-950 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
-            <!-- Browser Header Bar -->
-            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-200 dark:border-white/5 bg-zinc-100 dark:bg-zinc-950">
-              <div class="flex gap-1.5 flex-none">
-                <span class="h-2 w-2 rounded-full bg-red-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-amber-500/50"></span>
-                <span class="h-2 w-2 rounded-full bg-green-500/50"></span>
-              </div>
-              <div class="mx-auto flex h-5 w-44 items-center justify-center rounded bg-white dark:bg-white/[0.04] border border-zinc-200 dark:border-white/5 text-[9px] text-zinc-600 dark:text-zinc-400 font-mono tracking-tight shadow-sm select-none">
-                https://mapa-kennedy.pages.dev
-              </div>
-            </div>
-            <!-- Mockup Image Area -->
-            <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-800">
-              <img
-                src="/mapa_kennedy_mockup.png"
-                alt="Pantallazo del Mapa de Kennedy interactivo"
-                class="h-full w-full object-cover object-top select-none"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <!-- Impact Metrics block -->
-          <div class="rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-100/60 dark:bg-zinc-950/40 p-7 backdrop-blur-md">
-            <p class="text-xs uppercase tracking-[0.22em] text-zinc-700 dark:text-zinc-500 font-bold">Impacto medible</p>
-            <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8">
-              <StatCounter client:visible value={0.5} decimals={1} suffix="s" label="GPS Latencia" />
-              <StatCounter client:visible value={60} suffix="fps" label="Fluidez Render" />
-              <StatCounter client:visible value={500} suffix="+" label="Puntos locales" />
-              <StatCounter client:visible value={99.9} decimals={1} suffix="%" label="Disponibilidad Edge" />
-            </div>
-
-            <div class="mt-8 hairline"></div>
-
-            <!-- Mini "before / after" stat -->
-            <div class="mt-8 grid grid-cols-2 gap-4">
-              <div class="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/[0.02] p-4">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-zinc-500 font-semibold">Antes</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-500 dark:text-zinc-500 line-through decoration-zinc-700">
-                  4.5s
-                </p>
-                <p class="mt-1 text-xs text-zinc-500">Carga móvil</p>
-              </div>
-              <div class="rounded-xl border border-accent-500/30 bg-accent-500/[0.04] dark:bg-accent-500/[0.06] p-4 shadow-glow-accent">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-accent-600 dark:text-accent-300 font-bold">Después</p>
-                <p class="mt-2 font-display text-2xl font-semibold text-zinc-900 dark:text-white">0.5s</p>
-                <p class="mt-1 text-xs text-zinc-700 dark:text-zinc-400 font-medium">Carga móvil</p>
-              </div>
-            </div>
-
-            <!-- Direct URL Link (Opens in new tab) -->
-            <div class="mt-8">
-              <a
-                href="https://mapa-kennedy.pages.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_-4px_rgba(77,124,254,0.6)] hover:bg-accent-600 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 transition-all duration-300 cursor-pointer"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-                Visitar Sitio en Vivo
-              </a>
-            </div>
-          </div>
-        </aside>
-      </div>
+          </aside>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <script>
-  // ── Tab selection switcher ───────────────────────────────────────────────
-  const tabs = document.querySelectorAll('.case-study-tab');
-  const slides = document.querySelectorAll('.case-study-slide');
+  const tabs = document.querySelectorAll('.case-tab');
+  const panels = document.querySelectorAll('.case-panel');
 
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      // Remove active and update ARIA states
-      tabs.forEach((t) => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
+      const target = tab.getAttribute('data-tab');
+
+      tabs.forEach((item) => {
+        item.classList.remove('active', 'border-accent-500', 'bg-accent-500/10', 'text-accent-600', 'dark:text-accent-400');
+        item.setAttribute('aria-selected', 'false');
       });
-      
-      tab.classList.add('active');
+
+      panels.forEach((panel) => {
+        panel.classList.add('hidden');
+        panel.classList.remove('active');
+      });
+
+      tab.classList.add('active', 'border-accent-500', 'bg-accent-500/10', 'text-accent-600', 'dark:text-accent-400');
       tab.setAttribute('aria-selected', 'true');
 
-      const tabName = (tab as HTMLElement).dataset.tab;
-      const targetId = `slide-${tabName}`;
-
-      slides.forEach((slide) => {
-        slide.classList.remove('active');
-      });
-
-      const activeSlide = document.getElementById(targetId);
-      if (activeSlide) {
-        activeSlide.classList.add('active');
-      }
+      const panel = document.getElementById(`slide-${target}`);
+      panel?.classList.remove('hidden');
+      panel?.classList.add('active');
     });
   });
 </script>
