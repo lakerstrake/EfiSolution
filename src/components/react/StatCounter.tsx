@@ -30,10 +30,7 @@ export default function StatCounter({
     setHasMounted(true);
   }, []);
 
-  const staticDisplay = `${prefix}${value.toLocaleString('es-CO', {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  })}${suffix}`;
+  const staticDisplay = `${prefix}${value.toFixed(decimals)}${suffix}`;
 
   if (!hasMounted) {
     return (
@@ -60,10 +57,7 @@ export default function StatCounter({
   const motionValue = useMotionValue(0);
   const spring  = useSpring(motionValue, { duration: 1800, bounce: 0 });
   const display = useTransform(spring, (v) =>
-    `${prefix}${v.toLocaleString('es-CO', {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
-    })}${suffix}`,
+    `${prefix}${v.toFixed(decimals)}${suffix}`
   );
 
   useEffect(() => {

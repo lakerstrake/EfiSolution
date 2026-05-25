@@ -263,7 +263,9 @@ const links = [
 
   // Close on any nav link click
   menu?.querySelectorAll<HTMLAnchorElement>('[data-mobile-close]').forEach((el) => {
-    el.addEventListener('click', closeMenu);
+    el.addEventListener('click', () => {
+      setTimeout(closeMenu, 150);
+    });
   });
 
   // Close on outside click
