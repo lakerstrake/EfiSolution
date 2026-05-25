@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 interface CTAButtonProps {
@@ -18,7 +19,11 @@ export default function CTAButton({
   ariaLabel,
   icon = true,
 }: CTAButtonProps) {
-  const reduce = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
+  
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const base =
     'group relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium tracking-tight transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950';
@@ -34,6 +39,29 @@ export default function CTAButton({
     ghost:
       'border border-zinc-200 dark:border-white/15 bg-white/60 dark:bg-white/[0.02] text-zinc-800 dark:text-zinc-100 backdrop-blur-md hover:border-zinc-300 dark:hover:border-white/30 hover:bg-zinc-50 dark:hover:bg-white/[0.05]',
   };
+
+  if (!hasMounted) {
+    return (
+      <a
+        href={href}
+        aria-label={ariaLabel ?? (typeof children === 'string' ? children : undefined)}
+        className={`${base} ${sizes[size]} ${variants[variant]}`}
+      >
+        <span className="relative z-10">{children}</span>
+
+        {icon && (
+          <span aria-hidden="true" className="relative z-10 inline-flex">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        )}
+      </a>
+    );
+  }
+
+  const reduce = useReducedMotion();
 
   return (
     <motion.a

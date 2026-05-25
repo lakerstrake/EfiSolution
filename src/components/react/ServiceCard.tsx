@@ -1,6 +1,6 @@
+import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import type { PointerEvent as ReactPointerEvent } from 'react';
-import { useRef } from 'react';
 
 interface ServiceCardProps {
   index: number;
@@ -19,8 +19,80 @@ export default function ServiceCard({
   bullets,
   iconPath,
 }: ServiceCardProps) {
-  const reduce = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const cardClass = "group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950/45 bg-gradient-to-b from-white/70 to-zinc-50/50 dark:from-white/[0.04] dark:to-white/[0.01] p-7 backdrop-blur-xl transition-all duration-500 hover:border-zinc-300 dark:hover:border-white/20 shadow-sm md:p-8";
+
+  if (!hasMounted) {
+    return (
+      <div
+        ref={ref}
+        className={cardClass}
+      >
+        {/* Header row */}
+        <div className="relative z-10 flex items-start justify-between">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.03] text-accent-500 dark:text-accent-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d={iconPath} />
+            </svg>
+          </div>
+          <span className="font-mono text-xs tracking-widest text-zinc-400 dark:text-zinc-500">{number}</span>
+        </div>
+
+        <h3 className="relative z-10 mt-7 font-display text-fluid-xl font-semibold leading-tight text-zinc-900 dark:text-white">
+          {title}
+        </h3>
+
+        <p className="relative z-10 mt-3 text-fluid-sm leading-relaxed text-zinc-700 dark:text-zinc-400">
+          {description}
+        </p>
+
+        <ul className="relative z-10 mt-6 space-y-2.5 border-t border-zinc-200 dark:border-white/5 pt-6">
+          {bullets.map((b) => (
+            <li key={b} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+              <svg
+                aria-hidden="true"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mt-1 flex-none text-accent-500 dark:text-accent-400"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Bottom hairline accent */}
+        <div className="relative z-10 mt-auto pt-8">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-zinc-200 dark:via-white/15 to-transparent" />
+        </div>
+      </div>
+    );
+  }
+
+  const reduce = useReducedMotion();
 
   // Subtle 3D tilt
   const x = useMotionValue(0);
@@ -66,7 +138,7 @@ export default function ServiceCard({
         transformPerspective: 1200,
         transformStyle: 'preserve-3d',
       }}
-      className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950/45 bg-gradient-to-b from-white/70 to-zinc-50/50 dark:from-white/[0.04] dark:to-white/[0.01] p-7 backdrop-blur-xl transition-all duration-500 hover:border-zinc-300 dark:hover:border-white/20 shadow-sm md:p-8"
+      className={cardClass}
     >
       {/* Spotlight */}
       <motion.div
