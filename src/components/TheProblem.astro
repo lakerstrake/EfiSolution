@@ -37,24 +37,24 @@ const blocks = [
         </span>
         <h2
           id="problem-title"
-          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-white"
+          class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05] tracking-tightest text-zinc-900 dark:text-white"
         >
           Cada milisegundo que <span class="text-gradient">esperan tus usuarios</span> es dinero que ya no entra a tu caja.
         </h2>
-        <p class="mt-6 max-w-md text-fluid-base leading-relaxed text-zinc-400">
+        <p class="mt-6 max-w-md text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
           Google y Amazon llevan años publicándolo: una página que carga lento no solo
           frustra. Convierte menos, posiciona peor y eleva tu costo por adquisición.
         </p>
 
-        <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/[0.015]">
-          <div class="bg-zinc-950/60 p-5">
-            <p class="font-display text-fluid-3xl font-semibold text-white">53%</p>
+        <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-200 dark:bg-white/[0.015] shadow-sm">
+          <div class="bg-white/60 dark:bg-zinc-950/60 p-5">
+            <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">53%</p>
             <p class="mt-1 text-xs text-zinc-500">
               de visitas móviles abandonan webs que tardan más de 3s en cargar.
             </p>
           </div>
-          <div class="bg-zinc-950/60 p-5">
-            <p class="font-display text-fluid-3xl font-semibold text-white">1s</p>
+          <div class="bg-white/60 dark:bg-zinc-950/60 p-5">
+            <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">1s</p>
             <p class="mt-1 text-xs text-zinc-500">
               de retraso reduce la conversión en hasta 7% (Akamai, Google).
             </p>
@@ -66,7 +66,7 @@ const blocks = [
       <ol class="relative lg:col-span-7" aria-label="Problema, agitación y solución">
         <span
           aria-hidden="true"
-          class="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-white/5 via-white/15 to-white/5 sm:left-[19px]"
+          class="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-zinc-200/50 via-zinc-400/80 to-zinc-200/50 dark:from-white/5 dark:via-white/15 dark:to-white/5 sm:left-[19px]"
         ></span>
 
         {blocks.map((b, i) => (
@@ -75,21 +75,21 @@ const blocks = [
               aria-hidden="true"
               class={`absolute left-0 top-1 flex h-[30px] w-[30px] items-center justify-center rounded-full border ${
                 i === 2
-                  ? 'border-accent-500/40 bg-accent-500/10 text-accent-300'
-                  : 'border-white/10 bg-zinc-950 text-zinc-500'
-              } font-mono text-[11px] sm:h-[38px] sm:w-[38px] sm:text-xs`}
+                  ? 'border-accent-500/40 bg-accent-500/10 text-accent-600 dark:text-accent-300 font-semibold'
+                  : 'border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-950 text-zinc-400 dark:text-zinc-500'
+              } font-mono text-[11px] sm:h-[38px] sm:w-[38px] sm:text-xs shadow-sm`}
             >
               0{i + 1}
             </span>
 
             <div class="flex flex-col gap-3">
-              <span class={`text-xs uppercase tracking-[0.22em] ${i === 2 ? 'text-accent-400' : 'text-zinc-500'}`}>
+              <span class={`text-xs uppercase tracking-[0.22em] font-semibold ${i === 2 ? 'text-accent-500 dark:text-accent-400' : 'text-zinc-400 dark:text-zinc-500'}`}>
                 {b.tag}
               </span>
-              <h3 class="font-display text-fluid-2xl font-semibold leading-tight text-white">
+              <h3 class="font-display text-fluid-2xl font-semibold leading-tight text-zinc-900 dark:text-white">
                 {b.headline}
               </h3>
-              <p class="max-w-lg text-fluid-base leading-relaxed text-zinc-400">
+              <p class="max-w-lg text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {b.body}
               </p>
             </div>

@@ -19,7 +19,7 @@ import CTAButton from './react/CTAButton.tsx';
 >
   <!-- Decorative glow -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10">
-    <div class="mx-auto h-[480px] w-[860px] max-w-[120%] -translate-y-1/3 rounded-full bg-accent-500/20 blur-[140px] opacity-60"></div>
+    <div class="mx-auto h-[480px] w-[860px] max-w-[120%] -translate-y-1/3 rounded-full bg-accent-500/10 dark:bg-accent-500/20 blur-[140px] opacity-60"></div>
   </div>
 
   <div class="container-x">
@@ -36,19 +36,19 @@ import CTAButton from './react/CTAButton.tsx';
         class="mt-8 font-display text-fluid-5xl font-semibold leading-[1.02] tracking-tightest animate-fade-up"
         style="animation-delay: 150ms; opacity: 0;"
       >
-        <span class="text-white">Cada segundo de carga</span>
+        <span class="text-zinc-900 dark:text-white">Cada segundo de carga</span>
         <br />
         <span class="text-gradient">cuesta una venta.</span>
       </h1>
 
       <!-- Subheadline -->
       <p
-        class="mt-7 max-w-2xl text-fluid-lg leading-relaxed text-zinc-400 animate-fade-up"
+        class="mt-7 max-w-2xl text-fluid-lg leading-relaxed text-zinc-600 dark:text-zinc-400 animate-fade-up"
         style="animation-delay: 280ms; opacity: 0;"
       >
         Las plantillas genéricas hunden tu facturación. En
-        <span class="text-zinc-200">Efi Solution</span> construimos plataformas web de
-        <span class="text-zinc-200">velocidad extrema</span> y código impecable, diseñadas
+        <span class="text-zinc-800 dark:text-zinc-200 font-semibold">Efi Solution</span> construimos plataformas web de
+        <span class="text-zinc-800 dark:text-zinc-200 font-semibold">velocidad extrema</span> y código impecable, diseñadas
         para enamorar a tu usuario y escalar tu negocio.
       </p>
 
@@ -68,12 +68,12 @@ import CTAButton from './react/CTAButton.tsx';
         </CTAButton>
         <CTAButton
           client:visible
-          href="#caso-classify"
+          href="#casos"
           variant="ghost"
           size="lg"
           icon={false}
         >
-          Ver caso de éxito
+          Ver casos de éxito
         </CTAButton>
       </div>
 
@@ -82,20 +82,20 @@ import CTAButton from './react/CTAButton.tsx';
         class="mt-16 flex flex-col items-center gap-6 animate-fade-up"
         style="animation-delay: 550ms; opacity: 0;"
       >
-        <p class="text-xs uppercase tracking-[0.22em] text-zinc-500">
+        <p class="text-xs uppercase tracking-[0.22em] text-zinc-500 font-semibold">
           Métricas que nuestros clientes ven en 30 días
         </p>
-        <div class="grid w-full max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] backdrop-blur-md">
-          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
-            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">0.8s</span>
+        <div class="grid w-full max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-zinc-200/50 dark:bg-white/[0.015] backdrop-blur-md">
+          <div class="flex flex-col items-center justify-center bg-white/60 dark:bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">0.8s</span>
             <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">LCP promedio</span>
           </div>
-          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
-            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">+38%</span>
+          <div class="flex flex-col items-center justify-center bg-white/60 dark:bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">+38%</span>
             <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">Conversión</span>
           </div>
-          <div class="flex flex-col items-center justify-center bg-zinc-950/60 px-3 py-6">
-            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-white">100<span class="text-accent-400">/</span>100</span>
+          <div class="flex flex-col items-center justify-center bg-white/60 dark:bg-zinc-950/60 px-3 py-6">
+            <span class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">100<span class="text-accent-500 dark:text-accent-400">/</span>100</span>
             <span class="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-500 sm:text-xs">Lighthouse</span>
           </div>
         </div>

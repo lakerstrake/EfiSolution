@@ -15,10 +15,6 @@ const team = [
     initials: 'SA',
   },
 ];
-
-// Colombia: country code 57
-const whatsappNumber = '573000000000'; // Replace with real number
-const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una auditoría de rendimiento gratuita.');
 ---
 
 <section
@@ -28,14 +24,14 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
 >
   <div class="container-x">
     <div
-      class="relative overflow-hidden rounded-3xl border border-white/10
-             bg-gradient-to-b from-zinc-900/40 via-zinc-950/60 to-zinc-950"
+      class="relative overflow-hidden rounded-3xl border border-zinc-200/80 dark:border-white/10
+             bg-white/70 dark:bg-gradient-to-b dark:from-zinc-900/40 dark:via-zinc-950/60 dark:to-zinc-950 shadow-soft-xl"
     >
       <!-- Ambient glow -->
       <div aria-hidden="true"
            class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div class="absolute left-1/2 top-0 h-80 w-[600px] -translate-x-1/2
-                    -translate-y-1/3 rounded-full bg-accent-500/20 blur-[120px]">
+                    -translate-y-1/3 rounded-full bg-accent-500/10 dark:bg-accent-500/20 blur-[120px]">
         </div>
       </div>
 
@@ -50,14 +46,14 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
           <h2
             id="cta-title"
             class="mt-6 font-display text-fluid-5xl font-semibold
-                   leading-[1.02] tracking-tightest text-white"
+                   leading-[1.02] tracking-tightest text-zinc-900 dark:text-white"
           >
             Tu próximo cliente<br />
             <span class="text-gradient">ya está buscándote.</span>
           </h2>
 
-          <p class="mt-6 max-w-xl text-fluid-lg leading-relaxed text-zinc-400">
-            En <span class="text-zinc-200">30 minutos</span> auditamos tu sitio actual
+          <p class="mt-6 max-w-xl text-fluid-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            En <span class="text-zinc-900 dark:text-zinc-200 font-semibold">30 minutos</span> auditamos tu sitio actual
             y te entregamos un plan claro — sin tecnicismos, sin compromiso.
             Si trabajamos juntos, en 30 días tu web carga más rápido y vende más.
           </p>
@@ -65,27 +61,17 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
           <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <CTAButton
               client:visible
-              href={`mailto:hola@efisolution.com?subject=Auditor%C3%ADa%20de%20Rendimiento`}
+              href={`mailto:jmlagos2003@gmail.com?subject=Auditor%C3%ADa%20de%20Rendimiento`}
               variant="primary"
               size="lg"
               ariaLabel="Agendar auditoría de rendimiento gratuita por correo"
             >
               Agendar Auditoría Gratuita
             </CTAButton>
-            <CTAButton
-              client:visible
-              href={`https://wa.me/${whatsappNumber}?text=${whatsappMsg}`}
-              variant="ghost"
-              size="lg"
-              icon={false}
-              ariaLabel="Escribir a Efi Solution por WhatsApp"
-            >
-              Escribir por WhatsApp
-            </CTAButton>
           </div>
 
           <ul
-            class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400"
+            class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400"
             aria-label="Beneficios del contacto"
           >
             {[
@@ -106,18 +92,18 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
         <div class="grid content-start gap-4 lg:col-span-5">
           {team.map((p) => (
             <article
-              class="group relative overflow-hidden rounded-2xl border border-white/10
-                     bg-white/[0.025] p-6 backdrop-blur-md
-                     transition-colors duration-500 hover:border-white/20"
+              class="group relative overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10
+                     bg-white/50 dark:bg-white/[0.025] p-6 backdrop-blur-md
+                     transition-colors duration-500 hover:border-zinc-300 dark:hover:border-white/20"
               aria-label={`${p.name} — ${p.role}`}
             >
               <div class="flex items-center gap-4">
                 <div
                   aria-hidden="true"
                   class="relative flex h-14 w-14 flex-none items-center justify-center
-                         rounded-2xl border border-white/10
-                         bg-gradient-to-br from-accent-500/20 to-transparent
-                         font-display text-base font-semibold text-white"
+                         rounded-2xl border border-zinc-200/80 dark:border-white/10
+                         bg-gradient-to-br from-accent-500/10 to-transparent dark:from-accent-500/20
+                         font-display text-base font-semibold text-zinc-800 dark:text-white"
                 >
                   <span class="absolute inset-0 rounded-2xl bg-accent-500/10 opacity-0
                                blur-md transition-opacity duration-500
@@ -126,7 +112,7 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
                 </div>
                 <div>
                   <p class="font-display text-fluid-lg font-semibold
-                            tracking-tight text-white">
+                            tracking-tight text-zinc-900 dark:text-white">
                     {p.name}
                   </p>
                   <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">
@@ -134,7 +120,7 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
                   </p>
                 </div>
               </div>
-              <p class="mt-5 text-sm leading-relaxed text-zinc-400">{p.bio}</p>
+              <p class="mt-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{p.bio}</p>
             </article>
           ))}
 
@@ -152,7 +138,7 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
 <footer class="container-x" aria-label="Información del sitio">
   <div
     class="mt-14 flex flex-col items-center justify-between gap-4
-           border-t border-white/5 pb-10 pt-8 text-xs text-zinc-500 sm:flex-row"
+           border-t border-zinc-200/80 dark:border-white/5 pb-10 pt-8 text-xs text-zinc-500 sm:flex-row"
   >
     <p>
       &copy; {new Date().getFullYear()} Efi Solution.
@@ -160,12 +146,12 @@ const whatsappMsg    = encodeURIComponent('Hola, me gustaría agendar una audito
     </p>
     <p>
       <a
-        href="mailto:hola@efisolution.com"
-        class="transition-colors hover:text-zinc-300
+        href="mailto:jmlagos2003@gmail.com"
+        class="transition-colors hover:text-zinc-950 dark:hover:text-zinc-300
                focus-visible:outline-none focus-visible:ring-2
                focus-visible:ring-accent-400 focus-visible:rounded"
       >
-        hola@efisolution.com
+        jmlagos2003@gmail.com
       </a>
     </p>
   </div>

@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import LivePreviewModal from '../components/react/LivePreviewModal.tsx';
 
 export interface Props {
   title?: string;
@@ -60,17 +62,37 @@ const websiteSchema = {
 ---
 
 <!doctype html>
-<html lang="es-CO" class="dark scroll-smooth">
+<html lang="es-CO" class="scroll-smooth">
   <head>
+    <script is:inline>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     <!-- ─── Charset & Viewport ─────────────────────────────────── -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="format-detection" content="telephone=no" />
 
     <!-- ─── Theme & Color Scheme ──────────────────────────────── -->
-    <meta name="theme-color" content={themeColor} />
-    <meta name="color-scheme" content="dark" />
-    <meta name="msapplication-TileColor" content={themeColor} />
+    <meta name="theme-color" id="meta-theme-color" content="#fafafa" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="msapplication-TileColor" content="#fafafa" />
+    <script is:inline>
+      (function() {
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const metaThemeColor = document.getElementById('meta-theme-color');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', theme === 'dark' ? '#0a0a0b' : '#fafafa');
+        }
+      })();
+    </script>
 
     <!-- ─── Primary SEO ───────────────────────────────────────── -->
     <title>{title}</title>
@@ -143,6 +165,8 @@ const websiteSchema = {
       Saltar al contenido principal
     </a>
 
+    <Navbar />
+
     <!-- Ambient background — pointer-events none, decorative only -->
     <div aria-hidden="true" class="site-ambient">
       <div class="site-ambient__grid"></div>
@@ -152,5 +176,7 @@ const websiteSchema = {
     <main id="contenido" class="relative isolate" tabindex="-1">
       <slot />
     </main>
+
+    <LivePreviewModal client:load />
   </body>
 </html>

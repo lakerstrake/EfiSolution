@@ -21,7 +21,7 @@ export default function CTAButton({
   const reduce = useReducedMotion();
 
   const base =
-    'group relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium tracking-tight transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950';
+    'group relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium tracking-tight transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950';
 
   const sizes = {
     md: 'px-5 py-2.5 text-sm',
@@ -30,9 +30,9 @@ export default function CTAButton({
 
   const variants = {
     primary:
-      'bg-accent-500 text-white shadow-[0_8px_30px_-8px_rgba(77,124,254,0.7)] hover:bg-accent-400',
+      'bg-accent-500 text-white shadow-[0_8px_30px_-8px_rgba(77,124,254,0.5)] hover:bg-accent-600 dark:hover:bg-accent-400',
     ghost:
-      'border border-white/15 bg-white/[0.02] text-zinc-100 backdrop-blur-md hover:border-white/30 hover:bg-white/[0.05]',
+      'border border-zinc-200 dark:border-white/15 bg-white/60 dark:bg-white/[0.02] text-zinc-800 dark:text-zinc-100 backdrop-blur-md hover:border-zinc-300 dark:hover:border-white/30 hover:bg-zinc-50 dark:hover:bg-white/[0.05]',
   };
 
   return (
@@ -66,7 +66,7 @@ export default function CTAButton({
           whileHover={reduce ? undefined : { x: 4 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14" />
             <path d="M12 5l7 7-7 7" />
           </svg>

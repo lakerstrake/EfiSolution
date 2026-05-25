@@ -56,7 +56,7 @@ export default function StatCounter({
   return (
     <div ref={ref} className="flex flex-col">
       <div
-        className="font-display text-fluid-4xl font-semibold tracking-tightest text-white"
+        className="font-display text-fluid-4xl font-semibold tracking-tightest text-zinc-900 dark:text-white"
         aria-label={`${staticDisplay} — ${label}`}
       >
         {reduce ? (

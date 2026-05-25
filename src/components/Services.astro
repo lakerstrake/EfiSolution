@@ -65,14 +65,14 @@ const steps = [
         <h2
           id="services-title"
           class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.05]
-                 tracking-tightest text-white"
+                 tracking-tightest text-zinc-900 dark:text-white"
         >
           Tres pilares.
           <span class="text-gradient">Una sola obsesión:</span>
           que tu negocio venda más.
         </h2>
       </div>
-      <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-400">
+      <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
         No vendemos horas; entregamos sistemas. Cada proyecto incluye estrategia,
         diseño, código y entrenamiento para tu equipo.
       </p>
@@ -101,18 +101,18 @@ const steps = [
     <!-- ── Process strip (ordered, semantic) ─────────────────── -->
     <ol
       class="mt-16 grid list-none grid-cols-2 gap-px overflow-hidden rounded-2xl
-             border border-white/10 bg-white/[0.015] md:grid-cols-4"
+             border border-zinc-200 dark:border-white/10 bg-zinc-200 dark:bg-white/[0.015] md:grid-cols-4 shadow-sm"
       aria-label="Proceso de trabajo"
     >
       {steps.map((step) => (
-        <li class="flex items-center justify-between bg-zinc-950/60 px-5 py-5">
+        <li class="flex items-center justify-between bg-white/60 dark:bg-zinc-950/60 px-5 py-5">
           <div class="flex items-center gap-3">
-            <span aria-hidden="true" class="font-mono text-xs text-zinc-500">
+            <span aria-hidden="true" class="font-mono text-xs text-zinc-400 dark:text-zinc-500">
               {step.k}
             </span>
-            <span class="text-sm font-medium text-zinc-200">{step.v}</span>
+            <span class="text-sm font-medium text-zinc-800 dark:text-zinc-200">{step.v}</span>
           </div>
-          <span class="text-xs text-zinc-500">
+          <span class="text-xs text-zinc-400 dark:text-zinc-500">
             <span class="sr-only">Duración: </span>{step.d}
           </span>
         </li>

@@ -7,29 +7,14 @@
 ───────────────────────────────────────────────────────────── */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
     --accent-rgb: 77, 124, 254;
     --font-display: 'Space Grotesk', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
   }
 
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    /* clip instead of hidden — avoids creating a stacking context
-       that breaks position:fixed on iOS Safari */
-    overflow-x: clip;
-  }
-
-  body {
-    @apply bg-zinc-950 text-zinc-200 font-sans antialiased;
-    @apply selection:bg-accent-500/30 selection:text-white;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(77, 124, 254, 0.12), transparent 70%),
-      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(77, 124, 254, 0.06), transparent 70%);
-    background-attachment: fixed;
+  .dark {
+    color-scheme: dark;
   }
 
   /* Headings: always Space Grotesk — safety net for unclassed elements */
@@ -44,15 +29,38 @@
     font-feature-settings: "liga" 1, "calt" 1;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* clip instead of hidden — avoids creating a stacking context
+       that breaks position:fixed on iOS Safari */
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-200 font-sans antialiased transition-colors duration-500;
+    @apply selection:bg-accent-500/30 selection:text-white;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(77, 124, 254, 0.04), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(77, 124, 254, 0.01), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(77, 124, 254, 0.12), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(77, 124, 254, 0.06), transparent 70%);
+  }
+
   /* Custom scrollbar (Chromium) */
   ::-webkit-scrollbar          { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track    { background: rgb(9 9 11); }
+  ::-webkit-scrollbar-track    { @apply bg-zinc-100 dark:bg-zinc-900; }
   ::-webkit-scrollbar-thumb    {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    border: 2px solid rgb(9 9 11);
+    @apply bg-zinc-300 dark:bg-zinc-700/60 rounded-lg border-2 border-solid border-zinc-100 dark:border-zinc-900;
   }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-zinc-400 dark:bg-zinc-600; }
 
   /* Focus ring: consistent across browsers, high-contrast friendly */
   :focus-visible {
@@ -139,15 +147,21 @@
   /* Subtle dot-grid background texture */
   .grid-bg {
     background-image:
+      linear-gradient(to right,  rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 56px 56px;
+    transition: background-image 0.5s ease;
+  }
+  .dark .grid-bg {
+    background-image:
       linear-gradient(to right,  rgba(255, 255, 255, 0.045) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 56px 56px;
   }
 }
 
 /* ─────────────────────────────────────────────────────────────
    AMBIENT BACKGROUND (layout-level decorative elements)
-───────────────────────────────────────────────────────────── */
+   ───────────────────────────────────────────────────────────── */
 .site-ambient {
   position: fixed;
   inset: 0;
@@ -163,9 +177,16 @@
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   background-image:
+    linear-gradient(to right,  rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
+  transition: background-image 0.5s ease;
+}
+
+.dark .site-ambient__grid {
+  background-image:
     linear-gradient(to right,  rgba(255, 255, 255, 0.045) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 56px 56px;
 }
 
 .site-ambient__glow {
@@ -177,14 +198,24 @@
   width: 1080px;
   max-width: 120%;
   border-radius: 9999px;
-  background-color: rgba(77, 124, 254, 0.07);
+  background-color: rgba(77, 124, 254, 0.03);
   filter: blur(120px);
+  transition: background-color 0.5s ease;
+}
+
+.dark .site-ambient__glow {
+  background-color: rgba(77, 124, 254, 0.07);
 }
 
 /* ─────────────────────────────────────────────────────────────
    NAVBAR scroll state (JS adds .is-scrolled to #site-header)
-───────────────────────────────────────────────────────────── */
+   ───────────────────────────────────────────────────────────── */
 #site-header.is-scrolled nav {
-  background-color: rgb(9 9 11 / 0.88);
-  border-color: rgb(255 255 255 / 0.14);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(228, 228, 231, 0.5);
+}
+
+.dark #site-header.is-scrolled nav {
+  background-color: rgba(9, 9, 11, 0.88);
+  border-color: rgba(255, 255, 255, 0.14);
 }
