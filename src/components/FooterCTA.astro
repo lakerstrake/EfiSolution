@@ -1,5 +1,5 @@
 ---
-import CTAButton from './react/CTAButton.tsx';
+import CTAButton from './CTAButton.astro';
 import pkg from '../../package.json';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 
@@ -37,7 +37,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
 
 <section id="contacto" class="section-padding scroll-mt-24" aria-labelledby="cta-title">
   <div class="container-x">
-    <div class="surface relative overflow-hidden p-8 sm:p-12">
+    <div class="reveal surface relative overflow-hidden p-8 sm:p-12">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
         <div class="absolute left-1/2 top-0 h-72 w-[580px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent-500/15 blur-[110px]"></div>
       </div>

@@ -1,8 +1,6 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		"jsx": "react-jsx",
-		"jsxImportSource": "react",
 		"baseUrl": ".",
 		"paths": {
 			"@/*": [
@@ -25,6 +23,7 @@
 		"./worker-configuration.d.ts"
 	],
 	"exclude": [
-		"dist"
+		"dist",
+		"src/components/react"
 	]
 }

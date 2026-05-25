@@ -1,5 +1,5 @@
 ---
-import CTAButton from './react/CTAButton.tsx';
+import CTAButton from './CTAButton.astro';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 
 interface Props {
@@ -10,29 +10,35 @@ const { locale } = Astro.props;
 const t = getSiteContent(locale).hero;
 ---
 
-<section id="inicio" class="relative overflow-hidden pb-16 pt-24 md:pb-20 md:pt-28" aria-labelledby="hero-title">
+<section id="inicio" class="relative overflow-hidden pb-16 pt-24 md:pb-24 md:pt-32" aria-labelledby="hero-title">
   <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10">
-    <div class="mx-auto h-[420px] w-[820px] max-w-[120%] -translate-y-1/3 rounded-full bg-accent-500/15 blur-[120px]"></div>
+    <div class="mx-auto h-[480px] w-[900px] max-w-[120%] -translate-y-1/3 rounded-full bg-accent-500/12 blur-[140px]"></div>
   </div>
 
   <div class="container-x">
     <div class="mx-auto max-w-4xl text-center">
-      <span class="eyebrow">
-        <span class="eyebrow-dot"></span>
-        {t.badge}
-      </span>
 
-      <h1 id="hero-title" class="mt-6 font-display text-fluid-4xl md:text-fluid-5xl font-semibold leading-[1.03] tracking-tightest text-zinc-900 dark:text-white">
+      <div class="hero-enter hero-enter-delay-1">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          {t.badge}
+        </span>
+      </div>
+
+      <h1
+        id="hero-title"
+        class="hero-enter hero-enter-delay-2 mt-6 font-display text-fluid-4xl md:text-fluid-5xl font-semibold leading-[1.03] tracking-tightest text-zinc-900 dark:text-white"
+      >
         {t.titleA}
         <br />
-        <span class="text-accent-500">{t.titleB}</span>
+        <span class="gradient-text">{t.titleB}</span>
       </h1>
 
-      <p class="mx-auto mt-6 max-w-2xl text-fluid-lg leading-relaxed text-zinc-700 dark:text-zinc-400">
+      <p class="hero-enter hero-enter-delay-3 mx-auto mt-6 max-w-2xl text-fluid-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
         {t.description}
       </p>
 
-      <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <div class="hero-enter hero-enter-delay-4 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <CTAButton href="#contacto" variant="primary" size="lg" ariaLabel={t.ctaPrimary}>
           {t.ctaPrimary}
         </CTAButton>
@@ -41,7 +47,7 @@ const t = getSiteContent(locale).hero;
         </CTAButton>
       </div>
 
-      <div class="kpi-grid mx-auto mt-10 grid-cols-2 md:grid-cols-4">
+      <div class="reveal hero-enter-delay-4 kpi-grid mx-auto mt-12 grid-cols-2 md:grid-cols-4">
         {t.metrics.map((metric) => (
           <div class="kpi-item text-left">
             <p class="font-display text-fluid-2xl font-semibold text-zinc-900 dark:text-white">{metric.value}</p>

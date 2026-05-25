@@ -31,7 +31,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
       </p>
     </div>
 
-    <div id="cases-root" data-live-label={t.live} class="mt-10">
+    <div id="cases-root" data-live-label={t.live} class="reveal mt-10">
       <div class="flex flex-col items-center gap-4">
         <div class="flex flex-wrap justify-center gap-2" role="tablist" aria-label={t.tabLabel}>
           {cases.map((entry, index) => (
@@ -134,7 +134,15 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                   <span class="h-2 w-2 rounded-full bg-emerald-500/60"></span>
                 </div>
                 <div class="aspect-[16/10] w-full overflow-hidden">
-                  <img src={entry.image} alt={`${imageAltPrefix[locale]} ${entry.name}`} class="h-full w-full object-cover object-top" loading="lazy" />
+                  <img
+                  src={entry.image}
+                  alt={`${imageAltPrefix[locale]} ${entry.name}`}
+                  class="h-full w-full object-cover object-top"
+                  width="800"
+                  height="500"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={index === 0 ? 'high' : 'low'}
+                />
                 </div>
               </div>
 

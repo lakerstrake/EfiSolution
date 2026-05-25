@@ -130,7 +130,9 @@ const websiteSchema = {
         <link rel="prefetch" href={alt.href} as="document" />
       ))}
 
-    <link rel="stylesheet" href={fontsUrl} />
+    <link rel="preload" as="style" href={fontsUrl} />
+    <link rel="stylesheet" href={fontsUrl} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fontsUrl} /></noscript>
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
@@ -169,6 +171,30 @@ const websiteSchema = {
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
       })();
+    </script>
+
+    <script is:inline>
+      function initReveal() {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: '0px 0px -56px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      }
+      initReveal();
+      document.addEventListener('astro:page-load', initReveal);
     </script>
   </body>
 </html>

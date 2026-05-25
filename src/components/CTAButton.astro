@@ -1,0 +1,66 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'ghost';
+  size?: 'md' | 'lg';
+  ariaLabel?: string;
+  icon?: boolean;
+}
+
+const {
+  href = '#contacto',
+  variant = 'primary',
+  size = 'lg',
+  ariaLabel,
+  icon = true,
+} = Astro.props;
+
+const base =
+  'group relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950 hover:-translate-y-0.5 active:scale-[0.97]';
+
+const sizes: Record<string, string> = {
+  md: 'px-5 py-2.5 text-sm',
+  lg: 'px-7 py-3.5 text-[15px] sm:text-base',
+};
+
+const variants: Record<string, string> = {
+  primary:
+    'bg-accent-500 text-white shadow-[0_10px_34px_-8px_rgba(11,84,253,0.55)] hover:bg-accent-600 hover:shadow-[0_14px_38px_-6px_rgba(11,84,253,0.65)] dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200',
+  ghost:
+    'border border-zinc-200 dark:border-white/15 bg-white/60 dark:bg-white/[0.02] text-zinc-800 dark:text-zinc-100 backdrop-blur-md hover:border-zinc-300 dark:hover:border-white/30 hover:bg-zinc-50 dark:hover:bg-white/[0.05]',
+};
+---
+
+<a
+  href={href}
+  aria-label={ariaLabel}
+  class={`${base} ${sizes[size]} ${variants[variant]}`}
+>
+  {variant === 'primary' && (
+    <span
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 rounded-full opacity-0 bg-[radial-gradient(circle,rgba(77,124,254,0.45),transparent_70%)] blur-md transition-opacity duration-500 group-hover:opacity-100"
+    ></span>
+  )}
+  <span class="relative z-10"><slot /></span>
+  {icon && (
+    <span
+      aria-hidden="true"
+      class="relative z-10 inline-flex transition-transform duration-300 group-hover:translate-x-1"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14" />
+        <path d="M12 5l7 7-7 7" />
+      </svg>
+    </span>
+  )}
+</a>

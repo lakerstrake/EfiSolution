@@ -1,5 +1,5 @@
 ---
-import ServiceCard from './react/ServiceCard.tsx';
+import ServiceCard from './ServiceCard.astro';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 
 interface Props {
@@ -12,7 +12,7 @@ const t = getSiteContent(locale).services;
 
 <section id="servicios" class="section-padding scroll-mt-24" aria-labelledby="services-title">
   <div class="container-x">
-    <div class="flex flex-col items-start gap-5 md:flex-row md:items-end md:justify-between">
+    <div class="reveal flex flex-col items-start gap-5 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
         <span class="eyebrow">
           <span class="eyebrow-dot"></span>
@@ -22,7 +22,7 @@ const t = getSiteContent(locale).services;
           {t.title}
         </h2>
       </div>
-      <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
+      <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
         {t.description}
       </p>
     </div>
@@ -42,7 +42,7 @@ const t = getSiteContent(locale).services;
       ))}
     </ul>
 
-    <ol class="kpi-grid mt-12 grid-cols-2 md:grid-cols-4" aria-label={t.processLabel}>
+    <ol class="reveal kpi-grid mt-12 grid-cols-2 md:grid-cols-4" aria-label={t.processLabel}>
       {t.steps.map((step) => (
         <li class="kpi-item flex items-center justify-between">
           <div class="pr-3">
@@ -50,7 +50,7 @@ const t = getSiteContent(locale).services;
             <p class="mt-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{step.v}</p>
             <p class="mt-1 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">{step.desc}</p>
           </div>
-          <p class="text-xs text-zinc-500">{step.d}</p>
+          <p class="shrink-0 text-xs text-zinc-500">{step.d}</p>
         </li>
       ))}
     </ol>

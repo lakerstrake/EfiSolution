@@ -1,17 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 
-import cloudflare from "@astrojs/cloudflare";
-
-// https://astro.build/config
 export default defineConfig({
   site: 'https://efisolution.com',
 
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    react(),
     sitemap(),
   ],
 
@@ -29,8 +25,13 @@ export default defineConfig({
   vite: {
     build: {
       cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
     },
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare(),
 });
