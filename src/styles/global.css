@@ -31,12 +31,18 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 6.5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     /* clip instead of hidden — avoids creating a stacking context
        that breaks position:fixed on iOS Safari */
     overflow-x: clip;
+  }
+
+  section {
+    scroll-snap-align: start;
   }
 
   body {
@@ -120,16 +126,16 @@
     @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
   }
 
-  /* Consistent section vertical rhythm */
+  /* Consistent section vertical rhythm — beautifully balanced paddings so it's not too crowded nor too empty */
   .section-padding {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 sm:py-20 md:py-24 lg:py-28;
   }
 
   /* Eyebrow badge */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10
-           bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium
-           uppercase tracking-[0.18em] text-zinc-300;
+    @apply inline-flex items-center gap-2 rounded-full border border-zinc-200/80 dark:border-white/10
+           bg-zinc-100/50 dark:bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium
+           uppercase tracking-[0.18em] text-zinc-600 dark:text-zinc-400;
   }
 
   .eyebrow-dot {
