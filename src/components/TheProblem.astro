@@ -1,21 +1,12 @@
 ---
-const blocks = [
-  {
-    tag: 'Problema',
-    headline: 'Web lenta, ventas bajas.',
-    body: 'Si el sitio tarda en cargar, el usuario se va antes de conocer tu oferta.',
-  },
-  {
-    tag: 'Impacto',
-    headline: 'Mas rebote y mas costo de adquisicion.',
-    body: 'La lentitud reduce conversion, afecta SEO y encarece cada visita pagada.',
-  },
-  {
-    tag: 'Solucion',
-    headline: 'Arquitectura limpia desde el dia uno.',
-    body: 'Disenamos y construimos para rendimiento real: menos peso, mas claridad y mejor experiencia.',
-  },
-];
+import { getSiteContent, type Locale } from '../i18n/siteContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).problem;
 ---
 
 <section id="problema" class="section-padding" aria-labelledby="problem-title">
@@ -24,31 +15,31 @@ const blocks = [
       <div class="lg:col-span-5">
         <span class="eyebrow">
           <span class="eyebrow-dot"></span>
-          Diagnostico
+          {t.badge}
         </span>
 
         <h2 id="problem-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
-          El rendimiento no es un detalle tecnico. <span class="text-accent-500">Es una ventaja competitiva.</span>
+          {t.titleA} <span class="text-accent-500">{t.titleB}</span>
         </h2>
 
         <p class="mt-5 max-w-md text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-          Cuando la web responde rapido, el usuario confia mas, explora mas y compra con menos friccion.
+          {t.description}
         </p>
 
         <div class="kpi-grid mt-8 grid-cols-2">
           <div class="kpi-item">
             <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">53%</p>
-            <p class="mt-1 text-xs text-zinc-500">Abandono en movil cuando la carga supera 3 segundos.</p>
+            <p class="mt-1 text-xs text-zinc-500">{t.statA}</p>
           </div>
           <div class="kpi-item">
             <p class="font-display text-fluid-3xl font-semibold text-zinc-900 dark:text-white">7%</p>
-            <p class="mt-1 text-xs text-zinc-500">Caida estimada de conversion por cada segundo extra.</p>
+            <p class="mt-1 text-xs text-zinc-500">{t.statB}</p>
           </div>
         </div>
       </div>
 
-      <ol class="space-y-7 lg:col-span-7" aria-label="Secuencia problema impacto solucion">
-        {blocks.map((block, index) => (
+      <ol class="space-y-7 lg:col-span-7" aria-label={t.sequenceLabel}>
+        {t.blocks.map((block, index) => (
           <li class="surface p-6 sm:p-7">
             <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">0{index + 1} · {block.tag}</p>
             <h3 class="mt-3 font-display text-fluid-2xl font-semibold text-zinc-900 dark:text-white">{block.headline}</h3>

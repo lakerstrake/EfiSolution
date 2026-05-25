@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import type { Locale } from '../i18n/siteContent';
 
 export interface Props {
+  locale: Locale;
   title?: string;
   description?: string;
   canonical?: string;
@@ -11,14 +13,20 @@ export interface Props {
 }
 
 const {
-  title = 'Efi Solution - Webs rapidas para crecer ventas',
-  description = 'Agencia tecnologica de alto rendimiento. Disenamos y desarrollamos experiencias web rapidas, claras y listas para escalar.',
+  locale,
+  title = 'Efi Solution',
+  description = 'High-performance digital solutions.',
   canonical = Astro.url.href,
   ogImage = '/og-image.jpg',
-  ogImageAlt = 'Efi Solution - Desarrollo web profesional',
+  ogImageAlt = 'Efi Solution',
 } = Astro.props;
 
 const siteName = 'Efi Solution';
+const skipLabelMap: Record<Locale, string> = {
+  es: 'Saltar al contenido principal',
+  en: 'Skip to main content',
+  pt: 'Ir para o conteudo principal',
+};
 
 const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
@@ -49,7 +57,7 @@ const websiteSchema = {
 ---
 
 <!doctype html>
-<html lang="es-CO" class="scroll-smooth">
+<html lang={locale} class="scroll-smooth">
   <head>
     <script is:inline>
       (function () {
@@ -88,7 +96,6 @@ const websiteSchema = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:image:alt" content={ogImageAlt} />
-    <meta property="og:locale" content="es_CO" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -98,8 +105,6 @@ const websiteSchema = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href={fontsUrl} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
@@ -111,10 +116,10 @@ const websiteSchema = {
       href="#contenido"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-md focus:bg-accent-500 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
     >
-      Saltar al contenido principal
+      {skipLabelMap[locale]}
     </a>
 
-    <Navbar />
+    <Navbar locale={locale} />
 
     <div aria-hidden="true" class="site-ambient">
       <div class="site-ambient__grid"></div>

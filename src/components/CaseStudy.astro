@@ -1,80 +1,19 @@
 ---
 import StatCounter from './react/StatCounter.tsx';
+import { getSiteContent, type Locale } from '../i18n/siteContent';
 
-const cases = [
-  {
-    key: 'classify',
-    name: 'Classify',
-    sector: 'Edtech',
-    image: '/classify_mockup.png',
-    url: 'https://classify.efisolution.com',
-    summary:
-      'Plataforma escolar reconstruida desde cero para eliminar friccion en inscripciones y mejorar rendimiento en movil.',
-    result:
-      'Carga movil reducida de 5.4s a 0.4s y crecimiento de solicitudes en el primer trimestre.',
-    stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
-    metrics: [
-      { value: 92, suffix: '%', label: 'Menos tiempo de carga' },
-      { value: 4.7, suffix: 'x', decimals: 1, label: 'Mas solicitudes' },
-      { value: 100, suffix: '/100', label: 'Lighthouse' },
-      { value: 70, suffix: '%', label: 'Menos carga operativa' },
-    ],
-  },
-  {
-    key: 'navegador',
-    name: 'Navegador Social',
-    sector: 'Impacto social',
-    image: '/navegador_social_mockup.png',
-    url: null,
-    summary:
-      'Portal ligero para consulta ciudadana en dispositivos con conectividad limitada y bajo consumo de datos.',
-    result:
-      'Mejor acceso a informacion publica y navegacion estable incluso en celulares de gama media-baja.',
-    stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
-    metrics: [
-      { value: 0.3, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
-      { value: 100, suffix: '/100', label: 'Lighthouse' },
-      { value: 93, suffix: '%', label: 'Menos rebote' },
-      { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
-    ],
-  },
-  {
-    key: 'kennedy',
-    name: 'Mapa de Kennedy',
-    sector: 'Geodatos',
-    image: '/mapa_kennedy_mockup.png',
-    url: 'https://mapa-kennedy.pages.dev/',
-    summary:
-      'Mapa interactivo optimizado para consulta rapida de puntos de interes sin congelar el navegador.',
-    result:
-      'Experiencia fluida a 60fps con carga por demanda para reducir peso y mejorar usabilidad.',
-    stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
-    metrics: [
-      { value: 0.5, suffix: 's', decimals: 1, label: 'Latencia GPS' },
-      { value: 60, suffix: 'fps', label: 'Fluidez' },
-      { value: 500, suffix: '+', label: 'Puntos activos' },
-      { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
-    ],
-  },
-  {
-    key: 'calculadora',
-    name: 'Calculadora de Liquidacion',
-    sector: 'Fintech',
-    image: '/calculadora_liquidacion_mockup.png',
-    url: 'https://calculadora-liquidacion.pages.dev/',
-    summary:
-      'Herramienta laboral para simulaciones instantaneas con formulas legales colombianas.',
-    result:
-      'Calculos en menos de 100ms y reduccion sustancial de errores operativos.',
-    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
-    metrics: [
-      { value: 100, suffix: 'ms', label: 'Tiempo de calculo' },
-      { value: 100, suffix: '/100', label: 'Lighthouse' },
-      { value: 95, suffix: '%', label: 'Ahorro operativo' },
-      { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
-    ],
-  },
-];
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).cases;
+const cases = t.items;
+const imageAltPrefix: Record<Locale, string> = {
+  es: 'Vista del proyecto',
+  en: 'Project preview',
+  pt: 'Visual do projeto',
+};
 ---
 
 <section id="casos" class="section-padding scroll-mt-24" aria-labelledby="cases-title">
@@ -82,19 +21,19 @@ const cases = [
     <div class="mx-auto max-w-3xl text-center">
       <span class="eyebrow">
         <span class="eyebrow-dot"></span>
-        Casos de exito
+        {t.badge}
       </span>
       <h2 id="cases-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
-        Resultados reales con producto, diseno y performance.
+        {t.title}
       </h2>
       <p class="mt-4 text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-        Selecciona un proyecto para ver contexto, stack y metricas de impacto.
+        {t.description}
       </p>
     </div>
 
-    <div id="cases-root" class="mt-10">
+    <div id="cases-root" data-live-label={t.live} class="mt-10">
       <div class="flex flex-col items-center gap-4">
-        <div class="flex flex-wrap justify-center gap-2" role="tablist" aria-label="Seleccion de proyectos">
+        <div class="flex flex-wrap justify-center gap-2" role="tablist" aria-label={t.tabLabel}>
           {cases.map((entry, index) => (
             <button
               id={`tab-${entry.key}`}
@@ -120,17 +59,17 @@ const cases = [
             type="button"
             data-prev
             class="rounded-full border border-zinc-200 bg-white/75 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:text-white"
-            aria-label="Caso anterior"
+            aria-label={t.prev}
           >
-            Anterior
+            {t.prev}
           </button>
           <button
             type="button"
             data-next
             class="rounded-full border border-zinc-200 bg-white/75 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:text-white"
-            aria-label="Siguiente caso"
+            aria-label={t.next}
           >
-            Siguiente
+            {t.next}
           </button>
         </div>
 
@@ -159,7 +98,7 @@ const cases = [
               <div class="hairline my-6"></div>
 
               <p class="text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-                <span class="font-semibold text-zinc-900 dark:text-white">Resultado:</span> {entry.result}
+                <span class="font-semibold text-zinc-900 dark:text-white">{t.resultPrefix}</span> {entry.result}
               </p>
 
               <div class="mt-6 flex flex-wrap gap-2">
@@ -177,7 +116,7 @@ const cases = [
                   rel="noopener noreferrer"
                   class="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
                 >
-                  Ver sitio en vivo
+                  {t.visit}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -195,7 +134,7 @@ const cases = [
                   <span class="h-2 w-2 rounded-full bg-emerald-500/60"></span>
                 </div>
                 <div class="aspect-[16/10] w-full overflow-hidden">
-                  <img src={entry.image} alt={`Vista del proyecto ${entry.name}`} class="h-full w-full object-cover object-top" loading="lazy" />
+                  <img src={entry.image} alt={`${imageAltPrefix[locale]} ${entry.name}`} class="h-full w-full object-cover object-top" loading="lazy" />
                 </div>
               </div>
 
@@ -241,6 +180,7 @@ const cases = [
     const prevButton = root.querySelector<HTMLButtonElement>('[data-prev]');
     const nextButton = root.querySelector<HTMLButtonElement>('[data-next]');
     const liveRegion = root.querySelector<HTMLElement>('#case-live-region');
+    const liveLabel = root.dataset.liveLabel ?? 'Active case';
 
     let activeIndex = tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true');
     let timerId: number | null = null;
@@ -281,7 +221,7 @@ const cases = [
 
       syncDots();
       if (liveRegion) {
-        liveRegion.textContent = `Caso activo: ${tabs[activeIndex]?.textContent?.trim() ?? ''}`;
+        liveRegion.textContent = `${liveLabel}: ${tabs[activeIndex]?.textContent?.trim() ?? ''}`;
       }
     }
 

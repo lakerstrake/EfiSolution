@@ -1,12 +1,13 @@
 ---
 import CTAButton from './react/CTAButton.tsx';
+import { getSiteContent, type Locale } from '../i18n/siteContent';
 
-const metrics = [
-  { value: '0.9s', label: 'LCP objetivo' },
-  { value: '+35%', label: 'Mejora conversion' },
-  { value: '100/100', label: 'Score Lighthouse' },
-  { value: '48h', label: 'Auditoria inicial' },
-];
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).hero;
 ---
 
 <section id="inicio" class="relative overflow-hidden pb-24 pt-36 md:pb-28 md:pt-44" aria-labelledby="hero-title">
@@ -18,30 +19,30 @@ const metrics = [
     <div class="mx-auto max-w-4xl text-center">
       <span class="eyebrow">
         <span class="eyebrow-dot"></span>
-        Diseno y desarrollo web de alto rendimiento
+        {t.badge}
       </span>
 
       <h1 id="hero-title" class="mt-7 font-display text-fluid-5xl font-semibold leading-[1.02] tracking-tightest text-zinc-900 dark:text-white">
-        Una web mas rapida.
+        {t.titleA}
         <br />
-        <span class="text-accent-500">Un negocio que convierte mejor.</span>
+        <span class="text-accent-500">{t.titleB}</span>
       </h1>
 
       <p class="mx-auto mt-6 max-w-2xl text-fluid-lg leading-relaxed text-zinc-700 dark:text-zinc-400">
-        En Efi Solution construimos plataformas minimalistas, solidas y escalables para marcas que quieren crecer sin perder tiempo en tecnologia lenta.
+        {t.description}
       </p>
 
       <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <CTAButton client:visible href="#contacto" variant="primary" size="lg" ariaLabel="Agendar auditoria gratuita">
-          Agendar auditoria gratuita
+        <CTAButton client:visible href="#contacto" variant="primary" size="lg" ariaLabel={t.ctaPrimary}>
+          {t.ctaPrimary}
         </CTAButton>
         <CTAButton client:visible href="#casos" variant="ghost" size="lg" icon={false}>
-          Ver proyectos
+          {t.ctaGhost}
         </CTAButton>
       </div>
 
       <div class="kpi-grid mx-auto mt-14 grid-cols-2 md:grid-cols-4">
-        {metrics.map((metric) => (
+        {t.metrics.map((metric) => (
           <div class="kpi-item text-left">
             <p class="font-display text-fluid-2xl font-semibold text-zinc-900 dark:text-white">{metric.value}</p>
             <p class="mt-1 text-xs uppercase tracking-[0.16em] text-zinc-500">{metric.label}</p>

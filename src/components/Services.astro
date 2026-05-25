@@ -1,48 +1,13 @@
 ---
 import ServiceCard from './react/ServiceCard.tsx';
+import { getSiteContent, type Locale } from '../i18n/siteContent';
 
-const services = [
-  {
-    number: '01 / Web',
-    title: 'Sitios de alta conversion',
-    description: 'Experiencias rapidas, claras y orientadas a negocio con arquitectura moderna en Astro.',
-    bullets: [
-      'SEO tecnico y performance real',
-      'UI minimalista y mantenible',
-      'Implementacion lista para escalar',
-    ],
-    iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
-  },
-  {
-    number: '02 / Backend',
-    title: 'Sistemas y automatizacion',
-    description: 'APIs y procesos robustos para operaciones internas, integraciones y crecimiento sostenido.',
-    bullets: [
-      'FastAPI y Spring Boot',
-      'Modelado de datos y observabilidad',
-      'Integraciones con herramientas clave',
-    ],
-    iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
-  },
-  {
-    number: '03 / Producto',
-    title: 'UX y estrategia digital',
-    description: 'Decisiones de producto guiadas por datos para reducir friccion y aumentar conversion.',
-    bullets: [
-      'Flujos y arquitectura de contenido',
-      'Prototipos validados con usuarios',
-      'Roadmap de mejora continua',
-    ],
-    iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
-  },
-];
+interface Props {
+  locale: Locale;
+}
 
-const steps = [
-  { k: '01', v: 'Diagnostico', d: '48h' },
-  { k: '02', v: 'Definicion', d: '1 sem' },
-  { k: '03', v: 'Construccion', d: '3-6 sem' },
-  { k: '04', v: 'Lanzamiento', d: 'Dia 1' },
-];
+const { locale } = Astro.props;
+const t = getSiteContent(locale).services;
 ---
 
 <section id="servicios" class="section-padding scroll-mt-24" aria-labelledby="services-title">
@@ -51,19 +16,19 @@ const steps = [
       <div class="max-w-2xl">
         <span class="eyebrow">
           <span class="eyebrow-dot"></span>
-          Servicios
+          {t.badge}
         </span>
         <h2 id="services-title" class="mt-5 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
-          Tecnologia, diseno y ejecucion en un mismo equipo.
+          {t.title}
         </h2>
       </div>
       <p class="max-w-sm text-fluid-base leading-relaxed text-zinc-700 dark:text-zinc-400">
-        Entregamos sistemas listos para producir resultados, no solo pantallas bonitas.
+        {t.description}
       </p>
     </div>
 
-    <ul class="mt-12 grid list-none gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Lista de servicios">
-      {services.map((service, index) => (
+    <ul class="mt-12 grid list-none gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label={t.listLabel}>
+      {t.services.map((service, index) => (
         <li class="flex">
           <ServiceCard
             client:visible
@@ -78,8 +43,8 @@ const steps = [
       ))}
     </ul>
 
-    <ol class="kpi-grid mt-12 grid-cols-2 md:grid-cols-4" aria-label="Proceso de trabajo">
-      {steps.map((step) => (
+    <ol class="kpi-grid mt-12 grid-cols-2 md:grid-cols-4" aria-label={t.processLabel}>
+      {t.steps.map((step) => (
         <li class="kpi-item flex items-center justify-between">
           <div>
             <p class="font-mono text-xs text-zinc-500">{step.k}</p>

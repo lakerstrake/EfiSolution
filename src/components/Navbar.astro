@@ -1,8 +1,17 @@
 ---
-const links = [
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#casos', label: 'Casos' },
-  { href: '#contacto', label: 'Contacto' },
+import { getSiteContent, localeHref, type Locale } from '../i18n/siteContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale);
+
+const langs: Array<{ code: Locale; label: string }> = [
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+  { code: 'pt', label: 'PT' },
 ];
 ---
 
@@ -10,9 +19,9 @@ const links = [
   <div class="container-x">
     <nav
       class="header-shell flex items-center justify-between rounded-2xl border border-zinc-200/70 bg-white/75 px-4 py-3 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-zinc-950/65"
-      aria-label="Navegacion principal"
+      aria-label={t.nav.mainLabel}
     >
-      <a href="/" class="inline-flex items-center gap-2.5 rounded-md">
+      <a href={localeHref(locale)} class="inline-flex items-center gap-2.5 rounded-md">
         <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-accent-500/30 bg-accent-500/10 text-accent-500">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
@@ -22,7 +31,7 @@ const links = [
       </a>
 
       <ul class="hidden items-center gap-1 md:flex" role="list">
-        {links.map((link) => (
+        {t.nav.links.map((link) => (
           <li>
             <a
               href={link.href}
@@ -35,10 +44,26 @@ const links = [
       </ul>
 
       <div class="flex items-center gap-2">
+        <div class="hidden items-center gap-1 rounded-full border border-zinc-200/80 bg-white/70 p-1 dark:border-white/10 dark:bg-white/[0.04] md:flex">
+          {langs.map((item) => (
+            <a
+              href={localeHref(item.code)}
+              aria-current={item.code === locale ? 'page' : undefined}
+              class={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
+                item.code === locale
+                  ? 'bg-accent-500 text-white'
+                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+
         <button
           id="theme-toggle"
           type="button"
-          aria-label="Alternar tema claro y oscuro"
+          aria-label={t.nav.themeToggle}
           class="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/70 text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white"
         >
           <svg id="icon-moon" class="h-[18px] w-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
@@ -54,13 +79,13 @@ const links = [
           href="#contacto"
           class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600 md:inline-flex"
         >
-          Solicitar auditoria
+          {t.nav.cta}
         </a>
 
         <button
           id="hamburger"
           type="button"
-          aria-label="Abrir menu"
+          aria-label={t.nav.mobileMenu}
           aria-expanded="false"
           aria-controls="mobile-nav"
           class="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/70 text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white md:hidden"
@@ -78,7 +103,7 @@ const links = [
   <div id="mobile-nav" class="container-x mt-2 hidden" aria-hidden="true">
     <div class="rounded-2xl border border-zinc-200/80 bg-white/95 p-3 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/95">
       <ul class="space-y-1" role="list">
-        {links.map((link) => (
+        {t.nav.links.map((link) => (
           <li>
             <a
               href={link.href}
@@ -95,10 +120,24 @@ const links = [
             data-mobile-close
             class="flex items-center justify-center rounded-xl bg-accent-500 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600"
           >
-            Solicitar auditoria
+            {t.nav.cta}
           </a>
         </li>
       </ul>
+      <div class="mt-3 flex items-center justify-center gap-2 border-t border-zinc-200/80 pt-3 dark:border-white/10">
+        {langs.map((item) => (
+          <a
+            href={localeHref(item.code)}
+            class={`rounded-full px-3 py-1 text-xs font-semibold ${
+              item.code === locale
+                ? 'bg-accent-500 text-white'
+                : 'border border-zinc-300 text-zinc-700 dark:border-white/20 dark:text-zinc-300'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </header>

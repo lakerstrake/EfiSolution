@@ -1,11 +1,24 @@
 ---
 import CTAButton from './react/CTAButton.tsx';
 import pkg from '../../package.json';
+import { getSiteContent, type Locale } from '../i18n/siteContent';
 
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale);
 const { version } = pkg;
+const mailSubjects: Record<Locale, string> = {
+  es: 'Auditoria de sitio',
+  en: 'Website audit',
+  pt: 'Auditoria de site',
+};
+const mailSubject = encodeURIComponent(mailSubjects[locale]);
 
 function formatBogotaDate(dateLike: string | Date): string {
-  return new Intl.DateTimeFormat('es-CO', {
+  return new Intl.DateTimeFormat(t.footer.dateLocale, {
     timeZone: 'America/Bogota',
     year: 'numeric',
     month: 'short',
@@ -18,21 +31,6 @@ function formatBogotaDate(dateLike: string | Date): string {
 
 const syncSha = (process.env.CF_PAGES_COMMIT_SHA ?? process.env.GITHUB_SHA ?? 'local').slice(0, 12);
 const syncDate = formatBogotaDate(new Date());
-
-const team = [
-  {
-    name: 'Juan Manuel',
-    role: 'Ingenieria y arquitectura',
-    bio: 'Construye sistemas web y backend con foco en rendimiento, estabilidad y escalabilidad.',
-    initials: 'JM',
-  },
-  {
-    name: 'Sarai',
-    role: 'UX y estrategia digital',
-    bio: 'Disena experiencias claras para que cada flujo ayude a vender mejor.',
-    initials: 'SA',
-  },
-];
 ---
 
 <section id="contacto" class="section-padding scroll-mt-24" aria-labelledby="cta-title">
@@ -46,40 +44,40 @@ const team = [
         <div class="lg:col-span-7">
           <span class="eyebrow">
             <span class="eyebrow-dot"></span>
-            Contacto
+            {t.contact.badge}
           </span>
 
           <h2 id="cta-title" class="mt-6 font-display text-fluid-5xl font-semibold leading-[1.02] tracking-tightest text-zinc-900 dark:text-white">
-            Transformemos tu web
+            {t.contact.titleA}
             <br />
-            en una ventaja real.
+            {t.contact.titleB}
           </h2>
 
           <p class="mt-6 max-w-xl text-fluid-lg leading-relaxed text-zinc-700 dark:text-zinc-400">
-            Auditamos tu situacion actual y te entregamos un plan de mejora concreto, priorizado y accionable.
+            {t.contact.description}
           </p>
 
           <div class="mt-9">
             <CTAButton
               client:visible
-              href="mailto:jmlagos2003@gmail.com?subject=Auditoria%20de%20sitio"
+              href={`mailto:jmlagos2003@gmail.com?subject=${mailSubject}`}
               variant="primary"
               size="lg"
-              ariaLabel="Solicitar auditoria por correo"
+              ariaLabel={t.contact.ctaAria}
             >
-              Solicitar auditoria
+              {t.contact.cta}
             </CTAButton>
           </div>
 
-          <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400" aria-label="Compromisos de respuesta">
-            <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>Respuesta en menos de 12 horas</li>
-            <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>Auditoria sin costo</li>
-            <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>Trabajo remoto para LATAM</li>
+          <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400" aria-label={t.contact.benefitsLabel}>
+            {t.contact.benefits.map((benefit) => (
+              <li class="inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>{benefit}</li>
+            ))}
           </ul>
         </div>
 
         <div class="space-y-4 lg:col-span-5">
-          {team.map((person) => (
+          {t.contact.team.map((person) => (
             <article class="rounded-2xl border border-zinc-200/80 bg-white/65 p-5 dark:border-white/10 dark:bg-white/[0.04]" aria-label={`${person.name} - ${person.role}`}>
               <div class="flex items-center gap-3">
                 <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 font-display text-xs font-semibold text-zinc-800 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-200">{person.initials}</span>
@@ -97,16 +95,16 @@ const team = [
   </div>
 </section>
 
-<footer class="container-x" aria-label="Informacion del sitio">
+<footer class="container-x" aria-label={t.footer.siteInfo}>
   <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-zinc-200/80 pb-10 pt-6 text-xs text-zinc-500 dark:border-white/10">
-    <p class="text-center">&copy; {new Date().getFullYear()} Efi Solution. Hecho en Colombia.</p>
+    <p class="text-center">&copy; {new Date().getFullYear()} Efi Solution. {t.footer.madeIn}</p>
     <p class="inline-flex flex-wrap items-center justify-center gap-2 text-center">
       <span class="rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">v{version}</span>
       <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
-        Sync GH -> CF: {syncDate} COT
+        {t.footer.syncLabel}: {syncDate} {t.footer.timezone}
       </span>
       <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
-        Commit: {syncSha}
+        {t.footer.commitLabel}: {syncSha}
       </span>
       <a href="mailto:jmlagos2003@gmail.com" class="transition-colors hover:text-zinc-900 dark:hover:text-white">jmlagos2003@gmail.com</a>
     </p>
