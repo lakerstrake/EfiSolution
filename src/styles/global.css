@@ -20,13 +20,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: clip;
-    scroll-snap-type: y proximity;
+    overflow-x: hidden;
   }
 
   body {
     font-family: var(--font-body);
-    @apply bg-zinc-50 text-zinc-800 antialiased transition-colors duration-300;
+    @apply w-full overflow-x-hidden bg-zinc-50 text-zinc-800 antialiased transition-colors duration-300;
     @apply dark:bg-zinc-950 dark:text-zinc-200;
     @apply selection:bg-accent-500/20 selection:text-zinc-900 dark:selection:text-white;
     background-image:
@@ -44,6 +43,9 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   :focus-visible {
@@ -101,16 +103,6 @@
 
   .kpi-item {
     @apply bg-white/75 px-4 py-5 dark:bg-zinc-950/70;
-  }
-}
-
-section {
-  scroll-snap-align: start;
-}
-
-@media (max-width: 767px) {
-  html {
-    scroll-snap-type: none;
   }
 }
 

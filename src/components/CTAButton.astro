@@ -5,6 +5,8 @@ interface Props {
   size?: 'md' | 'lg';
   ariaLabel?: string;
   icon?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 const {
@@ -13,6 +15,8 @@ const {
   size = 'lg',
   ariaLabel,
   icon = true,
+  target,
+  rel,
 } = Astro.props;
 
 const base =
@@ -34,6 +38,8 @@ const variants: Record<string, string> = {
 <a
   href={href}
   aria-label={ariaLabel}
+  target={target}
+  rel={rel}
   class={`${base} ${sizes[size]} ${variants[variant]}`}
 >
   {variant === 'primary' && (
