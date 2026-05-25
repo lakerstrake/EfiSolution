@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import type { Locale } from '../i18n/siteContent';
+import { localeHref, supportedLocales, type Locale } from '../i18n/siteContent';
 
 export interface Props {
   locale: Locale;
@@ -22,11 +22,22 @@ const {
 } = Astro.props;
 
 const siteName = 'Efi Solution';
+const localeMap: Record<Locale, string> = {
+  es: 'es_CO',
+  en: 'en_US',
+  pt: 'pt_BR',
+};
 const skipLabelMap: Record<Locale, string> = {
   es: 'Saltar al contenido principal',
   en: 'Skip to main content',
   pt: 'Ir para o conteudo principal',
 };
+
+const origin = Astro.site?.href ?? Astro.url.origin;
+const alternates = supportedLocales.map((item) => ({
+  code: item,
+  href: new URL(localeHref(item), origin).href,
+}));
 
 const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
@@ -91,6 +102,7 @@ const websiteSchema = {
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={localeMap[locale]} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -104,6 +116,10 @@ const websiteSchema = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.code} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(localeHref('es'), origin).href} />
 
     <link rel="stylesheet" href={fontsUrl} />
 

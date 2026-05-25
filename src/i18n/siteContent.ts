@@ -1,5 +1,100 @@
 export type Locale = 'es' | 'en' | 'pt';
 
+type NavLink = { href: string; label: string };
+type HeroMetric = { value: string; label: string };
+type ProblemBlock = { tag: string; headline: string; body: string };
+type ServiceItem = {
+  number: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  iconPath: string;
+};
+type ServiceStep = { k: string; v: string; d: string; desc: string };
+type CaseMetric = { value: number; suffix: string; label: string; decimals?: number };
+type CaseItem = {
+  key: string;
+  name: string;
+  sector: string;
+  image: string;
+  url: string | null;
+  summary: string;
+  result: string;
+  stack: string[];
+  metrics: CaseMetric[];
+};
+type TeamMember = { name: string; role: string; bio: string; initials: string };
+
+type SiteContent = {
+  meta: { title: string; description: string };
+  nav: {
+    links: NavLink[];
+    cta: string;
+    mobileMenu: string;
+    mainLabel: string;
+    themeToggle: string;
+  };
+  hero: {
+    badge: string;
+    titleA: string;
+    titleB: string;
+    description: string;
+    ctaPrimary: string;
+    ctaGhost: string;
+    metrics: HeroMetric[];
+  };
+  problem: {
+    badge: string;
+    titleA: string;
+    titleB: string;
+    description: string;
+    statA: string;
+    statB: string;
+    sequenceLabel: string;
+    blocks: ProblemBlock[];
+  };
+  services: {
+    badge: string;
+    title: string;
+    description: string;
+    listLabel: string;
+    processLabel: string;
+    services: ServiceItem[];
+    steps: ServiceStep[];
+  };
+  cases: {
+    badge: string;
+    title: string;
+    description: string;
+    tabLabel: string;
+    prev: string;
+    next: string;
+    live: string;
+    resultPrefix: string;
+    visit: string;
+    items: CaseItem[];
+  };
+  contact: {
+    badge: string;
+    titleA: string;
+    titleB: string;
+    description: string;
+    cta: string;
+    ctaAria: string;
+    benefitsLabel: string;
+    benefits: string[];
+    team: TeamMember[];
+  };
+  footer: {
+    madeIn: string;
+    syncLabel: string;
+    commitLabel: string;
+    timezone: string;
+    siteInfo: string;
+    dateLocale: string;
+  };
+};
+
 export const supportedLocales: Locale[] = ['es', 'en', 'pt'];
 
 export function localeHref(locale: Locale): string {
@@ -7,7 +102,7 @@ export function localeHref(locale: Locale): string {
   return `/${locale}/`;
 }
 
-const siteContent = {
+const siteContent: Record<Locale, SiteContent> = {
   es: {
     meta: {
       title: 'Efi Solution - Diseno y desarrollo web de alto rendimiento',
@@ -132,7 +227,7 @@ const siteContent = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
-          // TODO: reemplazar por un unico mockup de telefono limpio para mantener el estilo minimalista.
+          // Nota de diseno: idealmente usar un unico mockup de telefono limpio para reforzar el estilo minimalista.
           image: '/navegador_social_mockup.png',
           url: null,
           summary: 'Portal ligero para consulta ciudadana en dispositivos con conectividad limitada y bajo consumo de datos.',

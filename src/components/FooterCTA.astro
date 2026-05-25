@@ -10,7 +10,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getSiteContent(locale);
 const { version } = pkg;
-const contactEmail = 'contacto@efisolution.com';
+const contactEmail = 'jmlagos2003@gmail.com';
 const mailSubjects: Record<Locale, string> = {
   es: 'Auditoria de sitio',
   en: 'Website audit',
@@ -31,7 +31,8 @@ function formatBogotaDate(dateLike: string | Date): string {
 }
 
 const syncSha = (process.env.CF_PAGES_COMMIT_SHA ?? process.env.GITHUB_SHA ?? 'local').slice(0, 12);
-const syncDate = formatBogotaDate(new Date());
+const syncTimestamp = process.env.CF_PAGES_COMMIT_TIMESTAMP ?? new Date().toISOString();
+const syncDate = formatBogotaDate(syncTimestamp);
 ---
 
 <section id="contacto" class="section-padding scroll-mt-24" aria-labelledby="cta-title">
