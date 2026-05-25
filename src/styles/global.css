@@ -16,11 +16,12 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.25rem;
+    scroll-padding-top: 5.75rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
+    scroll-snap-type: y proximity;
   }
 
   body {
@@ -69,7 +70,7 @@
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-12 sm:py-14 lg:py-16;
   }
 
   .eyebrow {
@@ -100,6 +101,16 @@
 
   .kpi-item {
     @apply bg-white/75 px-4 py-5 dark:bg-zinc-950/70;
+  }
+}
+
+section {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: none;
   }
 }
 
@@ -148,4 +159,17 @@
 #site-header.is-scrolled .header-shell {
   @apply bg-white/90 dark:bg-zinc-950/85 shadow-sm;
   @apply border-zinc-200/80 dark:border-white/15;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, rgba(11, 84, 253, 0.35), rgba(11, 84, 253, 1));
+  pointer-events: none;
 }
