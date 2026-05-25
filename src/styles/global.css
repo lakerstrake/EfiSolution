@@ -105,10 +105,14 @@
 
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 40%, #4d7cfe 100%);
+    background: linear-gradient(135deg, #09090b 0%, #3f3f46 50%, #4d7cfe 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .dark .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 40%, #4d7cfe 100%);
   }
 
   /* Hairline separator */
