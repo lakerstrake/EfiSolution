@@ -17,19 +17,16 @@ export default defineConfig({
   },
 
   build: {
-    inlineStylesheets: 'auto',
+    // Inline ALL CSS into the HTML document — eliminates the render-blocking
+    // /_astro/*.css file that was causing the 4.7s mobile LCP.
+    inlineStylesheets: 'always',
   },
 
   compressHTML: true,
 
   vite: {
     build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: undefined,
-        },
-      },
+      cssCodeSplit: false,
     },
   },
 

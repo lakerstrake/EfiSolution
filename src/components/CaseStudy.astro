@@ -141,7 +141,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                   width="800"
                   height="500"
                   loading={index === 0 ? 'eager' : 'lazy'}
-                  fetchpriority={index === 0 ? 'high' : 'low'}
+                  decoding={index === 0 ? 'sync' : 'async'}
+                  fetchpriority={index === 0 ? 'high' : 'auto'}
                 />
                 </div>
               </div>
@@ -190,50 +191,55 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 </style>
 
 <script>
-  const root = document.getElementById('cases-root') as HTMLElement | null;
+  let _caseCtrl: AbortController | null = null;
 
-  if (root && root.dataset.bound !== 'true') {
-    root.dataset.bound = 'true';
+  function initCases(): void {
+    const root = document.getElementById('cases-root') as HTMLElement | null;
+    if (!root) return;
 
-    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.case-tab'));
-    const panels = Array.from(root.querySelectorAll<HTMLElement>('.case-panel'));
-    const dots = Array.from(root.querySelectorAll<HTMLElement>('.case-dot'));
-    const prevButton = root.querySelector<HTMLButtonElement>('[data-prev]');
-    const nextButton = root.querySelector<HTMLButtonElement>('[data-next]');
+    _caseCtrl?.abort();
+    _caseCtrl = new AbortController();
+    const { signal } = _caseCtrl;
+
+    const tabs      = Array.from(root.querySelectorAll<HTMLButtonElement>('.case-tab'));
+    const panels    = Array.from(root.querySelectorAll<HTMLElement>('.case-panel'));
+    const dots      = Array.from(root.querySelectorAll<HTMLElement>('.case-dot'));
+    const prevBtn   = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const nextBtn   = root.querySelector<HTMLButtonElement>('[data-next]');
     const liveRegion = root.querySelector<HTMLElement>('#case-live-region');
     const liveLabel = root.dataset.liveLabel ?? 'Active case';
 
-    let activeIndex = tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true');
+    let activeIndex = Math.max(0, tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true'));
     let timerId: number | null = null;
 
-    function syncDots() {
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('bg-accent-500', index === activeIndex);
-        dot.classList.toggle('bg-zinc-300', index !== activeIndex);
-        dot.classList.toggle('dark:bg-zinc-700', index !== activeIndex);
+    function syncDots(): void {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-accent-500', i === activeIndex);
+        dot.classList.toggle('bg-zinc-300',   i !== activeIndex);
+        dot.classList.toggle('dark:bg-zinc-700', i !== activeIndex);
       });
     }
 
-    function activateCase(nextIndex: number, moveFocus = false): void {
-      activeIndex = (nextIndex + tabs.length) % tabs.length;
+    function activateCase(next: number, moveFocus = false): void {
+      activeIndex = ((next % tabs.length) + tabs.length) % tabs.length;
 
-      tabs.forEach((tab, index) => {
-        const isActive = index === activeIndex;
-        tab.classList.toggle('active', isActive);
-        tab.classList.toggle('border-accent-500', isActive);
-        tab.classList.toggle('bg-accent-500/10', isActive);
-        tab.classList.toggle('text-accent-600', isActive);
-        tab.classList.toggle('dark:text-accent-400', isActive);
-        tab.setAttribute('aria-selected', String(isActive));
-        tab.setAttribute('tabindex', isActive ? '0' : '-1');
-        if (moveFocus && isActive) tab.focus();
+      tabs.forEach((tab, i) => {
+        const active = i === activeIndex;
+        tab.classList.toggle('active',           active);
+        tab.classList.toggle('border-accent-500', active);
+        tab.classList.toggle('bg-accent-500/10', active);
+        tab.classList.toggle('text-accent-600',  active);
+        tab.classList.toggle('dark:text-accent-400', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+        if (moveFocus && active) tab.focus();
       });
 
-      panels.forEach((panel, index) => {
-        const isActive = index === activeIndex;
-        panel.classList.toggle('hidden', !isActive);
-        panel.classList.toggle('active', isActive);
-        if (isActive) {
+      panels.forEach((panel, i) => {
+        const active = i === activeIndex;
+        panel.classList.toggle('hidden', !active);
+        panel.classList.toggle('active', active);
+        if (active) {
           panel.classList.remove('animate-fade-up');
           void panel.offsetWidth;
           panel.classList.add('animate-fade-up');
@@ -246,66 +252,41 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
       }
     }
 
-    function startAutoRotate() {
+    function startAutoRotate(): void {
       if (timerId) window.clearInterval(timerId);
       timerId = window.setInterval(() => activateCase(activeIndex + 1), 9000);
     }
 
-    function stopAutoRotate() {
-      if (timerId) {
-        window.clearInterval(timerId);
-        timerId = null;
-      }
+    function stopAutoRotate(): void {
+      if (timerId) { window.clearInterval(timerId); timerId = null; }
     }
 
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => {
-        activateCase(index);
-        startAutoRotate();
-      });
-
-      tab.addEventListener('keydown', (event: KeyboardEvent) => {
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          activateCase(index + 1, true);
-          startAutoRotate();
-        }
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          activateCase(index - 1, true);
-          startAutoRotate();
-        }
-      });
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => { activateCase(i); startAutoRotate(); }, { signal });
+      tab.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); activateCase(i + 1, true); startAutoRotate(); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); activateCase(i - 1, true); startAutoRotate(); }
+      }, { signal });
     });
 
-    prevButton?.addEventListener('click', () => {
-      activateCase(activeIndex - 1);
-      startAutoRotate();
-    });
+    prevBtn?.addEventListener('click', () => { activateCase(activeIndex - 1); startAutoRotate(); }, { signal });
+    nextBtn?.addEventListener('click', () => { activateCase(activeIndex + 1); startAutoRotate(); }, { signal });
 
-    nextButton?.addEventListener('click', () => {
-      activateCase(activeIndex + 1);
-      startAutoRotate();
-    });
+    root.addEventListener('mouseenter', stopAutoRotate, { signal });
+    root.addEventListener('mouseleave', startAutoRotate, { signal });
+    root.addEventListener('focusin',    stopAutoRotate,  { signal });
+    root.addEventListener('focusout',   (e: FocusEvent) => {
+      const next = e.relatedTarget as Node | null;
+      if (!next || !root.contains(next)) startAutoRotate();
+    }, { signal });
 
-    root.addEventListener('mouseenter', stopAutoRotate);
-    root.addEventListener('mouseleave', startAutoRotate);
-    root.addEventListener('focusin', stopAutoRotate);
-    root.addEventListener('focusout', (event: FocusEvent) => {
-      const nextTarget = event.relatedTarget as Node | null;
-      if (!nextTarget || !root.contains(nextTarget)) {
-        startAutoRotate();
-      }
-    });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoRotate();
-      } else {
-        startAutoRotate();
-      }
-    });
+      document.hidden ? stopAutoRotate() : startAutoRotate();
+    }, { signal });
 
-    activateCase(activeIndex < 0 ? 0 : activeIndex);
+    activateCase(activeIndex);
     startAutoRotate();
   }
+
+  document.addEventListener('astro:page-load', initCases);
 </script>

@@ -2,12 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Metric-adjusted fallback fonts: makes Arial metrics match Sora/Manrope
+  so that when the web font swaps in, layout shifts are near-zero.
+  Values calculated with fontpie / Font Metric Overrides spec.
+*/
+@font-face {
+  font-family: 'Sora Fallback';
+  src: local('Arial'), local('Helvetica Neue');
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 104%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  src: local('Arial'), local('Helvetica Neue');
+  ascent-override: 94%;
+  descent-override: 21%;
+  line-gap-override: 0%;
+  size-adjust: 102%;
+}
+
 @layer base {
   :root {
     color-scheme: light;
     --accent-rgb: 11, 84, 253;
-    --font-display: 'Sora', system-ui, sans-serif;
-    --font-body: 'Manrope', system-ui, sans-serif;
+    --font-display: 'Sora', 'Sora Fallback', system-ui, sans-serif;
+    --font-body: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
   }
 
   .dark {
