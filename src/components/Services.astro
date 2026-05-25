@@ -31,7 +31,6 @@ const t = getSiteContent(locale).services;
       {t.services.map((service, index) => (
         <li class="flex">
           <ServiceCard
-            client:visible
             index={index}
             number={service.number}
             title={service.title}

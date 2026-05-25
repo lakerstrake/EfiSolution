@@ -48,6 +48,7 @@ const langs: Array<{ code: Locale; label: string }> = [
           {langs.map((item) => (
             <a
               href={localeHref(item.code)}
+              data-astro-prefetch="viewport"
               aria-current={item.code === locale ? 'page' : undefined}
               class={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
                 item.code === locale
@@ -128,6 +129,7 @@ const langs: Array<{ code: Locale; label: string }> = [
         {langs.map((item) => (
           <a
             href={localeHref(item.code)}
+            data-astro-prefetch="viewport"
             class={`rounded-full px-3 py-1 text-xs font-semibold ${
               item.code === locale
                 ? 'bg-accent-500 text-white'

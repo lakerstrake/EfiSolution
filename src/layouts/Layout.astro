@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import { localeHref, supportedLocales, type Locale } from '../i18n/siteContent';
+import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
   locale: Locale;
@@ -70,6 +71,7 @@ const websiteSchema = {
 <!doctype html>
 <html lang={locale} class="scroll-smooth">
   <head>
+    <ClientRouter />
     <script is:inline>
       (function () {
         const savedTheme = localStorage.getItem('theme');

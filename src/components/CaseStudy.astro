@@ -1,5 +1,4 @@
 ---
-import StatCounter from './react/StatCounter.tsx';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 
 interface Props {
@@ -14,6 +13,7 @@ const imageAltPrefix: Record<Locale, string> = {
   en: 'Project preview',
   pt: 'Visual do projeto',
 };
+const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 ---
 
 <section id="casos" class="section-padding scroll-mt-24" aria-labelledby="cases-title">
@@ -43,7 +43,7 @@ const imageAltPrefix: Record<Locale, string> = {
               aria-selected={index === 0 ? 'true' : 'false'}
               aria-controls={`slide-${entry.key}`}
               tabindex={index === 0 ? '0' : '-1'}
-              class={`case-tab rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-colors ${
+              class={`case-tab rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-200 ${
                 index === 0
                   ? 'active border-accent-500 bg-accent-500/10 text-accent-600 dark:text-accent-400'
                   : 'border-zinc-200 bg-white/70 text-zinc-600 hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-400 dark:hover:text-white'
@@ -141,13 +141,12 @@ const imageAltPrefix: Record<Locale, string> = {
               <div class="kpi-grid grid-cols-2">
                 {entry.metrics.map((metric) => (
                   <div class="kpi-item">
-                    <StatCounter
-                      client:visible
-                      value={metric.value}
-                      suffix={metric.suffix}
-                      label={metric.label}
-                      decimals={metric.decimals ?? 0}
-                    />
+                    <div class="flex flex-col">
+                      <p class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
+                        {formatMetric(metric.value, metric.decimals ?? 0)}{metric.suffix}
+                      </p>
+                      <p class="mt-2 text-xs uppercase tracking-[0.16em] text-zinc-500">{metric.label}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -167,6 +166,20 @@ const imageAltPrefix: Record<Locale, string> = {
     </div>
   </div>
 </section>
+
+<style>
+  .case-tab[aria-selected='true'] {
+    background-color: rgba(11, 84, 253, 0.14);
+    border-color: rgba(11, 84, 253, 0.65);
+    color: rgb(11, 84, 253);
+    box-shadow: 0 0 0 1px rgba(11, 84, 253, 0.15) inset;
+  }
+  .dark .case-tab[aria-selected='true'] {
+    color: rgb(147, 197, 253);
+    border-color: rgba(147, 197, 253, 0.5);
+    background-color: rgba(11, 84, 253, 0.25);
+  }
+</style>
 
 <script>
   const root = document.getElementById('cases-root') as HTMLElement | null;
