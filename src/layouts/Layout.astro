@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import { localeHref, supportedLocales, type Locale } from '../i18n/siteContent';
+import { CF_ANALYTICS_TOKEN } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -210,5 +211,11 @@ const websiteSchema = {
       // astro:page-load fires on first load AND after every navigation
       document.addEventListener('astro:page-load', initReveal);
     </script>
+
+    {CF_ANALYTICS_TOKEN && (
+      <Fragment
+        set:html={`<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_ANALYTICS_TOKEN}"}'></script>`}
+      />
+    )}
   </body>
 </html>

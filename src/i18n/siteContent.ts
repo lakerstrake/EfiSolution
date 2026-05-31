@@ -83,6 +83,20 @@ type SiteContent = {
     ctaAria: string;
     benefitsLabel: string;
     benefits: string[];
+    form: {
+      name: string;
+      namePh: string;
+      email: string;
+      emailPh: string;
+      message: string;
+      messagePh: string;
+      send: string;
+      sending: string;
+      success: string;
+      error: string;
+      whatsapp: string;
+      whatsappMessage: string;
+    };
     team: TeamMember[];
   };
   footer: {
@@ -282,6 +296,20 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaAria: 'Solicitar auditoría por correo',
       benefitsLabel: 'Compromisos de respuesta',
       benefits: ['Respuesta en menos de 12 horas', 'Auditoría sin costo', 'Trabajo remoto para LATAM'],
+      form: {
+        name: 'Nombre',
+        namePh: 'Tu nombre',
+        email: 'Correo',
+        emailPh: 'tucorreo@empresa.com',
+        message: 'Mensaje',
+        messagePh: 'Cuéntanos sobre tu proyecto...',
+        send: 'Enviar mensaje',
+        sending: 'Enviando...',
+        success: '¡Gracias! Te responderemos en menos de 12 horas.',
+        error: 'Algo salió mal. Escríbenos por correo o WhatsApp.',
+        whatsapp: 'Escríbenos por WhatsApp',
+        whatsappMessage: 'Hola, vengo del sitio de Efi Solution y quiero una auditoría web.',
+      },
       team: [
         {
           name: 'Juan Manuel',
@@ -484,6 +512,20 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaAria: 'Request audit by email',
       benefitsLabel: 'Response commitments',
       benefits: ['Reply in less than 12 hours', 'Free audit', 'Remote work for LATAM'],
+      form: {
+        name: 'Name',
+        namePh: 'Your name',
+        email: 'Email',
+        emailPh: 'you@company.com',
+        message: 'Message',
+        messagePh: 'Tell us about your project...',
+        send: 'Send message',
+        sending: 'Sending...',
+        success: 'Thanks! We will reply in less than 12 hours.',
+        error: 'Something went wrong. Email or WhatsApp us instead.',
+        whatsapp: 'Message us on WhatsApp',
+        whatsappMessage: 'Hi, I come from the Efi Solution site and I want a web audit.',
+      },
       team: [
         {
           name: 'Juan Manuel',
@@ -686,6 +728,20 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaAria: 'Solicitar auditoria por email',
       benefitsLabel: 'Compromissos de resposta',
       benefits: ['Resposta em menos de 12 horas', 'Auditoria sem custo', 'Trabalho remoto para LATAM'],
+      form: {
+        name: 'Nome',
+        namePh: 'Seu nome',
+        email: 'E-mail',
+        emailPh: 'voce@empresa.com',
+        message: 'Mensagem',
+        messagePh: 'Conte sobre seu projeto...',
+        send: 'Enviar mensagem',
+        sending: 'Enviando...',
+        success: 'Obrigado! Respondemos em menos de 12 horas.',
+        error: 'Algo deu errado. Fale por e-mail ou WhatsApp.',
+        whatsapp: 'Fale no WhatsApp',
+        whatsappMessage: 'Olá, venho do site da Efi Solution e quero uma auditoria web.',
+      },
       team: [
         {
           name: 'Juan Manuel',
@@ -889,6 +945,20 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaAria: 'Demander un audit par e-mail',
       benefitsLabel: 'Engagements de reponse',
       benefits: ['Reponse en moins de 12 heures', 'Audit gratuit', 'Travail a distance pour l’Amerique latine'],
+      form: {
+        name: 'Nom',
+        namePh: 'Votre nom',
+        email: 'E-mail',
+        emailPh: 'vous@entreprise.com',
+        message: 'Message',
+        messagePh: 'Parlez-nous de votre projet...',
+        send: 'Envoyer le message',
+        sending: 'Envoi...',
+        success: 'Merci ! Nous repondons en moins de 12 heures.',
+        error: 'Une erreur est survenue. Ecrivez-nous par e-mail ou WhatsApp.',
+        whatsapp: 'Ecrivez-nous sur WhatsApp',
+        whatsappMessage: 'Bonjour, je viens du site Efi Solution et je veux un audit web.',
+      },
       team: [
         {
           name: 'Juan Manuel',
