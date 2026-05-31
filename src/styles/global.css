@@ -176,6 +176,16 @@
   @apply border-zinc-200/80 dark:border-white/15;
 }
 
+/* Active section link (set by the scrollspy in Navbar.astro) */
+#site-header [data-nav-link][aria-current='true'] {
+  color: rgb(24 24 27);
+  background-color: rgb(244 244 245);
+}
+.dark #site-header [data-nav-link][aria-current='true'] {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
 .scroll-progress {
   position: fixed;
   top: 0;

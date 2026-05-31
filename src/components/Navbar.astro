@@ -36,6 +36,7 @@ const langs: Array<{ code: Locale; label: string }> = [
           <li>
             <a
               href={link.href}
+              data-nav-link
               class="rounded-full px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
               {link.label}
@@ -110,6 +111,7 @@ const langs: Array<{ code: Locale; label: string }> = [
             <a
               href={link.href}
               data-mobile-close
+              data-nav-link
               class="block rounded-xl px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/[0.05]"
             >
               {link.label}
@@ -178,6 +180,59 @@ const langs: Array<{ code: Locale; label: string }> = [
     const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 18);
     onScroll(); // apply immediately on each navigation
     window.addEventListener('scroll', onScroll, { passive: true, signal });
+
+    // ── Scrollspy + focus management for in-page section links ───────────────
+    const navLinks = Array.from(header.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+    const hashes = new Set<string>();
+    for (const link of navLinks) {
+      const hash = new URL(link.href).hash;
+      if (hash) hashes.add(hash);
+    }
+    const sections = [...hashes]
+      .map((hash) => document.querySelector<HTMLElement>(hash))
+      .filter((el): el is HTMLElement => el !== null);
+
+    // Make each target section programmatically focusable so keyboard and screen
+    // reader users land *inside* the section (its aria-labelledby heading is
+    // announced) after activating a nav link — not stuck back in the header.
+    sections.forEach((section) => section.setAttribute('tabindex', '-1'));
+
+    const setActiveLink = (hash: string | null) => {
+      for (const link of navLinks) {
+        if (hash !== null && new URL(link.href).hash === hash) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      }
+    };
+
+    if (sections.length) {
+      // A thin band in the middle of the viewport decides the "current" section.
+      const visible = new Set<HTMLElement>();
+      const spy = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) visible.add(entry.target as HTMLElement);
+            else visible.delete(entry.target as HTMLElement);
+          }
+          const current = sections.find((section) => visible.has(section));
+          setActiveLink(current ? `#${current.id}` : null);
+        },
+        { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+      );
+      sections.forEach((section) => spy.observe(section));
+      signal.addEventListener('abort', () => spy.disconnect());
+
+      // After the browser jumps to the anchor (which honors scroll-padding-top),
+      // move focus into the section without triggering a second scroll.
+      navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          const target = document.querySelector<HTMLElement>(new URL(link.href).hash);
+          if (target) window.setTimeout(() => target.focus({ preventScroll: true }), 0);
+        }, { signal });
+      });
+    }
 
     // ── Theme toggle ─────────────────────────────────────────────────────────
     themeToggle?.addEventListener('click', () => {
