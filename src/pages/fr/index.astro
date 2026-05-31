@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import TheProblem from '../../components/TheProblem.astro';
+import Services from '../../components/Services.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+import FooterCTA from '../../components/FooterCTA.astro';
+import { getSiteContent } from '../../i18n/siteContent';
+
+const locale = 'fr' as const;
+const t = getSiteContent(locale);
+---
+
+<Layout locale={locale} title={t.meta.title} description={t.meta.description}>
+  <Hero locale={locale} />
+  <TheProblem locale={locale} />
+  <Services locale={locale} />
+  <CaseStudy locale={locale} />
+  <FooterCTA locale={locale} />
+</Layout>

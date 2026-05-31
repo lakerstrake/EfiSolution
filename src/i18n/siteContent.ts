@@ -1,4 +1,4 @@
-export type Locale = 'es' | 'en' | 'pt';
+export type Locale = 'es' | 'en' | 'pt' | 'fr';
 
 type NavLink = { href: string; label: string };
 type HeroMetric = { value: string; label: string };
@@ -95,7 +95,7 @@ type SiteContent = {
   };
 };
 
-export const supportedLocales: Locale[] = ['es', 'en', 'pt'];
+export const supportedLocales: Locale[] = ['es', 'en', 'pt', 'fr'];
 
 export function localeHref(locale: Locale): string {
   if (locale === 'es') return '/';
@@ -756,6 +756,225 @@ const siteContent: Record<Locale, SiteContent> = {
       timezone: 'COT',
       siteInfo: 'Informacoes do site',
       dateLocale: 'pt-BR',
+    },
+  },
+  fr: {
+    meta: {
+      title: 'Efi Solution - Conception et developpement web haute performance',
+      description: 'Nous creons des plateformes web rapides, visuelles et professionnelles pour ameliorer la conversion, le SEO et l’experience utilisateur.',
+    },
+    nav: {
+      links: [
+        { href: '#servicios', label: 'Services' },
+        { href: '#casos', label: 'Cas' },
+        { href: '#contacto', label: 'Contact' },
+      ],
+      cta: 'Demander un audit',
+      mobileMenu: 'Ouvrir le menu',
+      mainLabel: 'Navigation principale',
+      themeToggle: 'Basculer entre theme clair et sombre',
+    },
+    hero: {
+      badge: 'Conception et developpement web haute performance',
+      titleA: 'Un site plus rapide.',
+      titleB: 'Une entreprise qui convertit mieux.',
+      description:
+        'Chez Efi Solution, nous construisons des plateformes minimalistes, solides et evolutives pour les marques qui veulent croitre sans technologie lente.',
+      ctaPrimary: 'Reserver un audit gratuit',
+      ctaGhost: 'Voir les projets',
+      metrics: [
+        { value: '0.9s', label: 'LCP cible' },
+        { value: '+35%', label: 'Hausse de conversion' },
+        { value: '100/100', label: 'Score Lighthouse' },
+        { value: '48h', label: 'Audit initial' },
+      ],
+    },
+    problem: {
+      badge: 'Diagnostic',
+      titleA: 'La performance n’est pas un detail technique.',
+      titleB: 'C’est un avantage concurrentiel.',
+      description: 'Quand le site repond vite, l’utilisateur fait plus confiance, explore davantage et achete avec moins de friction.',
+      statA: 'Abandon sur mobile quand le chargement depasse 3 secondes.',
+      statB: 'Baisse de conversion estimee pour chaque seconde supplementaire.',
+      sequenceLabel: 'Sequence probleme impact solution',
+      blocks: [
+        {
+          tag: 'Probleme',
+          headline: 'Site lent, ventes en baisse.',
+          body: 'Si le site met trop de temps a charger, l’utilisateur part avant de decouvrir votre offre.',
+        },
+        {
+          tag: 'Impact',
+          headline: 'Plus de rebond et un cout d’acquisition plus eleve.',
+          body: 'La lenteur reduit la conversion, nuit au SEO et rencherit chaque visite payante.',
+        },
+        {
+          tag: 'Solution',
+          headline: 'Une architecture propre des le premier jour.',
+          body: 'Nous concevons et construisons pour une performance reelle : moins de poids, plus de clarte et une meilleure experience.',
+        },
+      ],
+    },
+    services: {
+      badge: 'Services',
+      title: 'Technologie, design et execution dans une meme equipe.',
+      description: 'Nous livrons des systemes prets a produire des resultats, pas seulement de jolis ecrans.',
+      listLabel: 'Liste des services',
+      processLabel: 'Processus de travail',
+      services: [
+        {
+          number: '01 / Web',
+          title: 'Sites a forte conversion',
+          description: 'Des experiences rapides, claires et orientees business avec une architecture moderne en Astro.',
+          bullets: ['SEO technique et performance reelle', 'UI minimaliste et maintenable', 'Implementation prete a evoluer'],
+          iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+        },
+        {
+          number: '02 / Backend',
+          title: 'Systemes et automatisation',
+          description: 'Des API et processus robustes pour les operations, les integrations et une croissance durable.',
+          bullets: ['FastAPI et Spring Boot', 'Modelisation de donnees et observabilite', 'Integrations avec les outils cles'],
+          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        },
+        {
+          number: '03 / Produit',
+          title: 'UX et strategie digitale',
+          description: 'Des decisions produit guidees par les donnees pour reduire la friction et augmenter la conversion.',
+          bullets: ['Parcours et architecture de contenu', 'Prototypes valides avec les utilisateurs', 'Feuille de route d’amelioration continue'],
+          iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
+        },
+      ],
+      steps: [
+        { k: '01', v: 'Diagnostic', d: '48h', desc: 'Analyse approfondie des metriques et des goulots d’etranglement.' },
+        { k: '02', v: 'Cadrage', d: '1 sem', desc: 'Definition de l’architecture et plan d’action.' },
+        { k: '03', v: 'Construction', d: '3-6 sem', desc: 'Developpement backend et frontend optimise.' },
+        { k: '04', v: 'Lancement', d: 'Jour 1', desc: 'Deploiement, tests de charge et monitoring.' },
+      ],
+    },
+    cases: {
+      badge: 'Etudes de cas',
+      title: 'Des resultats concrets avec produit, design et performance.',
+      description: 'Choisissez un projet pour voir le contexte, la stack et les metriques d’impact.',
+      tabLabel: 'Selecteur de projets',
+      prev: 'Precedent',
+      next: 'Suivant',
+      live: 'Cas actif',
+      resultPrefix: 'Resultat :',
+      visit: 'Voir le site en ligne',
+      items: [
+        {
+          key: 'classify',
+          name: 'Classify',
+          sector: 'Edtech',
+          image: '/classify_mockup.png',
+          url: 'https://classify.efisolution.com',
+          summary: 'Plateforme scolaire reconstruite de zero pour supprimer la friction des inscriptions et ameliorer la performance mobile.',
+          result: 'Chargement mobile reduit de 5.4s a 0.4s et croissance des demandes au premier trimestre.',
+          stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
+          metrics: [
+            { value: 92, suffix: '%', label: 'Temps de chargement reduit' },
+            { value: 4.7, suffix: 'x', decimals: 1, label: 'Plus de demandes' },
+            { value: 100, suffix: '/100', label: 'Lighthouse' },
+            { value: 70, suffix: '%', label: 'Charge operationnelle reduite' },
+          ],
+        },
+        {
+          key: 'navegador',
+          name: 'Navegador Social',
+          sector: 'Impact social',
+          image: '/navegador_social_mockup.png',
+          url: 'https://navegador-social.jmlagos2003.workers.dev/',
+          summary: 'Portail leger pour l’information publique sur des appareils a faible connectivite et faible consommation de donnees.',
+          result: 'Meilleur acces public et navigation stable meme sur des telephones d’entree et de milieu de gamme.',
+          stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
+          metrics: [
+            { value: 0.3, suffix: 's', decimals: 1, label: 'Reponse initiale' },
+            { value: 100, suffix: '/100', label: 'Lighthouse' },
+            { value: 93, suffix: '%', label: 'Moins de rebond' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
+          ],
+        },
+        {
+          key: 'lluvias',
+          name: 'Carte des pluies de Bogota',
+          sector: 'Geodonnees',
+          image: '/mapa_kennedy_mockup.png',
+          url: 'https://lluvias.jmlagos2003.workers.dev/',
+          summary: 'Visualisation interactive des pluies a Bogota avec des donnees en temps reel servies depuis la peripherie du reseau.',
+          result: 'Consultation hydrographique instantanee depuis n’importe quel appareil, sans installation ni backend dedie.',
+          stack: ['Cloudflare Workers', 'JavaScript', 'Web APIs', 'Edge Runtime'],
+          metrics: [
+            { value: 0.4, suffix: 's', decimals: 1, label: 'Reponse initiale' },
+            { value: 100, suffix: '/100', label: 'Lighthouse' },
+            { value: 20, suffix: '+', label: 'Zones couvertes' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
+          ],
+        },
+        {
+          key: 'kennedy',
+          name: 'Carte de Kennedy',
+          sector: 'Geodonnees',
+          image: '/mapa_kennedy_mockup.png',
+          url: 'https://mapa-kennedy.pages.dev/',
+          summary: 'Carte interactive optimisee pour une consultation rapide des points d’interet sans figer le navigateur.',
+          result: 'Experience fluide a 60 fps avec chargement a la demande pour reduire le poids et ameliorer l’utilisabilite.',
+          stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
+          metrics: [
+            { value: 0.5, suffix: 's', decimals: 1, label: 'Latence GPS' },
+            { value: 60, suffix: 'fps', label: 'Fluidite' },
+            { value: 500, suffix: '+', label: 'Points actifs' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
+          ],
+        },
+        {
+          key: 'calculadora',
+          name: 'Calculateur d’indemnites',
+          sector: 'Fintech',
+          image: '/calculadora_liquidacion_mockup.png',
+          url: 'https://calculadora-liquidacion.pages.dev/',
+          summary: 'Outil RH pour des simulations instantanees avec les formules legales colombiennes.',
+          result: 'Calculs en moins de 100ms et reduction importante des erreurs operationnelles.',
+          stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
+          metrics: [
+            { value: 100, suffix: 'ms', label: 'Temps de calcul' },
+            { value: 100, suffix: '/100', label: 'Lighthouse' },
+            { value: 95, suffix: '%', label: 'Economies operationnelles' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
+          ],
+        },
+      ],
+    },
+    contact: {
+      badge: 'Contact',
+      titleA: 'Transformons votre site',
+      titleB: 'en un veritable avantage.',
+      description: 'Nous auditons votre situation actuelle et livrons un plan d’amelioration clair, priorise et actionnable.',
+      cta: 'Demander un audit',
+      ctaAria: 'Demander un audit par e-mail',
+      benefitsLabel: 'Engagements de reponse',
+      benefits: ['Reponse en moins de 12 heures', 'Audit gratuit', 'Travail a distance pour l’Amerique latine'],
+      team: [
+        {
+          name: 'Juan Manuel',
+          role: 'Ingenierie et architecture',
+          bio: 'Construit des systemes web et backend axes sur la performance, la stabilite et l’evolutivite.',
+          initials: 'JM',
+        },
+        {
+          name: 'Sarai',
+          role: 'UX et strategie digitale',
+          bio: 'Concoit des experiences claires pour que chaque parcours aide a mieux convertir.',
+          initials: 'SA',
+        },
+      ],
+    },
+    footer: {
+      madeIn: 'Concu en Colombie.',
+      syncLabel: 'Sync GH -> CF',
+      commitLabel: 'Commit',
+      timezone: 'COT',
+      siteInfo: 'Informations du site',
+      dateLocale: 'fr-FR',
     },
   },
 };
