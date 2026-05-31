@@ -88,6 +88,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
           const mediaProps = entry.url
             ? { href: entry.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${t.visit}: ${entry.name}` }
             : {};
+          const imgBase = entry.image.replace(/\.[a-z0-9]+$/i, '');
           return (
           <article
             id={`slide-${entry.key}`}
@@ -143,16 +144,20 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                   <span class="h-2 w-2 rounded-full bg-emerald-500/60"></span>
                 </div>
                 <div class="relative aspect-[16/10] w-full overflow-hidden">
-                  <img
-                  src={entry.image}
-                  alt={`${imageAltPrefix[locale]} ${entry.name}`}
-                  class="h-full w-full object-cover object-top"
-                  width="800"
-                  height="500"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  decoding={index === 0 ? 'sync' : 'async'}
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
-                />
+                  <picture>
+                    <source srcset={`${imgBase}.avif`} type="image/avif" />
+                    <source srcset={`${imgBase}.webp`} type="image/webp" />
+                    <img
+                      src={entry.image}
+                      alt={`${imageAltPrefix[locale]} ${entry.name}`}
+                      class="h-full w-full object-cover object-top"
+                      width="800"
+                      height="500"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding={index === 0 ? 'sync' : 'async'}
+                      fetchpriority={index === 0 ? 'high' : 'auto'}
+                    />
+                  </picture>
                   {entry.url && (
                     <span
                       aria-hidden="true"
@@ -316,10 +321,10 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
     // Warm the other (lazy, hidden-panel) case images during idle time so that
     // switching tabs is instant instead of waiting for a fetch on first reveal.
     const warmImages = () => {
+      // Flip hidden lazy images to eager so the browser fetches them now (and
+      // picks the right <picture> source: AVIF/WebP), making tab switches instant.
       root.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach((img) => {
-        if (img.complete) return;
-        const pre = new Image();
-        pre.src = img.src;
+        img.loading = 'eager';
       });
     };
     const ric = (window as unknown as {

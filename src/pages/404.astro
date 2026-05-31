@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const locale = 'es' as const;
+---
+
+<Layout
+  locale={locale}
+  title="404 - Pagina no encontrada | Efi Solution"
+  description="La pagina que buscas no existe o fue movida."
+>
+  <section class="section-padding flex min-h-[72vh] items-center">
+    <div class="container-x">
+      <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <span class="eyebrow"><span class="eyebrow-dot"></span>Error 404</span>
+
+        <p class="mt-8 font-display text-[clamp(4rem,18vw,9rem)] font-bold leading-none tracking-tightest gradient-text">
+          404
+        </p>
+
+        <h1 class="mt-4 font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
+          Esta pagina no existe.
+        </h1>
+
+        <p class="mt-4 max-w-lg text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+          El enlace puede estar roto o la pagina fue movida.
+          <span class="block text-zinc-500 dark:text-zinc-500">The page you are looking for could not be found.</span>
+        </p>
+
+        <div class="mt-9">
+          <CTAButton href="/" size="lg">Volver al inicio</CTAButton>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

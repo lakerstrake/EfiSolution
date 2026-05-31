@@ -46,16 +46,27 @@ const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
   : new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
-const fontsUrl =
-  'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap';
-
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Efi Solution',
   url: 'https://efisolution.com',
   logo: 'https://efisolution.com/favicon.svg',
+  image: ogImageAbsolute,
   description,
+  email: 'jmlagos2003@gmail.com',
+  sameAs: [
+    'https://github.com/lakerstrake',
+    'https://www.linkedin.com/in/juanmlagosm/',
+  ],
+  areaServed: ['CO', 'Latin America'],
+  knowsAbout: [
+    'Web performance',
+    'Frontend development',
+    'Backend development',
+    'UX design',
+    'SEO',
+  ],
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'CO',
@@ -120,8 +131,6 @@ const websiteSchema = {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
     ))}
@@ -132,10 +141,9 @@ const websiteSchema = {
         <link rel="prefetch" href={alt.href} as="document" />
       ))}
 
-    <link rel="preload" as="style" href={fontsUrl} />
-    <link rel="stylesheet" href={fontsUrl} media="print" onload="this.media='all'" />
-    {/* Preload the first case-study image so it's ready when the section enters view */}
-    <link rel="preload" as="image" href="/navegador_social.jpg" fetchpriority="high" />
+    {/* Self-hosted fonts: preload the above-the-fold latin subsets (Sora heading, Manrope body) */}
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/sora-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-latin.woff2" crossorigin />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
