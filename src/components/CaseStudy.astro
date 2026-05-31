@@ -255,7 +255,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 
     function startAutoRotate(): void {
       if (timerId) window.clearInterval(timerId);
-      timerId = window.setInterval(() => activateCase(activeIndex + 1), 9000);
+      timerId = window.setInterval(() => activateCase(activeIndex + 1), 12000);
     }
 
     function stopAutoRotate(): void {

@@ -12,13 +12,15 @@ const t = getSiteContent(locale);
 const { version } = pkg;
 const contactEmail = 'jmlagos2003@gmail.com';
 
-const gmailSubjects: Record<Locale, string> = {
+const mailSubjects: Record<Locale, string> = {
   es: 'Solicitud%20de%20Auditoria%20Web%20-%20Efi%20Solution',
   en: 'Web%20Audit%20Request%20-%20Efi%20Solution',
   pt: 'Solicitacao%20de%20Auditoria%20Web%20-%20Efi%20Solution',
   fr: 'Demande%20d%27audit%20web%20-%20Efi%20Solution',
 };
-const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=${gmailSubjects[locale]}`;
+// Standard mailto so the CTA opens the visitor's own mail client (Gmail app,
+// Outlook, Apple Mail...) instead of forcing the Gmail web compose window.
+const mailHref = `mailto:${contactEmail}?subject=${mailSubjects[locale]}`;
 
 function formatBogotaDate(dateLike: string | Date): string {
   return new Intl.DateTimeFormat(t.footer.dateLocale, {
@@ -63,12 +65,10 @@ const syncDate = formatBogotaDate(syncTimestamp);
 
           <div class="mt-9">
             <CTAButton
-              href={gmailHref}
+              href={mailHref}
               variant="primary"
               size="lg"
               ariaLabel={t.contact.ctaAria}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               {t.contact.cta}
             </CTAButton>
@@ -128,9 +128,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
         </svg>
       </a>
       <a
-        href={gmailHref}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={mailHref}
         class="transition-colors hover:text-zinc-900 dark:hover:text-white"
       >{contactEmail}</a>
     </div>

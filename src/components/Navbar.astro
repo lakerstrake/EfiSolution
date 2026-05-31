@@ -245,25 +245,61 @@ const langs: Array<{ code: Locale; label: string }> = [
     }, { signal });
 
     // ── Mobile menu ──────────────────────────────────────────────────────────
-    const closeMenu = () => {
+    const lockScroll = (lock: boolean) => {
+      document.body.style.overflow = lock ? 'hidden' : '';
+    };
+
+    const openMenu = () => {
+      btn?.setAttribute('aria-expanded', 'true');
+      menu?.setAttribute('aria-hidden', 'false');
+      menu?.classList.remove('hidden');
+      lockScroll(true);
+      menu?.querySelector<HTMLElement>('a, button')?.focus();
+    };
+
+    const closeMenu = (returnFocus = false) => {
       btn?.setAttribute('aria-expanded', 'false');
       menu?.setAttribute('aria-hidden', 'true');
       menu?.classList.add('hidden');
+      lockScroll(false);
+      if (returnFocus) btn?.focus();
     };
 
     btn?.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isOpen));
-      menu?.setAttribute('aria-hidden', String(isOpen));
-      menu?.classList.toggle('hidden', isOpen);
+      if (btn.getAttribute('aria-expanded') === 'true') closeMenu(true);
+      else openMenu();
     }, { signal });
 
+    // Keep keyboard focus inside the open menu (it overlays the page on mobile).
+    if (menu) {
+      menu.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+        const focusable = Array.from(
+          menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+        ).filter((el) => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }, { signal });
+    }
+
+    // Closing via a section link: don't steal focus — the scrollspy handler above
+    // moves focus into the target section. Just close and unlock scrolling.
     menu?.querySelectorAll('[data-mobile-close]').forEach((el) => {
-      el.addEventListener('click', () => setTimeout(closeMenu, 100), { signal });
+      el.addEventListener('click', () => setTimeout(() => closeMenu(), 100), { signal });
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+      if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+        closeMenu(true);
+      }
     }, { signal });
   }
 
