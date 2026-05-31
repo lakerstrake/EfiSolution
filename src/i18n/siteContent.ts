@@ -208,22 +208,6 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver sitio en vivo',
       items: [
         {
-          key: 'classify',
-          name: 'Classify',
-          sector: 'Edtech',
-          image: '/classify_mockup.png',
-          url: 'https://classify.efisolution.com',
-          summary: 'Plataforma escolar reconstruida desde cero para eliminar fricción en inscripciones y mejorar rendimiento en móvil.',
-          result: 'Carga móvil reducida de 5.4s a 0.4s y crecimiento de solicitudes en el primer trimestre.',
-          stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
-          metrics: [
-            { value: 92, suffix: '%', label: 'Menos tiempo de carga' },
-            { value: 4.7, suffix: 'x', decimals: 1, label: 'Más solicitudes' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 70, suffix: '%', label: 'Menos carga operativa' },
-          ],
-        },
-        {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
@@ -425,22 +409,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Result:',
       visit: 'Visit live site',
       items: [
-        {
-          key: 'classify',
-          name: 'Classify',
-          sector: 'Edtech',
-          image: '/classify_mockup.png',
-          url: 'https://classify.efisolution.com',
-          summary: 'School platform rebuilt from scratch to remove signup friction and improve mobile performance.',
-          result: 'Mobile load reduced from 5.4s to 0.4s and request growth during the first quarter.',
-          stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
-          metrics: [
-            { value: 92, suffix: '%', label: 'Load time reduction' },
-            { value: 4.7, suffix: 'x', decimals: 1, label: 'More requests' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 70, suffix: '%', label: 'Lower ops load' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -644,22 +612,6 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver site ao vivo',
       items: [
         {
-          key: 'classify',
-          name: 'Classify',
-          sector: 'Edtech',
-          image: '/classify_mockup.png',
-          url: 'https://classify.efisolution.com',
-          summary: 'Plataforma escolar reconstruída do zero para reduzir fricção em inscrições e melhorar desempenho mobile.',
-          result: 'Carregamento mobile reduzido de 5.4s para 0.4s e crescimento de solicitações no primeiro trimestre.',
-          stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
-          metrics: [
-            { value: 92, suffix: '%', label: 'Menos tempo de carga' },
-            { value: 4.7, suffix: 'x', decimals: 1, label: 'Mais solicitações' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 70, suffix: '%', label: 'Menor carga operacional' },
-          ],
-        },
-        {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
@@ -862,22 +814,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Resultat :',
       visit: 'Voir le site en ligne',
       items: [
-        {
-          key: 'classify',
-          name: 'Classify',
-          sector: 'Edtech',
-          image: '/classify_mockup.png',
-          url: 'https://classify.efisolution.com',
-          summary: 'Plateforme scolaire reconstruite de zero pour supprimer la friction des inscriptions et ameliorer la performance mobile.',
-          result: 'Chargement mobile reduit de 5.4s a 0.4s et croissance des demandes au premier trimestre.',
-          stack: ['Astro', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
-          metrics: [
-            { value: 92, suffix: '%', label: 'Temps de chargement reduit' },
-            { value: 4.7, suffix: 'x', decimals: 1, label: 'Plus de demandes' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 70, suffix: '%', label: 'Charge operationnelle reduite' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
