@@ -83,7 +83,12 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
           <div class="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent-500/10 blur-[110px]"></div>
         </div>
 
-        {cases.map((entry, index) => (
+        {cases.map((entry, index) => {
+          const Media = entry.url ? 'a' : 'div';
+          const mediaProps = entry.url
+            ? { href: entry.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${t.visit}: ${entry.name}` }
+            : {};
+          return (
           <article
             id={`slide-${entry.key}`}
             role="tabpanel"
@@ -128,13 +133,16 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
             </div>
 
             <aside class="space-y-5 lg:col-span-5">
-              <div class="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 shadow-sm transition-transform duration-300 hover:scale-[1.01] dark:border-white/10 dark:bg-zinc-900">
+              <Media
+                {...mediaProps}
+                class="group/media relative block overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 shadow-sm transition-transform duration-300 hover:scale-[1.01] focus-visible:scale-[1.01] dark:border-white/10 dark:bg-zinc-900"
+              >
                 <div class="flex items-center gap-2 border-b border-zinc-200 px-3 py-2 dark:border-white/10">
                   <span class="h-2 w-2 rounded-full bg-red-500/60"></span>
                   <span class="h-2 w-2 rounded-full bg-amber-500/60"></span>
                   <span class="h-2 w-2 rounded-full bg-emerald-500/60"></span>
                 </div>
-                <div class="aspect-[16/10] w-full overflow-hidden">
+                <div class="relative aspect-[16/10] w-full overflow-hidden">
                   <img
                   src={entry.image}
                   alt={`${imageAltPrefix[locale]} ${entry.name}`}
@@ -145,8 +153,24 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                   decoding={index === 0 ? 'sync' : 'async'}
                   fetchpriority={index === 0 ? 'high' : 'auto'}
                 />
+                  {entry.url && (
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/media:opacity-100 group-focus-visible/media:opacity-100"
+                    >
+                      <span class="absolute inset-0 bg-zinc-950/30"></span>
+                      <span class="relative inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-zinc-900 shadow-lg">
+                        {t.visit}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </span>
+                    </span>
+                  )}
                 </div>
-              </div>
+              </Media>
 
               <div class="kpi-grid grid-cols-2">
                 {entry.metrics.map((metric) => (
@@ -162,7 +186,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
               </div>
             </aside>
           </article>
-        ))}
+          );
+        })}
       </div>
 
       <div class="mt-4 flex justify-center gap-2" aria-hidden="true">
@@ -287,6 +312,21 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 
     activateCase(activeIndex);
     startAutoRotate();
+
+    // Warm the other (lazy, hidden-panel) case images during idle time so that
+    // switching tabs is instant instead of waiting for a fetch on first reveal.
+    const warmImages = () => {
+      root.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach((img) => {
+        if (img.complete) return;
+        const pre = new Image();
+        pre.src = img.src;
+      });
+    };
+    const ric = (window as unknown as {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => void;
+    }).requestIdleCallback;
+    if (ric) ric(warmImages, { timeout: 2500 });
+    else window.setTimeout(warmImages, 1800);
   }
 
   document.addEventListener('astro:page-load', initCases);
