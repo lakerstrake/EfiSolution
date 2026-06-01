@@ -62,6 +62,12 @@ type SiteContent = {
     services: ServiceItem[];
     steps: ServiceStep[];
   };
+  approach: {
+    badge: string;
+    title: string;
+    description: string;
+    pillars: { title: string; body: string }[];
+  };
   cases: {
     badge: string;
     title: string;
@@ -208,6 +214,17 @@ const siteContent: Record<Locale, SiteContent> = {
         { k: '02', v: 'Definición', d: '1 sem', desc: 'Estructuración de la arquitectura y plan de acción.' },
         { k: '03', v: 'Construcción', d: '3-6 sem', desc: 'Desarrollo backend y frontend optimizado.' },
         { k: '04', v: 'Lanzamiento', d: 'Día 1', desc: 'Despliegue, pruebas de estrés y monitoreo.' },
+      ],
+    },
+    approach: {
+      badge: 'Enfoque',
+      title: 'Tecnología con propósito, no solo con estética.',
+      description:
+        'Construimos productos propios para resolver problemas reales: acceso a información pública, datos geográficos y herramientas de impacto social. Cada proyecto nace de una necesidad concreta y se mide en producción.',
+      pillars: [
+        { title: 'Impacto social', body: 'Plataformas como Navegador Social y mapas territoriales que acercan información útil a quienes más la necesitan.' },
+        { title: 'Rendimiento real', body: 'Optimizados para funcionar rápido incluso en dispositivos modestos y conexiones limitadas.' },
+        { title: 'Diseño accesible', body: 'Experiencias claras y usables, pensadas desde la investigación de usuario y el trabajo social.' },
       ],
     },
     cases: {
@@ -426,6 +443,17 @@ const siteContent: Record<Locale, SiteContent> = {
         { k: '04', v: 'Launch', d: 'Day 1', desc: 'Deployment, stress testing and monitoring.' },
       ],
     },
+    approach: {
+      badge: 'Approach',
+      title: 'Technology with purpose, not just aesthetics.',
+      description:
+        'We build our own products to solve real problems: access to public information, geographic data and social-impact tools. Each project starts from a concrete need and is measured in production.',
+      pillars: [
+        { title: 'Social impact', body: 'Platforms like Navegador Social and territorial maps that bring useful information to those who need it most.' },
+        { title: 'Real performance', body: 'Optimized to run fast even on modest devices and limited connections.' },
+        { title: 'Accessible design', body: 'Clear, usable experiences grounded in user research and social work.' },
+      ],
+    },
     cases: {
       badge: 'Case studies',
       title: 'Real results with product, design and performance.',
@@ -640,6 +668,17 @@ const siteContent: Record<Locale, SiteContent> = {
         { k: '02', v: 'Planejamento', d: '1 sem', desc: 'Estruturação da arquitetura e plano de ação.' },
         { k: '03', v: 'Construção', d: '3-6 sem', desc: 'Desenvolvimento backend e frontend otimizado.' },
         { k: '04', v: 'Lançamento', d: 'Dia 1', desc: 'Deploy, testes de estresse e monitoramento.' },
+      ],
+    },
+    approach: {
+      badge: 'Abordagem',
+      title: 'Tecnologia com propósito, não apenas estética.',
+      description:
+        'Criamos produtos próprios para resolver problemas reais: acesso à informação pública, dados geográficos e ferramentas de impacto social. Cada projeto nasce de uma necessidade concreta e é medido em produção.',
+      pillars: [
+        { title: 'Impacto social', body: 'Plataformas como o Navegador Social e mapas territoriais que aproximam informação útil de quem mais precisa.' },
+        { title: 'Desempenho real', body: 'Otimizados para funcionar rápido mesmo em dispositivos modestos e conexões limitadas.' },
+        { title: 'Design acessível', body: 'Experiências claras e usáveis, baseadas em pesquisa de usuário e trabalho social.' },
       ],
     },
     cases: {
@@ -857,6 +896,17 @@ const siteContent: Record<Locale, SiteContent> = {
         { k: '02', v: 'Cadrage', d: '1 sem', desc: 'Definition de l’architecture et plan d’action.' },
         { k: '03', v: 'Construction', d: '3-6 sem', desc: 'Developpement backend et frontend optimise.' },
         { k: '04', v: 'Lancement', d: 'Jour 1', desc: 'Deploiement, tests de charge et monitoring.' },
+      ],
+    },
+    approach: {
+      badge: 'Approche',
+      title: 'La technologie avec un but, pas seulement de l’esthétique.',
+      description:
+        'Nous créons nos propres produits pour résoudre de vrais problèmes : accès à l’information publique, données géographiques et outils à impact social. Chaque projet naît d’un besoin concret et se mesure en production.',
+      pillars: [
+        { title: 'Impact social', body: 'Des plateformes comme Navegador Social et des cartes territoriales qui rapprochent l’information utile de ceux qui en ont le plus besoin.' },
+        { title: 'Performance réelle', body: 'Optimisés pour fonctionner vite même sur des appareils modestes et des connexions limitées.' },
+        { title: 'Design accessible', body: 'Des expériences claires et utilisables, fondées sur la recherche utilisateur et le travail social.' },
       ],
     },
     cases: {

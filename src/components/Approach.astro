@@ -1,0 +1,50 @@
+---
+import { getSiteContent, type Locale } from '../i18n/siteContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).approach;
+
+const icons = [
+  // Social impact — people / care
+  'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  // Real performance — lightning
+  'M13 2 3 14h7l-1 8 10-12h-7z',
+  // Accessible design — eye
+  'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+];
+---
+
+<section class="section-padding" aria-labelledby="approach-title">
+  <div class="container-x">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {t.badge}
+      </span>
+      <h2 id="approach-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
+        {t.title}
+      </h2>
+      <p class="mt-4 text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+        {t.description}
+      </p>
+    </div>
+
+    <ul class="reveal mt-12 grid list-none gap-5 md:grid-cols-3">
+      {t.pillars.map((pillar, index) => (
+        <li class="surface flex flex-col gap-4 p-6">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-accent-500/30 bg-accent-500/10 text-accent-500">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={icons[index]} />
+            </svg>
+          </span>
+          <h3 class="font-display text-lg font-semibold text-zinc-900 dark:text-white">{pillar.title}</h3>
+          <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{pillar.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
