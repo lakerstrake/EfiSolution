@@ -6,7 +6,7 @@
 
 // WhatsApp number with country code, digits only (no +, spaces or dashes).
 // Example: '573001234567'. Empty = no WhatsApp button.
-export const WHATSAPP_NUMBER = '';
+export const WHATSAPP_NUMBER = '573007279875';
 
 // Web3Forms access key from https://web3forms.com (free, 1 min).
 // Empty = contact stays as a mailto button instead of the form.
