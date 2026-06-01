@@ -119,6 +119,11 @@ const websiteSchema = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content={localeMap[locale]} />
+    {supportedLocales
+      .filter((item) => item !== locale)
+      .map((item) => (
+        <meta property="og:locale:alternate" content={localeMap[item]} />
+      ))}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -131,6 +136,7 @@ const websiteSchema = {
     <meta name="twitter:image" content={ogImageAbsolute} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     {alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
