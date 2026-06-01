@@ -3,6 +3,7 @@ import CTAButton from './CTAButton.astro';
 import pkg from '../../package.json';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 import { WHATSAPP_NUMBER, WEB3FORMS_ACCESS_KEY } from '../config/site';
+import { privacyRoute, privacyLabel } from '../i18n/legal';
 
 interface Props {
   locale: Locale;
@@ -32,6 +33,8 @@ const inputClass =
   'w-full rounded-xl border border-zinc-200 bg-white/70 px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/30 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:placeholder:text-zinc-500';
 const whatsappClass =
   'inline-flex items-center justify-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-3 text-sm font-semibold text-emerald-700 transition-colors hover:bg-emerald-500/20 dark:text-emerald-400';
+
+const privacyHref = privacyRoute[locale];
 
 function formatBogotaDate(dateLike: string | Date): string {
   return new Intl.DateTimeFormat(t.footer.dateLocale, {
@@ -96,6 +99,11 @@ const syncDate = formatBogotaDate(syncTimestamp);
                 <label for="cf-message" class="mb-1.5 block text-xs font-medium text-zinc-600 dark:text-zinc-400">{f.message}</label>
                 <textarea id="cf-message" name="message" required rows="4" placeholder={f.messagePh} class={inputClass}></textarea>
               </div>
+
+              <label class="flex items-start gap-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <input type="checkbox" name="consent" value="yes" required class="mt-0.5 h-4 w-4 shrink-0 rounded border-zinc-300 accent-accent-500 dark:border-white/20" />
+                <span>{f.consent} <a href={privacyHref} class="font-medium text-accent-600 underline underline-offset-2 hover:text-accent-700 dark:text-accent-400">{privacyLabel[locale]}</a>.</span>
+              </label>
 
               <div class="flex flex-wrap items-center gap-3 pt-1">
                 <button
@@ -206,6 +214,13 @@ const syncDate = formatBogotaDate(syncTimestamp);
       <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
         {t.footer.commitLabel}: {syncSha}
       </span>
+    </p>
+
+    <p class="text-center">
+      <a
+        href={privacyHref}
+        class="text-xs text-zinc-500 underline underline-offset-2 transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
+      >{privacyLabel[locale]}</a>
     </p>
   </div>
 </footer>

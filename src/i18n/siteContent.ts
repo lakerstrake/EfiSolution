@@ -102,6 +102,7 @@ type SiteContent = {
       error: string;
       whatsapp: string;
       whatsappMessage: string;
+      consent: string;
     };
     team: TeamMember[];
   };
@@ -326,6 +327,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Algo salió mal. Escríbenos por correo o WhatsApp.',
         whatsapp: 'Escríbenos por WhatsApp',
         whatsappMessage: 'Hola, vengo del sitio de Efi Solution y quiero una auditoría web.',
+        consent: 'Acepto la',
       },
       team: [
         {
@@ -553,6 +555,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Something went wrong. Email or WhatsApp us instead.',
         whatsapp: 'Message us on WhatsApp',
         whatsappMessage: 'Hi, I come from the Efi Solution site and I want a web audit.',
+        consent: 'I accept the',
       },
       team: [
         {
@@ -780,6 +783,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Algo deu errado. Fale por e-mail ou WhatsApp.',
         whatsapp: 'Fale no WhatsApp',
         whatsappMessage: 'Olá, venho do site da Efi Solution e quero uma auditoria web.',
+        consent: 'Aceito a',
       },
       team: [
         {
@@ -1008,6 +1012,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Une erreur est survenue. Ecrivez-nous par e-mail ou WhatsApp.',
         whatsapp: 'Ecrivez-nous sur WhatsApp',
         whatsappMessage: 'Bonjour, je viens du site Efi Solution et je veux un audit web.',
+        consent: 'J’accepte la',
       },
       team: [
         {
