@@ -11,6 +11,9 @@ type ServiceItem = {
   iconPath: string;
 };
 type ServiceStep = { k: string; v: string; d: string; desc: string };
+// TODO VERIFICAR (Juan): cada métrica con label 'Lighthouse' y valor 100 ("100/100")
+// debe confirmarse corriendo Lighthouse real sobre la URL del proyecto. Si no da 100,
+// pon el número real o elimina la métrica. Aplica a los 4 idiomas (es/en/pt/fr).
 type CaseMetric = { value: number; suffix: string; label: string; decimals?: number };
 type CaseItem = {
   key: string;
@@ -149,6 +152,8 @@ const siteContent: Record<Locale, SiteContent> = {
         'En Efi Solution construimos plataformas minimalistas, sólidas y escalables para marcas que quieren crecer sin perder tiempo en tecnología lenta.',
       ctaPrimary: 'Agendar auditoría gratuita',
       ctaGhost: 'Ver proyectos',
+      // TODO VERIFICAR (Juan): correr Lighthouse real sobre la home para confirmar
+      // '0.9s' (tiempo de carga) y '100/100'. Si no coinciden, ajustar o quitar.
       metrics: [
         { value: '0.9s', label: 'TIEMPO DE CARGA' },
         { value: '100/100', label: 'Score Lighthouse' },
@@ -210,20 +215,14 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Flujos y arquitectura de contenido', 'Prototipos validados con usuarios', 'Roadmap de mejora continua'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
-        // DECIDIR: Juan elige opción A o B para el servicio de backend/automatización.
-        // Opción A (APLICADA): se retira el servicio de backend hasta tener un caso
-        //   real de backend en producción. Vender backend con código muy dependiente
-        //   de IA es el mayor riesgo reputacional si falla con un cliente esperando.
-        // Opción B: reactivarlo reformulado como automatización con n8n (que Juan
-        //   domina), NO como "APIs robustas con Spring Boot/FastAPI". Para activarlo,
-        //   descomenta este objeto y renumera los servicios:
-        // {
-        //   number: '04 / Automatización',
-        //   title: 'Integraciones y automatización',
-        //   description: 'Conectamos tus herramientas y automatizamos procesos repetitivos con n8n, sin mantener infraestructura frágil.',
-        //   bullets: ['Flujos automatizados con n8n', 'Integraciones entre apps y APIs', 'Notificaciones y tareas programadas'],
-        //   iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
-        // },
+        // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
+        {
+          number: '04 / Automatización',
+          title: 'Integraciones y automatización con n8n',
+          description: 'Conectamos tus herramientas y automatizamos procesos repetitivos con n8n, sin mantener infraestructura frágil.',
+          bullets: ['Flujos automatizados con n8n', 'Integraciones entre apps y APIs', 'Notificaciones y tareas programadas'],
+          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        },
       ],
       steps: [
         { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análisis profundo de métricas y cuellos de botella.' },
@@ -245,7 +244,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Proyectos',
-      title: 'Proyectos que demuestran nuestro enfoque.',
+      title: 'Proyectos que demuestran nuestro enfoque técnico.',
       description: 'Rendimiento real, código limpio y experiencias rápidas. Selecciona uno para ver el contexto técnico.',
       tabLabel: 'Selección de proyectos',
       prev: 'Anterior',
@@ -306,7 +305,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculadora de Liquidación',
           sector: 'Fintech',
-          tag: 'Demostración técnica',
+          tag: 'Proyecto propio',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Herramienta laboral para simulaciones instantáneas con fórmulas legales colombianas.',
@@ -452,9 +451,14 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Flows and content architecture', 'User-validated prototypes', 'Continuous improvement roadmap'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
-        // DECIDIR: see the ES services block for the backend Option A / Option B note.
-        // Option A applied (backend service removed). To enable Option B, mirror the
-        // n8n automation service here in English.
+        // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
+        {
+          number: '04 / Automation',
+          title: 'Integrations and automation with n8n',
+          description: 'We connect your tools and automate repetitive processes with n8n, without maintaining fragile infrastructure.',
+          bullets: ['Automated workflows with n8n', 'Integrations across apps and APIs', 'Notifications and scheduled tasks'],
+          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        },
       ],
       steps: [
         { k: '01', v: 'Diagnosis', d: '48h', desc: 'Deep analysis of metrics and bottlenecks.' },
@@ -476,7 +480,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Selected Work',
-      title: 'Projects that show how we work.',
+      title: 'Projects that show our technical approach.',
       description: 'Real performance, clean code and fast experiences. Pick one to see the technical context.',
       tabLabel: 'Project selector',
       prev: 'Previous',
@@ -537,7 +541,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Settlement Calculator',
           sector: 'Fintech',
-          tag: 'Technical demo',
+          tag: 'Own project',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Labor tool for instant simulations with Colombian legal formulas.',
@@ -683,9 +687,14 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Fluxos e arquitetura de conteúdo', 'Protótipos validados com usuários', 'Roadmap de melhoria contínua'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
-        // DECIDIR: ver o bloco de serviços ES para a nota Opção A / Opção B do backend.
-        // Opção A aplicada (serviço de backend removido). Para Opção B, espelhe aqui
-        // o serviço de automação com n8n em português.
+        // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
+        {
+          number: '04 / Automação',
+          title: 'Integrações e automação com n8n',
+          description: 'Conectamos suas ferramentas e automatizamos processos repetitivos com n8n, sem manter infraestrutura frágil.',
+          bullets: ['Fluxos automatizados com n8n', 'Integrações entre apps e APIs', 'Notificações e tarefas agendadas'],
+          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        },
       ],
       steps: [
         { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análise profunda de métricas e gargalos.' },
@@ -707,7 +716,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Projetos',
-      title: 'Projetos que mostram nossa abordagem.',
+      title: 'Projetos que mostram nossa abordagem técnica.',
       description: 'Desempenho real, código limpo e experiências rápidas. Selecione um para ver o contexto técnico.',
       tabLabel: 'Seletor de projetos',
       prev: 'Anterior',
@@ -768,7 +777,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculadora de Rescisão',
           sector: 'Fintech',
-          tag: 'Demonstração técnica',
+          tag: 'Projeto próprio',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Ferramenta trabalhista para simulações instantâneas com fórmulas legais colombianas.',
@@ -915,9 +924,14 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Parcours et architecture de contenu', 'Prototypes valides avec les utilisateurs', 'Feuille de route d’amelioration continue'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
-        // DECIDIR: voir le bloc de services ES pour la note Option A / Option B du backend.
-        // Option A appliquee (service backend retire). Pour l’Option B, dupliquer ici
-        // le service d’automatisation avec n8n en francais.
+        // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
+        {
+          number: '04 / Automatisation',
+          title: 'Integrations et automatisation avec n8n',
+          description: 'Nous connectons vos outils et automatisons les processus repetitifs avec n8n, sans maintenir d’infrastructure fragile.',
+          bullets: ['Flux automatises avec n8n', 'Integrations entre apps et API', 'Notifications et taches planifiees'],
+          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        },
       ],
       steps: [
         { k: '01', v: 'Diagnostic', d: '48h', desc: 'Analyse approfondie des metriques et des goulots d’etranglement.' },
@@ -939,7 +953,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Travaux',
-      title: 'Des projets qui montrent notre approche.',
+      title: 'Des projets qui montrent notre approche technique.',
       description: 'Performance reelle, code propre et experiences rapides. Choisissez-en un pour voir le contexte technique.',
       tabLabel: 'Selecteur de projets',
       prev: 'Precedent',
@@ -1000,7 +1014,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculateur d’indemnites',
           sector: 'Fintech',
-          tag: 'Demonstration technique',
+          tag: 'Projet interne',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Outil RH pour des simulations instantanees avec les formules legales colombiennes.',
