@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# TODO: actualizar el dominio cuando se compre efisolution.com.
+# TODO: actualizar a efisolution.tech cuando se active el dominio final.
 Sitemap: https://efisolution.jmlagos2003.workers.dev/sitemap-index.xml

@@ -48,7 +48,7 @@ const ogImageAbsolute = ogImage.startsWith('http')
   : new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
 // TODO: estas URLs siguen a Astro.site; actualizar el dominio en astro.config.mjs
-// cuando se compre efisolution.com y se propagaran aqui automaticamente.
+// cuando se active efisolution.tech y se propagaran aqui automaticamente.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',

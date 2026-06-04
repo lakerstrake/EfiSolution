@@ -181,16 +181,21 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
               </Media>
 
               <div class="kpi-grid grid-cols-2">
-                {entry.metrics.map((metric) => (
-                  <div class="kpi-item">
-                    <div class="flex flex-col">
+                {entry.metrics.map((metric, mi) => {
+                  // With an odd number of metrics, let the last tile span the full
+                  // width so the grid never leaves a hollow cell showing the divider.
+                  const spanFull = entry.metrics.length % 2 === 1 && mi === entry.metrics.length - 1;
+                  return (
+                  <div class={`kpi-item ${spanFull ? 'col-span-2' : ''}`}>
+                    <div class={`flex flex-col ${spanFull ? 'sm:flex-row sm:items-baseline sm:justify-between sm:gap-3' : ''}`}>
                       <p class="font-display text-fluid-3xl font-semibold tracking-tightest text-zinc-900 dark:text-white">
                         {formatMetric(metric.value, metric.decimals ?? 0)}{metric.suffix}
                       </p>
-                      <p class="mt-2 text-xs uppercase tracking-[0.16em] text-zinc-500">{metric.label}</p>
+                      <p class={`text-xs uppercase tracking-[0.16em] text-zinc-500 ${spanFull ? 'mt-1 sm:mt-0' : 'mt-2'}`}>{metric.label}</p>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </aside>
           </article>
