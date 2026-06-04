@@ -16,6 +16,7 @@ type CaseItem = {
   key: string;
   name: string;
   sector: string;
+  tag: string;
   image: string;
   url: string | null;
   summary: string;
@@ -132,7 +133,7 @@ const siteContent: Record<Locale, SiteContent> = {
     nav: {
       links: [
         { href: '#servicios', label: 'Servicios' },
-        { href: '#casos', label: 'Casos' },
+        { href: '#casos', label: 'Proyectos' },
         { href: '#contacto', label: 'Contacto' },
       ],
       cta: 'Solicitar auditoría',
@@ -150,8 +151,8 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaGhost: 'Ver proyectos',
       metrics: [
         { value: '0.9s', label: 'TIEMPO DE CARGA' },
-        { value: '+35%', label: 'Mejora conversión' },
         { value: '100/100', label: 'Score Lighthouse' },
+        { value: '0', label: 'Cookies de rastreo' },
         { value: '48h', label: 'Auditoría inicial' },
       ],
     },
@@ -160,8 +161,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'El rendimiento no es un detalle técnico.',
       titleB: 'Es una ventaja competitiva.',
       description: 'Cuando la web responde rápido, el usuario confía más, explora más y compra con menos fricción.',
-      statA: 'de los usuarios abandonan si la carga supera los 3 segundos',
-      statB: 'de caída en conversiones por cada segundo de retraso',
+      statA: 'de los usuarios móviles abandonan si la carga supera los 3 segundos (Google/SOASTA)',
+      statB: 'de caída en conversiones por cada segundo de retraso (Akamai)',
       sequenceLabel: 'Secuencia problema impacto solución',
       blocks: [
         {
@@ -196,11 +197,11 @@ const siteContent: Record<Locale, SiteContent> = {
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
-          number: '02 / Backend',
-          title: 'Sistemas y automatización',
-          description: 'APIs y procesos robustos para operaciones internas, integraciones y crecimiento sostenido.',
-          bullets: ['FastAPI y Spring Boot', 'Modelado de datos y observabilidad', 'Integraciones con herramientas clave'],
-          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+          number: '02 / Auditoría',
+          title: 'Auditoría de rendimiento web',
+          description: 'Análisis con Lighthouse y PageSpeed más un informe priorizado de mejoras concretas, entregado en 48h.',
+          bullets: ['Diagnóstico de Core Web Vitals', 'Informe priorizado y accionable', 'Entrega en 48 horas'],
+          iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Producto',
@@ -209,6 +210,20 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Flujos y arquitectura de contenido', 'Prototipos validados con usuarios', 'Roadmap de mejora continua'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
+        // DECIDIR: Juan elige opción A o B para el servicio de backend/automatización.
+        // Opción A (APLICADA): se retira el servicio de backend hasta tener un caso
+        //   real de backend en producción. Vender backend con código muy dependiente
+        //   de IA es el mayor riesgo reputacional si falla con un cliente esperando.
+        // Opción B: reactivarlo reformulado como automatización con n8n (que Juan
+        //   domina), NO como "APIs robustas con Spring Boot/FastAPI". Para activarlo,
+        //   descomenta este objeto y renumera los servicios:
+        // {
+        //   number: '04 / Automatización',
+        //   title: 'Integraciones y automatización',
+        //   description: 'Conectamos tus herramientas y automatizamos procesos repetitivos con n8n, sin mantener infraestructura frágil.',
+        //   bullets: ['Flujos automatizados con n8n', 'Integraciones entre apps y APIs', 'Notificaciones y tareas programadas'],
+        //   iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+        // },
       ],
       steps: [
         { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análisis profundo de métricas y cuellos de botella.' },
@@ -229,9 +244,9 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
     },
     cases: {
-      badge: 'Casos de éxito',
-      title: 'Resultados reales con producto, diseño y performance.',
-      description: 'Selecciona un proyecto para ver contexto, stack y métricas de impacto.',
+      badge: 'Proyectos',
+      title: 'Proyectos que demuestran nuestro enfoque.',
+      description: 'Rendimiento real, código limpio y experiencias rápidas. Selecciona uno para ver el contexto técnico.',
       tabLabel: 'Selección de proyectos',
       prev: 'Anterior',
       next: 'Siguiente',
@@ -243,6 +258,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
+          tag: 'Proyecto propio',
           image: '/navegador_social.jpg',
           url: 'https://navegador-social.jmlagos2003.workers.dev/',
           summary: 'Portal ligero para consulta ciudadana en dispositivos con conectividad limitada y bajo consumo de datos.',
@@ -251,7 +267,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 93, suffix: '%', label: 'Menos rebote' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
@@ -259,6 +274,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'lluvias',
           name: 'Mapa de Lluvias',
           sector: 'Geodatos',
+          tag: 'Proyecto propio',
           image: '/lluvias.jpg',
           url: 'https://lluvias.jmlagos2003.workers.dev/',
           summary: 'Visualización interactiva de lluvias en Bogotá con datos en tiempo real servidos desde el borde de la red.',
@@ -267,7 +283,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 20, suffix: '+', label: 'Zonas cubiertas' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
@@ -275,15 +290,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'kennedy',
           name: 'Mapa de Kennedy',
           sector: 'Geodatos',
+          tag: 'Proyecto propio',
           image: '/mapa_kennedy.jpg',
           url: 'https://mapa-kennedy.pages.dev/',
           summary: 'Mapa interactivo optimizado para consulta rápida de puntos de interés sin congelar el navegador.',
           result: 'Experiencia fluida a 60fps con carga por demanda para reducir peso y mejorar usabilidad.',
           stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
-            { value: 0.5, suffix: 's', decimals: 1, label: 'Latencia GPS' },
+            { value: 0.5, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 500, suffix: '+', label: 'Puntos activos' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
           ],
         },
@@ -291,15 +306,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculadora de Liquidación',
           sector: 'Fintech',
+          tag: 'Demostración técnica',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Herramienta laboral para simulaciones instantáneas con fórmulas legales colombianas.',
-          result: 'Cálculos en menos de 100ms y reducción sustancial de errores operativos.',
+          result: 'Cálculos en menos de 100ms ejecutados por completo en el navegador, sin enviar datos a un servidor.',
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tiempo de cálculo' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 95, suffix: '%', label: 'Ahorro operativo' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
@@ -313,7 +328,7 @@ const siteContent: Record<Locale, SiteContent> = {
       cta: 'Solicitar auditoría',
       ctaAria: 'Solicitar auditoría por correo',
       benefitsLabel: 'Compromisos de respuesta',
-      benefits: ['Respuesta en menos de 12 horas', 'Auditoría sin costo', 'Trabajo remoto para LATAM'],
+      benefits: ['Respuesta en menos de 12 horas', 'Auditoría sin costo', 'Trabajo 100% remoto'],
       form: {
         name: 'Nombre',
         namePh: 'Tu nombre',
@@ -361,7 +376,7 @@ const siteContent: Record<Locale, SiteContent> = {
     nav: {
       links: [
         { href: '#servicios', label: 'Services' },
-        { href: '#casos', label: 'Cases' },
+        { href: '#casos', label: 'Work' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Request audit',
@@ -378,8 +393,8 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaGhost: 'View projects',
       metrics: [
         { value: '0.9s', label: 'Target LCP' },
-        { value: '+35%', label: 'Conversion uplift' },
         { value: '100/100', label: 'Lighthouse score' },
+        { value: '0', label: 'Tracking cookies' },
         { value: '48h', label: 'Initial audit' },
       ],
     },
@@ -388,8 +403,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Performance is not a technical detail.',
       titleB: 'It is a competitive advantage.',
       description: 'When your site responds quickly, users trust more, explore more and buy with less friction.',
-      statA: 'Mobile bounce when loading takes more than 3 seconds.',
-      statB: 'Estimated conversion drop for every extra second.',
+      statA: 'Mobile users bounce when loading takes more than 3 seconds (Google/SOASTA).',
+      statB: 'Estimated conversion drop for every extra second of delay (Akamai).',
       sequenceLabel: 'Problem impact solution sequence',
       blocks: [
         {
@@ -424,11 +439,11 @@ const siteContent: Record<Locale, SiteContent> = {
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
-          number: '02 / Backend',
-          title: 'Systems and automation',
-          description: 'Robust APIs and processes for operations, integrations and sustainable growth.',
-          bullets: ['FastAPI and Spring Boot', 'Data modeling and observability', 'Integrations with key tools'],
-          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+          number: '02 / Audit',
+          title: 'Web performance audit',
+          description: 'Lighthouse and PageSpeed analysis plus a prioritized report of concrete improvements, delivered in 48h.',
+          bullets: ['Core Web Vitals diagnosis', 'Prioritized, actionable report', 'Delivered within 48 hours'],
+          iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Product',
@@ -437,6 +452,9 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Flows and content architecture', 'User-validated prototypes', 'Continuous improvement roadmap'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
+        // DECIDIR: see the ES services block for the backend Option A / Option B note.
+        // Option A applied (backend service removed). To enable Option B, mirror the
+        // n8n automation service here in English.
       ],
       steps: [
         { k: '01', v: 'Diagnosis', d: '48h', desc: 'Deep analysis of metrics and bottlenecks.' },
@@ -457,9 +475,9 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
     },
     cases: {
-      badge: 'Case studies',
-      title: 'Real results with product, design and performance.',
-      description: 'Choose a project to see context, stack and impact metrics.',
+      badge: 'Selected Work',
+      title: 'Projects that show how we work.',
+      description: 'Real performance, clean code and fast experiences. Pick one to see the technical context.',
       tabLabel: 'Project selector',
       prev: 'Previous',
       next: 'Next',
@@ -471,6 +489,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Social impact',
+          tag: 'Own project',
           image: '/navegador_social.jpg',
           url: 'https://navegador-social.jmlagos2003.workers.dev/',
           summary: 'Lightweight portal for public information on low-connectivity and low-data devices.',
@@ -479,7 +498,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 93, suffix: '%', label: 'Lower bounce' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
@@ -487,6 +505,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'lluvias',
           name: 'Bogota Rain Map',
           sector: 'Geodata',
+          tag: 'Own project',
           image: '/lluvias.jpg',
           url: 'https://lluvias.jmlagos2003.workers.dev/',
           summary: 'Interactive rain visualization for Bogota with real-time data served from the network edge.',
@@ -495,7 +514,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 20, suffix: '+', label: 'Zones covered' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
@@ -503,15 +521,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'kennedy',
           name: 'Kennedy Map',
           sector: 'Geodata',
+          tag: 'Own project',
           image: '/mapa_kennedy.jpg',
           url: 'https://mapa-kennedy.pages.dev/',
           summary: 'Interactive map optimized for fast point-of-interest browsing without freezing browsers.',
           result: 'Smooth 60fps experience with on-demand loading to reduce weight and improve usability.',
           stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
-            { value: 0.5, suffix: 's', decimals: 1, label: 'GPS latency' },
+            { value: 0.5, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 60, suffix: 'fps', label: 'Smoothness' },
-            { value: 500, suffix: '+', label: 'Active points' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Edge uptime' },
           ],
         },
@@ -519,15 +537,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Settlement Calculator',
           sector: 'Fintech',
+          tag: 'Technical demo',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Labor tool for instant simulations with Colombian legal formulas.',
-          result: 'Calculations under 100ms and major reduction of operational errors.',
+          result: 'Calculations under 100ms, run entirely in the browser with no data sent to a server.',
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Calculation time' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 95, suffix: '%', label: 'Operational savings' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
@@ -541,7 +559,7 @@ const siteContent: Record<Locale, SiteContent> = {
       cta: 'Request audit',
       ctaAria: 'Request audit by email',
       benefitsLabel: 'Response commitments',
-      benefits: ['Reply in less than 12 hours', 'Free audit', 'Remote work for LATAM'],
+      benefits: ['Reply in less than 12 hours', 'Free audit', 'Fully remote'],
       form: {
         name: 'Name',
         namePh: 'Your name',
@@ -589,7 +607,7 @@ const siteContent: Record<Locale, SiteContent> = {
     nav: {
       links: [
         { href: '#servicios', label: 'Serviços' },
-        { href: '#casos', label: 'Casos' },
+        { href: '#casos', label: 'Projetos' },
         { href: '#contacto', label: 'Contato' },
       ],
       cta: 'Solicitar auditoria',
@@ -606,8 +624,8 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaGhost: 'Ver projetos',
       metrics: [
         { value: '0.9s', label: 'LCP alvo' },
-        { value: '+35%', label: 'Melhora de conversão' },
         { value: '100/100', label: 'Score Lighthouse' },
+        { value: '0', label: 'Cookies de rastreio' },
         { value: '48h', label: 'Auditoria inicial' },
       ],
     },
@@ -616,8 +634,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Desempenho não é detalhe técnico.',
       titleB: 'É vantagem competitiva.',
       description: 'Quando o site responde rápido, o usuário confia mais, explora mais e compra com menos fricção.',
-      statA: 'Abandono no mobile quando o carregamento passa de 3 segundos.',
-      statB: 'Queda estimada de conversão por segundo extra.',
+      statA: 'Abandono no mobile quando o carregamento passa de 3 segundos (Google/SOASTA).',
+      statB: 'Queda estimada de conversão por segundo extra de atraso (Akamai).',
       sequenceLabel: 'Sequência problema impacto solução',
       blocks: [
         {
@@ -652,11 +670,11 @@ const siteContent: Record<Locale, SiteContent> = {
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
-          number: '02 / Backend',
-          title: 'Sistemas e automação',
-          description: 'APIs e processos robustos para operação, integrações e crescimento sustentável.',
-          bullets: ['FastAPI e Spring Boot', 'Modelagem de dados e observabilidade', 'Integrações com ferramentas chave'],
-          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+          number: '02 / Auditoria',
+          title: 'Auditoria de desempenho web',
+          description: 'Análise com Lighthouse e PageSpeed mais um relatório priorizado de melhorias concretas, entregue em 48h.',
+          bullets: ['Diagnóstico de Core Web Vitals', 'Relatório priorizado e acionável', 'Entrega em 48 horas'],
+          iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produto',
@@ -665,6 +683,9 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Fluxos e arquitetura de conteúdo', 'Protótipos validados com usuários', 'Roadmap de melhoria contínua'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
+        // DECIDIR: ver o bloco de serviços ES para a nota Opção A / Opção B do backend.
+        // Opção A aplicada (serviço de backend removido). Para Opção B, espelhe aqui
+        // o serviço de automação com n8n em português.
       ],
       steps: [
         { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análise profunda de métricas e gargalos.' },
@@ -685,9 +706,9 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
     },
     cases: {
-      badge: 'Casos de sucesso',
-      title: 'Resultados reais com produto, design e desempenho.',
-      description: 'Selecione um projeto para ver contexto, stack e métricas de impacto.',
+      badge: 'Projetos',
+      title: 'Projetos que mostram nossa abordagem.',
+      description: 'Desempenho real, código limpo e experiências rápidas. Selecione um para ver o contexto técnico.',
       tabLabel: 'Seletor de projetos',
       prev: 'Anterior',
       next: 'Próximo',
@@ -699,6 +720,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
+          tag: 'Projeto próprio',
           image: '/navegador_social.jpg',
           url: 'https://navegador-social.jmlagos2003.workers.dev/',
           summary: 'Portal leve para informação pública em dispositivos com conectividade limitada e baixo consumo de dados.',
@@ -707,7 +729,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 93, suffix: '%', label: 'Menos rejeição' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
@@ -715,6 +736,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'lluvias',
           name: 'Mapa de Chuvas de Bogotá',
           sector: 'Geodados',
+          tag: 'Projeto próprio',
           image: '/lluvias.jpg',
           url: 'https://lluvias.jmlagos2003.workers.dev/',
           summary: 'Visualização interativa de chuvas em Bogotá com dados em tempo real servidos na borda da rede.',
@@ -723,7 +745,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 20, suffix: '+', label: 'Zonas cobertas' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
@@ -731,15 +752,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'kennedy',
           name: 'Mapa de Kennedy',
           sector: 'Geodados',
+          tag: 'Projeto próprio',
           image: '/mapa_kennedy.jpg',
           url: 'https://mapa-kennedy.pages.dev/',
           summary: 'Mapa interativo otimizado para consulta rápida de pontos de interesse sem travar o navegador.',
           result: 'Experiência fluida a 60fps com carga sob demanda para reduzir peso e melhorar usabilidade.',
           stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
-            { value: 0.5, suffix: 's', decimals: 1, label: 'Latência GPS' },
+            { value: 0.5, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 500, suffix: '+', label: 'Pontos ativos' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
           ],
         },
@@ -747,15 +768,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculadora de Rescisão',
           sector: 'Fintech',
+          tag: 'Demonstração técnica',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Ferramenta trabalhista para simulações instantâneas com fórmulas legais colombianas.',
-          result: 'Cálculos em menos de 100ms e redução importante de erros operacionais.',
+          result: 'Cálculos em menos de 100ms, executados inteiramente no navegador, sem enviar dados a um servidor.',
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tempo de cálculo' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 95, suffix: '%', label: 'Economia operacional' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
@@ -769,7 +790,7 @@ const siteContent: Record<Locale, SiteContent> = {
       cta: 'Solicitar auditoria',
       ctaAria: 'Solicitar auditoria por email',
       benefitsLabel: 'Compromissos de resposta',
-      benefits: ['Resposta em menos de 12 horas', 'Auditoria sem custo', 'Trabalho remoto para LATAM'],
+      benefits: ['Resposta em menos de 12 horas', 'Auditoria sem custo', 'Trabalho 100% remoto'],
       form: {
         name: 'Nome',
         namePh: 'Seu nome',
@@ -817,7 +838,7 @@ const siteContent: Record<Locale, SiteContent> = {
     nav: {
       links: [
         { href: '#servicios', label: 'Services' },
-        { href: '#casos', label: 'Cas' },
+        { href: '#casos', label: 'Projets' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Demander un audit',
@@ -835,8 +856,8 @@ const siteContent: Record<Locale, SiteContent> = {
       ctaGhost: 'Voir les projets',
       metrics: [
         { value: '0.9s', label: 'LCP cible' },
-        { value: '+35%', label: 'Hausse de conversion' },
         { value: '100/100', label: 'Score Lighthouse' },
+        { value: '0', label: 'Cookies de suivi' },
         { value: '48h', label: 'Audit initial' },
       ],
     },
@@ -845,8 +866,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'La performance n’est pas un detail technique.',
       titleB: 'C’est un avantage concurrentiel.',
       description: 'Quand le site repond vite, l’utilisateur fait plus confiance, explore davantage et achete avec moins de friction.',
-      statA: 'Abandon sur mobile quand le chargement depasse 3 secondes.',
-      statB: 'Baisse de conversion estimee pour chaque seconde supplementaire.',
+      statA: 'Abandon sur mobile quand le chargement depasse 3 secondes (Google/SOASTA).',
+      statB: 'Baisse de conversion estimee pour chaque seconde supplementaire (Akamai).',
       sequenceLabel: 'Sequence probleme impact solution',
       blocks: [
         {
@@ -881,11 +902,11 @@ const siteContent: Record<Locale, SiteContent> = {
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
-          number: '02 / Backend',
-          title: 'Systemes et automatisation',
-          description: 'Des API et processus robustes pour les operations, les integrations et une croissance durable.',
-          bullets: ['FastAPI et Spring Boot', 'Modelisation de donnees et observabilite', 'Integrations avec les outils cles'],
-          iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
+          number: '02 / Audit',
+          title: 'Audit de performance web',
+          description: 'Analyse Lighthouse et PageSpeed avec un rapport priorise d’ameliorations concretes, livre en 48h.',
+          bullets: ['Diagnostic des Core Web Vitals', 'Rapport priorise et actionnable', 'Livraison sous 48 heures'],
+          iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produit',
@@ -894,6 +915,9 @@ const siteContent: Record<Locale, SiteContent> = {
           bullets: ['Parcours et architecture de contenu', 'Prototypes valides avec les utilisateurs', 'Feuille de route d’amelioration continue'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
+        // DECIDIR: voir le bloc de services ES pour la note Option A / Option B du backend.
+        // Option A appliquee (service backend retire). Pour l’Option B, dupliquer ici
+        // le service d’automatisation avec n8n en francais.
       ],
       steps: [
         { k: '01', v: 'Diagnostic', d: '48h', desc: 'Analyse approfondie des metriques et des goulots d’etranglement.' },
@@ -914,9 +938,9 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
     },
     cases: {
-      badge: 'Etudes de cas',
-      title: 'Des resultats concrets avec produit, design et performance.',
-      description: 'Choisissez un projet pour voir le contexte, la stack et les metriques d’impact.',
+      badge: 'Travaux',
+      title: 'Des projets qui montrent notre approche.',
+      description: 'Performance reelle, code propre et experiences rapides. Choisissez-en un pour voir le contexte technique.',
       tabLabel: 'Selecteur de projets',
       prev: 'Precedent',
       next: 'Suivant',
@@ -928,6 +952,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impact social',
+          tag: 'Projet interne',
           image: '/navegador_social.jpg',
           url: 'https://navegador-social.jmlagos2003.workers.dev/',
           summary: 'Portail leger pour l’information publique sur des appareils a faible connectivite et faible consommation de donnees.',
@@ -936,7 +961,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 93, suffix: '%', label: 'Moins de rebond' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
@@ -944,6 +968,7 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'lluvias',
           name: 'Carte des pluies de Bogota',
           sector: 'Geodonnees',
+          tag: 'Projet interne',
           image: '/lluvias.jpg',
           url: 'https://lluvias.jmlagos2003.workers.dev/',
           summary: 'Visualisation interactive des pluies a Bogota avec des donnees en temps reel servies depuis la peripherie du reseau.',
@@ -952,7 +977,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 20, suffix: '+', label: 'Zones couvertes' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
@@ -960,15 +984,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'kennedy',
           name: 'Carte de Kennedy',
           sector: 'Geodonnees',
+          tag: 'Projet interne',
           image: '/mapa_kennedy.jpg',
           url: 'https://mapa-kennedy.pages.dev/',
           summary: 'Carte interactive optimisee pour une consultation rapide des points d’interet sans figer le navigateur.',
           result: 'Experience fluide a 60 fps avec chargement a la demande pour reduire le poids et ameliorer l’utilisabilite.',
           stack: ['Leaflet.js', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
-            { value: 0.5, suffix: 's', decimals: 1, label: 'Latence GPS' },
+            { value: 0.5, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 60, suffix: 'fps', label: 'Fluidite' },
-            { value: 500, suffix: '+', label: 'Points actifs' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
           ],
         },
@@ -976,15 +1000,15 @@ const siteContent: Record<Locale, SiteContent> = {
           key: 'calculadora',
           name: 'Calculateur d’indemnites',
           sector: 'Fintech',
+          tag: 'Demonstration technique',
           image: '/calculadora_liquidacion.jpg',
           url: 'https://calculadora-liquidacion.pages.dev/',
           summary: 'Outil RH pour des simulations instantanees avec les formules legales colombiennes.',
-          result: 'Calculs en moins de 100ms et reduction importante des erreurs operationnelles.',
+          result: 'Calculs en moins de 100ms, executes entierement dans le navigateur, sans envoi de donnees a un serveur.',
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Temps de calcul' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 95, suffix: '%', label: 'Economies operationnelles' },
             { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
@@ -998,7 +1022,7 @@ const siteContent: Record<Locale, SiteContent> = {
       cta: 'Demander un audit',
       ctaAria: 'Demander un audit par e-mail',
       benefitsLabel: 'Engagements de reponse',
-      benefits: ['Reponse en moins de 12 heures', 'Audit gratuit', 'Travail a distance pour l’Amerique latine'],
+      benefits: ['Reponse en moins de 12 heures', 'Audit gratuit', '100% a distance'],
       form: {
         name: 'Nom',
         namePh: 'Votre nom',

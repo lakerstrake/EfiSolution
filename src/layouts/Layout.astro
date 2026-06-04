@@ -47,12 +47,14 @@ const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
   : new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
+// TODO: estas URLs siguen a Astro.site; actualizar el dominio en astro.config.mjs
+// cuando se compre efisolution.com y se propagaran aqui automaticamente.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Efi Solution',
-  url: 'https://efisolution.com',
-  logo: 'https://efisolution.com/favicon.svg',
+  url: origin,
+  logo: new URL('/favicon.svg', origin).href,
   image: ogImageAbsolute,
   description,
   email: 'jmlagos2003@gmail.com',
@@ -78,7 +80,7 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: siteName,
-  url: 'https://efisolution.com',
+  url: origin,
 };
 ---
 

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://efisolution.com/sitemap-index.xml
+# TODO: actualizar el dominio cuando se compre efisolution.com.
+Sitemap: https://efisolution.jmlagos2003.workers.dev/sitemap-index.xml

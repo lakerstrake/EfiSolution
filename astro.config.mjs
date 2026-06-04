@@ -4,7 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  site: 'https://efisolution.com',
+  // TODO: actualizar a https://efisolution.com cuando se compre el dominio final.
+  // Por ahora apunta a la URL real en produccion para no enviar a Google un
+  // canonical/og:url/hreflang hacia un dominio que aun no se controla.
+  site: 'https://efisolution.jmlagos2003.workers.dev',
 
   integrations: [
     tailwind({ applyBaseStyles: false }),
