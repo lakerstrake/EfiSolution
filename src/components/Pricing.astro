@@ -1,0 +1,89 @@
+---
+import { getSiteContent, type Locale } from '../i18n/siteContent';
+import { PRICING, planOrder, type PlanKey } from '../config/pricing';
+import { whatsappHref } from '../lib/whatsapp';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).pricing;
+---
+
+<section id="planes" class="section-padding" aria-labelledby="pricing-title">
+  <div class="container-x">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {t.badge}
+      </span>
+      <h2 id="pricing-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
+        {t.title}
+      </h2>
+      <p class="mt-4 text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+        {t.description}
+      </p>
+    </div>
+
+    <div class="reveal mt-12 grid items-start gap-6 lg:grid-cols-3">
+      {planOrder.map((key: PlanKey) => {
+        const plan = t.plans[key];
+        const amount = PRICING.plans[key];
+        const recommended = PRICING.recommended === key;
+        const waHref = whatsappHref(plan.waMessage);
+        return (
+          <article
+            class={`relative flex h-full flex-col rounded-3xl border p-6 sm:p-7 ${
+              recommended
+                ? 'border-accent-500/60 bg-white shadow-[0_24px_60px_-24px_rgba(11,84,253,0.45)] dark:bg-zinc-900 lg:-mt-3 lg:pb-9'
+                : 'border-zinc-200/80 bg-white/70 dark:border-white/10 dark:bg-zinc-900/45'
+            }`}
+          >
+            {recommended && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
+                {t.recommendedLabel}
+              </span>
+            )}
+
+            <h3 class="font-display text-xl font-semibold text-zinc-900 dark:text-white">{plan.name}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{plan.tagline}</p>
+
+            <div class="mt-5 flex items-baseline gap-1">
+              <span class="text-sm font-medium text-zinc-500">{PRICING.currency}</span>
+              <span class="font-display text-fluid-3xl font-bold tracking-tightest text-zinc-900 dark:text-white">{amount.price}</span>
+              <span class="text-sm font-medium text-zinc-500">{t.perMonth}</span>
+            </div>
+            {amount.setup && (
+              <p class="mt-1 text-xs text-zinc-500">+ {PRICING.currency} {amount.setup} · {t.setupLabel}</p>
+            )}
+
+            <p class="mt-4 text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">{plan.audience}</p>
+
+            <ul class="mt-4 space-y-2.5 border-t border-zinc-200/80 pt-5 dark:border-white/10">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2.5 text-sm text-zinc-700 dark:text-zinc-300">
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none text-accent-500"><polyline points="20 6 9 17 4 12" /></svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={waHref ?? '#contacto'}
+              target={waHref ? '_blank' : undefined}
+              rel={waHref ? 'noopener noreferrer' : undefined}
+              class={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
+                recommended
+                  ? 'bg-accent-500 text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200'
+                  : 'border border-zinc-200 bg-white/70 text-zinc-800 hover:border-zinc-300 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-100'
+              }`}
+            >
+              {plan.cta}
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

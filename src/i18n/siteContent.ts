@@ -29,6 +29,7 @@ type CaseItem = {
 };
 type TeamMember = { name: string; role: string; bio: string; initials: string };
 type AIBenefit = { title: string; body: string };
+type PlanContent = { name: string; tagline: string; audience: string; features: string[]; cta: string; waMessage: string };
 
 type SiteContent = {
   meta: { title: string; description: string };
@@ -115,6 +116,15 @@ type SiteContent = {
     resultPrefix: string;
     visit: string;
     items: CaseItem[];
+  };
+  pricing: {
+    badge: string;
+    title: string;
+    description: string;
+    perMonth: string;
+    setupLabel: string;
+    recommendedLabel: string;
+    plans: { esencial: PlanContent; profesional: PlanContent; escala: PlanContent };
   };
   contact: {
     badge: string;
@@ -395,6 +405,57 @@ const siteContent: Record<Locale, SiteContent> = {
           ],
         },
       ],
+    },
+    pricing: {
+      badge: 'Planes',
+      title: 'Elige cómo quieres crecer.',
+      description: 'Trabajamos con un acompañamiento mensual: tu web siempre rápida, al día y mejorando. El precio es claro y lo ajustamos a tu negocio.',
+      perMonth: '/mes',
+      setupLabel: 'Puesta en marcha (pago único)',
+      recommendedLabel: 'Recomendado',
+      plans: {
+        esencial: {
+          name: 'Esencial',
+          tagline: 'Tu negocio online, rápido y bien hecho.',
+          audience: 'Para negocios que necesitan presencia profesional ya.',
+          features: [
+            'Web de una página, rápida y optimizada',
+            'Botón de WhatsApp para recibir clientes',
+            'SEO básico para que te encuentren en Google',
+            'Hospedaje y mantenimiento incluidos',
+          ],
+          cta: 'Empezar con Esencial',
+          waMessage: 'Hola, me interesa el plan Esencial para mi negocio.',
+        },
+        profesional: {
+          name: 'Profesional',
+          tagline: 'Una web que gestionas tú y que crece contigo.',
+          audience: 'Para negocios que quieren vender más y manejar su web solos.',
+          features: [
+            'Web multipágina o catálogo con búsqueda',
+            'Panel de administración self-service',
+            'SEO local (apareces en tu ciudad)',
+            'Una automatización a tu medida',
+            'Soporte y mejoras continuas',
+          ],
+          cta: 'Quiero el plan Profesional',
+          waMessage: 'Hola, me interesa el plan Profesional (web + panel admin) para mi negocio.',
+        },
+        escala: {
+          name: 'Escala con IA',
+          tagline: 'IA que te ahorra horas, como en Búho Repuestos.',
+          audience: 'Para negocios que quieren automatizar y escalar sin contratar.',
+          features: [
+            'Todo lo del plan Profesional',
+            'IA a tu medida (ej. foto → inventario)',
+            'Varias automatizaciones de tareas',
+            'Integraciones (WhatsApp, pagos, etc.)',
+            'Soporte prioritario',
+          ],
+          cta: 'Hablar del plan Escala',
+          waMessage: 'Hola, me interesa el plan Escala con IA para automatizar mi negocio.',
+        },
+      },
     },
     contact: {
       badge: 'Contacto',
@@ -677,6 +738,57 @@ const siteContent: Record<Locale, SiteContent> = {
         },
       ],
     },
+    pricing: {
+      badge: 'Plans',
+      title: 'Choose how you want to grow.',
+      description: 'We work with a monthly partnership: your site always fast, up to date and improving. Clear pricing, tailored to your business.',
+      perMonth: '/mo',
+      setupLabel: 'Setup (one-time)',
+      recommendedLabel: 'Recommended',
+      plans: {
+        esencial: {
+          name: 'Essential',
+          tagline: 'Your business online, fast and well built.',
+          audience: 'For businesses that need a professional presence now.',
+          features: [
+            'One-page website, fast and optimized',
+            'WhatsApp button to receive customers',
+            'Basic SEO so people find you on Google',
+            'Hosting and maintenance included',
+          ],
+          cta: 'Start with Essential',
+          waMessage: 'Hi, I am interested in the Essential plan for my business.',
+        },
+        profesional: {
+          name: 'Professional',
+          tagline: 'A website you manage yourself that grows with you.',
+          audience: 'For businesses that want to sell more and manage their own site.',
+          features: [
+            'Multi-page website or catalog with search',
+            'Self-service admin panel',
+            'Local SEO (show up in your city)',
+            'One custom automation',
+            'Support and continuous improvements',
+          ],
+          cta: 'I want the Professional plan',
+          waMessage: 'Hi, I am interested in the Professional plan (website + admin panel) for my business.',
+        },
+        escala: {
+          name: 'Scale with AI',
+          tagline: 'AI that saves you hours, like at Búho Repuestos.',
+          audience: 'For businesses that want to automate and scale without hiring.',
+          features: [
+            'Everything in the Professional plan',
+            'Custom AI (e.g. photo → inventory)',
+            'Several task automations',
+            'Integrations (WhatsApp, payments, etc.)',
+            'Priority support',
+          ],
+          cta: 'Talk about the Scale plan',
+          waMessage: 'Hi, I am interested in the Scale with AI plan to automate my business.',
+        },
+      },
+    },
     contact: {
       badge: 'Contact',
       titleA: 'Let us turn your website',
@@ -957,6 +1069,57 @@ const siteContent: Record<Locale, SiteContent> = {
           ],
         },
       ],
+    },
+    pricing: {
+      badge: 'Planos',
+      title: 'Escolha como você quer crescer.',
+      description: 'Trabalhamos com um acompanhamento mensal: seu site sempre rápido, atualizado e melhorando. Preço claro, ajustado ao seu negócio.',
+      perMonth: '/mês',
+      setupLabel: 'Implementação (pagamento único)',
+      recommendedLabel: 'Recomendado',
+      plans: {
+        esencial: {
+          name: 'Essencial',
+          tagline: 'Seu negócio online, rápido e bem feito.',
+          audience: 'Para negócios que precisam de presença profissional já.',
+          features: [
+            'Site de uma página, rápido e otimizado',
+            'Botão de WhatsApp para receber clientes',
+            'SEO básico para te acharem no Google',
+            'Hospedagem e manutenção incluídas',
+          ],
+          cta: 'Começar com Essencial',
+          waMessage: 'Olá, tenho interesse no plano Essencial para o meu negócio.',
+        },
+        profesional: {
+          name: 'Profissional',
+          tagline: 'Um site que você mesmo gerencia e que cresce com você.',
+          audience: 'Para negócios que querem vender mais e gerenciar o próprio site.',
+          features: [
+            'Site multipágina ou catálogo com busca',
+            'Painel de administração self-service',
+            'SEO local (apareça na sua cidade)',
+            'Uma automação sob medida',
+            'Suporte e melhorias contínuas',
+          ],
+          cta: 'Quero o plano Profissional',
+          waMessage: 'Olá, tenho interesse no plano Profissional (site + painel admin) para o meu negócio.',
+        },
+        escala: {
+          name: 'Escala com IA',
+          tagline: 'IA que economiza horas, como na Búho Repuestos.',
+          audience: 'Para negócios que querem automatizar e escalar sem contratar.',
+          features: [
+            'Tudo do plano Profissional',
+            'IA sob medida (ex. foto → estoque)',
+            'Várias automações de tarefas',
+            'Integrações (WhatsApp, pagamentos, etc.)',
+            'Suporte prioritário',
+          ],
+          cta: 'Falar do plano Escala',
+          waMessage: 'Olá, tenho interesse no plano Escala com IA para automatizar o meu negócio.',
+        },
+      },
     },
     contact: {
       badge: 'Contato',
@@ -1239,6 +1402,57 @@ const siteContent: Record<Locale, SiteContent> = {
           ],
         },
       ],
+    },
+    pricing: {
+      badge: 'Offres',
+      title: 'Choisissez comment vous voulez grandir.',
+      description: 'Nous travaillons avec un accompagnement mensuel : votre site toujours rapide, a jour et en amelioration. Un prix clair, adapte a votre activite.',
+      perMonth: '/mois',
+      setupLabel: 'Mise en place (paiement unique)',
+      recommendedLabel: 'Recommande',
+      plans: {
+        esencial: {
+          name: 'Essentiel',
+          tagline: 'Votre activite en ligne, rapide et bien faite.',
+          audience: 'Pour les activites qui ont besoin d’une presence pro maintenant.',
+          features: [
+            'Site une page, rapide et optimise',
+            'Bouton WhatsApp pour recevoir des clients',
+            'SEO de base pour qu’on vous trouve sur Google',
+            'Hebergement et maintenance inclus',
+          ],
+          cta: 'Commencer avec Essentiel',
+          waMessage: 'Bonjour, je suis interesse par l’offre Essentiel pour mon entreprise.',
+        },
+        profesional: {
+          name: 'Professionnel',
+          tagline: 'Un site que vous gerez vous-meme et qui grandit avec vous.',
+          audience: 'Pour les activites qui veulent vendre plus et gerer leur site.',
+          features: [
+            'Site multipage ou catalogue avec recherche',
+            'Panneau d’administration en self-service',
+            'SEO local (apparaissez dans votre ville)',
+            'Une automatisation sur mesure',
+            'Support et ameliorations continues',
+          ],
+          cta: 'Je veux l’offre Professionnel',
+          waMessage: 'Bonjour, je suis interesse par l’offre Professionnel (site + panneau admin) pour mon entreprise.',
+        },
+        escala: {
+          name: 'Echelle avec IA',
+          tagline: 'Une IA qui vous fait gagner des heures, comme chez Búho Repuestos.',
+          audience: 'Pour les activites qui veulent automatiser et grandir sans embaucher.',
+          features: [
+            'Tout ce que contient l’offre Professionnel',
+            'IA sur mesure (ex. photo → inventaire)',
+            'Plusieurs automatisations de taches',
+            'Integrations (WhatsApp, paiements, etc.)',
+            'Support prioritaire',
+          ],
+          cta: 'Parler de l’offre Echelle',
+          waMessage: 'Bonjour, je suis interesse par l’offre Echelle avec IA pour automatiser mon entreprise.',
+        },
+      },
     },
     contact: {
       badge: 'Contact',
