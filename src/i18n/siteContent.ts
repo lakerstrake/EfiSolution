@@ -60,6 +60,25 @@ type SiteContent = {
     cta: string;
     waMessage: string;
   };
+  clientCase: {
+    badge: string;
+    realLabel: string;
+    title: string;
+    name: string;
+    sector: string;
+    problemLabel: string;
+    problem: string;
+    builtLabel: string;
+    built: string[];
+    resultsLabel: string;
+    results: string[];
+    testimonialLabel: string;
+    testimonialQuote: string;
+    testimonialAuthor: string;
+    visit: string;
+    cta: string;
+    waMessage: string;
+  };
   problem: {
     badge: string;
     titleA: string;
@@ -189,6 +208,35 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
       cta: 'Quiero esto para mi negocio',
       waMessage: 'Hola, vi lo de la IA para automatizar tareas y quiero saber cómo aplicarlo a mi negocio.',
+    },
+    clientCase: {
+      badge: 'Cliente real',
+      realLabel: 'Proyecto pagado',
+      title: 'Una tienda de repuestos que ahora se gestiona sola.',
+      name: 'Búho Repuestos B&M',
+      sector: 'Repuestos automotrices · Barrios Unidos, Bogotá',
+      problemLabel: 'El problema',
+      problem: 'El dueño cargaba cada repuesto a mano: fotos, datos, precios. Con cientos de referencias, mantener el catálogo al día consumía horas y se prestaba a errores.',
+      builtLabel: 'Qué construimos',
+      built: [
+        'Web rápida con catálogo online y búsqueda',
+        'Panel de administración self-service: el dueño gestiona todo sin depender de nosotros',
+        'IA de inventario: sube una foto y se llenan los datos del producto',
+        'Pedidos directos por WhatsApp',
+      ],
+      resultsLabel: 'Resultados',
+      results: [
+        'Catálogo de 110+ referencias gestionado por el propio dueño',
+        'Alta de productos en segundos en vez de minutos por unidad',
+        'Menos errores de datos al automatizar la carga',
+      ],
+      testimonialLabel: 'En sus palabras',
+      // TODO (Juan): reemplazar por el testimonio real del dueño de Búho.
+      testimonialQuote: 'Antes me tomaba toda la tarde subir productos; ahora con una foto queda listo. La página la manejo yo mismo.',
+      testimonialAuthor: 'Dueño de Búho Repuestos B&M (testimonio de ejemplo — pendiente de confirmar)',
+      visit: 'Ver buhorepuestos.com',
+      cta: 'Quiero algo así para mi negocio',
+      waMessage: 'Hola, vi el caso de Búho Repuestos y quiero una web con panel e IA para mi negocio.',
     },
     problem: {
       badge: 'Diagnóstico',
@@ -442,6 +490,35 @@ const siteContent: Record<Locale, SiteContent> = {
       cta: 'I want this for my business',
       waMessage: 'Hi, I saw the AI automation and I want to know how to apply it to my business.',
     },
+    clientCase: {
+      badge: 'Real client',
+      realLabel: 'Paid project',
+      title: 'An auto-parts store that now runs itself.',
+      name: 'Búho Repuestos B&M',
+      sector: 'Auto parts · Barrios Unidos, Bogotá',
+      problemLabel: 'The problem',
+      problem: 'The owner loaded every part by hand: photos, data, prices. With hundreds of references, keeping the catalog up to date took hours and was error-prone.',
+      builtLabel: 'What we built',
+      built: [
+        'Fast website with an online catalog and search',
+        'Self-service admin panel: the owner manages everything without us',
+        'Inventory AI: upload a photo and the product data fills itself',
+        'Direct orders via WhatsApp',
+      ],
+      resultsLabel: 'Results',
+      results: [
+        'A 110+ reference catalog managed by the owner himself',
+        'Products added in seconds instead of minutes each',
+        'Fewer data errors by automating the loading',
+      ],
+      testimonialLabel: 'In their words',
+      // TODO (Juan): replace with the real testimonial from Búho's owner.
+      testimonialQuote: 'It used to take me all afternoon to upload products; now one photo does it. I run the site myself.',
+      testimonialAuthor: 'Owner of Búho Repuestos B&M (sample testimonial — pending confirmation)',
+      visit: 'Visit buhorepuestos.com',
+      cta: 'I want something like this',
+      waMessage: 'Hi, I saw the Búho Repuestos case and I want a website with an admin panel and AI for my business.',
+    },
     problem: {
       badge: 'Diagnosis',
       titleA: 'Performance is not a technical detail.',
@@ -693,6 +770,35 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
       cta: 'Quero isso para o meu negócio',
       waMessage: 'Olá, vi a IA para automatizar tarefas e quero saber como aplicar no meu negócio.',
+    },
+    clientCase: {
+      badge: 'Cliente real',
+      realLabel: 'Projeto pago',
+      title: 'Uma loja de autopeças que agora se gerencia sozinha.',
+      name: 'Búho Repuestos B&M',
+      sector: 'Autopeças · Barrios Unidos, Bogotá',
+      problemLabel: 'O problema',
+      problem: 'O dono cadastrava cada peça na mão: fotos, dados, preços. Com centenas de referências, manter o catálogo atualizado levava horas e gerava erros.',
+      builtLabel: 'O que construímos',
+      built: [
+        'Site rápido com catálogo online e busca',
+        'Painel de administração self-service: o dono gerencia tudo sem depender de nós',
+        'IA de estoque: envie uma foto e os dados do produto se preenchem',
+        'Pedidos diretos pelo WhatsApp',
+      ],
+      resultsLabel: 'Resultados',
+      results: [
+        'Catálogo de 110+ referências gerenciado pelo próprio dono',
+        'Cadastro de produtos em segundos em vez de minutos por unidade',
+        'Menos erros de dados ao automatizar o cadastro',
+      ],
+      testimonialLabel: 'Nas palavras dele',
+      // TODO (Juan): substituir pelo depoimento real do dono da Búho.
+      testimonialQuote: 'Antes eu levava a tarde toda para subir produtos; agora uma foto resolve. O site eu mesmo administro.',
+      testimonialAuthor: 'Dono da Búho Repuestos B&M (depoimento de exemplo — a confirmar)',
+      visit: 'Ver buhorepuestos.com',
+      cta: 'Quero algo assim para o meu negócio',
+      waMessage: 'Olá, vi o caso da Búho Repuestos e quero um site com painel e IA para o meu negócio.',
     },
     problem: {
       badge: 'Diagnóstico',
@@ -946,6 +1052,35 @@ const siteContent: Record<Locale, SiteContent> = {
       ],
       cta: 'Je veux ca pour mon entreprise',
       waMessage: 'Bonjour, j’ai vu l’IA pour automatiser les taches et je veux savoir comment l’appliquer a mon entreprise.',
+    },
+    clientCase: {
+      badge: 'Client reel',
+      realLabel: 'Projet paye',
+      title: 'Un magasin de pieces auto qui se gere desormais tout seul.',
+      name: 'Búho Repuestos B&M',
+      sector: 'Pieces auto · Barrios Unidos, Bogota',
+      problemLabel: 'Le probleme',
+      problem: 'Le proprietaire saisissait chaque piece a la main : photos, donnees, prix. Avec des centaines de references, garder le catalogue a jour prenait des heures et generait des erreurs.',
+      builtLabel: 'Ce que nous avons construit',
+      built: [
+        'Site rapide avec catalogue en ligne et recherche',
+        'Panneau d’administration en self-service : le proprietaire gere tout sans nous',
+        'IA d’inventaire : televersez une photo et les donnees du produit se remplissent',
+        'Commandes directes via WhatsApp',
+      ],
+      resultsLabel: 'Resultats',
+      results: [
+        'Un catalogue de 110+ references gere par le proprietaire lui-meme',
+        'Produits ajoutes en quelques secondes au lieu de minutes chacun',
+        'Moins d’erreurs de donnees grace a l’automatisation de la saisie',
+      ],
+      testimonialLabel: 'En ses mots',
+      // TODO (Juan): remplacer par le vrai temoignage du proprietaire de Búho.
+      testimonialQuote: 'Avant, je passais l’apres-midi a mettre en ligne les produits ; maintenant une photo suffit. Je gere le site moi-meme.',
+      testimonialAuthor: 'Proprietaire de Búho Repuestos B&M (temoignage d’exemple — a confirmer)',
+      visit: 'Voir buhorepuestos.com',
+      cta: 'Je veux quelque chose comme ca',
+      waMessage: 'Bonjour, j’ai vu le cas Búho Repuestos et je veux un site avec panneau d’administration et IA pour mon entreprise.',
     },
     problem: {
       badge: 'Diagnostic',
