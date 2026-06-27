@@ -307,10 +307,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
         {
-          number: '04 / Automatización',
-          title: 'Integraciones y automatización con n8n',
-          description: 'Conectamos tus herramientas y automatizamos procesos repetitivos con n8n, sin mantener infraestructura frágil.',
-          bullets: ['Flujos automatizados con n8n', 'Integraciones entre apps y APIs', 'Notificaciones y tareas programadas'],
+          number: '04 / IA',
+          title: 'Integraciones y automatización con IA',
+          description: 'Conectamos tus herramientas y dejamos que la IA haga el trabajo repetitivo por ti: cargar datos, responder y organizar, sin que tengas que estar encima.',
+          bullets: ['Tareas repetitivas hechas por IA', 'Tus apps y herramientas conectadas', 'Avisos y tareas automáticas'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
       ],
@@ -641,10 +641,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
         {
-          number: '04 / Automation',
-          title: 'Integrations and automation with n8n',
-          description: 'We connect your tools and automate repetitive processes with n8n, without maintaining fragile infrastructure.',
-          bullets: ['Automated workflows with n8n', 'Integrations across apps and APIs', 'Notifications and scheduled tasks'],
+          number: '04 / AI',
+          title: 'Integrations and automation with AI',
+          description: 'We connect your tools and let AI handle the repetitive work for you —loading data, replying, organizing— so you don’t have to stay on top of it.',
+          bullets: ['Repetitive tasks done by AI', 'Your apps and tools connected', 'Automatic alerts and tasks'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
       ],
@@ -975,10 +975,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
         {
-          number: '04 / Automação',
-          title: 'Integrações e automação com n8n',
-          description: 'Conectamos suas ferramentas e automatizamos processos repetitivos com n8n, sem manter infraestrutura frágil.',
-          bullets: ['Fluxos automatizados com n8n', 'Integrações entre apps e APIs', 'Notificações e tarefas agendadas'],
+          number: '04 / IA',
+          title: 'Integrações e automação com IA',
+          description: 'Conectamos suas ferramentas e deixamos a IA fazer o trabalho repetitivo por você: cadastrar dados, responder e organizar, sem você precisar ficar em cima.',
+          bullets: ['Tarefas repetitivas feitas por IA', 'Seus apps e ferramentas conectados', 'Avisos e tarefas automáticas'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
       ],
@@ -1310,10 +1310,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
         {
-          number: '04 / Automatisation',
-          title: 'Integrations et automatisation avec n8n',
-          description: 'Nous connectons vos outils et automatisons les processus repetitifs avec n8n, sans maintenir d’infrastructure fragile.',
-          bullets: ['Flux automatises avec n8n', 'Integrations entre apps et API', 'Notifications et taches planifiees'],
+          number: '04 / IA',
+          title: 'Integrations et automatisation avec IA',
+          description: 'Nous connectons vos outils et laissons l’IA faire le travail repetitif a votre place : saisir des donnees, repondre, organiser, sans que vous ayez a vous en occuper.',
+          bullets: ['Taches repetitives faites par l’IA', 'Vos apps et outils connectes', 'Alertes et taches automatiques'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
       ],
