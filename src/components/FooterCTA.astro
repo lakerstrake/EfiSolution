@@ -80,8 +80,13 @@ const syncDate = formatBogotaDate(syncTimestamp);
           {WEB3FORMS_ACCESS_KEY ? (
             <form id="contact-form" class="mt-8 space-y-4" novalidate>
               <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-              <input type="hidden" name="subject" value="Nueva solicitud de auditoria - Efi Solution" />
+              <input type="hidden" name="subject" value="Nueva solicitud - Efi Solution" />
               <input type="hidden" name="from_name" value="Efi Solution Web" />
+              {/* Contexto del lead: idioma, sección de origen y URL exacta. Llegan
+                  en el correo para saber de dónde viene cada contacto. */}
+              <input type="hidden" name="lead_origin" value="Formulario de contacto (web)" />
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="page_url" id="cf-page-url" value="" />
               <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
               <div class="grid gap-4 sm:grid-cols-2">
@@ -234,8 +239,21 @@ const syncDate = formatBogotaDate(syncTimestamp);
     const status = form.querySelector<HTMLElement>('[data-form-status]');
     if (!btn || !status) return;
 
+    // Stamp the exact page URL so each lead's email shows where it came from.
+    const urlField = form.querySelector<HTMLInputElement>('#cf-page-url');
+    if (urlField) urlField.value = location.href;
+
+    // To migrate from Web3Forms to your own Cloudflare Worker, change this one
+    // line to your Worker URL (see workers/lead-worker.js).
+    const ENDPOINT = 'https://api.web3forms.com/submit';
+
     const okClass = 'text-sm font-medium text-emerald-600 dark:text-emerald-400';
     const errClass = 'text-sm font-medium text-red-600 dark:text-red-400';
+
+    // WhatsApp fallback: if the POST fails, pre-fill the WhatsApp button with
+    // whatever the visitor already typed so the lead is never lost.
+    const waLink = form.parentElement?.querySelector<HTMLAnchorElement>('a[href*="wa.me"]');
+    const waBase = waLink?.href ?? null;
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -246,7 +264,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
       status.className = 'hidden';
 
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const res = await fetch(ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify(Object.fromEntries(new FormData(form) as any)),
@@ -259,6 +277,12 @@ const syncDate = formatBogotaDate(syncTimestamp);
       } catch {
         status.textContent = status.dataset.error ?? '';
         status.className = errClass;
+        if (waLink && waBase) {
+          const name = (form.querySelector('[name="name"]') as HTMLInputElement | null)?.value ?? '';
+          const msg = (form.querySelector('[name="message"]') as HTMLTextAreaElement | null)?.value ?? '';
+          const text = `Hola, soy ${name}. ${msg}`.trim();
+          waLink.href = `${waBase.split('?')[0]}?text=${encodeURIComponent(text)}`;
+        }
       } finally {
         btn.disabled = false;
         btn.textContent = btn.dataset.sendLabel ?? '';
