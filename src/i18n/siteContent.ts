@@ -279,30 +279,30 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     services: {
       badge: 'Servicios',
-      title: 'Tecnología, diseño y ejecución en un mismo equipo.',
-      description: 'Entregamos sistemas listos para producir resultados, no solo pantallas bonitas.',
+      title: 'Todo lo que tu web necesita, en un solo equipo.',
+      description: 'Diseño, desarrollo y tecnología para que tu negocio venda más por internet.',
       listLabel: 'Lista de servicios',
       processLabel: 'Proceso de trabajo',
       services: [
         {
           number: '01 / Web',
-          title: 'Sitios de alta conversión',
-          description: 'Experiencias rápidas, claras y orientadas a negocio con arquitectura moderna en Astro.',
-          bullets: ['SEO técnico y performance real', 'UI minimalista y mantenible', 'Implementación lista para escalar'],
+          title: 'Páginas web que venden',
+          description: 'Webs rápidas y claras, hechas para que tus clientes encuentren lo que buscan y te escriban.',
+          bullets: ['Apareces en Google', 'Diseño simple y profesional', 'Lista para crecer contigo'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Auditoría',
-          title: 'Auditoría de rendimiento web',
-          description: 'Análisis con Lighthouse y PageSpeed más un informe priorizado de mejoras concretas, entregado en 48h.',
-          bullets: ['Diagnóstico de Core Web Vitals', 'Informe priorizado y accionable', 'Entrega en 48 horas'],
+          title: 'Revisión de tu web actual',
+          description: 'Revisamos tu web, te decimos qué la hace lenta y te damos una lista clara de mejoras en 48 horas.',
+          bullets: ['Medimos velocidad y errores', 'Lista de mejoras priorizada', 'Entrega en 48 horas'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Producto',
-          title: 'UX y estrategia digital',
-          description: 'Decisiones de producto guiadas por datos para reducir fricción y aumentar conversión.',
-          bullets: ['Flujos y arquitectura de contenido', 'Prototipos validados con usuarios', 'Roadmap de mejora continua'],
+          title: 'Que tu web sea fácil de usar',
+          description: 'Ordenamos tu web para que cualquiera la entienda y llegue fácil a comprarte o escribirte.',
+          bullets: ['Caminos claros para el cliente', 'Probado con personas reales', 'Mejoras continuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -403,7 +403,7 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
         {
@@ -628,30 +628,30 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     services: {
       badge: 'Services',
-      title: 'Technology, design and execution in one team.',
-      description: 'We deliver systems ready to drive results, not just nice screens.',
+      title: 'Everything your website needs, in one team.',
+      description: 'Design, development and tech so your business sells more online.',
       listLabel: 'Service list',
       processLabel: 'Work process',
       services: [
         {
           number: '01 / Web',
-          title: 'High-conversion websites',
-          description: 'Fast, clear business-driven experiences built with modern Astro architecture.',
-          bullets: ['Technical SEO and real performance', 'Minimal and maintainable UI', 'Implementation ready to scale'],
+          title: 'Websites that sell',
+          description: 'Fast, clear websites built so your customers find what they need and contact you.',
+          bullets: ['Show up on Google', 'Simple, professional design', 'Ready to grow with you'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Audit',
-          title: 'Web performance audit',
-          description: 'Lighthouse and PageSpeed analysis plus a prioritized report of concrete improvements, delivered in 48h.',
-          bullets: ['Core Web Vitals diagnosis', 'Prioritized, actionable report', 'Delivered within 48 hours'],
+          title: 'A review of your current site',
+          description: 'We check your site, tell you what makes it slow, and give you a clear list of fixes in 48 hours.',
+          bullets: ['We measure speed and errors', 'Prioritized list of fixes', 'Delivered in 48 hours'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Product',
-          title: 'UX and digital strategy',
-          description: 'Data-guided product decisions to reduce friction and increase conversion.',
-          bullets: ['Flows and content architecture', 'User-validated prototypes', 'Continuous improvement roadmap'],
+          title: 'Make your site easy to use',
+          description: 'We organize your site so anyone understands it and easily gets to buying or messaging you.',
+          bullets: ['Clear paths for the customer', 'Tested with real people', 'Continuous improvements'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -752,7 +752,7 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 60, suffix: 'fps', label: 'Smoothness' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Edge uptime' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
         {
@@ -977,30 +977,30 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     services: {
       badge: 'Serviços',
-      title: 'Tecnologia, design e execução no mesmo time.',
-      description: 'Entregamos sistemas prontos para gerar resultado, não apenas telas bonitas.',
+      title: 'Tudo o que seu site precisa, em um só time.',
+      description: 'Design, desenvolvimento e tecnologia para o seu negócio vender mais pela internet.',
       listLabel: 'Lista de serviços',
       processLabel: 'Processo de trabalho',
       services: [
         {
           number: '01 / Web',
-          title: 'Sites de alta conversão',
-          description: 'Experiências rápidas e claras orientadas a negócio com arquitetura moderna em Astro.',
-          bullets: ['SEO técnico e desempenho real', 'UI minimalista e sustentável', 'Implementação pronta para escalar'],
+          title: 'Sites que vendem',
+          description: 'Sites rápidos e claros, feitos para seus clientes acharem o que procuram e te chamarem.',
+          bullets: ['Apareça no Google', 'Design simples e profissional', 'Pronto para crescer com você'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Auditoria',
-          title: 'Auditoria de desempenho web',
-          description: 'Análise com Lighthouse e PageSpeed mais um relatório priorizado de melhorias concretas, entregue em 48h.',
-          bullets: ['Diagnóstico de Core Web Vitals', 'Relatório priorizado e acionável', 'Entrega em 48 horas'],
+          title: 'Revisão do seu site atual',
+          description: 'Revisamos seu site, dizemos o que o deixa lento e entregamos uma lista clara de melhorias em 48 horas.',
+          bullets: ['Medimos velocidade e erros', 'Lista de melhorias priorizada', 'Entrega em 48 horas'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produto',
-          title: 'UX e estratégia digital',
-          description: 'Decisões guiadas por dados para reduzir fricção e aumentar conversão.',
-          bullets: ['Fluxos e arquitetura de conteúdo', 'Protótipos validados com usuários', 'Roadmap de melhoria contínua'],
+          title: 'Deixe seu site fácil de usar',
+          description: 'Organizamos seu site para qualquer um entender e chegar fácil a comprar ou te escrever.',
+          bullets: ['Caminhos claros para o cliente', 'Testado com pessoas reais', 'Melhorias contínuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -1101,7 +1101,7 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
         {
@@ -1327,30 +1327,30 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     services: {
       badge: 'Services',
-      title: 'Technologie, design et execution dans une meme equipe.',
-      description: 'Nous livrons des systemes prets a produire des resultats, pas seulement de jolis ecrans.',
+      title: 'Tout ce dont votre site a besoin, dans une seule equipe.',
+      description: 'Design, developpement et technologie pour que votre activite vende plus en ligne.',
       listLabel: 'Liste des services',
       processLabel: 'Processus de travail',
       services: [
         {
           number: '01 / Web',
-          title: 'Sites a forte conversion',
-          description: 'Des experiences rapides, claires et orientees business avec une architecture moderne en Astro.',
-          bullets: ['SEO technique et performance reelle', 'UI minimaliste et maintenable', 'Implementation prete a evoluer'],
+          title: 'Des sites qui vendent',
+          description: 'Des sites rapides et clairs, faits pour que vos clients trouvent ce qu’ils cherchent et vous contactent.',
+          bullets: ['Apparaissez sur Google', 'Design simple et professionnel', 'Pret a grandir avec vous'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Audit',
-          title: 'Audit de performance web',
-          description: 'Analyse Lighthouse et PageSpeed avec un rapport priorise d’ameliorations concretes, livre en 48h.',
-          bullets: ['Diagnostic des Core Web Vitals', 'Rapport priorise et actionnable', 'Livraison sous 48 heures'],
+          title: 'Un bilan de votre site actuel',
+          description: 'Nous verifions votre site, vous disons ce qui le ralentit et vous donnons une liste claire d’ameliorations en 48 heures.',
+          bullets: ['Nous mesurons vitesse et erreurs', 'Liste d’ameliorations prioritaire', 'Livraison en 48 heures'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produit',
-          title: 'UX et strategie digitale',
-          description: 'Des decisions produit guidees par les donnees pour reduire la friction et augmenter la conversion.',
-          bullets: ['Parcours et architecture de contenu', 'Prototypes valides avec les utilisateurs', 'Feuille de route d’amelioration continue'],
+          title: 'Rendre votre site facile a utiliser',
+          description: 'Nous organisons votre site pour que tout le monde le comprenne et arrive facilement a acheter ou vous ecrire.',
+          bullets: ['Des parcours clairs pour le client', 'Teste avec de vraies personnes', 'Ameliorations continues'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -1451,7 +1451,7 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 60, suffix: 'fps', label: 'Fluidite' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Uptime edge' },
+            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
         {
