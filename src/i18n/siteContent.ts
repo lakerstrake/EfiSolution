@@ -36,6 +36,7 @@ type SiteContent = {
   nav: {
     links: NavLink[];
     cta: string;
+    ctaPlans: string;
     mobileMenu: string;
     mainLabel: string;
     themeToggle: string;
@@ -179,9 +180,11 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#servicios', label: 'Servicios' },
         { href: '#casos', label: 'Proyectos' },
+        { href: '#planes', label: 'Planes' },
         { href: '#contacto', label: 'Contacto' },
       ],
       cta: 'Solicitar auditoría',
+      ctaPlans: 'Ver planes',
       mobileMenu: 'Abrir menú',
       mainLabel: 'Navegación principal',
       themeToggle: 'Alternar tema claro y oscuro',
@@ -192,8 +195,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleB: 'Un negocio que convierte mejor.',
       description:
         'En Efi Solution construimos plataformas minimalistas, sólidas y escalables para marcas que quieren crecer sin perder tiempo en tecnología lenta.',
-      ctaPrimary: 'Agendar auditoría gratuita',
-      ctaGhost: 'Ver proyectos',
+      ctaPrimary: 'Quiero mi web',
+      ctaGhost: 'Agendar auditoría gratuita',
       // TODO VERIFICAR (Juan): correr Lighthouse real sobre la home para confirmar
       // '0.9s' (tiempo de carga) y '100/100'. Si no coinciden, ajustar o quitar.
       metrics: [
@@ -514,9 +517,11 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#servicios', label: 'Services' },
         { href: '#casos', label: 'Work' },
+        { href: '#planes', label: 'Plans' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Request audit',
+      ctaPlans: 'See plans',
       mobileMenu: 'Open menu',
       mainLabel: 'Main navigation',
       themeToggle: 'Toggle light and dark mode',
@@ -526,8 +531,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'A faster website.',
       titleB: 'A business that converts better.',
       description: 'At Efi Solution we build minimal, solid and scalable platforms for brands that want to grow without slow technology.',
-      ctaPrimary: 'Book a free audit',
-      ctaGhost: 'View projects',
+      ctaPrimary: 'I want my website',
+      ctaGhost: 'Book a free audit',
       metrics: [
         { value: '0.9s', label: 'Target LCP' },
         { value: '100/100', label: 'Lighthouse score' },
@@ -846,9 +851,11 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#servicios', label: 'Serviços' },
         { href: '#casos', label: 'Projetos' },
+        { href: '#planes', label: 'Planos' },
         { href: '#contacto', label: 'Contato' },
       ],
       cta: 'Solicitar auditoria',
+      ctaPlans: 'Ver planos',
       mobileMenu: 'Abrir menu',
       mainLabel: 'Navegação principal',
       themeToggle: 'Alternar tema claro e escuro',
@@ -858,8 +865,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Um site mais rápido.',
       titleB: 'Um negócio que converte melhor.',
       description: 'Na Efi Solution criamos plataformas minimalistas, sólidas e escaláveis para marcas que querem crescer sem tecnologia lenta.',
-      ctaPrimary: 'Agendar auditoria gratuita',
-      ctaGhost: 'Ver projetos',
+      ctaPrimary: 'Quero meu site',
+      ctaGhost: 'Agendar auditoria gratuita',
       metrics: [
         { value: '0.9s', label: 'LCP alvo' },
         { value: '100/100', label: 'Score Lighthouse' },
@@ -1178,9 +1185,11 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#servicios', label: 'Services' },
         { href: '#casos', label: 'Projets' },
+        { href: '#planes', label: 'Offres' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Demander un audit',
+      ctaPlans: 'Voir les offres',
       mobileMenu: 'Ouvrir le menu',
       mainLabel: 'Navigation principale',
       themeToggle: 'Basculer entre theme clair et sombre',
@@ -1191,8 +1200,8 @@ const siteContent: Record<Locale, SiteContent> = {
       titleB: 'Une entreprise qui convertit mieux.',
       description:
         'Chez Efi Solution, nous construisons des plateformes minimalistes, solides et evolutives pour les marques qui veulent croitre sans technologie lente.',
-      ctaPrimary: 'Reserver un audit gratuit',
-      ctaGhost: 'Voir les projets',
+      ctaPrimary: 'Je veux mon site',
+      ctaGhost: 'Reserver un audit gratuit',
       metrics: [
         { value: '0.9s', label: 'LCP cible' },
         { value: '100/100', label: 'Score Lighthouse' },

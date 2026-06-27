@@ -80,9 +80,16 @@ const langs: Array<{ code: Locale; label: string }> = [
 
         <a
           href="#contacto"
-          class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(11,84,253,0.65)] transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 md:inline-flex"
+          class="hidden rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white lg:inline-flex"
         >
           {t.nav.cta}
+        </a>
+
+        <a
+          href="#planes"
+          class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(11,84,253,0.65)] transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 md:inline-flex"
+        >
+          {t.nav.ctaPlans}
         </a>
 
         <button
@@ -120,9 +127,18 @@ const langs: Array<{ code: Locale; label: string }> = [
         ))}
         <li class="pt-2">
           <a
-            href="#contacto"
+            href="#planes"
             data-mobile-close
             class="flex items-center justify-center rounded-xl bg-accent-500 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            {t.nav.ctaPlans}
+          </a>
+        </li>
+        <li>
+          <a
+            href="#contacto"
+            data-mobile-close
+            class="flex items-center justify-center rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:border-white/15 dark:text-zinc-200 dark:hover:bg-white/[0.05]"
           >
             {t.nav.cta}
           </a>
