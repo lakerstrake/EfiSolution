@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import { localeHref, supportedLocales, type Locale } from '../i18n/siteContent';
-import { CF_ANALYTICS_TOKEN } from '../config/site';
+import { localeHref, supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
+import { CF_ANALYTICS_TOKEN, WHATSAPP_NUMBER } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -47,33 +47,69 @@ const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
   : new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 
-// TODO: estas URLs siguen a Astro.site; actualizar el dominio en astro.config.mjs
-// cuando se active efisolution.tech y se propagaran aqui automaticamente.
+const content = getSiteContent(locale);
+
+// SEO local: ficha de negocio en Bogotá. Las URLs siguen a Astro.site, así que
+// al cambiar el dominio en astro.config.mjs se actualizan solas.
+// Catálogo de servicios (sin precio, para no publicar montos placeholder).
+const offerCatalog = {
+  '@type': 'OfferCatalog',
+  name: content.pricing.title,
+  itemListElement: Object.values(content.pricing.plans).map((plan) => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: plan.name,
+      description: plan.tagline,
+    },
+  })),
+};
+
 const orgSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': `${origin}#business`,
   name: 'Efi Solution',
   url: origin,
   logo: new URL('/favicon.svg', origin).href,
   image: ogImageAbsolute,
   description,
   email: 'jmlagos2003@gmail.com',
+  ...(WHATSAPP_NUMBER ? { telephone: `+${WHATSAPP_NUMBER}` } : {}),
+  priceRange: '$$',
   sameAs: [
     'https://github.com/lakerstrake',
     'https://www.linkedin.com/in/juanmlagosm/',
   ],
-  areaServed: ['CO', 'Latin America'],
+  areaServed: [
+    { '@type': 'City', name: 'Bogotá' },
+    { '@type': 'Country', name: 'Colombia' },
+  ],
   knowsAbout: [
-    'Web performance',
-    'Frontend development',
-    'Backend development',
-    'UX design',
-    'SEO',
+    'Diseño web',
+    'Páginas web para negocios',
+    'Rendimiento web',
+    'Automatización con IA',
+    'SEO local',
   ],
   address: {
     '@type': 'PostalAddress',
+    addressLocality: 'Bogotá',
+    addressRegion: 'Bogotá D.C.',
     addressCountry: 'CO',
   },
+  makesOffer: offerCatalog,
+};
+
+// Caso de cliente real (Búho Repuestos) como dato estructurado.
+const clientCaseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Búho Repuestos B&M',
+  about: content.clientCase.title,
+  description: content.clientCase.problem,
+  url: 'https://buhorepuestos.com',
+  creator: { '@id': `${origin}#business` },
 };
 
 const websiteSchema = {
@@ -155,6 +191,7 @@ const websiteSchema = {
     <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-latin.woff2" crossorigin />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(clientCaseSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </head>
 

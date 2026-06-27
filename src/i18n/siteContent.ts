@@ -173,8 +173,8 @@ export function localeHref(locale: Locale): string {
 const siteContent: Record<Locale, SiteContent> = {
   es: {
     meta: {
-      title: 'Efi Solution - Diseño y desarrollo web de alto rendimiento',
-      description: 'Creamos plataformas web rápidas, visuales y profesionales para mejorar conversión, SEO y experiencia de usuario.',
+      title: 'Diseño web en Bogotá para negocios | Efi Solution',
+      description: 'Páginas web rápidas para negocios en Bogotá, con IA que automatiza tareas (como subir inventario con una foto) y SEO local para que te encuentren. Auditoría gratis.',
     },
     nav: {
       links: [
@@ -510,8 +510,8 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   en: {
     meta: {
-      title: 'Efi Solution - High-performance web design and development',
-      description: 'We build fast, visual and professional web platforms to improve conversion, SEO and user experience.',
+      title: 'Web design for small businesses | Efi Solution',
+      description: 'Fast websites for small businesses, with AI that automates real tasks (like loading inventory from a photo) and local SEO so customers find you. Free audit.',
     },
     nav: {
       links: [
@@ -844,8 +844,8 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   pt: {
     meta: {
-      title: 'Efi Solution - Design e desenvolvimento web de alto desempenho',
-      description: 'Criamos plataformas web rápidas, visuais e profissionais para melhorar conversão, SEO e experiência do usuário.',
+      title: 'Design web para negócios em Bogotá | Efi Solution',
+      description: 'Sites rápidos para negócios, com IA que automatiza tarefas (como cadastrar estoque com uma foto) e SEO local para que te encontrem. Auditoria grátis.',
     },
     nav: {
       links: [
@@ -1178,8 +1178,8 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   fr: {
     meta: {
-      title: 'Efi Solution - Conception et developpement web haute performance',
-      description: 'Nous creons des plateformes web rapides, visuelles et professionnelles pour ameliorer la conversion, le SEO et l’experience utilisateur.',
+      title: 'Creation de sites web pour entreprises | Efi Solution',
+      description: 'Des sites rapides pour les petites entreprises, avec une IA qui automatise des taches (comme remplir l’inventaire avec une photo) et un SEO local. Audit gratuit.',
     },
     nav: {
       links: [
