@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import AISpotlight from '../components/AISpotlight.astro';
 import TheProblem from '../components/TheProblem.astro';
 import Services from '../components/Services.astro';
 import Approach from '../components/Approach.astro';
@@ -14,6 +15,7 @@ const t = getSiteContent(locale);
 
 <Layout locale={locale} title={t.meta.title} description={t.meta.description}>
   <Hero locale={locale} />
+  <AISpotlight locale={locale} />
   <TheProblem locale={locale} />
   <Services locale={locale} />
   <Approach locale={locale} />

@@ -28,6 +28,7 @@ type CaseItem = {
   metrics: CaseMetric[];
 };
 type TeamMember = { name: string; role: string; bio: string; initials: string };
+type AIBenefit = { title: string; body: string };
 
 type SiteContent = {
   meta: { title: string; description: string };
@@ -46,6 +47,18 @@ type SiteContent = {
     ctaPrimary: string;
     ctaGhost: string;
     metrics: HeroMetric[];
+  };
+  ai: {
+    badge: string;
+    title: string;
+    description: string;
+    exampleTag: string;
+    exampleText: string;
+    flowPhoto: string;
+    flowResult: string;
+    benefits: AIBenefit[];
+    cta: string;
+    waMessage: string;
   };
   problem: {
     badge: string;
@@ -160,6 +173,22 @@ const siteContent: Record<Locale, SiteContent> = {
         { value: '0', label: 'Cookies de rastreo' },
         { value: '48h', label: 'Auditoría inicial' },
       ],
+    },
+    ai: {
+      badge: 'IA aplicada',
+      title: 'Inteligencia artificial que hace el trabajo pesado por ti.',
+      description: 'No solo hacemos webs rápidas: integramos IA que automatiza tareas reales de tu negocio para que ganes tiempo y vendas más, sin tener que volverte experto en tecnología.',
+      exampleTag: 'Caso real: Búho Repuestos',
+      exampleText: 'El dueño sube una sola foto del producto y la IA extrae los datos y llena el inventario solo. Lo que antes tomaba horas, ahora son segundos.',
+      flowPhoto: 'Una foto del producto',
+      flowResult: 'Inventario lleno automáticamente',
+      benefits: [
+        { title: 'Ahorra horas', body: 'La IA hace el trabajo repetitivo —cargar productos, ordenar datos— mientras tú atiendes tu negocio.' },
+        { title: 'Menos errores', body: 'Los datos se extraen automáticamente: menos precios equivocados, typos o referencias duplicadas.' },
+        { title: 'Crece sin contratar', body: 'Manejas más productos y pedidos sin sumar personal ni complicarte con sistemas caros.' },
+      ],
+      cta: 'Quiero esto para mi negocio',
+      waMessage: 'Hola, vi lo de la IA para automatizar tareas y quiero saber cómo aplicarlo a mi negocio.',
     },
     problem: {
       badge: 'Diagnóstico',
@@ -397,6 +426,22 @@ const siteContent: Record<Locale, SiteContent> = {
         { value: '48h', label: 'Initial audit' },
       ],
     },
+    ai: {
+      badge: 'AI in action',
+      title: 'Artificial intelligence that does the heavy lifting for you.',
+      description: 'We do more than fast websites: we add AI that automates real tasks in your business so you save time and sell more, without becoming a tech expert.',
+      exampleTag: 'Real case: Búho Repuestos',
+      exampleText: 'The owner uploads a single photo of the product and the AI extracts the data and fills the inventory on its own. What used to take hours now takes seconds.',
+      flowPhoto: 'One product photo',
+      flowResult: 'Inventory filled automatically',
+      benefits: [
+        { title: 'Save hours', body: 'The AI handles the repetitive work —loading products, sorting data— while you run your business.' },
+        { title: 'Fewer errors', body: 'Data is extracted automatically: fewer wrong prices, typos or duplicate references.' },
+        { title: 'Grow without hiring', body: 'Handle more products and orders without adding staff or expensive systems.' },
+      ],
+      cta: 'I want this for my business',
+      waMessage: 'Hi, I saw the AI automation and I want to know how to apply it to my business.',
+    },
     problem: {
       badge: 'Diagnosis',
       titleA: 'Performance is not a technical detail.',
@@ -632,6 +677,22 @@ const siteContent: Record<Locale, SiteContent> = {
         { value: '0', label: 'Cookies de rastreio' },
         { value: '48h', label: 'Auditoria inicial' },
       ],
+    },
+    ai: {
+      badge: 'IA aplicada',
+      title: 'Inteligência artificial que faz o trabalho pesado por você.',
+      description: 'Não fazemos só sites rápidos: integramos IA que automatiza tarefas reais do seu negócio para você ganhar tempo e vender mais, sem precisar virar especialista em tecnologia.',
+      exampleTag: 'Caso real: Búho Repuestos',
+      exampleText: 'O dono envia uma única foto do produto e a IA extrai os dados e preenche o estoque sozinha. O que antes levava horas, agora leva segundos.',
+      flowPhoto: 'Uma foto do produto',
+      flowResult: 'Estoque preenchido automaticamente',
+      benefits: [
+        { title: 'Economize horas', body: 'A IA faz o trabalho repetitivo —cadastrar produtos, organizar dados— enquanto você cuida do negócio.' },
+        { title: 'Menos erros', body: 'Os dados são extraídos automaticamente: menos preços errados, erros de digitação ou referências duplicadas.' },
+        { title: 'Cresça sem contratar', body: 'Gerencie mais produtos e pedidos sem aumentar a equipe nem complicar com sistemas caros.' },
+      ],
+      cta: 'Quero isso para o meu negócio',
+      waMessage: 'Olá, vi a IA para automatizar tarefas e quero saber como aplicar no meu negócio.',
     },
     problem: {
       badge: 'Diagnóstico',
@@ -869,6 +930,22 @@ const siteContent: Record<Locale, SiteContent> = {
         { value: '0', label: 'Cookies de suivi' },
         { value: '48h', label: 'Audit initial' },
       ],
+    },
+    ai: {
+      badge: 'IA appliquee',
+      title: 'Une intelligence artificielle qui fait le gros du travail pour vous.',
+      description: 'Nous ne faisons pas que des sites rapides : nous integrons une IA qui automatise des taches reelles de votre activite pour vous faire gagner du temps et vendre plus, sans devenir expert en technologie.',
+      exampleTag: 'Cas reel : Búho Repuestos',
+      exampleText: 'Le proprietaire televerse une seule photo du produit et l’IA en extrait les donnees et remplit l’inventaire toute seule. Ce qui prenait des heures ne prend plus que quelques secondes.',
+      flowPhoto: 'Une photo du produit',
+      flowResult: 'Inventaire rempli automatiquement',
+      benefits: [
+        { title: 'Gagnez des heures', body: 'L’IA fait le travail repetitif —saisir les produits, trier les donnees— pendant que vous gerez votre activite.' },
+        { title: 'Moins d’erreurs', body: 'Les donnees sont extraites automatiquement : moins de prix errones, de fautes ou de references en double.' },
+        { title: 'Grandir sans embaucher', body: 'Gerez plus de produits et de commandes sans ajouter de personnel ni de systemes couteux.' },
+      ],
+      cta: 'Je veux ca pour mon entreprise',
+      waMessage: 'Bonjour, j’ai vu l’IA pour automatiser les taches et je veux savoir comment l’appliquer a mon entreprise.',
     },
     problem: {
       badge: 'Diagnostic',
