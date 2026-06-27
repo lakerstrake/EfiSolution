@@ -252,7 +252,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
 
     // WhatsApp fallback: if the POST fails, pre-fill the WhatsApp button with
     // whatever the visitor already typed so the lead is never lost.
-    const waLink = form.parentElement?.querySelector<HTMLAnchorElement>('a[href*="wa.me"]');
+    const waLink = form.querySelector<HTMLAnchorElement>('a[href*="wa.me"]');
     const waBase = waLink?.href ?? null;
 
     form.addEventListener('submit', async (e) => {
