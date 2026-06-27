@@ -89,6 +89,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
             ? { href: entry.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${t.visit}: ${entry.name}` }
             : {};
           const imgBase = entry.image.replace(/\.[a-z0-9]+$/i, '');
+          // SVG placeholders no tienen variantes avif/webp: evita 404 saltando los <source>.
+          const hasRaster = !/\.svg$/i.test(entry.image);
           return (
           <article
             id={`slide-${entry.key}`}
@@ -148,8 +150,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                 </div>
                 <div class="relative aspect-[16/10] w-full overflow-hidden">
                   <picture>
-                    <source srcset={`${imgBase}.avif`} type="image/avif" />
-                    <source srcset={`${imgBase}.webp`} type="image/webp" />
+                    {hasRaster && <source srcset={`${imgBase}.avif`} type="image/avif" />}
+                    {hasRaster && <source srcset={`${imgBase}.webp`} type="image/webp" />}
                     <img
                       src={entry.image}
                       alt={`${imageAltPrefix[locale]} ${entry.name}`}

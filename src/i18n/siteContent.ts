@@ -344,6 +344,21 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver sitio en vivo',
       items: [
         {
+          key: 'buho',
+          name: 'Búho Repuestos B&M',
+          sector: 'Repuestos automotrices · Bogotá',
+          tag: 'Cliente real',
+          image: '/buho.svg',
+          url: 'https://buhorepuestos.com',
+          summary: 'Tienda de repuestos automotrices con catálogo online, panel de administración y carga de inventario por IA: el dueño sube una foto y se llenan los datos del producto.',
+          result: 'El dueño gestiona 110+ referencias por sí mismo y recibe pedidos directos por WhatsApp.',
+          stack: ['Cloudflare', 'IA de visión', 'WhatsApp', 'Panel admin'],
+          metrics: [
+            { value: 110, suffix: '+', label: 'Referencias' },
+            { value: 100, suffix: '%', label: 'Autogestionado' },
+          ],
+        },
+        {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
@@ -677,6 +692,21 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Result:',
       visit: 'Visit live site',
       items: [
+        {
+          key: 'buho',
+          name: 'Búho Repuestos B&M',
+          sector: 'Auto parts · Bogotá',
+          tag: 'Real client',
+          image: '/buho.svg',
+          url: 'https://buhorepuestos.com',
+          summary: 'Auto-parts store with an online catalog, an admin panel and AI-powered inventory: the owner uploads a photo and the product data fills itself.',
+          result: 'The owner manages 110+ references himself and receives orders directly via WhatsApp.',
+          stack: ['Cloudflare', 'Vision AI', 'WhatsApp', 'Admin panel'],
+          metrics: [
+            { value: 110, suffix: '+', label: 'References' },
+            { value: 100, suffix: '%', label: 'Self-managed' },
+          ],
+        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -1012,6 +1042,21 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver site ao vivo',
       items: [
         {
+          key: 'buho',
+          name: 'Búho Repuestos B&M',
+          sector: 'Autopeças · Bogotá',
+          tag: 'Cliente real',
+          image: '/buho.svg',
+          url: 'https://buhorepuestos.com',
+          summary: 'Loja de autopeças com catálogo online, painel de administração e cadastro de estoque por IA: o dono envia uma foto e os dados do produto se preenchem.',
+          result: 'O dono gerencia 110+ referências sozinho e recebe pedidos diretos pelo WhatsApp.',
+          stack: ['Cloudflare', 'IA de visão', 'WhatsApp', 'Painel admin'],
+          metrics: [
+            { value: 110, suffix: '+', label: 'Referências' },
+            { value: 100, suffix: '%', label: 'Autogerenciado' },
+          ],
+        },
+        {
           key: 'navegador',
           name: 'Navegador Social',
           sector: 'Impacto social',
@@ -1346,6 +1391,21 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Resultat :',
       visit: 'Voir le site en ligne',
       items: [
+        {
+          key: 'buho',
+          name: 'Búho Repuestos B&M',
+          sector: 'Pieces auto · Bogota',
+          tag: 'Client reel',
+          image: '/buho.svg',
+          url: 'https://buhorepuestos.com',
+          summary: 'Magasin de pieces auto avec catalogue en ligne, panneau d’administration et inventaire par IA : le proprietaire televerse une photo et les donnees du produit se remplissent.',
+          result: 'Le proprietaire gere 110+ references lui-meme et recoit des commandes directement via WhatsApp.',
+          stack: ['Cloudflare', 'IA de vision', 'WhatsApp', 'Panneau admin'],
+          metrics: [
+            { value: 110, suffix: '+', label: 'References' },
+            { value: 100, suffix: '%', label: 'Autogere' },
+          ],
+        },
         {
           key: 'navegador',
           name: 'Navegador Social',

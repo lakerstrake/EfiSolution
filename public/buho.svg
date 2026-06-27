@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Búho Repuestos B&M">
+  <!-- Placeholder de marca para el caso Búho. TODO (Juan): reemplazar por una
+       captura real del sitio buhorepuestos.com (buho.jpg/.webp/.avif). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="400" cy="190" r="78" fill="#f5b301"/>
+  <circle cx="372" cy="178" r="20" fill="#0f172a"/>
+  <circle cx="428" cy="178" r="20" fill="#0f172a"/>
+  <circle cx="372" cy="178" r="8" fill="#f5b301"/>
+  <circle cx="428" cy="178" r="8" fill="#f5b301"/>
+  <path d="M388 210 L400 226 L412 210 Z" fill="#0f172a"/>
+  <text x="400" y="330" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff">Búho <tspan fill="#f5b301">Repuestos</tspan></text>
+  <text x="400" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#94a3b8">Repuestos automotrices · Bogotá</text>
+  <rect x="300" y="404" width="200" height="44" rx="22" fill="#16a34a"/>
+  <text x="400" y="432" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff">buhorepuestos.com</text>
+</svg>
