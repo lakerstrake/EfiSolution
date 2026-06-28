@@ -1,6 +1,6 @@
 ---
 import { getSiteContent, type Locale } from '../i18n/siteContent';
-import { PRICING, planOrder, type PlanKey } from '../config/pricing';
+import { PRICING_BY_LOCALE, RECOMMENDED_PLAN, planOrder, type PlanKey } from '../config/pricing';
 import { whatsappHref } from '../lib/whatsapp';
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getSiteContent(locale).pricing;
+const money = PRICING_BY_LOCALE[locale];
 ---
 
 <section id="planes" class="section-padding" aria-labelledby="pricing-title">
@@ -29,8 +30,8 @@ const t = getSiteContent(locale).pricing;
     <div class="reveal mt-12 grid items-start gap-6 lg:grid-cols-3">
       {planOrder.map((key: PlanKey) => {
         const plan = t.plans[key];
-        const amount = PRICING.plans[key];
-        const recommended = PRICING.recommended === key;
+        const amount = money.plans[key];
+        const recommended = RECOMMENDED_PLAN === key;
         const waHref = whatsappHref(plan.waMessage);
         return (
           <article
@@ -49,13 +50,13 @@ const t = getSiteContent(locale).pricing;
             <h3 class="font-display text-xl font-semibold text-zinc-900 dark:text-white">{plan.name}</h3>
             <p class="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{plan.tagline}</p>
 
-            <div class="mt-5 flex items-baseline gap-1">
-              <span class="text-sm font-medium text-zinc-500">{PRICING.currency}</span>
-              <span class="font-display text-fluid-3xl font-bold tracking-tightest text-zinc-900 dark:text-white">{amount.price}</span>
+            <div class="mt-5 flex items-baseline gap-1.5">
+              <span class="font-display text-fluid-3xl font-bold tracking-tightest text-zinc-900 dark:text-white">{money.symbol}{amount.price}</span>
+              {money.code && <span class="text-sm font-medium text-zinc-500">{money.code}</span>}
               <span class="text-sm font-medium text-zinc-500">{t.perMonth}</span>
             </div>
             {amount.setup && (
-              <p class="mt-1 text-xs text-zinc-500">+ {PRICING.currency} {amount.setup} · {t.setupLabel}</p>
+              <p class="mt-1 text-xs text-zinc-500">+ {money.symbol}{amount.setup} · {t.setupLabel}</p>
             )}
 
             <p class="mt-4 text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">{plan.audience}</p>

@@ -74,9 +74,6 @@ type SiteContent = {
     built: string[];
     resultsLabel: string;
     results: string[];
-    testimonialLabel: string;
-    testimonialQuote: string;
-    testimonialAuthor: string;
     visit: string;
     cta: string;
     waMessage: string;
@@ -243,10 +240,6 @@ const siteContent: Record<Locale, SiteContent> = {
         'Alta de productos en segundos en vez de minutos por unidad',
         'Menos errores de datos al automatizar la carga',
       ],
-      testimonialLabel: 'En sus palabras',
-      // TODO (Juan): reemplazar por el testimonio real del dueño de Búho.
-      testimonialQuote: 'Antes me tomaba toda la tarde subir productos; ahora con una foto queda listo. La página la manejo yo mismo.',
-      testimonialAuthor: 'Dueño de Búho Repuestos B&M (testimonio de ejemplo — pendiente de confirmar)',
       visit: 'Ver buhorepuestos.com',
       cta: 'Quiero algo así para mi negocio',
       waMessage: 'Hola, vi el caso de Búho Repuestos y quiero una web con panel e IA para mi negocio.',
@@ -592,10 +585,6 @@ const siteContent: Record<Locale, SiteContent> = {
         'Products added in seconds instead of minutes each',
         'Fewer data errors by automating the loading',
       ],
-      testimonialLabel: 'In their words',
-      // TODO (Juan): replace with the real testimonial from Búho's owner.
-      testimonialQuote: 'It used to take me all afternoon to upload products; now one photo does it. I run the site myself.',
-      testimonialAuthor: 'Owner of Búho Repuestos B&M (sample testimonial — pending confirmation)',
       visit: 'Visit buhorepuestos.com',
       cta: 'I want something like this',
       waMessage: 'Hi, I saw the Búho Repuestos case and I want a website with an admin panel and AI for my business.',
@@ -941,10 +930,6 @@ const siteContent: Record<Locale, SiteContent> = {
         'Cadastro de produtos em segundos em vez de minutos por unidade',
         'Menos erros de dados ao automatizar o cadastro',
       ],
-      testimonialLabel: 'Nas palavras dele',
-      // TODO (Juan): substituir pelo depoimento real do dono da Búho.
-      testimonialQuote: 'Antes eu levava a tarde toda para subir produtos; agora uma foto resolve. O site eu mesmo administro.',
-      testimonialAuthor: 'Dono da Búho Repuestos B&M (depoimento de exemplo — a confirmar)',
       visit: 'Ver buhorepuestos.com',
       cta: 'Quero algo assim para o meu negócio',
       waMessage: 'Olá, vi o caso da Búho Repuestos e quero um site com painel e IA para o meu negócio.',
@@ -1291,10 +1276,6 @@ const siteContent: Record<Locale, SiteContent> = {
         'Produits ajoutes en quelques secondes au lieu de minutes chacun',
         'Moins d’erreurs de donnees grace a l’automatisation de la saisie',
       ],
-      testimonialLabel: 'En ses mots',
-      // TODO (Juan): remplacer par le vrai temoignage du proprietaire de Búho.
-      testimonialQuote: 'Avant, je passais l’apres-midi a mettre en ligne les produits ; maintenant une photo suffit. Je gere le site moi-meme.',
-      testimonialAuthor: 'Proprietaire de Búho Repuestos B&M (temoignage d’exemple — a confirmer)',
       visit: 'Voir buhorepuestos.com',
       cta: 'Je veux quelque chose comme ca',
       waMessage: 'Bonjour, j’ai vu le cas Búho Repuestos et je veux un site avec panneau d’administration et IA pour mon entreprise.',
