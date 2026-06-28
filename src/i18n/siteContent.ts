@@ -58,6 +58,11 @@ type SiteContent = {
     exampleText: string;
     flowPhoto: string;
     flowResult: string;
+    beforeLabel: string;
+    afterLabel: string;
+    scanLabel: string;
+    doneLabel: string;
+    frameLabel: string;
     benefits: AIBenefit[];
     cta: string;
     waMessage: string;
@@ -209,8 +214,13 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'No solo hacemos webs rápidas: integramos IA que automatiza tareas reales de tu negocio para que ganes tiempo y vendas más, sin tener que volverte experto en tecnología.',
       exampleTag: 'Caso real: Búho Repuestos',
       exampleText: 'El dueño sube una sola foto del producto y la IA extrae los datos y llena el inventario solo. Lo que antes tomaba horas, ahora son segundos.',
-      flowPhoto: 'Una foto del producto',
-      flowResult: 'Inventario lleno automáticamente',
+      flowPhoto: 'Formulario vacío + una foto',
+      flowResult: 'Nombre, categoría y código llenos por la IA',
+      beforeLabel: 'Antes',
+      afterLabel: 'Con IA',
+      scanLabel: 'Analizando la foto con IA…',
+      doneLabel: '¡Listo! Datos completados solos',
+      frameLabel: 'Panel de Búho Repuestos',
       benefits: [
         { title: 'Ahorra horas', body: 'La IA hace el trabajo repetitivo —cargar productos, ordenar datos— mientras tú atiendes tu negocio.' },
         { title: 'Menos errores', body: 'Los datos se extraen automáticamente: menos precios equivocados, typos o referencias duplicadas.' },
@@ -555,8 +565,13 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'We do more than fast websites: we add AI that automates real tasks in your business so you save time and sell more, without becoming a tech expert.',
       exampleTag: 'Real case: Búho Repuestos',
       exampleText: 'The owner uploads a single photo of the product and the AI extracts the data and fills the inventory on its own. What used to take hours now takes seconds.',
-      flowPhoto: 'One product photo',
-      flowResult: 'Inventory filled automatically',
+      flowPhoto: 'Empty form + one photo',
+      flowResult: 'Name, category and code filled by AI',
+      beforeLabel: 'Before',
+      afterLabel: 'With AI',
+      scanLabel: 'Analyzing the photo with AI…',
+      doneLabel: 'Done! Data filled on its own',
+      frameLabel: 'Búho Repuestos panel',
       benefits: [
         { title: 'Save hours', body: 'The AI handles the repetitive work —loading products, sorting data— while you run your business.' },
         { title: 'Fewer errors', body: 'Data is extracted automatically: fewer wrong prices, typos or duplicate references.' },
@@ -901,8 +916,13 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Não fazemos só sites rápidos: integramos IA que automatiza tarefas reais do seu negócio para você ganhar tempo e vender mais, sem precisar virar especialista em tecnologia.',
       exampleTag: 'Caso real: Búho Repuestos',
       exampleText: 'O dono envia uma única foto do produto e a IA extrai os dados e preenche o estoque sozinha. O que antes levava horas, agora leva segundos.',
-      flowPhoto: 'Uma foto do produto',
-      flowResult: 'Estoque preenchido automaticamente',
+      flowPhoto: 'Formulário vazio + uma foto',
+      flowResult: 'Nome, categoria e código preenchidos pela IA',
+      beforeLabel: 'Antes',
+      afterLabel: 'Com IA',
+      scanLabel: 'Analisando a foto com IA…',
+      doneLabel: 'Pronto! Dados preenchidos sozinhos',
+      frameLabel: 'Painel da Búho Repuestos',
       benefits: [
         { title: 'Economize horas', body: 'A IA faz o trabalho repetitivo —cadastrar produtos, organizar dados— enquanto você cuida do negócio.' },
         { title: 'Menos erros', body: 'Os dados são extraídos automaticamente: menos preços errados, erros de digitação ou referências duplicadas.' },
@@ -1248,8 +1268,13 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Nous ne faisons pas que des sites rapides : nous integrons une IA qui automatise des taches reelles de votre activite pour vous faire gagner du temps et vendre plus, sans devenir expert en technologie.',
       exampleTag: 'Cas reel : Búho Repuestos',
       exampleText: 'Le proprietaire televerse une seule photo du produit et l’IA en extrait les donnees et remplit l’inventaire toute seule. Ce qui prenait des heures ne prend plus que quelques secondes.',
-      flowPhoto: 'Une photo du produit',
-      flowResult: 'Inventaire rempli automatiquement',
+      flowPhoto: 'Formulaire vide + une photo',
+      flowResult: 'Nom, categorie et code remplis par l’IA',
+      beforeLabel: 'Avant',
+      afterLabel: 'Avec IA',
+      scanLabel: 'Analyse de la photo par l’IA…',
+      doneLabel: 'C’est fait ! Donnees remplies toutes seules',
+      frameLabel: 'Panneau de Búho Repuestos',
       benefits: [
         { title: 'Gagnez des heures', body: 'L’IA fait le travail repetitif —saisir les produits, trier les donnees— pendant que vous gerez votre activite.' },
         { title: 'Moins d’erreurs', body: 'Les donnees sont extraites automatiquement : moins de prix errones, de fautes ou de references en double.' },

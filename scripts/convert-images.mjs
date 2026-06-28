@@ -8,6 +8,8 @@ const files = {
   mapa_kennedy: 'jpg',
   calculadora_liquidacion: 'jpg',
   buho: 'png',
+  'buho-ia-1': 'png',
+  'buho-ia-2': 'png',
 };
 
 for (const [f, ext] of Object.entries(files)) {

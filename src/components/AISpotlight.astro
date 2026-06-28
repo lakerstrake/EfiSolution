@@ -58,46 +58,112 @@ const waHref = whatsappHref(t.waMessage);
           )}
         </div>
 
-        <!-- Mini-demostración estilizada del flujo foto -> IA -> inventario.
-             No usa imágenes (cero peso). TODO opcional: reemplazar el bloque
-             "foto" por una captura real de Búho cuando esté disponible. -->
+        <!-- Demo REAL del panel de Búho: la IA llena el inventario a partir de una
+             foto. Animación CSS en bucle (antes → escaneo IA → después). -->
         <aside class="lg:col-span-6">
-          <div class="rounded-3xl border border-zinc-200/80 bg-gradient-to-b from-white/80 to-white/40 p-5 shadow-sm dark:border-white/10 dark:from-white/[0.05] dark:to-transparent">
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent-600 dark:text-accent-400">{t.exampleTag}</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{t.exampleText}</p>
-
-            <div class="mt-5 flex items-stretch gap-3">
-              <!-- Paso 1: la foto -->
-              <div class="flex flex-1 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-zinc-300 bg-zinc-100/70 p-4 text-center dark:border-white/15 dark:bg-white/[0.03]">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-500" aria-hidden="true">
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" />
-                </svg>
-                <span class="text-[11px] font-medium leading-tight text-zinc-600 dark:text-zinc-400">{t.flowPhoto}</span>
-              </div>
-
-              <!-- Flecha IA -->
-              <div class="flex flex-none items-center" aria-hidden="true">
-                <div class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-500/15 text-accent-600 dark:text-accent-400">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-
-              <!-- Paso 2: inventario lleno -->
-              <div class="flex flex-1 flex-col justify-center gap-2 rounded-2xl border border-accent-500/30 bg-accent-500/[0.06] p-4 dark:bg-accent-500/10">
-                <div class="space-y-1.5" aria-hidden="true">
-                  <div class="h-2 w-3/4 rounded-full bg-accent-500/50"></div>
-                  <div class="h-2 w-full rounded-full bg-zinc-300 dark:bg-white/15"></div>
-                  <div class="h-2 w-5/6 rounded-full bg-zinc-300 dark:bg-white/15"></div>
-                  <div class="h-2 w-2/3 rounded-full bg-accent-500/40"></div>
-                </div>
-                <span class="mt-1 text-[11px] font-medium leading-tight text-zinc-700 dark:text-zinc-300">{t.flowResult}</span>
-              </div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent-600 dark:text-accent-400">{t.exampleTag}</p>
+          <figure class="overflow-hidden rounded-3xl border border-zinc-200/80 bg-white/70 shadow-[0_26px_70px_-34px_rgba(11,84,253,0.55)] dark:border-white/10 dark:bg-zinc-900/50">
+            <div class="flex items-center gap-2 border-b border-zinc-200/80 px-3.5 py-2.5 dark:border-white/10">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-500/70"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-500/70"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/70"></span>
+              <span class="ml-2 truncate text-[11px] font-medium text-zinc-500">{t.frameLabel}</span>
             </div>
-          </div>
+
+            <div class="buho-stage relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+              <picture>
+                <source srcset="/buho-ia-1.avif" type="image/avif" />
+                <source srcset="/buho-ia-1.webp" type="image/webp" />
+                <img src="/buho-ia-1.png" alt="" width="1120" height="630" loading="lazy" decoding="async" class="buho-before absolute inset-0 h-full w-full object-cover object-top" />
+              </picture>
+              <picture>
+                <source srcset="/buho-ia-2.avif" type="image/avif" />
+                <source srcset="/buho-ia-2.webp" type="image/webp" />
+                <img src="/buho-ia-2.png" alt={t.exampleText} width="1120" height="630" loading="lazy" decoding="async" class="buho-after absolute inset-0 h-full w-full object-cover object-top" />
+              </picture>
+
+              <span class="buho-scan" aria-hidden="true"></span>
+
+              <span class="buho-pill buho-pill-before absolute left-3 top-3 rounded-full bg-zinc-900/80 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">{t.beforeLabel}</span>
+              <span class="buho-pill buho-pill-after absolute left-3 top-3 rounded-full bg-accent-500 px-2.5 py-1 text-[11px] font-semibold text-white">{t.afterLabel}</span>
+
+              <span class="buho-badge buho-badge-scan absolute bottom-3 left-1/2 inline-flex items-center gap-2 rounded-full bg-accent-600/95 px-4 py-2 text-xs font-semibold text-white shadow-lg">
+                <svg class="buho-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>
+                {t.scanLabel}
+              </span>
+              <span class="buho-badge buho-badge-done absolute bottom-3 left-1/2 inline-flex items-center gap-2 rounded-full bg-emerald-500/95 px-4 py-2 text-xs font-semibold text-white shadow-lg">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                {t.doneLabel}
+              </span>
+            </div>
+
+            <figcaption class="relative min-h-[3.25rem] border-t border-zinc-200/80 px-4 py-3 text-xs leading-snug text-zinc-600 dark:border-white/10 dark:text-zinc-400">
+              <span class="buho-cap-before absolute inset-x-4 top-3 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-zinc-400"></span>{t.flowPhoto}</span>
+              <span class="buho-cap-after absolute inset-x-4 top-3 flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>{t.flowResult}</span>
+            </figcaption>
+          </figure>
         </aside>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .buho-before { animation: buhoBefore 7s ease-in-out infinite; }
+  .buho-after  { opacity: 0; animation: buhoAfter 7s ease-in-out infinite; }
+
+  .buho-scan {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 22%;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: screen;
+    background: linear-gradient(to bottom, transparent, rgba(11,84,253,0.16), rgba(11,84,253,0.5), rgba(11,84,253,0.16), transparent);
+    box-shadow: 0 0 34px 8px rgba(11,84,253,0.45);
+    animation: buhoScan 7s linear infinite;
+  }
+
+  .buho-pill-before { animation: buhoPillBefore 7s ease-in-out infinite; }
+  .buho-pill-after  { opacity: 0; animation: buhoPillAfter 7s ease-in-out infinite; }
+
+  .buho-badge { transform: translateX(-50%); }
+  .buho-badge-scan { opacity: 0; animation: buhoBadgeScan 7s ease-in-out infinite; }
+  .buho-badge-done { opacity: 0; animation: buhoBadgeDone 7s ease-in-out infinite; }
+  .buho-spin { animation: buhoSpin 0.9s linear infinite; }
+
+  .buho-cap-before { animation: buhoCapBefore 7s ease-in-out infinite; }
+  .buho-cap-after  { opacity: 0; animation: buhoCapAfter 7s ease-in-out infinite; }
+
+  @keyframes buhoBefore { 0%,45% { opacity: 1; } 55%,93% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes buhoAfter  { 0%,49% { opacity: 0; } 59%,95% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes buhoScan {
+    0%,28%   { opacity: 0; transform: translateY(-120%); }
+    32%      { opacity: 1; }
+    50%      { opacity: 1; transform: translateY(360%); }
+    55%,100% { opacity: 0; transform: translateY(360%); }
+  }
+  @keyframes buhoBadgeScan {
+    0%,27%   { opacity: 0; transform: translateX(-50%) translateY(6px); }
+    33%,50%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+    56%,100% { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  }
+  @keyframes buhoBadgeDone {
+    0%,58%   { opacity: 0; transform: translateX(-50%) translateY(6px) scale(0.92); }
+    65%,90%  { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    96%,100% { opacity: 0; transform: translateX(-50%) translateY(0) scale(1); }
+  }
+  @keyframes buhoPillBefore { 0%,46% { opacity: 1; } 54%,100% { opacity: 0; } }
+  @keyframes buhoPillAfter  { 0%,57% { opacity: 0; } 63%,95% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes buhoCapBefore  { 0%,46% { opacity: 1; } 56%,100% { opacity: 0; } }
+  @keyframes buhoCapAfter   { 0%,55% { opacity: 0; } 63%,95% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes buhoSpin { to { transform: rotate(360deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .buho-before, .buho-scan, .buho-pill-before, .buho-badge-scan, .buho-cap-before { animation: none; opacity: 0; }
+    .buho-after, .buho-cap-after { animation: none; opacity: 1; }
+    .buho-pill-after { animation: none; opacity: 1; }
+    .buho-badge-done { animation: none; opacity: 1; }
+    .buho-spin { animation: none; }
+  }
+</style>
