@@ -23,15 +23,19 @@ type CurrencyConfig = {
 export const RECOMMENDED_PLAN: PlanKey = 'profesional';
 export const planOrder: PlanKey[] = ['esencial', 'profesional', 'escala'];
 
+// Montos alineados al mercado 2026 (no son conversiones 1:1). Pensados para ser
+// sostenibles y justos: ni tan bajos que parezcan "plantilla reciclada" o dañen
+// el mercado, ni inalcanzables para arrancar. Referencia Colombia: landing
+// 0,8–1,2M, sitio+catálogo 2–3M, e-commerce/IA 4,5–7M, mantenimiento 0,15–0,6M/mes.
 export const PRICING_BY_LOCALE: Record<Locale, CurrencyConfig> = {
   // Colombia — pesos colombianos
   es: {
     code: 'COP',
     symbol: '$',
     plans: {
-      esencial:    { price: '90.000',  setup: '690.000'   },
-      profesional: { price: '250.000', setup: '1.900.000' },
-      escala:      { price: '590.000', setup: '4.900.000' },
+      esencial:    { price: '120.000', setup: '890.000'   },
+      profesional: { price: '290.000', setup: '2.400.000' },
+      escala:      { price: '690.000', setup: '5.900.000' },
     },
   },
   // Internacional — dólares
@@ -39,9 +43,9 @@ export const PRICING_BY_LOCALE: Record<Locale, CurrencyConfig> = {
     code: 'USD',
     symbol: '$',
     plans: {
-      esencial:    { price: '39',  setup: '390'   },
-      profesional: { price: '99',  setup: '990'   },
-      escala:      { price: '249', setup: '2,490' },
+      esencial:    { price: '49',  setup: '590'   },
+      profesional: { price: '129', setup: '1,490' },
+      escala:      { price: '299', setup: '3,490' },
     },
   },
   // Brasil — reales
@@ -49,9 +53,9 @@ export const PRICING_BY_LOCALE: Record<Locale, CurrencyConfig> = {
     code: '',
     symbol: 'R$ ',
     plans: {
-      esencial:    { price: '120', setup: '990'   },
-      profesional: { price: '390', setup: '2.900' },
-      escala:      { price: '890', setup: '7.900' },
+      esencial:    { price: '150', setup: '1.500' },
+      profesional: { price: '450', setup: '3.900' },
+      escala:      { price: '990', setup: '9.900' },
     },
   },
   // Europa — euros
@@ -59,9 +63,9 @@ export const PRICING_BY_LOCALE: Record<Locale, CurrencyConfig> = {
     code: '',
     symbol: '€ ',
     plans: {
-      esencial:    { price: '45',  setup: '450'   },
-      profesional: { price: '110', setup: '1.100' },
-      escala:      { price: '279', setup: '2.900' },
+      esencial:    { price: '49',  setup: '590'   },
+      profesional: { price: '129', setup: '1.490' },
+      escala:      { price: '299', setup: '3.490' },
     },
   },
 };

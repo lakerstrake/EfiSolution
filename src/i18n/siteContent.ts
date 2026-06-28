@@ -328,7 +328,7 @@ const siteContent: Record<Locale, SiteContent> = {
     cases: {
       badge: 'Proyectos',
       title: 'Proyectos que demuestran nuestro enfoque técnico.',
-      description: 'Rendimiento real, código limpio y experiencias rápidas. Selecciona uno para ver el contexto técnico.',
+      description: 'Incluye trabajo con clientes reales y proyectos propios de demostración —cada tarjeta lo indica con su etiqueta—. Toca uno para ver el detalle.',
       tabLabel: 'Selección de proyectos',
       prev: 'Anterior',
       next: 'Siguiente',
@@ -443,6 +443,7 @@ const siteContent: Record<Locale, SiteContent> = {
           tagline: 'Una web que gestionas tú y que crece contigo.',
           audience: 'Para negocios que quieren vender más y manejar su web solos.',
           features: [
+            'Todo lo del plan Esencial',
             'Web multipágina o catálogo con búsqueda',
             'Panel de administración self-service',
             'SEO local (apareces en tu ciudad)',
@@ -673,7 +674,7 @@ const siteContent: Record<Locale, SiteContent> = {
     cases: {
       badge: 'Selected Work',
       title: 'Projects that show our technical approach.',
-      description: 'Real performance, clean code and fast experiences. Pick one to see the technical context.',
+      description: 'Includes work with real clients and our own demo projects —each card shows which with a label—. Tap one to see the detail.',
       tabLabel: 'Project selector',
       prev: 'Previous',
       next: 'Next',
@@ -788,6 +789,7 @@ const siteContent: Record<Locale, SiteContent> = {
           tagline: 'A website you manage yourself that grows with you.',
           audience: 'For businesses that want to sell more and manage their own site.',
           features: [
+            'Everything in the Essential plan',
             'Multi-page website or catalog with search',
             'Self-service admin panel',
             'Local SEO (show up in your city)',
@@ -1018,7 +1020,7 @@ const siteContent: Record<Locale, SiteContent> = {
     cases: {
       badge: 'Projetos',
       title: 'Projetos que mostram nossa abordagem técnica.',
-      description: 'Desempenho real, código limpo e experiências rápidas. Selecione um para ver o contexto técnico.',
+      description: 'Inclui trabalho com clientes reais e projetos próprios de demonstração —cada cartão indica com sua etiqueta—. Toque em um para ver o detalhe.',
       tabLabel: 'Seletor de projetos',
       prev: 'Anterior',
       next: 'Próximo',
@@ -1133,6 +1135,7 @@ const siteContent: Record<Locale, SiteContent> = {
           tagline: 'Um site que você mesmo gerencia e que cresce com você.',
           audience: 'Para negócios que querem vender mais e gerenciar o próprio site.',
           features: [
+            'Tudo do plano Essencial',
             'Site multipágina ou catálogo com busca',
             'Painel de administração self-service',
             'SEO local (apareça na sua cidade)',
@@ -1364,7 +1367,7 @@ const siteContent: Record<Locale, SiteContent> = {
     cases: {
       badge: 'Travaux',
       title: 'Des projets qui montrent notre approche technique.',
-      description: 'Performance reelle, code propre et experiences rapides. Choisissez-en un pour voir le contexte technique.',
+      description: 'Inclut du travail avec de vrais clients et nos propres projets de demonstration —chaque carte l’indique avec son etiquette—. Touchez-en un pour voir le detail.',
       tabLabel: 'Selecteur de projets',
       prev: 'Precedent',
       next: 'Suivant',
@@ -1479,6 +1482,7 @@ const siteContent: Record<Locale, SiteContent> = {
           tagline: 'Un site que vous gerez vous-meme et qui grandit avec vous.',
           audience: 'Pour les activites qui veulent vendre plus et gerer leur site.',
           features: [
+            'Tout ce que contient l’offre Essentiel',
             'Site multipage ou catalogue avec recherche',
             'Panneau d’administration en self-service',
             'SEO local (apparaissez dans votre ville)',
