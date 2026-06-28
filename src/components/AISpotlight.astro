@@ -159,11 +159,16 @@ const waHref = whatsappHref(t.waMessage);
   @keyframes buhoCapAfter   { 0%,55% { opacity: 0; } 63%,95% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes buhoSpin { to { transform: rotate(360deg); } }
 
+  /* Con "reducir movimiento" activo (común en PCs de escritorio) evitamos el
+     barrido y el giro —que pueden marear—, pero mantenemos un crossfade suave
+     (solo opacidad) para que el antes→después se aprecie en cualquier equipo. */
   @media (prefers-reduced-motion: reduce) {
-    .buho-before, .buho-scan, .buho-pill-before, .buho-badge-scan, .buho-cap-before { animation: none; opacity: 0; }
-    .buho-after, .buho-cap-after { animation: none; opacity: 1; }
-    .buho-pill-after { animation: none; opacity: 1; }
-    .buho-badge-done { animation: none; opacity: 1; }
+    .buho-scan, .buho-badge-scan { display: none; }
     .buho-spin { animation: none; }
+    .buho-before, .buho-pill-before, .buho-cap-before { animation: buhoFadeBefore 8s ease-in-out infinite; }
+    .buho-after, .buho-pill-after, .buho-cap-after, .buho-badge-done { animation: buhoFadeAfter 8s ease-in-out infinite; }
+    .buho-badge-done { transform: translateX(-50%); }
   }
+  @keyframes buhoFadeBefore { 0%, 40% { opacity: 1; } 55%, 90% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes buhoFadeAfter  { 0%, 45% { opacity: 0; } 60%, 95% { opacity: 1; } 100% { opacity: 0; } }
 </style>
