@@ -7,6 +7,7 @@ import Services from '../../components/Services.astro';
 import Approach from '../../components/Approach.astro';
 import ClientCase from '../../components/ClientCase.astro';
 import CaseStudy from '../../components/CaseStudy.astro';
+import Testimonials from '../../components/Testimonials.astro';
 import Pricing from '../../components/Pricing.astro';
 import FooterCTA from '../../components/FooterCTA.astro';
 import { getSiteContent } from '../../i18n/siteContent';
@@ -23,6 +24,7 @@ const t = getSiteContent(locale);
   <Approach locale={locale} />
   <ClientCase locale={locale} />
   <CaseStudy locale={locale} />
+  <Testimonials locale={locale} />
   <Pricing locale={locale} />
   <FooterCTA locale={locale} />
 </Layout>

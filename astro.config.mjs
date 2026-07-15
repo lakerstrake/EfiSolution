@@ -37,5 +37,7 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare(),
+  // Optimiza imágenes con sharp en build (páginas prerenderizadas); en el
+  // runtime de Cloudflare sharp no existe, así que 'compile' es lo correcto.
+  adapter: cloudflare({ imageService: 'compile' }),
 });

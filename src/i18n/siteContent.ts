@@ -30,6 +30,7 @@ type CaseItem = {
 type TeamMember = { name: string; role: string; bio: string; initials: string };
 type AIBenefit = { title: string; body: string };
 type PlanContent = { name: string; tagline: string; audience: string; features: string[]; cta: string; waMessage: string };
+type Testimonial = { quote: string; name: string; role: string; initials: string; highlight: string; logo?: string };
 
 type SiteContent = {
   meta: { title: string; description: string };
@@ -83,6 +84,13 @@ type SiteContent = {
     cta: string;
     waMessage: string;
   };
+  testimonials: {
+    badge: string;
+    title: string;
+    description: string;
+    verifiedLabel: string;
+    items: Testimonial[];
+  };
   problem: {
     badge: string;
     titleA: string;
@@ -126,6 +134,7 @@ type SiteContent = {
     description: string;
     perMonth: string;
     setupLabel: string;
+    monthlyLabel: string;
     recommendedLabel: string;
     plans: { esencial: PlanContent; profesional: PlanContent; escala: PlanContent };
   };
@@ -180,6 +189,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     nav: {
       links: [
+        { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Servicios' },
         { href: '#casos', label: 'Proyectos' },
         { href: '#planes', label: 'Planes' },
@@ -196,24 +206,22 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Una web más rápida.',
       titleB: 'Un negocio que convierte mejor.',
       description:
-        'En Efi Solution construimos plataformas minimalistas, sólidas y escalables para marcas que quieren crecer sin perder tiempo en tecnología lenta.',
+        'Plataformas web minimalistas, sólidas y rápidas para marcas que quieren crecer.',
       ctaPrimary: 'Quiero mi web',
       ctaGhost: 'Agendar auditoría gratuita',
-      // TODO VERIFICAR (Juan): correr Lighthouse real sobre la home para confirmar
-      // '0.9s' (tiempo de carga) y '100/100'. Si no coinciden, ajustar o quitar.
       metrics: [
-        { value: '0.9s', label: 'TIEMPO DE CARGA' },
-        { value: '100/100', label: 'Score Lighthouse' },
-        { value: '0', label: 'Cookies de rastreo' },
+        { value: '110+', label: 'Productos cargados con IA' },
         { value: '48h', label: 'Auditoría inicial' },
+        { value: '5★', label: 'Clientes verificados' },
+        { value: '0', label: 'Cookies de rastreo' },
       ],
     },
     ai: {
       badge: 'IA aplicada',
       title: 'Inteligencia artificial que hace el trabajo pesado por ti.',
-      description: 'No solo hacemos webs rápidas: integramos IA que automatiza tareas reales de tu negocio para que ganes tiempo y vendas más, sin tener que volverte experto en tecnología.',
+      description: 'Integramos IA que automatiza tareas reales de tu negocio: ganas tiempo y vendes más, sin volverte experto en tecnología.',
       exampleTag: 'Caso real: Búho Repuestos',
-      exampleText: 'El dueño sube una sola foto del producto y la IA extrae los datos y llena el inventario solo. Lo que antes tomaba horas, ahora son segundos.',
+      exampleText: 'Sube una foto y la IA llena el inventario sola. De horas a segundos.',
       flowPhoto: 'Formulario vacío + una foto',
       flowResult: 'Nombre, categoría y código llenos por la IA',
       beforeLabel: 'Antes',
@@ -222,9 +230,9 @@ const siteContent: Record<Locale, SiteContent> = {
       doneLabel: '¡Listo! Datos completados solos',
       frameLabel: 'Panel de Búho Repuestos',
       benefits: [
-        { title: 'Ahorra horas', body: 'La IA hace el trabajo repetitivo —cargar productos, ordenar datos— mientras tú atiendes tu negocio.' },
-        { title: 'Menos errores', body: 'Los datos se extraen automáticamente: menos precios equivocados, typos o referencias duplicadas.' },
-        { title: 'Crece sin contratar', body: 'Manejas más productos y pedidos sin sumar personal ni complicarte con sistemas caros.' },
+        { title: 'Ahorra horas', body: 'La IA hace lo repetitivo mientras tú atiendes tu negocio.' },
+        { title: 'Menos errores', body: 'Datos automáticos: sin precios equivocados ni duplicados.' },
+        { title: 'Crece sin contratar', body: 'Más productos y pedidos, sin sumar personal.' },
       ],
       cta: 'Quiero esto para mi negocio',
       waMessage: 'Hola, vi lo de la IA para automatizar tareas y quiero saber cómo aplicarlo a mi negocio.',
@@ -236,47 +244,63 @@ const siteContent: Record<Locale, SiteContent> = {
       name: 'Búho Repuestos B&M',
       sector: 'Repuestos automotrices · Barrios Unidos, Bogotá',
       problemLabel: 'El problema',
-      problem: 'El dueño cargaba cada repuesto a mano: fotos, datos, precios. Con cientos de referencias, mantener el catálogo al día consumía horas y se prestaba a errores.',
+      problem: 'Cargar cada repuesto a mano le costaba horas y generaba errores.',
       builtLabel: 'Qué construimos',
       built: [
-        'Web rápida con catálogo online y búsqueda',
-        'Panel de administración self-service: el dueño gestiona todo sin depender de nosotros',
-        'IA de inventario: sube una foto y se llenan los datos del producto',
+        'Catálogo online con búsqueda',
+        'Panel self-service: él gestiona todo',
+        'IA: una foto llena el inventario',
         'Pedidos directos por WhatsApp',
       ],
       resultsLabel: 'Resultados',
       results: [
-        'Catálogo de 110+ referencias gestionado por el propio dueño',
-        'Alta de productos en segundos en vez de minutos por unidad',
-        'Menos errores de datos al automatizar la carga',
+        '110+ referencias autogestionadas',
+        'Productos en segundos, no en minutos',
+        'Menos errores de datos',
       ],
       visit: 'Ver buhorepuestos.com',
       cta: 'Quiero algo así para mi negocio',
       waMessage: 'Hola, vi el caso de Búho Repuestos y quiero una web con panel e IA para mi negocio.',
     },
+    testimonials: {
+      badge: 'Lo que dicen de nosotros',
+      title: 'Negocios reales, resultados reales.',
+      description: 'Esto dicen quienes ya trabajan con nosotros.',
+      verifiedLabel: 'Cliente verificado',
+      items: [
+        {
+          quote: 'Servicio excelente, atención de nivel profesional y acompañamiento impecable. Están pendientes del funcionamiento de la página con tal interés que hacen seguimiento incluso en nuestras instalaciones. De confianza y totalmente recomendable.',
+          name: 'Cristian',
+          role: 'Dueño · Búho Repuestos B&M',
+          initials: 'CR',
+          highlight: 'Seguimiento incluso en sitio',
+          logo: '/buho-logo.png',
+        },
+      ],
+    },
     problem: {
       badge: 'Diagnóstico',
       titleA: 'El rendimiento no es un detalle técnico.',
       titleB: 'Es una ventaja competitiva.',
-      description: 'Cuando la web responde rápido, el usuario confía más, explora más y compra con menos fricción.',
-      statA: 'de los usuarios móviles abandonan si la carga supera los 3 segundos (Google/SOASTA)',
-      statB: 'de caída en conversiones por cada segundo de retraso (Akamai)',
+      description: 'Una web rápida genera confianza y vende más.',
+      statA: 'abandonan si la web tarda más de 3 segundos (Google)',
+      statB: 'menos ventas por cada segundo de espera (Akamai)',
       sequenceLabel: 'Secuencia problema impacto solución',
       blocks: [
         {
           tag: 'Problema',
           headline: 'Web lenta, ventas bajas.',
-          body: 'Si el sitio tarda en cargar, el usuario se va antes de conocer tu oferta.',
+          body: 'El usuario se va antes de conocer tu oferta.',
         },
         {
           tag: 'Impacto',
           headline: 'Más rebote y más costo de adquisición.',
-          body: 'La lentitud reduce conversión, afecta SEO y encarece cada visita pagada.',
+          body: 'Menos conversión, peor SEO, publicidad más cara.',
         },
         {
           tag: 'Solución',
           headline: 'Arquitectura limpia desde el día uno.',
-          body: 'Diseñamos y construimos para rendimiento real: menos peso, más claridad y mejor experiencia.',
+          body: 'Menos peso, más claridad, mejor experiencia.',
         },
       ],
     },
@@ -290,21 +314,21 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '01 / Web',
           title: 'Páginas web que venden',
-          description: 'Webs rápidas y claras, hechas para que tus clientes encuentren lo que buscan y te escriban.',
+          description: 'Rápidas, claras y hechas para que te escriban.',
           bullets: ['Apareces en Google', 'Diseño simple y profesional', 'Lista para crecer contigo'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Auditoría',
           title: 'Revisión de tu web actual',
-          description: 'Revisamos tu web, te decimos qué la hace lenta y te damos una lista clara de mejoras en 48 horas.',
+          description: 'Qué falla, qué mejorar y cómo. En 48 horas.',
           bullets: ['Medimos velocidad y errores', 'Lista de mejoras priorizada', 'Entrega en 48 horas'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Producto',
           title: 'Que tu web sea fácil de usar',
-          description: 'Ordenamos tu web para que cualquiera la entienda y llegue fácil a comprarte o escribirte.',
+          description: 'Que cualquiera entienda tu web y te compre fácil.',
           bullets: ['Caminos claros para el cliente', 'Probado con personas reales', 'Mejoras continuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
@@ -312,7 +336,7 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '04 / IA',
           title: 'Integraciones y automatización con IA',
-          description: 'Conectamos tus herramientas y dejamos que la IA haga el trabajo repetitivo por ti: cargar datos, responder y organizar, sin que tengas que estar encima.',
+          description: 'La IA hace lo repetitivo por ti: cargar, responder, organizar.',
           bullets: ['Tareas repetitivas hechas por IA', 'Tus apps y herramientas conectadas', 'Avisos y tareas automáticas'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
@@ -328,17 +352,17 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Enfoque',
       title: 'Tecnología con propósito, no solo con estética.',
       description:
-        'Construimos productos propios para resolver problemas reales: acceso a información pública, datos geográficos y herramientas de impacto social. Cada proyecto nace de una necesidad concreta y se mide en producción.',
+        'Productos propios que resuelven problemas reales y se miden en producción.',
       pillars: [
-        { title: 'Impacto social', body: 'Plataformas como Navegador Social y mapas territoriales que acercan información útil a quienes más la necesitan.' },
-        { title: 'Rendimiento real', body: 'Optimizados para funcionar rápido incluso en dispositivos modestos y conexiones limitadas.' },
-        { title: 'Diseño accesible', body: 'Experiencias claras y usables, pensadas desde la investigación de usuario y el trabajo social.' },
+        { title: 'Impacto social', body: 'Información útil para quienes más la necesitan.' },
+        { title: 'Rendimiento real', body: 'Rápido incluso en gama baja y mala señal.' },
+        { title: 'Diseño accesible', body: 'Claro y usable para cualquier persona.' },
       ],
     },
     cases: {
       badge: 'Proyectos',
       title: 'Proyectos que demuestran nuestro enfoque técnico.',
-      description: 'Incluye trabajo con clientes reales y proyectos propios de demostración —cada tarjeta lo indica con su etiqueta—. Toca uno para ver el detalle.',
+      description: 'Proyectos propios, medidos en producción. Toca uno para ver el detalle.',
       tabLabel: 'Selección de proyectos',
       prev: 'Anterior',
       next: 'Siguiente',
@@ -346,21 +370,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Resultado:',
       visit: 'Ver sitio en vivo',
       items: [
-        {
-          key: 'buho',
-          name: 'Búho Repuestos B&M',
-          sector: 'Repuestos automotrices · Bogotá',
-          tag: 'Cliente real',
-          image: '/buho.png',
-          url: 'https://buhorepuestos.com',
-          summary: 'Tienda de repuestos automotrices con catálogo online, panel de administración y carga de inventario por IA: el dueño sube una foto y se llenan los datos del producto.',
-          result: 'El dueño gestiona 110+ referencias por sí mismo y recibe pedidos directos por WhatsApp.',
-          stack: ['Cloudflare', 'IA de visión', 'WhatsApp', 'Panel admin'],
-          metrics: [
-            { value: 110, suffix: '+', label: 'Referencias' },
-            { value: 100, suffix: '%', label: 'Autogestionado' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -430,9 +439,10 @@ const siteContent: Record<Locale, SiteContent> = {
     pricing: {
       badge: 'Planes',
       title: 'Elige cómo quieres crecer.',
-      description: 'Trabajamos con un acompañamiento mensual: tu web siempre rápida, al día y mejorando. El precio es claro y lo ajustamos a tu negocio.',
+      description: 'Acompañamiento mensual: tu web siempre rápida, al día y mejorando.',
       perMonth: '/mes',
-      setupLabel: 'Puesta en marcha (pago único)',
+      setupLabel: 'Pago único para empezar',
+      monthlyLabel: 'Luego, cada mes',
       recommendedLabel: 'Recomendado',
       plans: {
         esencial: {
@@ -483,7 +493,7 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Contacto',
       titleA: 'Transformemos tu web',
       titleB: 'en una ventaja real.',
-      description: 'Auditamos tu situación actual y te entregamos un plan de mejora concreto, priorizado y accionable.',
+      description: 'Auditamos tu web y te entregamos un plan concreto y priorizado. Gratis.',
       cta: 'Solicitar auditoría',
       ctaAria: 'Solicitar auditoría por correo',
       benefitsLabel: 'Compromisos de respuesta',
@@ -534,6 +544,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     nav: {
       links: [
+        { href: '#ia', label: 'AI' },
         { href: '#servicios', label: 'Services' },
         { href: '#casos', label: 'Work' },
         { href: '#planes', label: 'Plans' },
@@ -549,22 +560,22 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'High-performance web design and development',
       titleA: 'A faster website.',
       titleB: 'A business that converts better.',
-      description: 'At Efi Solution we build minimal, solid and scalable platforms for brands that want to grow without slow technology.',
+      description: 'Minimal, solid and fast web platforms for brands that want to grow.',
       ctaPrimary: 'I want my website',
       ctaGhost: 'Book a free audit',
       metrics: [
-        { value: '0.9s', label: 'Target LCP' },
-        { value: '100/100', label: 'Lighthouse score' },
-        { value: '0', label: 'Tracking cookies' },
+        { value: '110+', label: 'Products loaded by AI' },
         { value: '48h', label: 'Initial audit' },
+        { value: '5★', label: 'Verified clients' },
+        { value: '0', label: 'Tracking cookies' },
       ],
     },
     ai: {
       badge: 'AI in action',
       title: 'Artificial intelligence that does the heavy lifting for you.',
-      description: 'We do more than fast websites: we add AI that automates real tasks in your business so you save time and sell more, without becoming a tech expert.',
+      description: 'We add AI that automates real tasks in your business: save time and sell more, without becoming a tech expert.',
       exampleTag: 'Real case: Búho Repuestos',
-      exampleText: 'The owner uploads a single photo of the product and the AI extracts the data and fills the inventory on its own. What used to take hours now takes seconds.',
+      exampleText: 'Upload one photo and the AI fills the inventory. Hours become seconds.',
       flowPhoto: 'Empty form + one photo',
       flowResult: 'Name, category and code filled by AI',
       beforeLabel: 'Before',
@@ -573,9 +584,9 @@ const siteContent: Record<Locale, SiteContent> = {
       doneLabel: 'Done! Data filled on its own',
       frameLabel: 'Búho Repuestos panel',
       benefits: [
-        { title: 'Save hours', body: 'The AI handles the repetitive work —loading products, sorting data— while you run your business.' },
-        { title: 'Fewer errors', body: 'Data is extracted automatically: fewer wrong prices, typos or duplicate references.' },
-        { title: 'Grow without hiring', body: 'Handle more products and orders without adding staff or expensive systems.' },
+        { title: 'Save hours', body: 'The AI does the repetitive work while you run your business.' },
+        { title: 'Fewer errors', body: 'Automatic data: no wrong prices or duplicates.' },
+        { title: 'Grow without hiring', body: 'More products and orders, no extra staff.' },
       ],
       cta: 'I want this for my business',
       waMessage: 'Hi, I saw the AI automation and I want to know how to apply it to my business.',
@@ -587,47 +598,63 @@ const siteContent: Record<Locale, SiteContent> = {
       name: 'Búho Repuestos B&M',
       sector: 'Auto parts · Barrios Unidos, Bogotá',
       problemLabel: 'The problem',
-      problem: 'The owner loaded every part by hand: photos, data, prices. With hundreds of references, keeping the catalog up to date took hours and was error-prone.',
+      problem: 'Loading every part by hand cost him hours and caused errors.',
       builtLabel: 'What we built',
       built: [
-        'Fast website with an online catalog and search',
-        'Self-service admin panel: the owner manages everything without us',
-        'Inventory AI: upload a photo and the product data fills itself',
+        'Online catalog with search',
+        'Self-service panel: he manages it all',
+        'AI: one photo fills the inventory',
         'Direct orders via WhatsApp',
       ],
       resultsLabel: 'Results',
       results: [
-        'A 110+ reference catalog managed by the owner himself',
-        'Products added in seconds instead of minutes each',
-        'Fewer data errors by automating the loading',
+        '110+ self-managed references',
+        'Products in seconds, not minutes',
+        'Fewer data errors',
       ],
       visit: 'Visit buhorepuestos.com',
       cta: 'I want something like this',
       waMessage: 'Hi, I saw the Búho Repuestos case and I want a website with an admin panel and AI for my business.',
     },
+    testimonials: {
+      badge: 'What they say about us',
+      title: 'Real businesses, real results.',
+      description: 'Here’s what those already working with us say.',
+      verifiedLabel: 'Verified client',
+      items: [
+        {
+          quote: 'Excellent service, truly professional attention and impeccable support. They watch over how the website performs with such care that they even follow up at our own premises. Trustworthy and absolutely recommended.',
+          name: 'Cristian',
+          role: 'Owner · Búho Repuestos B&M',
+          initials: 'CR',
+          highlight: 'Follow-up even on site',
+          logo: '/buho-logo.png',
+        },
+      ],
+    },
     problem: {
       badge: 'Diagnosis',
       titleA: 'Performance is not a technical detail.',
       titleB: 'It is a competitive advantage.',
-      description: 'When your site responds quickly, users trust more, explore more and buy with less friction.',
-      statA: 'Mobile users bounce when loading takes more than 3 seconds (Google/SOASTA).',
-      statB: 'Estimated conversion drop for every extra second of delay (Akamai).',
+      description: 'A fast website builds trust and sells more.',
+      statA: 'bounce when loading takes over 3 seconds (Google)',
+      statB: 'fewer sales for every extra second of delay (Akamai)',
       sequenceLabel: 'Problem impact solution sequence',
       blocks: [
         {
           tag: 'Problem',
           headline: 'Slow site, lower sales.',
-          body: 'If your site takes too long to load, users leave before they even see your offer.',
+          body: 'Users leave before they even see your offer.',
         },
         {
           tag: 'Impact',
           headline: 'More bounce and higher acquisition costs.',
-          body: 'Slow speed hurts conversion, weakens SEO and makes each paid visit more expensive.',
+          body: 'Lower conversion, weaker SEO, pricier ads.',
         },
         {
           tag: 'Solution',
           headline: 'Clean architecture from day one.',
-          body: 'We design and build for real performance: less weight, more clarity and better experience.',
+          body: 'Less weight, more clarity, better experience.',
         },
       ],
     },
@@ -641,21 +668,21 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '01 / Web',
           title: 'Websites that sell',
-          description: 'Fast, clear websites built so your customers find what they need and contact you.',
+          description: 'Fast, clear and built to get you messages.',
           bullets: ['Show up on Google', 'Simple, professional design', 'Ready to grow with you'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Audit',
           title: 'A review of your current site',
-          description: 'We check your site, tell you what makes it slow, and give you a clear list of fixes in 48 hours.',
+          description: 'What fails, what to fix and how. In 48 hours.',
           bullets: ['We measure speed and errors', 'Prioritized list of fixes', 'Delivered in 48 hours'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Product',
           title: 'Make your site easy to use',
-          description: 'We organize your site so anyone understands it and easily gets to buying or messaging you.',
+          description: 'Anyone understands your site and buys easily.',
           bullets: ['Clear paths for the customer', 'Tested with real people', 'Continuous improvements'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
@@ -663,7 +690,7 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '04 / AI',
           title: 'Integrations and automation with AI',
-          description: 'We connect your tools and let AI handle the repetitive work for you —loading data, replying, organizing— so you don’t have to stay on top of it.',
+          description: 'AI does the repetitive work: loading, replying, organizing.',
           bullets: ['Repetitive tasks done by AI', 'Your apps and tools connected', 'Automatic alerts and tasks'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
@@ -679,17 +706,17 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Approach',
       title: 'Technology with purpose, not just aesthetics.',
       description:
-        'We build our own products to solve real problems: access to public information, geographic data and social-impact tools. Each project starts from a concrete need and is measured in production.',
+        'Our own products that solve real problems and are measured in production.',
       pillars: [
-        { title: 'Social impact', body: 'Platforms like Navegador Social and territorial maps that bring useful information to those who need it most.' },
-        { title: 'Real performance', body: 'Optimized to run fast even on modest devices and limited connections.' },
-        { title: 'Accessible design', body: 'Clear, usable experiences grounded in user research and social work.' },
+        { title: 'Social impact', body: 'Useful information for those who need it most.' },
+        { title: 'Real performance', body: 'Fast even on low-end devices and weak signal.' },
+        { title: 'Accessible design', body: 'Clear and usable for everyone.' },
       ],
     },
     cases: {
       badge: 'Selected Work',
       title: 'Projects that show our technical approach.',
-      description: 'Includes work with real clients and our own demo projects —each card shows which with a label—. Tap one to see the detail.',
+      description: 'Our own projects, measured in production. Tap one to see the detail.',
       tabLabel: 'Project selector',
       prev: 'Previous',
       next: 'Next',
@@ -697,21 +724,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Result:',
       visit: 'Visit live site',
       items: [
-        {
-          key: 'buho',
-          name: 'Búho Repuestos B&M',
-          sector: 'Auto parts · Bogotá',
-          tag: 'Real client',
-          image: '/buho.png',
-          url: 'https://buhorepuestos.com',
-          summary: 'Auto-parts store with an online catalog, an admin panel and AI-powered inventory: the owner uploads a photo and the product data fills itself.',
-          result: 'The owner manages 110+ references himself and receives orders directly via WhatsApp.',
-          stack: ['Cloudflare', 'Vision AI', 'WhatsApp', 'Admin panel'],
-          metrics: [
-            { value: 110, suffix: '+', label: 'References' },
-            { value: 100, suffix: '%', label: 'Self-managed' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -781,9 +793,10 @@ const siteContent: Record<Locale, SiteContent> = {
     pricing: {
       badge: 'Plans',
       title: 'Choose how you want to grow.',
-      description: 'We work with a monthly partnership: your site always fast, up to date and improving. Clear pricing, tailored to your business.',
+      description: 'A monthly partnership: your site always fast, up to date and improving.',
       perMonth: '/mo',
-      setupLabel: 'Setup (one-time)',
+      setupLabel: 'One-time setup to start',
+      monthlyLabel: 'Then, every month',
       recommendedLabel: 'Recommended',
       plans: {
         esencial: {
@@ -834,7 +847,7 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Contact',
       titleA: 'Let us turn your website',
       titleB: 'into a real advantage.',
-      description: 'We audit your current situation and deliver a clear, prioritized and actionable improvement plan.',
+      description: 'We audit your site and deliver a clear, prioritized plan. Free.',
       cta: 'Request audit',
       ctaAria: 'Request audit by email',
       benefitsLabel: 'Response commitments',
@@ -885,6 +898,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     nav: {
       links: [
+        { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Serviços' },
         { href: '#casos', label: 'Projetos' },
         { href: '#planes', label: 'Planos' },
@@ -900,22 +914,22 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Design e desenvolvimento web de alto desempenho',
       titleA: 'Um site mais rápido.',
       titleB: 'Um negócio que converte melhor.',
-      description: 'Na Efi Solution criamos plataformas minimalistas, sólidas e escaláveis para marcas que querem crescer sem tecnologia lenta.',
+      description: 'Plataformas web minimalistas, sólidas e rápidas para marcas que querem crescer.',
       ctaPrimary: 'Quero meu site',
       ctaGhost: 'Agendar auditoria gratuita',
       metrics: [
-        { value: '0.9s', label: 'LCP alvo' },
-        { value: '100/100', label: 'Score Lighthouse' },
-        { value: '0', label: 'Cookies de rastreio' },
+        { value: '110+', label: 'Produtos cadastrados com IA' },
         { value: '48h', label: 'Auditoria inicial' },
+        { value: '5★', label: 'Clientes verificados' },
+        { value: '0', label: 'Cookies de rastreio' },
       ],
     },
     ai: {
       badge: 'IA aplicada',
       title: 'Inteligência artificial que faz o trabalho pesado por você.',
-      description: 'Não fazemos só sites rápidos: integramos IA que automatiza tarefas reais do seu negócio para você ganhar tempo e vender mais, sem precisar virar especialista em tecnologia.',
+      description: 'Integramos IA que automatiza tarefas reais do seu negócio: ganha tempo e vende mais, sem virar especialista em tecnologia.',
       exampleTag: 'Caso real: Búho Repuestos',
-      exampleText: 'O dono envia uma única foto do produto e a IA extrai os dados e preenche o estoque sozinha. O que antes levava horas, agora leva segundos.',
+      exampleText: 'Envie uma foto e a IA preenche o estoque sozinha. De horas a segundos.',
       flowPhoto: 'Formulário vazio + uma foto',
       flowResult: 'Nome, categoria e código preenchidos pela IA',
       beforeLabel: 'Antes',
@@ -924,9 +938,9 @@ const siteContent: Record<Locale, SiteContent> = {
       doneLabel: 'Pronto! Dados preenchidos sozinhos',
       frameLabel: 'Painel da Búho Repuestos',
       benefits: [
-        { title: 'Economize horas', body: 'A IA faz o trabalho repetitivo —cadastrar produtos, organizar dados— enquanto você cuida do negócio.' },
-        { title: 'Menos erros', body: 'Os dados são extraídos automaticamente: menos preços errados, erros de digitação ou referências duplicadas.' },
-        { title: 'Cresça sem contratar', body: 'Gerencie mais produtos e pedidos sem aumentar a equipe nem complicar com sistemas caros.' },
+        { title: 'Economize horas', body: 'A IA faz o repetitivo enquanto você cuida do negócio.' },
+        { title: 'Menos erros', body: 'Dados automáticos: sem preços errados nem duplicados.' },
+        { title: 'Cresça sem contratar', body: 'Mais produtos e pedidos, sem aumentar a equipe.' },
       ],
       cta: 'Quero isso para o meu negócio',
       waMessage: 'Olá, vi a IA para automatizar tarefas e quero saber como aplicar no meu negócio.',
@@ -938,47 +952,63 @@ const siteContent: Record<Locale, SiteContent> = {
       name: 'Búho Repuestos B&M',
       sector: 'Autopeças · Barrios Unidos, Bogotá',
       problemLabel: 'O problema',
-      problem: 'O dono cadastrava cada peça na mão: fotos, dados, preços. Com centenas de referências, manter o catálogo atualizado levava horas e gerava erros.',
+      problem: 'Cadastrar cada peça na mão custava horas e gerava erros.',
       builtLabel: 'O que construímos',
       built: [
-        'Site rápido com catálogo online e busca',
-        'Painel de administração self-service: o dono gerencia tudo sem depender de nós',
-        'IA de estoque: envie uma foto e os dados do produto se preenchem',
+        'Catálogo online com busca',
+        'Painel self-service: ele gerencia tudo',
+        'IA: uma foto preenche o estoque',
         'Pedidos diretos pelo WhatsApp',
       ],
       resultsLabel: 'Resultados',
       results: [
-        'Catálogo de 110+ referências gerenciado pelo próprio dono',
-        'Cadastro de produtos em segundos em vez de minutos por unidade',
-        'Menos erros de dados ao automatizar o cadastro',
+        '110+ referências autogerenciadas',
+        'Produtos em segundos, não em minutos',
+        'Menos erros de dados',
       ],
       visit: 'Ver buhorepuestos.com',
       cta: 'Quero algo assim para o meu negócio',
       waMessage: 'Olá, vi o caso da Búho Repuestos e quero um site com painel e IA para o meu negócio.',
     },
+    testimonials: {
+      badge: 'O que dizem de nós',
+      title: 'Negócios reais, resultados reais.',
+      description: 'Veja o que dizem quem já trabalha com a gente.',
+      verifiedLabel: 'Cliente verificado',
+      items: [
+        {
+          quote: 'Serviço excelente, atendimento de nível profissional e acompanhamento impecável. Ficam atentos ao funcionamento do site com tanto interesse que fazem acompanhamento até nas nossas instalações. De confiança e totalmente recomendável.',
+          name: 'Cristian',
+          role: 'Dono · Búho Repuestos B&M',
+          initials: 'CR',
+          highlight: 'Acompanhamento até no local',
+          logo: '/buho-logo.png',
+        },
+      ],
+    },
     problem: {
       badge: 'Diagnóstico',
       titleA: 'Desempenho não é detalhe técnico.',
       titleB: 'É vantagem competitiva.',
-      description: 'Quando o site responde rápido, o usuário confia mais, explora mais e compra com menos fricção.',
-      statA: 'Abandono no mobile quando o carregamento passa de 3 segundos (Google/SOASTA).',
-      statB: 'Queda estimada de conversão por segundo extra de atraso (Akamai).',
+      description: 'Um site rápido gera confiança e vende mais.',
+      statA: 'abandonam se o site demora mais de 3 segundos (Google)',
+      statB: 'menos vendas por cada segundo de espera (Akamai)',
       sequenceLabel: 'Sequência problema impacto solução',
       blocks: [
         {
           tag: 'Problema',
           headline: 'Site lento, menos vendas.',
-          body: 'Se o site demora para carregar, o usuário sai antes de conhecer sua oferta.',
+          body: 'O usuário sai antes de conhecer sua oferta.',
         },
         {
           tag: 'Impacto',
           headline: 'Mais rejeição e maior custo de aquisição.',
-          body: 'A lentidão reduz conversão, prejudica SEO e encarece cada visita paga.',
+          body: 'Menos conversão, pior SEO, anúncios mais caros.',
         },
         {
           tag: 'Solução',
           headline: 'Arquitetura limpa desde o primeiro dia.',
-          body: 'Projetamos e construímos para desempenho real: menos peso, mais clareza e melhor experiência.',
+          body: 'Menos peso, mais clareza, melhor experiência.',
         },
       ],
     },
@@ -992,21 +1022,21 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '01 / Web',
           title: 'Sites que vendem',
-          description: 'Sites rápidos e claros, feitos para seus clientes acharem o que procuram e te chamarem.',
+          description: 'Rápidos, claros e feitos para te chamarem.',
           bullets: ['Apareça no Google', 'Design simples e profissional', 'Pronto para crescer com você'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Auditoria',
           title: 'Revisão do seu site atual',
-          description: 'Revisamos seu site, dizemos o que o deixa lento e entregamos uma lista clara de melhorias em 48 horas.',
+          description: 'O que falha, o que melhorar e como. Em 48 horas.',
           bullets: ['Medimos velocidade e erros', 'Lista de melhorias priorizada', 'Entrega em 48 horas'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produto',
           title: 'Deixe seu site fácil de usar',
-          description: 'Organizamos seu site para qualquer um entender e chegar fácil a comprar ou te escrever.',
+          description: 'Qualquer um entende seu site e compra fácil.',
           bullets: ['Caminhos claros para o cliente', 'Testado com pessoas reais', 'Melhorias contínuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
@@ -1014,7 +1044,7 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '04 / IA',
           title: 'Integrações e automação com IA',
-          description: 'Conectamos suas ferramentas e deixamos a IA fazer o trabalho repetitivo por você: cadastrar dados, responder e organizar, sem você precisar ficar em cima.',
+          description: 'A IA faz o repetitivo por você: cadastrar, responder, organizar.',
           bullets: ['Tarefas repetitivas feitas por IA', 'Seus apps e ferramentas conectados', 'Avisos e tarefas automáticas'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
@@ -1030,17 +1060,17 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Abordagem',
       title: 'Tecnologia com propósito, não apenas estética.',
       description:
-        'Criamos produtos próprios para resolver problemas reais: acesso à informação pública, dados geográficos e ferramentas de impacto social. Cada projeto nasce de uma necessidade concreta e é medido em produção.',
+        'Produtos próprios que resolvem problemas reais e são medidos em produção.',
       pillars: [
-        { title: 'Impacto social', body: 'Plataformas como o Navegador Social e mapas territoriais que aproximam informação útil de quem mais precisa.' },
-        { title: 'Desempenho real', body: 'Otimizados para funcionar rápido mesmo em dispositivos modestos e conexões limitadas.' },
-        { title: 'Design acessível', body: 'Experiências claras e usáveis, baseadas em pesquisa de usuário e trabalho social.' },
+        { title: 'Impacto social', body: 'Informação útil para quem mais precisa.' },
+        { title: 'Desempenho real', body: 'Rápido até em celulares simples e sinal fraco.' },
+        { title: 'Design acessível', body: 'Claro e usável para qualquer pessoa.' },
       ],
     },
     cases: {
       badge: 'Projetos',
       title: 'Projetos que mostram nossa abordagem técnica.',
-      description: 'Inclui trabalho com clientes reais e projetos próprios de demonstração —cada cartão indica com sua etiqueta—. Toque em um para ver o detalhe.',
+      description: 'Projetos próprios, medidos em produção. Toque em um para ver o detalhe.',
       tabLabel: 'Seletor de projetos',
       prev: 'Anterior',
       next: 'Próximo',
@@ -1048,21 +1078,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Resultado:',
       visit: 'Ver site ao vivo',
       items: [
-        {
-          key: 'buho',
-          name: 'Búho Repuestos B&M',
-          sector: 'Autopeças · Bogotá',
-          tag: 'Cliente real',
-          image: '/buho.png',
-          url: 'https://buhorepuestos.com',
-          summary: 'Loja de autopeças com catálogo online, painel de administração e cadastro de estoque por IA: o dono envia uma foto e os dados do produto se preenchem.',
-          result: 'O dono gerencia 110+ referências sozinho e recebe pedidos diretos pelo WhatsApp.',
-          stack: ['Cloudflare', 'IA de visão', 'WhatsApp', 'Painel admin'],
-          metrics: [
-            { value: 110, suffix: '+', label: 'Referências' },
-            { value: 100, suffix: '%', label: 'Autogerenciado' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -1132,9 +1147,10 @@ const siteContent: Record<Locale, SiteContent> = {
     pricing: {
       badge: 'Planos',
       title: 'Escolha como você quer crescer.',
-      description: 'Trabalhamos com um acompanhamento mensal: seu site sempre rápido, atualizado e melhorando. Preço claro, ajustado ao seu negócio.',
+      description: 'Acompanhamento mensal: seu site sempre rápido, atualizado e melhorando.',
       perMonth: '/mês',
-      setupLabel: 'Implementação (pagamento único)',
+      setupLabel: 'Pagamento único para começar',
+      monthlyLabel: 'Depois, todo mês',
       recommendedLabel: 'Recomendado',
       plans: {
         esencial: {
@@ -1185,7 +1201,7 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Contato',
       titleA: 'Vamos transformar seu site',
       titleB: 'em uma vantagem real.',
-      description: 'Auditamos seu cenário atual e entregamos um plano de melhoria claro, priorizado e acionável.',
+      description: 'Auditamos seu site e entregamos um plano claro e priorizado. Grátis.',
       cta: 'Solicitar auditoria',
       ctaAria: 'Solicitar auditoria por email',
       benefitsLabel: 'Compromissos de resposta',
@@ -1236,6 +1252,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     nav: {
       links: [
+        { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Services' },
         { href: '#casos', label: 'Projets' },
         { href: '#planes', label: 'Offres' },
@@ -1252,22 +1269,22 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Un site plus rapide.',
       titleB: 'Une entreprise qui convertit mieux.',
       description:
-        'Chez Efi Solution, nous construisons des plateformes minimalistes, solides et evolutives pour les marques qui veulent croitre sans technologie lente.',
+        'Des plateformes web minimalistes, solides et rapides pour les marques qui veulent grandir.',
       ctaPrimary: 'Je veux mon site',
       ctaGhost: 'Reserver un audit gratuit',
       metrics: [
-        { value: '0.9s', label: 'LCP cible' },
-        { value: '100/100', label: 'Score Lighthouse' },
-        { value: '0', label: 'Cookies de suivi' },
+        { value: '110+', label: 'Produits charges par IA' },
         { value: '48h', label: 'Audit initial' },
+        { value: '5★', label: 'Clients verifies' },
+        { value: '0', label: 'Cookies de suivi' },
       ],
     },
     ai: {
       badge: 'IA appliquee',
       title: 'Une intelligence artificielle qui fait le gros du travail pour vous.',
-      description: 'Nous ne faisons pas que des sites rapides : nous integrons une IA qui automatise des taches reelles de votre activite pour vous faire gagner du temps et vendre plus, sans devenir expert en technologie.',
+      description: 'Nous integrons une IA qui automatise des taches reelles de votre activite : gagnez du temps et vendez plus, sans devenir expert.',
       exampleTag: 'Cas reel : Búho Repuestos',
-      exampleText: 'Le proprietaire televerse une seule photo du produit et l’IA en extrait les donnees et remplit l’inventaire toute seule. Ce qui prenait des heures ne prend plus que quelques secondes.',
+      exampleText: 'Une photo et l’IA remplit l’inventaire toute seule. Des heures aux secondes.',
       flowPhoto: 'Formulaire vide + une photo',
       flowResult: 'Nom, categorie et code remplis par l’IA',
       beforeLabel: 'Avant',
@@ -1276,9 +1293,9 @@ const siteContent: Record<Locale, SiteContent> = {
       doneLabel: 'C’est fait ! Donnees remplies toutes seules',
       frameLabel: 'Panneau de Búho Repuestos',
       benefits: [
-        { title: 'Gagnez des heures', body: 'L’IA fait le travail repetitif —saisir les produits, trier les donnees— pendant que vous gerez votre activite.' },
-        { title: 'Moins d’erreurs', body: 'Les donnees sont extraites automatiquement : moins de prix errones, de fautes ou de references en double.' },
-        { title: 'Grandir sans embaucher', body: 'Gerez plus de produits et de commandes sans ajouter de personnel ni de systemes couteux.' },
+        { title: 'Gagnez des heures', body: 'L’IA fait le repetitif pendant que vous gerez votre activite.' },
+        { title: 'Moins d’erreurs', body: 'Donnees automatiques : sans prix errones ni doublons.' },
+        { title: 'Grandir sans embaucher', body: 'Plus de produits et de commandes, sans personnel en plus.' },
       ],
       cta: 'Je veux ca pour mon entreprise',
       waMessage: 'Bonjour, j’ai vu l’IA pour automatiser les taches et je veux savoir comment l’appliquer a mon entreprise.',
@@ -1290,47 +1307,63 @@ const siteContent: Record<Locale, SiteContent> = {
       name: 'Búho Repuestos B&M',
       sector: 'Pieces auto · Barrios Unidos, Bogota',
       problemLabel: 'Le probleme',
-      problem: 'Le proprietaire saisissait chaque piece a la main : photos, donnees, prix. Avec des centaines de references, garder le catalogue a jour prenait des heures et generait des erreurs.',
+      problem: 'Saisir chaque piece a la main lui coutait des heures et generait des erreurs.',
       builtLabel: 'Ce que nous avons construit',
       built: [
-        'Site rapide avec catalogue en ligne et recherche',
-        'Panneau d’administration en self-service : le proprietaire gere tout sans nous',
-        'IA d’inventaire : televersez une photo et les donnees du produit se remplissent',
+        'Catalogue en ligne avec recherche',
+        'Panneau self-service : il gere tout',
+        'IA : une photo remplit l’inventaire',
         'Commandes directes via WhatsApp',
       ],
       resultsLabel: 'Resultats',
       results: [
-        'Un catalogue de 110+ references gere par le proprietaire lui-meme',
-        'Produits ajoutes en quelques secondes au lieu de minutes chacun',
-        'Moins d’erreurs de donnees grace a l’automatisation de la saisie',
+        '110+ references autogerees',
+        'Produits en secondes, pas en minutes',
+        'Moins d’erreurs de donnees',
       ],
       visit: 'Voir buhorepuestos.com',
       cta: 'Je veux quelque chose comme ca',
       waMessage: 'Bonjour, j’ai vu le cas Búho Repuestos et je veux un site avec panneau d’administration et IA pour mon entreprise.',
     },
+    testimonials: {
+      badge: 'Ce qu’ils disent de nous',
+      title: 'De vraies entreprises, de vrais resultats.',
+      description: 'Voici ce que disent ceux qui travaillent deja avec nous.',
+      verifiedLabel: 'Client verifie',
+      items: [
+        {
+          quote: 'Service excellent, une attention vraiment professionnelle et un accompagnement impeccable. Ils suivent le fonctionnement du site avec un tel interet qu’ils assurent meme un suivi dans nos locaux. Fiable et totalement recommandable.',
+          name: 'Cristian',
+          role: 'Proprietaire · Búho Repuestos B&M',
+          initials: 'CR',
+          highlight: 'Suivi meme sur place',
+          logo: '/buho-logo.png',
+        },
+      ],
+    },
     problem: {
       badge: 'Diagnostic',
       titleA: 'La performance n’est pas un detail technique.',
       titleB: 'C’est un avantage concurrentiel.',
-      description: 'Quand le site repond vite, l’utilisateur fait plus confiance, explore davantage et achete avec moins de friction.',
-      statA: 'Abandon sur mobile quand le chargement depasse 3 secondes (Google/SOASTA).',
-      statB: 'Baisse de conversion estimee pour chaque seconde supplementaire (Akamai).',
+      description: 'Un site rapide inspire confiance et vend plus.',
+      statA: 'abandonnent si le site met plus de 3 secondes (Google)',
+      statB: 'de ventes en moins par seconde d’attente (Akamai)',
       sequenceLabel: 'Sequence probleme impact solution',
       blocks: [
         {
           tag: 'Probleme',
           headline: 'Site lent, ventes en baisse.',
-          body: 'Si le site met trop de temps a charger, l’utilisateur part avant de decouvrir votre offre.',
+          body: 'L’utilisateur part avant de decouvrir votre offre.',
         },
         {
           tag: 'Impact',
           headline: 'Plus de rebond et un cout d’acquisition plus eleve.',
-          body: 'La lenteur reduit la conversion, nuit au SEO et rencherit chaque visite payante.',
+          body: 'Moins de conversion, SEO affaibli, pubs plus cheres.',
         },
         {
           tag: 'Solution',
           headline: 'Une architecture propre des le premier jour.',
-          body: 'Nous concevons et construisons pour une performance reelle : moins de poids, plus de clarte et une meilleure experience.',
+          body: 'Moins de poids, plus de clarte, meilleure experience.',
         },
       ],
     },
@@ -1344,21 +1377,21 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '01 / Web',
           title: 'Des sites qui vendent',
-          description: 'Des sites rapides et clairs, faits pour que vos clients trouvent ce qu’ils cherchent et vous contactent.',
+          description: 'Rapides, clairs et faits pour qu’on vous contacte.',
           bullets: ['Apparaissez sur Google', 'Design simple et professionnel', 'Pret a grandir avec vous'],
           iconPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
         },
         {
           number: '02 / Audit',
           title: 'Un bilan de votre site actuel',
-          description: 'Nous verifions votre site, vous disons ce qui le ralentit et vous donnons une liste claire d’ameliorations en 48 heures.',
+          description: 'Ce qui bloque, quoi ameliorer et comment. En 48 heures.',
           bullets: ['Nous mesurons vitesse et erreurs', 'Liste d’ameliorations prioritaire', 'Livraison en 48 heures'],
           iconPath: 'M21 21l-4.35-4.35M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z',
         },
         {
           number: '03 / Produit',
           title: 'Rendre votre site facile a utiliser',
-          description: 'Nous organisons votre site pour que tout le monde le comprenne et arrive facilement a acheter ou vous ecrire.',
+          description: 'Tout le monde comprend votre site et achete facilement.',
           bullets: ['Des parcours clairs pour le client', 'Teste avec de vraies personnes', 'Ameliorations continues'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
@@ -1366,7 +1399,7 @@ const siteContent: Record<Locale, SiteContent> = {
         {
           number: '04 / IA',
           title: 'Integrations et automatisation avec IA',
-          description: 'Nous connectons vos outils et laissons l’IA faire le travail repetitif a votre place : saisir des donnees, repondre, organiser, sans que vous ayez a vous en occuper.',
+          description: 'L’IA fait le repetitif : saisir, repondre, organiser.',
           bullets: ['Taches repetitives faites par l’IA', 'Vos apps et outils connectes', 'Alertes et taches automatiques'],
           iconPath: 'M20 13c0 5-3.5 8-8 8s-8-3-8-8 3.5-8 8-8 8 3 8 8zM12 5v8l5 3',
         },
@@ -1382,17 +1415,17 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Approche',
       title: 'La technologie avec un but, pas seulement de l’esthétique.',
       description:
-        'Nous créons nos propres produits pour résoudre de vrais problèmes : accès à l’information publique, données géographiques et outils à impact social. Chaque projet naît d’un besoin concret et se mesure en production.',
+        'Nos propres produits qui resolvent de vrais problemes et se mesurent en production.',
       pillars: [
-        { title: 'Impact social', body: 'Des plateformes comme Navegador Social et des cartes territoriales qui rapprochent l’information utile de ceux qui en ont le plus besoin.' },
-        { title: 'Performance réelle', body: 'Optimisés pour fonctionner vite même sur des appareils modestes et des connexions limitées.' },
-        { title: 'Design accessible', body: 'Des expériences claires et utilisables, fondées sur la recherche utilisateur et le travail social.' },
+        { title: 'Impact social', body: 'L’information utile a ceux qui en ont le plus besoin.' },
+        { title: 'Performance réelle', body: 'Rapide meme sur petits appareils et signal faible.' },
+        { title: 'Design accessible', body: 'Clair et utilisable par tout le monde.' },
       ],
     },
     cases: {
       badge: 'Travaux',
       title: 'Des projets qui montrent notre approche technique.',
-      description: 'Inclut du travail avec de vrais clients et nos propres projets de demonstration —chaque carte l’indique avec son etiquette—. Touchez-en un pour voir le detail.',
+      description: 'Nos propres projets, mesures en production. Touchez-en un pour voir le detail.',
       tabLabel: 'Selecteur de projets',
       prev: 'Precedent',
       next: 'Suivant',
@@ -1400,21 +1433,6 @@ const siteContent: Record<Locale, SiteContent> = {
       resultPrefix: 'Resultat :',
       visit: 'Voir le site en ligne',
       items: [
-        {
-          key: 'buho',
-          name: 'Búho Repuestos B&M',
-          sector: 'Pieces auto · Bogota',
-          tag: 'Client reel',
-          image: '/buho.png',
-          url: 'https://buhorepuestos.com',
-          summary: 'Magasin de pieces auto avec catalogue en ligne, panneau d’administration et inventaire par IA : le proprietaire televerse une photo et les donnees du produit se remplissent.',
-          result: 'Le proprietaire gere 110+ references lui-meme et recoit des commandes directement via WhatsApp.',
-          stack: ['Cloudflare', 'IA de vision', 'WhatsApp', 'Panneau admin'],
-          metrics: [
-            { value: 110, suffix: '+', label: 'References' },
-            { value: 100, suffix: '%', label: 'Autogere' },
-          ],
-        },
         {
           key: 'navegador',
           name: 'Navegador Social',
@@ -1484,9 +1502,10 @@ const siteContent: Record<Locale, SiteContent> = {
     pricing: {
       badge: 'Offres',
       title: 'Choisissez comment vous voulez grandir.',
-      description: 'Nous travaillons avec un accompagnement mensuel : votre site toujours rapide, a jour et en amelioration. Un prix clair, adapte a votre activite.',
+      description: 'Un accompagnement mensuel : votre site toujours rapide, a jour et en amelioration.',
       perMonth: '/mois',
-      setupLabel: 'Mise en place (paiement unique)',
+      setupLabel: 'Paiement unique pour demarrer',
+      monthlyLabel: 'Ensuite, chaque mois',
       recommendedLabel: 'Recommande',
       plans: {
         esencial: {
@@ -1537,7 +1556,7 @@ const siteContent: Record<Locale, SiteContent> = {
       badge: 'Contact',
       titleA: 'Transformons votre site',
       titleB: 'en un veritable avantage.',
-      description: 'Nous auditons votre situation actuelle et livrons un plan d’amelioration clair, priorise et actionnable.',
+      description: 'Nous auditons votre site et livrons un plan clair et priorise. Gratuit.',
       cta: 'Demander un audit',
       ctaAria: 'Demander un audit par e-mail',
       benefitsLabel: 'Engagements de reponse',

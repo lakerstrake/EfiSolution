@@ -27,15 +27,16 @@ const money = PRICING_BY_LOCALE[locale];
       </p>
     </div>
 
-    <div class="reveal mt-12 grid items-start gap-6 lg:grid-cols-3">
-      {planOrder.map((key: PlanKey) => {
+    <div class="mt-10 grid items-start gap-6 lg:grid-cols-3">
+      {planOrder.map((key: PlanKey, cardIndex: number) => {
         const plan = t.plans[key];
         const amount = money.plans[key];
         const recommended = RECOMMENDED_PLAN === key;
         const waHref = whatsappHref(plan.waMessage);
         return (
           <article
-            class={`relative flex h-full flex-col rounded-3xl border p-6 sm:p-7 ${
+            style={`transition-delay:${cardIndex * 90}ms`}
+            class={`reveal relative flex h-full flex-col rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7 ${
               recommended
                 ? 'border-accent-500/60 bg-white shadow-[0_24px_60px_-24px_rgba(11,84,253,0.45)] dark:bg-zinc-900 lg:-mt-3 lg:pb-9'
                 : 'border-zinc-200/80 bg-white/70 dark:border-white/10 dark:bg-zinc-900/45'
@@ -50,14 +51,25 @@ const money = PRICING_BY_LOCALE[locale];
             <h3 class="font-display text-xl font-semibold text-zinc-900 dark:text-white">{plan.name}</h3>
             <p class="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{plan.tagline}</p>
 
-            <div class="mt-5 flex items-baseline gap-1.5">
-              <span class="font-display text-fluid-3xl font-bold tracking-tightest text-zinc-900 dark:text-white">{money.symbol}{amount.price}</span>
-              {money.code && <span class="text-sm font-medium text-zinc-500">{money.code}</span>}
-              <span class="text-sm font-medium text-zinc-500">{t.perMonth}</span>
+            <div class="mt-5 rounded-2xl border border-zinc-200/70 bg-zinc-50/70 p-4 dark:border-white/10 dark:bg-white/[0.02]">
+              {amount.setup && (
+                <div>
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">{t.setupLabel}</p>
+                  <p class="mt-0.5 flex items-baseline gap-1.5">
+                    <span class="font-display text-fluid-2xl font-bold tracking-tightest text-zinc-900 dark:text-white">{money.symbol}{amount.setup}</span>
+                    {money.code && <span class="text-xs font-medium text-zinc-500">{money.code}</span>}
+                  </p>
+                </div>
+              )}
+              <div class={amount.setup ? 'mt-3 border-t border-zinc-200/70 pt-3 dark:border-white/10' : ''}>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">{amount.setup ? t.monthlyLabel : t.perMonth}</p>
+                <p class="mt-0.5 flex items-baseline gap-1.5">
+                  <span class="font-display text-fluid-2xl font-bold tracking-tightest text-zinc-900 dark:text-white">{money.symbol}{amount.price}</span>
+                  {money.code && <span class="text-xs font-medium text-zinc-500">{money.code}</span>}
+                  <span class="text-xs font-medium text-zinc-500">{t.perMonth}</span>
+                </p>
+              </div>
             </div>
-            {amount.setup && (
-              <p class="mt-1 text-xs text-zinc-500">+ {money.symbol}{amount.setup} · {t.setupLabel}</p>
-            )}
 
             <p class="mt-4 text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">{plan.audience}</p>
 

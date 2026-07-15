@@ -33,9 +33,9 @@ const icons = [
       </p>
     </div>
 
-    <ul class="reveal mt-12 grid list-none gap-5 md:grid-cols-3">
+    <ul class="mt-10 grid list-none gap-5 md:grid-cols-3">
       {t.pillars.map((pillar, index) => (
-        <li class="surface flex flex-col gap-4 p-6">
+        <li class="reveal surface flex flex-col gap-4 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)]" style={`transition-delay:${index * 90}ms`}>
           <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-accent-500/30 bg-accent-500/10 text-accent-500">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d={icons[index]} />

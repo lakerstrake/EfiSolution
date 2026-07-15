@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { localeHref, supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
 import { CF_ANALYTICS_TOKEN, WHATSAPP_NUMBER } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
@@ -214,6 +215,8 @@ const websiteSchema = {
     <main id="contenido" class="relative isolate" tabindex="-1">
       <slot />
     </main>
+
+    <WhatsAppFloat locale={locale} />
 
     <script is:inline>
       (function () {

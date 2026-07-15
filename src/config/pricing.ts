@@ -33,7 +33,7 @@ export const PRICING_BY_LOCALE: Record<Locale, CurrencyConfig> = {
     code: 'COP',
     symbol: '$',
     plans: {
-      esencial:    { price: '120.000', setup: '890.000'   },
+      esencial:    { price: '120.000', setup: '1.500.000' },
       profesional: { price: '290.000', setup: '2.400.000' },
       escala:      { price: '690.000', setup: '5.900.000' },
     },
