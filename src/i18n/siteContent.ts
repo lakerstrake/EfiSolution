@@ -184,7 +184,7 @@ export function localeHref(locale: Locale): string {
 const siteContent: Record<Locale, SiteContent> = {
   es: {
     meta: {
-      title: 'Diseño web en Bogotá para negocios | Efi Solution',
+      title: 'Diseño web e IA para negocios en Bogotá | Efi Solution',
       description: 'Páginas web rápidas para negocios en Bogotá, con IA que automatiza tareas (como subir inventario con una foto) y SEO local para que te encuentren. Auditoría gratis.',
     },
     nav: {
@@ -202,11 +202,11 @@ const siteContent: Record<Locale, SiteContent> = {
       themeToggle: 'Alternar tema claro y oscuro',
     },
     hero: {
-      badge: 'Diseño y desarrollo web de alto rendimiento',
-      titleA: 'Una web más rápida.',
-      titleB: 'Un negocio que convierte mejor.',
+      badge: 'Desarrollo web + IA para negocios',
+      titleA: 'Tu idea o tu problema,',
+      titleB: 'resuelto con web e IA.',
       description:
-        'Plataformas web minimalistas, sólidas y rápidas para marcas que quieren crecer.',
+        'Nos cuentas qué necesita tu negocio y construimos la solución: una web rápida y una IA que trabaja por ti.',
       ctaPrimary: 'Quiero mi web',
       ctaGhost: 'Agendar auditoría gratuita',
       metrics: [
@@ -539,7 +539,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   en: {
     meta: {
-      title: 'Web design for small businesses | Efi Solution',
+      title: 'Web design & AI for small businesses | Efi Solution',
       description: 'Fast websites for small businesses, with AI that automates real tasks (like loading inventory from a photo) and local SEO so customers find you. Free audit.',
     },
     nav: {
@@ -557,10 +557,10 @@ const siteContent: Record<Locale, SiteContent> = {
       themeToggle: 'Toggle light and dark mode',
     },
     hero: {
-      badge: 'High-performance web design and development',
-      titleA: 'A faster website.',
-      titleB: 'A business that converts better.',
-      description: 'Minimal, solid and fast web platforms for brands that want to grow.',
+      badge: 'Web development + AI for businesses',
+      titleA: 'Your idea or your problem,',
+      titleB: 'solved with web + AI.',
+      description: 'Tell us what your business needs and we build the solution: a fast website and AI that works for you.',
       ctaPrimary: 'I want my website',
       ctaGhost: 'Book a free audit',
       metrics: [
@@ -893,7 +893,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   pt: {
     meta: {
-      title: 'Design web para negócios em Bogotá | Efi Solution',
+      title: 'Design web e IA para negócios | Efi Solution',
       description: 'Sites rápidos para negócios, com IA que automatiza tarefas (como cadastrar estoque com uma foto) e SEO local para que te encontrem. Auditoria grátis.',
     },
     nav: {
@@ -911,10 +911,10 @@ const siteContent: Record<Locale, SiteContent> = {
       themeToggle: 'Alternar tema claro e escuro',
     },
     hero: {
-      badge: 'Design e desenvolvimento web de alto desempenho',
-      titleA: 'Um site mais rápido.',
-      titleB: 'Um negócio que converte melhor.',
-      description: 'Plataformas web minimalistas, sólidas e rápidas para marcas que querem crescer.',
+      badge: 'Desenvolvimento web + IA para negócios',
+      titleA: 'Sua ideia ou seu problema,',
+      titleB: 'resolvido com web e IA.',
+      description: 'Você conta o que seu negócio precisa e nós construímos a solução: um site rápido e uma IA que trabalha por você.',
       ctaPrimary: 'Quero meu site',
       ctaGhost: 'Agendar auditoria gratuita',
       metrics: [
@@ -1247,7 +1247,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   fr: {
     meta: {
-      title: 'Creation de sites web pour entreprises | Efi Solution',
+      title: 'Sites web et IA pour entreprises | Efi Solution',
       description: 'Des sites rapides pour les petites entreprises, avec une IA qui automatise des taches (comme remplir l’inventaire avec une photo) et un SEO local. Audit gratuit.',
     },
     nav: {
@@ -1265,11 +1265,11 @@ const siteContent: Record<Locale, SiteContent> = {
       themeToggle: 'Basculer entre theme clair et sombre',
     },
     hero: {
-      badge: 'Conception et developpement web haute performance',
-      titleA: 'Un site plus rapide.',
-      titleB: 'Une entreprise qui convertit mieux.',
+      badge: 'Developpement web + IA pour entreprises',
+      titleA: 'Votre idee ou votre probleme,',
+      titleB: 'resolu avec web + IA.',
       description:
-        'Des plateformes web minimalistes, solides et rapides pour les marques qui veulent grandir.',
+        'Dites-nous ce dont votre activite a besoin : nous construisons la solution, un site rapide et une IA qui travaille pour vous.',
       ctaPrimary: 'Je veux mon site',
       ctaGhost: 'Reserver un audit gratuit',
       metrics: [
