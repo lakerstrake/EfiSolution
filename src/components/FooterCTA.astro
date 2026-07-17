@@ -211,15 +211,18 @@ const syncDate = formatBogotaDate(syncTimestamp);
       >{contactEmail}</a>
     </div>
 
-    <p class="inline-flex flex-wrap items-center justify-center gap-2 text-center">
-      <span class="rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">v{version}</span>
-      <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
-        {t.footer.syncLabel}: {syncDate} {t.footer.timezone}
-      </span>
-      <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
-        {t.footer.commitLabel}: {syncSha}
-      </span>
-    </p>
+    {/* Metadatos de desarrollo: solo en `astro dev`, nunca en producción. */}
+    {import.meta.env.DEV && (
+      <p class="inline-flex flex-wrap items-center justify-center gap-2 text-center">
+        <span class="rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">v{version}</span>
+        <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
+          {t.footer.syncLabel}: {syncDate} {t.footer.timezone}
+        </span>
+        <span class="rounded-full border border-zinc-200 px-2 py-0.5 font-mono text-[10px] dark:border-white/15">
+          {t.footer.commitLabel}: {syncSha}
+        </span>
+      </p>
+    )}
 
     <p class="text-center">
       <a
