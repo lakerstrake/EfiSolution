@@ -2,7 +2,8 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
-import { localeHref, supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
+import { supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
+import { equivalentPath } from '../lib/altRoutes';
 import { CF_ANALYTICS_TOKEN, SITE } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
 
@@ -38,11 +39,15 @@ const skipLabelMap: Record<Locale, string> = {
   fr: 'Aller au contenu principal',
 };
 
-const origin = Astro.site?.href ?? Astro.url.origin;
+// hreflang por página: cada idioma apunta a la RUTA EQUIVALENTE de la página
+// actual (privacidad ↔ privacy, etc.), no a la home. Base: SITE.url.
+const origin = SITE.url;
+const currentPath = Astro.url.pathname;
 const alternates = supportedLocales.map((item) => ({
   code: item,
-  href: new URL(localeHref(item), origin).href,
+  href: new URL(equivalentPath(item, currentPath), origin).href,
 }));
+const xDefaultHref = new URL(equivalentPath('es', currentPath), origin).href;
 
 const ogImageAbsolute = ogImage.startsWith('http')
   ? ogImage
@@ -180,7 +185,7 @@ const websiteSchema = {
     {alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(localeHref('es'), origin).href} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
     {alternates
       .filter((alt) => alt.code !== locale)
       .map((alt) => (
