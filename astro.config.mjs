@@ -2,16 +2,16 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
+import { SITE } from './src/config/site';
 
 export default defineConfig({
   // ───────────────────────────────────────────────────────────────────────
-  // BASE URL DEL SITIO — ÚNICA FUENTE DE VERDAD.
-  // Canonical, Open Graph, hreflang, sitemap, robots.txt y el JSON-LD de
-  // negocio derivan TODOS de este valor. Para migrar a tu dominio propio:
-  // cambia SOLO esta línea (ej. 'https://efisolution.tech'), corre `npm run
-  // build` y todo se actualiza. Pasos completos en DOMAIN-SETUP.md.
+  // BASE URL DEL SITIO — la única fuente de verdad es SITE.url en
+  // src/config/site.ts. Canonical, Open Graph, hreflang, sitemap, robots.txt
+  // y el JSON-LD derivan todos de ahí. Migración de dominio: editar SOLO ese
+  // objeto y correr `npm run build`. Pasos completos en DOMAIN-SETUP.md.
   // ───────────────────────────────────────────────────────────────────────
-  site: 'https://efisolution.jmlagos2003.workers.dev',
+  site: SITE.url,
 
   integrations: [
     tailwind({ applyBaseStyles: false }),
