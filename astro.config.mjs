@@ -25,7 +25,8 @@ export default defineConfig({
 
   build: {
     // Inline ALL CSS into the HTML document — eliminates the render-blocking
-    // /_astro/*.css file that was causing the 4.7s mobile LCP.
+    // /_astro/*.css file. (Se probó 'auto' con CSS externo: mismo LCP y peor
+    // FCP, así que 'always' se mantiene.)
     inlineStylesheets: 'always',
   },
 
