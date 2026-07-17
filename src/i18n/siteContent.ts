@@ -57,6 +57,7 @@ type SiteContent = {
     description: string;
     exampleTag: string;
     exampleText: string;
+    beforeAlt: string;
     flowPhoto: string;
     flowResult: string;
     beforeLabel: string;
@@ -223,6 +224,7 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Integramos IA que automatiza tareas reales de tu negocio: ganas tiempo y vendes más, sin volverte experto en tecnología.',
       exampleTag: 'Caso real: Búho Repuestos',
       exampleText: 'Sube una foto y la IA llena el inventario sola. De horas a segundos.',
+      beforeAlt: 'Formulario de inventario vacío antes de usar la IA',
       flowPhoto: 'Formulario vacío + una foto',
       flowResult: 'Nombre, categoría y código llenos por la IA',
       beforeLabel: 'Antes',
@@ -582,6 +584,7 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'We add AI that automates real tasks in your business: save time and sell more, without becoming a tech expert.',
       exampleTag: 'Real case: Búho Repuestos',
       exampleText: 'Upload one photo and the AI fills the inventory. Hours become seconds.',
+      beforeAlt: 'Empty inventory form before using the AI',
       flowPhoto: 'Empty form + one photo',
       flowResult: 'Name, category and code filled by AI',
       beforeLabel: 'Before',
@@ -941,6 +944,7 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Integramos IA que automatiza tarefas reais do seu negócio: ganha tempo e vende mais, sem virar especialista em tecnologia.',
       exampleTag: 'Caso real: Búho Repuestos',
       exampleText: 'Envie uma foto e a IA preenche o estoque sozinha. De horas a segundos.',
+      beforeAlt: 'Formulário de estoque vazio antes de usar a IA',
       flowPhoto: 'Formulário vazio + uma foto',
       flowResult: 'Nome, categoria e código preenchidos pela IA',
       beforeLabel: 'Antes',
@@ -1301,6 +1305,7 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Nous integrons une IA qui automatise des taches reelles de votre activite : gagnez du temps et vendez plus, sans devenir expert.',
       exampleTag: 'Cas reel : Búho Repuestos',
       exampleText: 'Une photo et l’IA remplit l’inventaire toute seule. Des heures aux secondes.',
+      beforeAlt: 'Formulaire d’inventaire vide avant d’utiliser l’IA',
       flowPhoto: 'Formulaire vide + une photo',
       flowResult: 'Nom, categorie et code remplis par l’IA',
       beforeLabel: 'Avant',
