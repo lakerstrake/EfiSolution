@@ -136,6 +136,7 @@ type SiteContent = {
     setupLabel: string;
     monthlyLabel: string;
     recommendedLabel: string;
+    guarantees: string[];
     plans: { esencial: PlanContent; profesional: PlanContent; escala: PlanContent };
   };
   contact: {
@@ -444,6 +445,11 @@ const siteContent: Record<Locale, SiteContent> = {
       setupLabel: 'Pago único para empezar',
       monthlyLabel: 'Luego, cada mes',
       recommendedLabel: 'Recomendado',
+      guarantees: [
+        'Sin permanencia: cancelas la mensualidad cuando quieras.',
+        'Tu dominio se registra a tu nombre. Es tuyo.',
+        'Precio cerrado por escrito antes de empezar. Sin sorpresas.',
+      ],
       plans: {
         esencial: {
           name: 'Esencial',
@@ -798,6 +804,11 @@ const siteContent: Record<Locale, SiteContent> = {
       setupLabel: 'One-time setup to start',
       monthlyLabel: 'Then, every month',
       recommendedLabel: 'Recommended',
+      guarantees: [
+        'No lock-in: cancel the monthly plan whenever you want.',
+        'Your domain is registered in your name. It’s yours.',
+        'Fixed price in writing before we start. No surprises.',
+      ],
       plans: {
         esencial: {
           name: 'Essential',
@@ -1152,6 +1163,11 @@ const siteContent: Record<Locale, SiteContent> = {
       setupLabel: 'Pagamento único para começar',
       monthlyLabel: 'Depois, todo mês',
       recommendedLabel: 'Recomendado',
+      guarantees: [
+        'Sem fidelidade: você cancela a mensalidade quando quiser.',
+        'Seu domínio é registrado no seu nome. É seu.',
+        'Preço fechado por escrito antes de começar. Sem surpresas.',
+      ],
       plans: {
         esencial: {
           name: 'Essencial',
@@ -1507,6 +1523,11 @@ const siteContent: Record<Locale, SiteContent> = {
       setupLabel: 'Paiement unique pour demarrer',
       monthlyLabel: 'Ensuite, chaque mois',
       recommendedLabel: 'Recommande',
+      guarantees: [
+        'Sans engagement : vous annulez la mensualite quand vous voulez.',
+        'Votre domaine est enregistre a votre nom. Il est a vous.',
+        'Prix ferme par ecrit avant de commencer. Sans surprises.',
+      ],
       plans: {
         esencial: {
           name: 'Essentiel',

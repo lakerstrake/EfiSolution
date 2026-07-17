@@ -98,5 +98,17 @@ const money = PRICING_BY_LOCALE[locale];
         );
       })}
     </div>
+
+    <ul class="reveal mx-auto mt-8 grid max-w-4xl list-none gap-3 sm:grid-cols-3">
+      {t.guarantees.map((guarantee) => (
+        <li class="flex items-start gap-2.5 rounded-2xl border border-zinc-200/80 bg-white/60 p-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-300">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none text-emerald-500">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+          <span>{guarantee}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
