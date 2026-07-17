@@ -355,6 +355,19 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* El H1 es el LCP: si arranca con opacity 0, Lighthouse (y el usuario) no lo
+   "ven" hasta tarde. Solo transform: visible desde el primer frame. */
+.hero-enter-lcp {
+  animation: hero-slide-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes hero-slide-up {
+  from { transform: translateY(20px); }
+  to   { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter-lcp { animation: none; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-enter { animation: none; opacity: 1; transform: none; }
 }
