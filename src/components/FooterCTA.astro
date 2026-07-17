@@ -2,7 +2,7 @@
 import CTAButton from './CTAButton.astro';
 import pkg from '../../package.json';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
-import { WHATSAPP_NUMBER, WEB3FORMS_ACCESS_KEY } from '../config/site';
+import { SITE, WEB3FORMS_ACCESS_KEY } from '../config/site';
 import { privacyRoute, privacyLabel } from '../i18n/legal';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getSiteContent(locale);
 const { version } = pkg;
-const contactEmail = 'jmlagos2003@gmail.com';
+const contactEmail = SITE.email;
 
 const mailSubjects: Record<Locale, string> = {
   es: 'Solicitud%20de%20Auditoria%20Web%20-%20Efi%20Solution',
@@ -25,8 +25,8 @@ const mailSubjects: Record<Locale, string> = {
 const mailHref = `mailto:${contactEmail}?subject=${mailSubjects[locale]}`;
 
 const f = t.contact.form;
-const whatsappHref = WHATSAPP_NUMBER
-  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(f.whatsappMessage)}`
+const whatsappHref = SITE.whatsapp
+  ? `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(f.whatsappMessage)}`
   : null;
 
 const inputClass =

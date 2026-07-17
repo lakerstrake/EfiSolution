@@ -4,9 +4,16 @@
   empty to keep that feature off (the site falls back gracefully).
 */
 
-// WhatsApp number with country code, digits only (no +, spaces or dashes).
-// Example: '573001234567'. Empty = no WhatsApp button.
-export const WHATSAPP_NUMBER = '573007279875';
+// Identidad del sitio — ÚNICA fuente para URL, nombre, WhatsApp y email.
+// Un futuro cambio de nombre o dominio se hace editando SOLO este objeto.
+// whatsapp: código de país + número, solo dígitos (sin +, espacios ni guiones).
+export const SITE = {
+  url: 'https://efisolution.jmlagos2003.workers.dev',
+  name: 'Efi Solution',
+  whatsapp: '573007279875',
+  // TODO: cambiar a correo de dominio cuando exista
+  email: 'jmlagos2003@gmail.com',
+} as const;
 
 // Web3Forms access key from https://web3forms.com (free, 1 min).
 // Empty = contact stays as a mailto button instead of the form.

@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { localeHref, supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
-import { CF_ANALYTICS_TOKEN, WHATSAPP_NUMBER } from '../config/site';
+import { CF_ANALYTICS_TOKEN, SITE } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -75,8 +75,8 @@ const orgSchema = {
   logo: new URL('/favicon.svg', origin).href,
   image: ogImageAbsolute,
   description,
-  email: 'jmlagos2003@gmail.com',
-  ...(WHATSAPP_NUMBER ? { telephone: `+${WHATSAPP_NUMBER}` } : {}),
+  email: SITE.email,
+  ...(SITE.whatsapp ? { telephone: `+${SITE.whatsapp}` } : {}),
   priceRange: '$$',
   sameAs: [
     'https://github.com/lakerstrake',

@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER } from '../config/site';
+import { SITE } from '../config/site';
 
 /**
  * Build a wa.me link with a pre-filled, context-aware message so every lead
@@ -6,6 +6,6 @@ import { WHATSAPP_NUMBER } from '../config/site';
  * (the UI then hides the WhatsApp CTA gracefully).
  */
 export function whatsappHref(message: string): string | null {
-  if (!WHATSAPP_NUMBER) return null;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  if (!SITE.whatsapp) return null;
+  return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`;
 }
