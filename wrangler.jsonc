@@ -15,10 +15,14 @@
     "directory": "dist"
   },
   // Tracking de conversión sin cookies: /api/event escribe aquí.
-  "analytics_engine_datasets": [
+  // KV como contador (plan B). Para pasar a Analytics Engine: activarlo una
+  // vez en el dashboard (Workers → Analytics Engine) y añadir el binding
+  // "analytics_engine_datasets" [{ binding: "EVENTS", dataset: "efisolution_events" }].
+  // El endpoint /api/event ya soporta ambos.
+  "kv_namespaces": [
     {
-      "binding": "EVENTS",
-      "dataset": "efisolution_events"
+      "binding": "EVENTS_KV",
+      "id": "1d242aca041d41cb8968d81007bd2fed"
     }
   ]
 }

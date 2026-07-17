@@ -3,10 +3,34 @@
 Medimos clics en los CTAs y envíos del formulario **sin cookies, sin
 localStorage y sin scripts de terceros**. Un listener delegado en el Layout
 envía `{event, label, lang}` con `navigator.sendBeacon` a `POST /api/event`
-([src/pages/api/event.ts](../src/pages/api/event.ts)), que escribe el dato en
-**Workers Analytics Engine** (dataset `efisolution_events`, binding `EVENTS` en
-[wrangler.jsonc](../wrangler.jsonc)). No se registra IP, user-agent ni ningún
-identificador del visitante.
+([src/pages/api/event.ts](../src/pages/api/event.ts)). No se registra IP,
+user-agent ni ningún identificador del visitante.
+
+## Estado actual: contador en KV (plan B)
+
+Analytics Engine requiere activarse UNA vez en el dashboard (la cuenta aún no
+lo tiene activo, error 10089 al desplegar), así que hoy los eventos se cuentan
+en KV (namespace `EVENTS_KV`), con una clave diaria por combinación:
+`evt:<YYYY-MM-DD>:<event>:<label>:<lang>` → total del día.
+
+Consultar (los 50 más recientes):
+
+```bash
+npx wrangler kv key list --binding EVENTS_KV --remote | head -50
+npx wrangler kv key get --binding EVENTS_KV --remote "evt:2026-07-17:whatsapp:flotante:es"
+```
+
+Limitación: KV no tiene incremento atómico; con clics simultáneos puede
+perderse alguno. Suficiente para decidir qué CTA convierte más.
+
+## Upgrade a Analytics Engine (recomendado, 1 clic)
+
+1. Activarlo en el dashboard: Workers & Pages → **Analytics Engine** → Enable
+   (https://dash.cloudflare.com → cuenta → workers/analytics-engine).
+2. En [wrangler.jsonc](../wrangler.jsonc) añadir:
+   `"analytics_engine_datasets": [{ "binding": "EVENTS", "dataset": "efisolution_events" }]`
+3. `npm run deploy`. El endpoint ya prefiere `EVENTS` cuando existe; KV queda
+   de respaldo y puede retirarse después.
 
 ## Esquema del dato
 
