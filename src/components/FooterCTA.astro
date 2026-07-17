@@ -80,7 +80,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
           {WEB3FORMS_ACCESS_KEY ? (
             <form id="contact-form" class="mt-8 space-y-4" novalidate>
               <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-              <input type="hidden" name="subject" value="Nueva solicitud - Efi Solution" />
+              <input type="hidden" name="subject" value="Nuevo lead — sitio Efi Solution" />
               <input type="hidden" name="from_name" value="Efi Solution Web" />
               {/* Contexto del lead: idioma, sección de origen y URL exacta. Llegan
                   en el correo para saber de dónde viene cada contacto. */}
@@ -136,6 +136,21 @@ const syncDate = formatBogotaDate(syncTimestamp);
                 data-error={f.error}
                 class="hidden text-sm font-medium"
               ></p>
+
+              {whatsappHref && (
+                <a
+                  data-form-fallback
+                  hidden
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="whatsapp"
+                  data-label="contacto"
+                  class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 underline underline-offset-4 transition-colors hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                >
+                  {f.errorWa}
+                </a>
+              )}
             </form>
           ) : (
             <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -257,6 +272,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
     // whatever the visitor already typed so the lead is never lost.
     const waLink = form.querySelector<HTMLAnchorElement>('a[href*="wa.me"]');
     const waBase = waLink?.href ?? null;
+    const fallback = form.querySelector<HTMLAnchorElement>('[data-form-fallback]');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -277,6 +293,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
         form.reset();
         status.textContent = status.dataset.success ?? '';
         status.className = okClass;
+        fallback?.setAttribute('hidden', '');
         // Conversión del formulario (tracking sin cookies).
         if (navigator.sendBeacon) {
           navigator.sendBeacon(
@@ -290,11 +307,16 @@ const syncDate = formatBogotaDate(syncTimestamp);
       } catch {
         status.textContent = status.dataset.error ?? '';
         status.className = errClass;
+        const name = (form.querySelector('[name="name"]') as HTMLInputElement | null)?.value ?? '';
+        const msg = (form.querySelector('[name="message"]') as HTMLTextAreaElement | null)?.value ?? '';
+        const text = `Hola, soy ${name}. ${msg}`.trim();
         if (waLink && waBase) {
-          const name = (form.querySelector('[name="name"]') as HTMLInputElement | null)?.value ?? '';
-          const msg = (form.querySelector('[name="message"]') as HTMLTextAreaElement | null)?.value ?? '';
-          const text = `Hola, soy ${name}. ${msg}`.trim();
           waLink.href = `${waBase.split('?')[0]}?text=${encodeURIComponent(text)}`;
+        }
+        // Fallback visible: el lead sigue teniendo un camino directo.
+        if (fallback) {
+          fallback.href = `${fallback.href.split('?')[0]}?text=${encodeURIComponent(text)}`;
+          fallback.removeAttribute('hidden');
         }
       } finally {
         btn.disabled = false;

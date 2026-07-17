@@ -190,6 +190,7 @@ type SiteContent = {
       sending: string;
       success: string;
       error: string;
+      errorWa: string;
       whatsapp: string;
       whatsappMessage: string;
       consent: string;
@@ -594,6 +595,7 @@ const siteContent: Record<Locale, SiteContent> = {
         sending: 'Enviando...',
         success: '¡Gracias! Te responderemos en menos de 12 horas.',
         error: 'Algo salió mal. Escríbenos por correo o WhatsApp.',
+        errorWa: '¿No funcionó? Escríbenos directo por WhatsApp →',
         whatsapp: 'Escríbenos por WhatsApp',
         whatsappMessage: 'Hola, vengo del sitio de Efi Solution y quiero una auditoría web.',
         consent: 'Acepto la',
@@ -1001,6 +1003,7 @@ const siteContent: Record<Locale, SiteContent> = {
         sending: 'Sending...',
         success: 'Thanks! We will reply in less than 12 hours.',
         error: 'Something went wrong. Email or WhatsApp us instead.',
+        errorWa: 'Didn’t work? Message us directly on WhatsApp →',
         whatsapp: 'Message us on WhatsApp',
         whatsappMessage: 'Hi, I come from the Efi Solution site and I want a web audit.',
         consent: 'I accept the',
@@ -1408,6 +1411,7 @@ const siteContent: Record<Locale, SiteContent> = {
         sending: 'Enviando...',
         success: 'Obrigado! Respondemos em menos de 12 horas.',
         error: 'Algo deu errado. Fale por e-mail ou WhatsApp.',
+        errorWa: 'Não funcionou? Fale direto com a gente no WhatsApp →',
         whatsapp: 'Fale no WhatsApp',
         whatsappMessage: 'Olá, venho do site da Efi Solution e quero uma auditoria web.',
         consent: 'Aceito a',
@@ -1816,6 +1820,7 @@ const siteContent: Record<Locale, SiteContent> = {
         sending: 'Envoi...',
         success: 'Merci ! Nous repondons en moins de 12 heures.',
         error: 'Une erreur est survenue. Ecrivez-nous par e-mail ou WhatsApp.',
+        errorWa: 'Ca n’a pas marche ? Ecrivez-nous directement sur WhatsApp →',
         whatsapp: 'Ecrivez-nous sur WhatsApp',
         whatsappMessage: 'Bonjour, je viens du site Efi Solution et je veux un audit web.',
         consent: 'J’accepte la',
