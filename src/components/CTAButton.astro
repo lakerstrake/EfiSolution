@@ -7,6 +7,8 @@ interface Props {
   icon?: boolean;
   target?: string;
   rel?: string;
+  dataTrack?: string;
+  dataLabel?: string;
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   icon = true,
   target,
   rel,
+  dataTrack,
+  dataLabel,
 } = Astro.props;
 
 const base =
@@ -40,6 +44,8 @@ const variants: Record<string, string> = {
   aria-label={ariaLabel}
   target={target}
   rel={rel}
+  data-track={dataTrack}
+  data-label={dataLabel}
   class={`${base} ${sizes[size]} ${variants[variant]}`}
 >
   {variant === 'primary' && (

@@ -13,5 +13,12 @@
   "assets": {
     "binding": "ASSETS",
     "directory": "dist"
-  }
+  },
+  // Tracking de conversión sin cookies: /api/event escribe aquí.
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "efisolution_events"
+    }
+  ]
 }

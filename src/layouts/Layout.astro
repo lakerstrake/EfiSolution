@@ -300,6 +300,26 @@ const reviewSchema = {
       document.addEventListener('astro:page-load', initReveal);
     </script>
 
+    <script is:inline>
+      // Tracking de conversión SIN cookies ni identificadores: un único listener
+      // delegado envía {event, label, lang} con sendBeacon a /api/event.
+      // El listener vive en `document`, que sobrevive a las view transitions.
+      (function () {
+        if (window._trk) return;
+        window._trk = true;
+        document.addEventListener('click', function (e) {
+          var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+          if (!el || !navigator.sendBeacon) return;
+          var payload = JSON.stringify({
+            event: el.getAttribute('data-track'),
+            label: el.getAttribute('data-label') || '',
+            lang: document.documentElement.lang || '',
+          });
+          navigator.sendBeacon('/api/event', new Blob([payload], { type: 'application/json' }));
+        });
+      })();
+    </script>
+
     {CF_ANALYTICS_TOKEN && (
       <Fragment
         set:html={`<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_ANALYTICS_TOKEN}"}'></script>`}
