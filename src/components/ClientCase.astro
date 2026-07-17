@@ -1,6 +1,7 @@
 ---
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 import { whatsappHref } from '../lib/whatsapp';
+import { caseRoute } from '../lib/altRoutes';
 
 interface Props {
   locale: Locale;
@@ -73,10 +74,14 @@ const siteUrl = 'https://buhorepuestos.com';
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
           </a>
           {waHref && (
-            <a href={waHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-semibold text-zinc-800 transition-colors hover:border-zinc-300 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-100">
+            <a href={waHref} target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-label="caso" class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-semibold text-zinc-800 transition-colors hover:border-zinc-300 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-100">
               {t.cta}
             </a>
           )}
+          <a href={caseRoute[locale]} data-track="case" data-label="home-caso" class="inline-flex items-center gap-2 rounded-full px-3 py-2.5 text-sm font-semibold text-accent-600 underline-offset-4 transition-colors hover:text-accent-700 hover:underline dark:text-accent-400 dark:hover:text-accent-300">
+            {t.fullCase}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
+          </a>
         </div>
       </div>
 

@@ -84,6 +84,30 @@ type SiteContent = {
     visit: string;
     cta: string;
     waMessage: string;
+    fullCase: string;
+  };
+  casePage: {
+    metaTitle: string;
+    metaDescription: string;
+    badge: string;
+    title: string;
+    intro: string;
+    problemLabel: string;
+    problem: string;
+    builtLabel: string;
+    built: string[];
+    demoLabel: string;
+    beforeCaption: string;
+    afterCaption: string;
+    resultsLabel: string;
+    results: string[];
+    stackLabel: string;
+    stack: string[];
+    testimonialLabel: string;
+    visit: string;
+    cta: string;
+    waMessage: string;
+    back: string;
   };
   testimonials: {
     badge: string;
@@ -270,6 +294,40 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver buhorepuestos.com',
       cta: 'Quiero algo así para mi negocio',
       waMessage: 'Hola, vi el caso de Búho Repuestos y quiero una web con panel e IA para mi negocio.',
+      fullCase: 'Ver caso completo',
+    },
+    casePage: {
+      metaTitle: 'Caso de éxito: Búho Repuestos — catálogo con IA | Efi Solution',
+      metaDescription: 'Cómo una tienda de repuestos en Bogotá pasó de cargar productos a mano a un catálogo de 110+ referencias que se llena solo con IA.',
+      badge: 'Caso de éxito',
+      title: 'Búho Repuestos: un catálogo que se llena solo con IA.',
+      intro: 'Tienda de repuestos automotrices en Barrios Unidos, Bogotá. Web con catálogo online, panel de administración e IA de inventario.',
+      problemLabel: 'El problema',
+      problem: 'El dueño cargaba cada repuesto a mano: fotos, datos, precios. Con cientos de referencias, mantener el catálogo al día consumía horas y generaba errores.',
+      builtLabel: 'Qué construimos',
+      built: [
+        'Web rápida con catálogo online y búsqueda por nombre o categoría',
+        'Panel de administración self-service: productos, precios y fotos sin depender de nadie',
+        'IA de inventario: una foto y el sistema llena nombre, categoría y código',
+        'Pedidos directos por WhatsApp desde cada producto',
+      ],
+      demoLabel: 'La IA en acción',
+      beforeCaption: 'Antes: formulario vacío + una foto',
+      afterCaption: 'Después: datos llenados por la IA',
+      resultsLabel: 'Resultados',
+      results: [
+        'Catálogo de 110+ referencias gestionado por el propio dueño',
+        'Alta de productos en segundos en vez de minutos por unidad',
+        'Menos errores de datos al automatizar la carga',
+        'Pedidos que llegan directo al WhatsApp de la tienda',
+      ],
+      stackLabel: 'Tecnología',
+      stack: ['Cloudflare', 'IA de visión', 'WhatsApp', 'Panel admin'],
+      testimonialLabel: 'Lo que dice el dueño',
+      visit: 'Ver buhorepuestos.com',
+      cta: 'Quiero algo así para mi negocio',
+      waMessage: 'Hola, vi el caso completo de Búho Repuestos y quiero algo así para mi negocio.',
+      back: 'Volver al inicio',
     },
     testimonials: {
       badge: 'Lo que dicen de nosotros',
@@ -643,6 +701,40 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Visit buhorepuestos.com',
       cta: 'I want something like this',
       waMessage: 'Hi, I saw the Búho Repuestos case and I want a website with an admin panel and AI for my business.',
+      fullCase: 'See the full case',
+    },
+    casePage: {
+      metaTitle: 'Success story: Búho Repuestos — AI-powered catalog | Efi Solution',
+      metaDescription: 'How an auto-parts store in Bogotá went from loading products by hand to a 110+ reference catalog that fills itself with AI.',
+      badge: 'Success story',
+      title: 'Búho Repuestos: a catalog that fills itself with AI.',
+      intro: 'Auto-parts store in Barrios Unidos, Bogotá. Website with online catalog, admin panel and inventory AI.',
+      problemLabel: 'The problem',
+      problem: 'The owner loaded every part by hand: photos, data, prices. With hundreds of references, keeping the catalog up to date took hours and caused errors.',
+      builtLabel: 'What we built',
+      built: [
+        'Fast website with an online catalog and search by name or category',
+        'Self-service admin panel: products, prices and photos without depending on anyone',
+        'Inventory AI: one photo and the system fills name, category and code',
+        'Direct WhatsApp orders from every product',
+      ],
+      demoLabel: 'The AI in action',
+      beforeCaption: 'Before: empty form + one photo',
+      afterCaption: 'After: data filled by the AI',
+      resultsLabel: 'Results',
+      results: [
+        'A 110+ reference catalog managed by the owner himself',
+        'Products added in seconds instead of minutes each',
+        'Fewer data errors by automating the loading',
+        'Orders that land directly in the store’s WhatsApp',
+      ],
+      stackLabel: 'Technology',
+      stack: ['Cloudflare', 'Vision AI', 'WhatsApp', 'Admin panel'],
+      testimonialLabel: 'What the owner says',
+      visit: 'Visit buhorepuestos.com',
+      cta: 'I want something like this',
+      waMessage: 'Hi, I saw the full Búho Repuestos case and I want something like this for my business.',
+      back: 'Back to home',
     },
     testimonials: {
       badge: 'What they say about us',
@@ -1016,6 +1108,40 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Ver buhorepuestos.com',
       cta: 'Quero algo assim para o meu negócio',
       waMessage: 'Olá, vi o caso da Búho Repuestos e quero um site com painel e IA para o meu negócio.',
+      fullCase: 'Ver caso completo',
+    },
+    casePage: {
+      metaTitle: 'Caso de sucesso: Búho Repuestos — catálogo com IA | Efi Solution',
+      metaDescription: 'Como uma loja de autopeças em Bogotá passou de cadastrar produtos na mão para um catálogo de 110+ referências que se preenche sozinho com IA.',
+      badge: 'Caso de sucesso',
+      title: 'Búho Repuestos: um catálogo que se preenche sozinho com IA.',
+      intro: 'Loja de autopeças em Barrios Unidos, Bogotá. Site com catálogo online, painel de administração e IA de estoque.',
+      problemLabel: 'O problema',
+      problem: 'O dono cadastrava cada peça na mão: fotos, dados, preços. Com centenas de referências, manter o catálogo atualizado levava horas e gerava erros.',
+      builtLabel: 'O que construímos',
+      built: [
+        'Site rápido com catálogo online e busca por nome ou categoria',
+        'Painel self-service: produtos, preços e fotos sem depender de ninguém',
+        'IA de estoque: uma foto e o sistema preenche nome, categoria e código',
+        'Pedidos diretos pelo WhatsApp em cada produto',
+      ],
+      demoLabel: 'A IA em ação',
+      beforeCaption: 'Antes: formulário vazio + uma foto',
+      afterCaption: 'Depois: dados preenchidos pela IA',
+      resultsLabel: 'Resultados',
+      results: [
+        'Catálogo de 110+ referências gerenciado pelo próprio dono',
+        'Cadastro de produtos em segundos em vez de minutos',
+        'Menos erros de dados ao automatizar o cadastro',
+        'Pedidos que chegam direto no WhatsApp da loja',
+      ],
+      stackLabel: 'Tecnologia',
+      stack: ['Cloudflare', 'IA de visão', 'WhatsApp', 'Painel admin'],
+      testimonialLabel: 'O que diz o dono',
+      visit: 'Ver buhorepuestos.com',
+      cta: 'Quero algo assim para o meu negócio',
+      waMessage: 'Olá, vi o caso completo da Búho Repuestos e quero algo assim para o meu negócio.',
+      back: 'Voltar ao início',
     },
     testimonials: {
       badge: 'O que dizem de nós',
@@ -1390,6 +1516,40 @@ const siteContent: Record<Locale, SiteContent> = {
       visit: 'Voir buhorepuestos.com',
       cta: 'Je veux quelque chose comme ca',
       waMessage: 'Bonjour, j’ai vu le cas Búho Repuestos et je veux un site avec panneau d’administration et IA pour mon entreprise.',
+      fullCase: 'Voir le cas complet',
+    },
+    casePage: {
+      metaTitle: 'Cas client : Búho Repuestos — catalogue avec IA | Efi Solution',
+      metaDescription: 'Comment un magasin de pieces auto de Bogota est passe de la saisie manuelle a un catalogue de 110+ references qui se remplit tout seul avec l’IA.',
+      badge: 'Cas client',
+      title: 'Búho Repuestos : un catalogue qui se remplit tout seul avec l’IA.',
+      intro: 'Magasin de pieces auto a Barrios Unidos, Bogota. Site avec catalogue en ligne, panneau d’administration et IA d’inventaire.',
+      problemLabel: 'Le probleme',
+      problem: 'Le proprietaire saisissait chaque piece a la main : photos, donnees, prix. Avec des centaines de references, tenir le catalogue a jour prenait des heures et generait des erreurs.',
+      builtLabel: 'Ce que nous avons construit',
+      built: [
+        'Site rapide avec catalogue en ligne et recherche par nom ou categorie',
+        'Panneau self-service : produits, prix et photos sans dependre de personne',
+        'IA d’inventaire : une photo et le systeme remplit nom, categorie et code',
+        'Commandes directes via WhatsApp depuis chaque produit',
+      ],
+      demoLabel: 'L’IA en action',
+      beforeCaption: 'Avant : formulaire vide + une photo',
+      afterCaption: 'Apres : donnees remplies par l’IA',
+      resultsLabel: 'Resultats',
+      results: [
+        'Un catalogue de 110+ references gere par le proprietaire lui-meme',
+        'Produits ajoutes en secondes au lieu de minutes',
+        'Moins d’erreurs de donnees',
+        'Des commandes qui arrivent directement sur le WhatsApp du magasin',
+      ],
+      stackLabel: 'Technologie',
+      stack: ['Cloudflare', 'IA de vision', 'WhatsApp', 'Panneau admin'],
+      testimonialLabel: 'Ce que dit le proprietaire',
+      visit: 'Voir buhorepuestos.com',
+      cta: 'Je veux quelque chose comme ca',
+      waMessage: 'Bonjour, j’ai vu le cas complet de Búho Repuestos et je veux quelque chose comme ca pour mon entreprise.',
+      back: 'Retour a l’accueil',
     },
     testimonials: {
       badge: 'Ce qu’ils disent de nous',
