@@ -12,6 +12,12 @@ const t = getSiteContent(locale);
 // Cada opción del selector enlaza a la RUTA EQUIVALENTE de la página actual
 // (home ↔ homes, privacidad ↔ sus equivalentes), no siempre a la home.
 const currentPath = Astro.url.pathname;
+
+// Las secciones (#servicios, #planes…) solo existen en la home: desde otras
+// páginas (caso, privacidad, 404) el enlace debe volver a la home del idioma.
+const homePath = localeHref(locale);
+const isHome = currentPath === homePath || currentPath.replace(/\/+$/, '') === homePath.replace(/\/+$/, '');
+const sectionHref = (hash: string) => (isHome ? hash : `${homePath}${hash}`);
 const langs: Array<{ code: Locale; label: string; name: string }> = [
   { code: 'es', label: 'ES', name: 'Español' },
   { code: 'en', label: 'EN', name: 'English' },
@@ -39,7 +45,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         {t.nav.links.map((link) => (
           <li>
             <a
-              href={link.href}
+              href={sectionHref(link.href)}
               data-nav-link
               class="rounded-full px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
@@ -54,7 +60,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
           <button
             id="lang-btn"
             type="button"
-            aria-label="Cambiar idioma / Change language"
+            aria-label={`${locale.toUpperCase()} — Cambiar idioma / Change language`}
             aria-haspopup="menu"
             aria-expanded="false"
             aria-controls="lang-list"
@@ -113,14 +119,14 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         </button>
 
         <a
-          href="#contacto"
+          href={sectionHref('#contacto')}
           class="hidden rounded-full border border-zinc-200/80 bg-white/70 px-3.5 py-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white lg:inline-flex"
         >
           {t.nav.cta}
         </a>
 
         <a
-          href="#planes"
+          href={sectionHref('#planes')}
           class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(11,84,253,0.65)] transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 md:inline-flex"
         >
           {t.nav.ctaPlans}
@@ -150,7 +156,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         {t.nav.links.map((link) => (
           <li>
             <a
-              href={link.href}
+              href={sectionHref(link.href)}
               data-mobile-close
               data-nav-link
               class="block rounded-xl px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/[0.05]"
@@ -161,7 +167,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         ))}
         <li class="pt-2">
           <a
-            href="#planes"
+            href={sectionHref('#planes')}
             data-mobile-close
             class="flex items-center justify-center rounded-xl bg-accent-500 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
@@ -170,7 +176,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         </li>
         <li>
           <a
-            href="#contacto"
+            href={sectionHref('#contacto')}
             data-mobile-close
             class="flex items-center justify-center rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:border-white/15 dark:text-zinc-200 dark:hover:bg-white/[0.05]"
           >

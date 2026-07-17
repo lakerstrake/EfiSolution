@@ -17,7 +17,7 @@ const imageAltPrefix: Record<Locale, string> = {
 const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 ---
 
-<section id="casos" class="section-padding" aria-labelledby="cases-title">
+<section id="casos" class="cv-auto section-padding" aria-labelledby="cases-title">
   <div class="container-x">
     <div class="mx-auto max-w-3xl text-center">
       <span class="eyebrow">
@@ -92,7 +92,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
           // SVG placeholders no tienen variantes avif/webp: evita 404 saltando los <source>.
           const hasRaster = !/\.svg$/i.test(entry.image);
           return (
-          <article
+          <div
             id={`slide-${entry.key}`}
             role="tabpanel"
             aria-labelledby={`tab-${entry.key}`}
@@ -200,7 +200,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                 })}
               </div>
             </aside>
-          </article>
+          </div>
           );
         })}
       </div>

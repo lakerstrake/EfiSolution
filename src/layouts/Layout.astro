@@ -219,10 +219,13 @@ const reviewSchema = {
       <link rel="alternate" hreflang={alt.code} href={alt.href} />
     ))}
     <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
-    {alternates
-      .filter((alt) => alt.code !== locale)
-      .map((alt) => (
-        <link rel="prefetch" href={alt.href} as="document" />
+    {/* Prefetch con ruta RELATIVA: con la URL absoluta de producción, en
+        cualquier otro origen (preview local) la CSP default-src 'self' lo
+        bloquea y ensucia la consola. La ruta relativa funciona en ambos. */}
+    {supportedLocales
+      .filter((code) => code !== locale)
+      .map((code) => (
+        <link rel="prefetch" href={equivalentPath(code, currentPath)} as="document" />
       ))}
 
     {/* Self-hosted fonts: preload the above-the-fold latin subsets (Sora heading, Manrope body) */}
