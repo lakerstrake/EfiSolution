@@ -138,7 +138,13 @@ type SiteContent = {
     monthlyLabel: string;
     recommendedLabel: string;
     guarantees: string[];
+    faqHint: string;
     plans: { esencial: PlanContent; profesional: PlanContent; escala: PlanContent };
+  };
+  faq: {
+    badge: string;
+    title: string;
+    items: { q: string; a: string }[];
   };
   contact: {
     badge: string;
@@ -452,6 +458,7 @@ const siteContent: Record<Locale, SiteContent> = {
         'Tu dominio se registra a tu nombre. Es tuyo.',
         'Precio cerrado por escrito antes de empezar. Sin sorpresas.',
       ],
+      faqHint: '¿Dudas? Mira las preguntas frecuentes',
       plans: {
         esencial: {
           name: 'Esencial',
@@ -496,6 +503,18 @@ const siteContent: Record<Locale, SiteContent> = {
           waMessage: 'Hola, me interesa el plan Escala con IA para automatizar mi negocio.',
         },
       },
+    },
+    faq: {
+      badge: 'Preguntas frecuentes',
+      title: '¿Dudas? Respuestas claras.',
+      items: [
+        { q: '¿Cuánto tarda mi página en estar lista?', a: 'Una web del plan Esencial: 1–2 semanas. Un proyecto con panel e IA: 3–6 semanas. Te damos fecha por escrito antes de empezar.' },
+        { q: '¿Qué incluye la mensualidad?', a: 'Hospedaje, mantenimiento, soporte y mejoras continuas. Tu web siempre rápida y al día, sin que tengas que preocuparte por lo técnico.' },
+        { q: '¿Puedo cancelar cuando quiera?', a: 'Sí, sin permanencia ni penalidades.' },
+        { q: '¿El dominio es mío?', a: 'Sí. Lo registramos a tu nombre desde el día uno.' },
+        { q: '¿Necesito saber de tecnología?', a: 'No. El panel está hecho para que cualquiera lo use, y te enseñamos a manejarlo.' },
+        { q: '¿Cómo funciona la auditoría gratuita?', a: 'Nos escribes, revisamos tu web y en 48 horas te entregamos qué falla y cómo mejorarlo, priorizado. Sin costo y sin compromiso.' },
+      ],
     },
     contact: {
       badge: 'Contacto',
@@ -812,6 +831,7 @@ const siteContent: Record<Locale, SiteContent> = {
         'Your domain is registered in your name. It’s yours.',
         'Fixed price in writing before we start. No surprises.',
       ],
+      faqHint: 'Questions? Check the FAQ',
       plans: {
         esencial: {
           name: 'Essential',
@@ -856,6 +876,18 @@ const siteContent: Record<Locale, SiteContent> = {
           waMessage: 'Hi, I am interested in the Scale with AI plan to automate my business.',
         },
       },
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Questions? Clear answers.',
+      items: [
+        { q: 'How long until my website is ready?', a: 'An Essential plan website: 1–2 weeks. A project with an admin panel and AI: 3–6 weeks. We give you a written date before we start.' },
+        { q: 'What does the monthly fee include?', a: 'Hosting, maintenance, support and continuous improvements. Your site always fast and up to date, without you worrying about the technical side.' },
+        { q: 'Can I cancel anytime?', a: 'Yes. No lock-in, no penalties.' },
+        { q: 'Is the domain mine?', a: 'Yes. We register it in your name from day one.' },
+        { q: 'Do I need to know about technology?', a: 'No. The panel is built for anyone to use, and we teach you how to run it.' },
+        { q: 'How does the free audit work?', a: 'You write to us, we review your site and within 48 hours you get what is failing and how to fix it, prioritized. Free and with no commitment.' },
+      ],
     },
     contact: {
       badge: 'Contact',
@@ -1172,6 +1204,7 @@ const siteContent: Record<Locale, SiteContent> = {
         'Seu domínio é registrado no seu nome. É seu.',
         'Preço fechado por escrito antes de começar. Sem surpresas.',
       ],
+      faqHint: 'Dúvidas? Veja as perguntas frequentes',
       plans: {
         esencial: {
           name: 'Essencial',
@@ -1216,6 +1249,18 @@ const siteContent: Record<Locale, SiteContent> = {
           waMessage: 'Olá, tenho interesse no plano Escala com IA para automatizar o meu negócio.',
         },
       },
+    },
+    faq: {
+      badge: 'Perguntas frequentes',
+      title: 'Dúvidas? Respostas claras.',
+      items: [
+        { q: 'Quanto tempo leva até meu site ficar pronto?', a: 'Um site do plano Essencial: 1–2 semanas. Um projeto com painel e IA: 3–6 semanas. Damos a data por escrito antes de começar.' },
+        { q: 'O que a mensalidade inclui?', a: 'Hospedagem, manutenção, suporte e melhorias contínuas. Seu site sempre rápido e atualizado, sem você se preocupar com a parte técnica.' },
+        { q: 'Posso cancelar quando quiser?', a: 'Sim, sem fidelidade nem multas.' },
+        { q: 'O domínio é meu?', a: 'Sim. Registramos no seu nome desde o primeiro dia.' },
+        { q: 'Preciso entender de tecnologia?', a: 'Não. O painel foi feito para qualquer pessoa usar, e ensinamos você a gerenciá-lo.' },
+        { q: 'Como funciona a auditoria gratuita?', a: 'Você escreve para a gente, revisamos seu site e em 48 horas entregamos o que falha e como melhorar, priorizado. Sem custo e sem compromisso.' },
+      ],
     },
     contact: {
       badge: 'Contato',
@@ -1533,6 +1578,7 @@ const siteContent: Record<Locale, SiteContent> = {
         'Votre domaine est enregistre a votre nom. Il est a vous.',
         'Prix ferme par ecrit avant de commencer. Sans surprises.',
       ],
+      faqHint: 'Des doutes ? Consultez la FAQ',
       plans: {
         esencial: {
           name: 'Essentiel',
@@ -1577,6 +1623,18 @@ const siteContent: Record<Locale, SiteContent> = {
           waMessage: 'Bonjour, je suis interesse par l’offre Echelle avec IA pour automatiser mon entreprise.',
         },
       },
+    },
+    faq: {
+      badge: 'FAQ',
+      title: 'Des questions ? Des reponses claires.',
+      items: [
+        { q: 'Combien de temps avant que mon site soit pret ?', a: 'Un site du plan Essentiel : 1–2 semaines. Un projet avec panneau et IA : 3–6 semaines. Nous donnons une date par ecrit avant de commencer.' },
+        { q: 'Que comprend la mensualite ?', a: 'Hebergement, maintenance, support et ameliorations continues. Votre site toujours rapide et a jour, sans vous soucier de la technique.' },
+        { q: 'Puis-je annuler quand je veux ?', a: 'Oui, sans engagement ni penalites.' },
+        { q: 'Le domaine est-il a moi ?', a: 'Oui. Nous l’enregistrons a votre nom des le premier jour.' },
+        { q: 'Dois-je m’y connaitre en technologie ?', a: 'Non. Le panneau est concu pour que tout le monde puisse l’utiliser, et nous vous apprenons a le gerer.' },
+        { q: 'Comment fonctionne l’audit gratuit ?', a: 'Vous nous ecrivez, nous examinons votre site et sous 48 heures vous recevez ce qui bloque et comment l’ameliorer, priorise. Gratuit et sans engagement.' },
+      ],
     },
     contact: {
       badge: 'Contact',

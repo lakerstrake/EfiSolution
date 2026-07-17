@@ -1,0 +1,85 @@
+---
+import { getSiteContent, type Locale } from '../i18n/siteContent';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getSiteContent(locale).faq;
+
+// Datos estructurados FAQPage con las mismas preguntas visibles, por idioma.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<section id="faq" class="section-padding" aria-labelledby="faq-title">
+  <div class="container-x">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {t.badge}
+      </span>
+      <h2 id="faq-title" class="mt-6 font-display text-fluid-4xl font-semibold leading-[1.06] tracking-tightest text-zinc-900 dark:text-white">
+        {t.title}
+      </h2>
+    </div>
+
+    <div class="reveal surface mx-auto mt-10 max-w-3xl divide-y divide-zinc-200/80 px-6 dark:divide-white/10 sm:px-8" id="faq-root">
+      {t.items.map((item, i) => (
+        <div>
+          <h3>
+            <button
+              type="button"
+              id={`faq-q-${i}`}
+              aria-expanded="false"
+              aria-controls={`faq-a-${i}`}
+              class="faq-btn flex w-full items-center justify-between gap-4 py-5 text-left font-display text-base font-semibold text-zinc-900 transition-colors hover:text-accent-600 dark:text-white dark:hover:text-accent-400"
+            >
+              <span>{item.q}</span>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="faq-chev flex-none text-zinc-400 transition-transform duration-300">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+          </h3>
+          <div id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`} hidden class="pb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            {item.a}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq-btn[aria-expanded='true'] .faq-chev {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Acordeón sin librerías: <button> nativo (Enter/Espacio gratis) que alterna
+  // aria-expanded + hidden del panel. Se re-engancha tras cada view transition.
+  function initFaq(): void {
+    const root = document.getElementById('faq-root');
+    if (!root) return;
+    root.querySelectorAll<HTMLButtonElement>('.faq-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls') ?? '');
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        if (panel) panel.hidden = open;
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', initFaq);
+</script>
