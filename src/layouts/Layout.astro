@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { supportedLocales, getSiteContent, type Locale } from '../i18n/siteContent';
 import { equivalentPath } from '../lib/altRoutes';
+import { PRICING_BY_LOCALE, planOrder } from '../config/pricing';
 import { CF_ANALYTICS_TOKEN, SITE } from '../config/site';
 import { ClientRouter } from 'astro:transitions';
 
@@ -25,7 +26,7 @@ const {
   ogImageAlt = 'Efi Solution',
 } = Astro.props;
 
-const siteName = 'Efi Solution';
+const siteName = SITE.name;
 const localeMap: Record<Locale, string> = {
   es: 'es_CO',
   en: 'en_US',
@@ -75,7 +76,7 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'ProfessionalService'],
   '@id': `${origin}#business`,
-  name: 'Efi Solution',
+  name: SITE.name,
   url: origin,
   logo: new URL('/favicon.svg', origin).href,
   image: ogImageAbsolute,
@@ -123,6 +124,38 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: siteName,
   url: origin,
+};
+
+// Un Service por plan, con el precio mensual en la MONEDA que esta página ya
+// muestra (ES→COP, EN→USD, PT→BRL, FR→EUR). El precio se normaliza a dígitos
+// ('290.000' → '290000') porque schema.org no admite separadores de miles.
+const currencyByLocale: Record<Locale, string> = { es: 'COP', en: 'USD', pt: 'BRL', fr: 'EUR' };
+const servicesSchema = planOrder.map((key) => {
+  const plan = content.pricing.plans[key];
+  const amount = PRICING_BY_LOCALE[locale].plans[key];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: plan.name,
+    description: plan.tagline,
+    provider: { '@id': `${origin}#business` },
+    offers: {
+      '@type': 'Offer',
+      price: amount.price.replace(/\D/g, ''),
+      priceCurrency: currencyByLocale[locale],
+    },
+  };
+});
+
+// Reseña real de Cristian (Búho Repuestos) — mismo texto visible en la página.
+const firstTestimonial = content.testimonials.items[0];
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  itemReviewed: { '@type': 'Organization', '@id': `${origin}#business`, name: SITE.name },
+  author: { '@type': 'Person', name: firstTestimonial.name },
+  reviewBody: firstTestimonial.quote,
+  reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 },
 };
 ---
 
@@ -199,6 +232,8 @@ const websiteSchema = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(clientCaseSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
   </head>
 
   <body class="w-full overflow-x-hidden">
