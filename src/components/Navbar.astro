@@ -1,5 +1,6 @@
 ---
 import { getSiteContent, localeHref, type Locale } from '../i18n/siteContent';
+import { equivalentPath } from '../lib/altRoutes';
 
 interface Props {
   locale: Locale;
@@ -8,11 +9,14 @@ interface Props {
 const { locale } = Astro.props;
 const t = getSiteContent(locale);
 
-const langs: Array<{ code: Locale; label: string }> = [
-  { code: 'es', label: 'ES' },
-  { code: 'en', label: 'EN' },
-  { code: 'pt', label: 'PT' },
-  { code: 'fr', label: 'FR' },
+// Cada opción del selector enlaza a la RUTA EQUIVALENTE de la página actual
+// (home ↔ homes, privacidad ↔ sus equivalentes), no siempre a la home.
+const currentPath = Astro.url.pathname;
+const langs: Array<{ code: Locale; label: string; name: string }> = [
+  { code: 'es', label: 'ES', name: 'Español' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'pt', label: 'PT', name: 'Português' },
+  { code: 'fr', label: 'FR', name: 'Français' },
 ];
 ---
 
@@ -46,21 +50,51 @@ const langs: Array<{ code: Locale; label: string }> = [
       </ul>
 
       <div class="flex items-center gap-2">
-        <div class="hidden items-center gap-1 rounded-full border border-zinc-200/80 bg-white/70 p-1 dark:border-white/10 dark:bg-white/[0.04] md:flex">
-          {langs.map((item) => (
-            <a
-              href={localeHref(item.code)}
-              data-astro-prefetch="viewport"
-              aria-current={item.code === locale ? 'page' : undefined}
-              class={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
-                item.code === locale
-                  ? 'bg-accent-500 text-white'
-                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+        <div id="lang-root" class="relative">
+          <button
+            id="lang-btn"
+            type="button"
+            aria-label="Cambiar idioma / Change language"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="lang-list"
+            class="flex h-9 items-center gap-1.5 rounded-xl border border-zinc-200/80 bg-white/70 px-2.5 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-900 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:text-white"
+          >
+            <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+            <span>{locale.toUpperCase()}</span>
+            <svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <ul
+            id="lang-list"
+            role="menu"
+            aria-label="Cambiar idioma / Change language"
+            class="absolute right-0 top-full z-50 mt-2 hidden w-44 rounded-xl border border-zinc-200/80 bg-white/95 p-1 shadow-lg backdrop-blur dark:border-white/10 dark:bg-zinc-950/95"
+          >
+            {langs.map((item) => (
+              <li role="none">
+                <a
+                  role="menuitem"
+                  href={equivalentPath(item.code, currentPath)}
+                  data-astro-prefetch
+                  aria-current={item.code === locale ? 'true' : undefined}
+                  class={`flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
+                    item.code === locale
+                      ? 'bg-accent-500/10 font-semibold text-accent-600 dark:text-accent-400'
+                      : 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <span>{item.name}</span>
+                  <span class="text-xs font-semibold text-zinc-400 dark:text-zinc-500">{item.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <button
@@ -144,21 +178,6 @@ const langs: Array<{ code: Locale; label: string }> = [
           </a>
         </li>
       </ul>
-      <div class="mt-3 flex items-center justify-center gap-2 border-t border-zinc-200/80 pt-3 dark:border-white/10">
-        {langs.map((item) => (
-          <a
-            href={localeHref(item.code)}
-            data-astro-prefetch="viewport"
-            class={`rounded-full px-3 py-1 text-xs font-semibold ${
-              item.code === locale
-                ? 'bg-accent-500 text-white'
-                : 'border border-zinc-300 text-zinc-700 dark:border-white/20 dark:text-zinc-300'
-            }`}
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
     </div>
   </div>
 </header>
@@ -248,6 +267,53 @@ const langs: Array<{ code: Locale; label: string }> = [
           if (target) window.setTimeout(() => target.focus({ preventScroll: true }), 0);
         }, { signal });
       });
+    }
+
+    // ── Selector de idioma (dropdown accesible) ──────────────────────────────
+    const langBtn  = document.getElementById('lang-btn')  as HTMLButtonElement | null;
+    const langList = document.getElementById('lang-list') as HTMLElement | null;
+    if (langBtn && langList) {
+      const items = Array.from(langList.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]'));
+
+      const openLang = () => {
+        langBtn.setAttribute('aria-expanded', 'true');
+        langList.classList.remove('hidden');
+      };
+      const closeLang = (returnFocus = false) => {
+        langBtn.setAttribute('aria-expanded', 'false');
+        langList.classList.add('hidden');
+        if (returnFocus) langBtn.focus();
+      };
+      const isOpen = () => langBtn.getAttribute('aria-expanded') === 'true';
+
+      langBtn.addEventListener('click', () => {
+        if (isOpen()) { closeLang(); return; }
+        openLang();
+        items[0]?.focus();
+      }, { signal });
+
+      langBtn.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); openLang(); items[0]?.focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); openLang(); items[items.length - 1]?.focus(); }
+        else if (e.key === 'Escape' && isOpen()) { e.preventDefault(); closeLang(true); }
+      }, { signal });
+
+      langList.addEventListener('keydown', (e: KeyboardEvent) => {
+        const i = items.indexOf(document.activeElement as HTMLAnchorElement);
+        if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length]?.focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); items[(i - 1 + items.length) % items.length]?.focus(); }
+        else if (e.key === 'Home') { e.preventDefault(); items[0]?.focus(); }
+        else if (e.key === 'End') { e.preventDefault(); items[items.length - 1]?.focus(); }
+        else if (e.key === 'Escape') { e.preventDefault(); closeLang(true); }
+        else if (e.key === 'Tab') { closeLang(); }
+      }, { signal });
+
+      // Clic fuera del selector: cerrar.
+      document.addEventListener('click', (e) => {
+        if (isOpen() && !langBtn.contains(e.target as Node) && !langList.contains(e.target as Node)) {
+          closeLang();
+        }
+      }, { signal });
     }
 
     // ── Theme toggle ─────────────────────────────────────────────────────────
