@@ -212,8 +212,8 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Productos cargados con IA' },
         { value: '48h', label: 'Auditoría inicial' },
-        { value: '5★', label: 'Clientes verificados' },
-        { value: '0', label: 'Cookies de rastreo' },
+        { value: '100/100', label: 'Lighthouse en producción' },
+        { value: '12h', label: 'Tiempo máx. de respuesta' },
       ],
     },
     ai: {
@@ -566,8 +566,8 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Products loaded by AI' },
         { value: '48h', label: 'Initial audit' },
-        { value: '5★', label: 'Verified clients' },
-        { value: '0', label: 'Tracking cookies' },
+        { value: '100/100', label: 'Lighthouse in production' },
+        { value: '12h', label: 'Max. response time' },
       ],
     },
     ai: {
@@ -920,8 +920,8 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Produtos cadastrados com IA' },
         { value: '48h', label: 'Auditoria inicial' },
-        { value: '5★', label: 'Clientes verificados' },
-        { value: '0', label: 'Cookies de rastreio' },
+        { value: '100/100', label: 'Lighthouse em produção' },
+        { value: '12h', label: 'Tempo máx. de resposta' },
       ],
     },
     ai: {
@@ -1275,8 +1275,8 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Produits charges par IA' },
         { value: '48h', label: 'Audit initial' },
-        { value: '5★', label: 'Clients verifies' },
-        { value: '0', label: 'Cookies de suivi' },
+        { value: '100/100', label: 'Lighthouse en production' },
+        { value: '12h', label: 'Délai max. de réponse' },
       ],
     },
     ai: {
