@@ -146,8 +146,19 @@
 }
 
 @layer components {
+  /* Contenedor principal: crece por breakpoint para aprovechar PC grande/TV
+     (1200 → 1400 @1536px → 1600 @1920px) con padding lateral proporcional. */
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+    padding-inline: clamp(1.25rem, 3.5vw, 3rem);
+  }
+  @media (min-width: 1536px) {
+    .container-x { max-width: 1400px; }
+  }
+  @media (min-width: 1920px) {
+    .container-x { max-width: 1600px; }
   }
 
   .section-padding {

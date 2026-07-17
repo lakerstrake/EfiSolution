@@ -27,7 +27,7 @@ const money = PRICING_BY_LOCALE[locale];
       </p>
     </div>
 
-    <div class="mt-10 grid items-start gap-6 lg:grid-cols-3">
+    <div class="mt-10 grid items-start gap-6 lg:grid-cols-3 2xl:gap-10">
       {planOrder.map((key: PlanKey, cardIndex: number) => {
         const plan = t.plans[key];
         const amount = money.plans[key];

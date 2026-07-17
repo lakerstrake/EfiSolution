@@ -24,11 +24,13 @@ const {
 } = Astro.props;
 
 const base =
-  'group relative inline-flex items-center justify-center gap-2.5 rounded-full font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950 hover:-translate-y-0.5 active:scale-[0.97]';
+  'group relative inline-flex max-w-full items-center justify-center gap-2.5 rounded-full text-center font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950 hover:-translate-y-0.5 active:scale-[0.97]';
 
+// Padding y tipografía reducidos en móvil: el texto más largo (FR/PT) debe
+// caber en un viewport de 320px sin desbordar. Área táctil ≥44px de alto.
 const sizes: Record<string, string> = {
-  md: 'px-5 py-2.5 text-sm',
-  lg: 'px-7 py-3.5 text-[15px] sm:text-base',
+  md: 'min-h-11 px-5 py-2.5 text-sm',
+  lg: 'min-h-11 px-5 py-3 text-sm sm:px-7 sm:py-3.5 sm:text-base',
 };
 
 const variants: Record<string, string> = {
