@@ -156,9 +156,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                       class="h-full w-full object-cover object-top"
                       width="800"
                       height="500"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      decoding={index === 0 ? 'sync' : 'async'}
-                      fetchpriority={index === 0 ? 'high' : 'auto'}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </picture>
                   {entry.url && (
@@ -338,8 +337,18 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
     const ric = (window as unknown as {
       requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => void;
     }).requestIdleCallback;
-    if (ric) ric(warmImages, { timeout: 2500 });
-    else window.setTimeout(warmImages, 1800);
+    // Solo cuando la sección se acerca al viewport: la sección va abajo en la
+    // página y precargar en idle competía con los recursos del primer render.
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        if (ric) ric(warmImages, { timeout: 1500 });
+        else window.setTimeout(warmImages, 300);
+      },
+      { rootMargin: '800px 0px' }
+    );
+    io.observe(root);
   }
 
   document.addEventListener('astro:page-load', initCases);
