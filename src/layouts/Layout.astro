@@ -263,12 +263,24 @@ const reviewSchema = {
         if (window._spCleanup) { window._spCleanup(); }
         var bar = document.getElementById('scroll-progress');
         if (!bar) return;
+        // CSS scroll-driven si existe: cero JS en el hilo principal.
+        if (window.CSS && CSS.supports('animation-timeline: scroll()')) {
+          bar.classList.add('sp-css');
+          return;
+        }
+        // Fallback: leer scrollHeight solo dentro de rAF y al hacer scroll.
+        // Leerlo durante el parseo forzaba un layout completo (~170ms de TBT).
+        var ticking = false;
         var fn = function () {
-          var t = window.scrollY || document.documentElement.scrollTop;
-          var h = document.documentElement.scrollHeight - window.innerHeight;
-          bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(t / h, 1) : 0) + ')';
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            ticking = false;
+            var t = window.scrollY || document.documentElement.scrollTop;
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(t / h, 1) : 0) + ')';
+          });
         };
-        fn();
         window.addEventListener('scroll', fn, { passive: true });
         window._spCleanup = function () { window.removeEventListener('scroll', fn); };
       })();

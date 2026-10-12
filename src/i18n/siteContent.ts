@@ -1,3 +1,4 @@
+import { SITE } from '../config/site';
 export type Locale = 'es' | 'en' | 'pt' | 'fr';
 
 type NavLink = { href: string; label: string };
@@ -216,7 +217,7 @@ export function localeHref(locale: Locale): string {
 const siteContent: Record<Locale, SiteContent> = {
   es: {
     meta: {
-      title: 'Diseño web e IA para negocios en Bogotá | Efi Solution',
+      title: `Diseño web e IA para negocios en Bogotá | ${SITE.name}`,
       description: 'Páginas web rápidas para negocios en Bogotá, con IA que automatiza tareas (como subir inventario con una foto) y SEO local para que te encuentren. Auditoría gratis.',
     },
     nav: {
@@ -297,7 +298,7 @@ const siteContent: Record<Locale, SiteContent> = {
       fullCase: 'Ver caso completo',
     },
     casePage: {
-      metaTitle: 'Caso de éxito: Búho Repuestos — catálogo con IA | Efi Solution',
+      metaTitle: `Caso de éxito: Búho Repuestos — catálogo con IA | ${SITE.name}`,
       metaDescription: 'Cómo una tienda de repuestos en Bogotá pasó de cargar productos a mano a un catálogo de 110+ referencias que se llena solo con IA.',
       badge: 'Caso de éxito',
       title: 'Búho Repuestos: un catálogo que se llena solo con IA.',
@@ -589,7 +590,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Algo salió mal. Escríbenos por correo o WhatsApp.',
         errorWa: '¿No funcionó? Escríbenos directo por WhatsApp →',
         whatsapp: 'Escríbenos por WhatsApp',
-        whatsappMessage: 'Hola, vengo del sitio de Efi Solution y quiero una auditoría web.',
+        whatsappMessage: `Hola, vengo del sitio de ${SITE.name} y quiero una auditoría web.`,
         consent: 'Acepto la',
       },
       team: [
@@ -618,7 +619,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   en: {
     meta: {
-      title: 'Web design & AI for small businesses | Efi Solution',
+      title: `Web design & AI for small businesses | ${SITE.name}`,
       description: 'Fast websites for small businesses, with AI that automates real tasks (like loading inventory from a photo) and local SEO so customers find you. Free audit.',
     },
     nav: {
@@ -698,7 +699,7 @@ const siteContent: Record<Locale, SiteContent> = {
       fullCase: 'See the full case',
     },
     casePage: {
-      metaTitle: 'Success story: Búho Repuestos — AI-powered catalog | Efi Solution',
+      metaTitle: `Success story: Búho Repuestos — AI-powered catalog | ${SITE.name}`,
       metaDescription: 'How an auto-parts store in Bogotá went from loading products by hand to a 110+ reference catalog that fills itself with AI.',
       badge: 'Success story',
       title: 'Búho Repuestos: a catalog that fills itself with AI.',
@@ -990,7 +991,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Something went wrong. Email or WhatsApp us instead.',
         errorWa: 'Didn’t work? Message us directly on WhatsApp →',
         whatsapp: 'Message us on WhatsApp',
-        whatsappMessage: 'Hi, I come from the Efi Solution site and I want a web audit.',
+        whatsappMessage: `Hi, I come from the ${SITE.name} site and I want a web audit.`,
         consent: 'I accept the',
       },
       team: [
@@ -1019,7 +1020,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   pt: {
     meta: {
-      title: 'Design web e IA para negócios | Efi Solution',
+      title: `Design web e IA para negócios | ${SITE.name}`,
       description: 'Sites rápidos para negócios, com IA que automatiza tarefas (como cadastrar estoque com uma foto) e SEO local para que te encontrem. Auditoria grátis.',
     },
     nav: {
@@ -1099,7 +1100,7 @@ const siteContent: Record<Locale, SiteContent> = {
       fullCase: 'Ver caso completo',
     },
     casePage: {
-      metaTitle: 'Caso de sucesso: Búho Repuestos — catálogo com IA | Efi Solution',
+      metaTitle: `Caso de sucesso: Búho Repuestos — catálogo com IA | ${SITE.name}`,
       metaDescription: 'Como uma loja de autopeças em Bogotá passou de cadastrar produtos na mão para um catálogo de 110+ referências que se preenche sozinho com IA.',
       badge: 'Caso de sucesso',
       title: 'Búho Repuestos: um catálogo que se preenche sozinho com IA.',
@@ -1391,7 +1392,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Algo deu errado. Fale por e-mail ou WhatsApp.',
         errorWa: 'Não funcionou? Fale direto com a gente no WhatsApp →',
         whatsapp: 'Fale no WhatsApp',
-        whatsappMessage: 'Olá, venho do site da Efi Solution e quero uma auditoria web.',
+        whatsappMessage: `Olá, venho do site da ${SITE.name} e quero uma auditoria web.`,
         consent: 'Aceito a',
       },
       team: [
@@ -1420,7 +1421,7 @@ const siteContent: Record<Locale, SiteContent> = {
   },
   fr: {
     meta: {
-      title: 'Sites web et IA pour entreprises | Efi Solution',
+      title: `Sites web et IA pour entreprises | ${SITE.name}`,
       description: 'Des sites rapides pour les petites entreprises, avec une IA qui automatise des tâches (comme remplir l’inventaire avec une photo) et un SEO local. Audit gratuit.',
     },
     nav: {
@@ -1501,7 +1502,7 @@ const siteContent: Record<Locale, SiteContent> = {
       fullCase: 'Voir le cas complet',
     },
     casePage: {
-      metaTitle: 'Cas client : Búho Repuestos — catalogue avec IA | Efi Solution',
+      metaTitle: `Cas client : Búho Repuestos — catalogue avec IA | ${SITE.name}`,
       metaDescription: 'Comment un magasin de pièces auto de Bogotá est passé de la saisie manuelle à un catalogue de 110+ références qui se remplit tout seul avec l’IA.',
       badge: 'Cas client',
       title: 'Búho Repuestos : un catalogue qui se remplit tout seul avec l’IA.',
@@ -1793,7 +1794,7 @@ const siteContent: Record<Locale, SiteContent> = {
         error: 'Une erreur est survenue. Écrivez-nous par e-mail ou WhatsApp.',
         errorWa: 'Ça n’a pas marché ? Écrivez-nous directement sur WhatsApp →',
         whatsapp: 'Écrivez-nous sur WhatsApp',
-        whatsappMessage: 'Bonjour, je viens du site Efi Solution et je veux un audit web.',
+        whatsappMessage: `Bonjour, je viens du site ${SITE.name} et je veux un audit web.`,
         consent: 'J’accepte la',
       },
       team: [

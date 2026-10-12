@@ -72,13 +72,13 @@ const waHref = whatsappHref(t.waMessage);
 
             <div class="buho-stage relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
               <picture>
-                <source srcset="/buho-ia-1.avif" type="image/avif" />
-                <source srcset="/buho-ia-1.webp" type="image/webp" />
+                <source srcset="/buho-ia-1-640.avif 640w, /buho-ia-1.avif 1120w" sizes="(min-width: 1024px) 640px, 92vw" type="image/avif" />
+                <source srcset="/buho-ia-1-640.webp 640w, /buho-ia-1.webp 1120w" sizes="(min-width: 1024px) 640px, 92vw" type="image/webp" />
                 <img src="/buho-ia-1.png" alt={t.beforeAlt} width="1120" height="630" loading="eager" decoding="async" class="buho-before absolute inset-0 h-full w-full object-cover object-top" />
               </picture>
               <picture>
-                <source srcset="/buho-ia-2.avif" type="image/avif" />
-                <source srcset="/buho-ia-2.webp" type="image/webp" />
+                <source srcset="/buho-ia-2-640.avif 640w, /buho-ia-2.avif 1120w" sizes="(min-width: 1024px) 640px, 92vw" type="image/avif" />
+                <source srcset="/buho-ia-2-640.webp 640w, /buho-ia-2.webp 1120w" sizes="(min-width: 1024px) 640px, 92vw" type="image/webp" />
                 <img src="/buho-ia-2.png" alt={t.exampleText} width="1120" height="630" loading="lazy" decoding="async" class="buho-after absolute inset-0 h-full w-full object-cover object-top" />
               </picture>
 

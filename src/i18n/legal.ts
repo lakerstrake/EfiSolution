@@ -1,4 +1,5 @@
 import type { Locale } from './siteContent';
+import { SITE } from '../config/site';
 
 export type PrivacySection = { h: string; p: string };
 export type PrivacyContent = {
@@ -29,7 +30,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   es: {
     title: 'Política de privacidad',
     updated: 'Última actualización: 31 de mayo de 2026',
-    intro: `Esta Política de Privacidad describe cómo Efi Solution ("nosotros") trata los datos personales que nos proporcionas a través de este sitio. Responsable del tratamiento: Efi Solution. Contacto: ${contactEmail}.`,
+    intro: `Esta Política de Privacidad describe cómo ${SITE.name} ("nosotros") trata los datos personales que nos proporcionas a través de este sitio. Responsable del tratamiento: ${SITE.name}. Contacto: ${contactEmail}.`,
     sections: [
       { h: 'Datos que recopilamos', p: 'Cuando usas el formulario de contacto recopilamos tu nombre, correo electrónico y el mensaje que nos envíes. Para medir el uso del sitio usamos Cloudflare Web Analytics, que genera estadísticas de forma anónima y sin cookies.' },
       { h: 'Finalidad y base legal', p: 'Usamos tus datos únicamente para responder a tu solicitud y darle seguimiento. La base legal es tu consentimiento, que otorgas al marcar la casilla y enviar el formulario.' },
@@ -43,7 +44,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   en: {
     title: 'Privacy policy',
     updated: 'Last updated: May 31, 2026',
-    intro: `This Privacy Policy explains how Efi Solution ("we") handles the personal data you provide through this site. Data controller: Efi Solution. Contact: ${contactEmail}.`,
+    intro: `This Privacy Policy explains how ${SITE.name} ("we") handles the personal data you provide through this site. Data controller: ${SITE.name}. Contact: ${contactEmail}.`,
     sections: [
       { h: 'Data we collect', p: 'When you use the contact form we collect your name, email address and the message you send. To measure site usage we use Cloudflare Web Analytics, which produces anonymous statistics without cookies.' },
       { h: 'Purpose and legal basis', p: 'We use your data only to reply to your request and follow up. The legal basis is your consent, given when you tick the box and submit the form.' },
@@ -57,7 +58,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   pt: {
     title: 'Política de privacidade',
     updated: 'Última atualização: 31 de maio de 2026',
-    intro: `Esta Política de Privacidade descreve como a Efi Solution ("nós") trata os dados pessoais que você fornece por meio deste site. Responsável pelo tratamento: Efi Solution. Contato: ${contactEmail}.`,
+    intro: `Esta Política de Privacidade descreve como a ${SITE.name} ("nós") trata os dados pessoais que você fornece por meio deste site. Responsável pelo tratamento: ${SITE.name}. Contato: ${contactEmail}.`,
     sections: [
       { h: 'Dados que coletamos', p: 'Quando você usa o formulário de contato coletamos seu nome, e-mail e a mensagem enviada. Para medir o uso do site usamos o Cloudflare Web Analytics, que gera estatísticas de forma anônima e sem cookies.' },
       { h: 'Finalidade e base legal', p: 'Usamos seus dados apenas para responder à sua solicitação e dar seguimento. A base legal é o seu consentimento, dado ao marcar a caixa e enviar o formulário.' },
@@ -71,7 +72,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
   fr: {
     title: 'Politique de confidentialité',
     updated: 'Dernière mise à jour : 31 mai 2026',
-    intro: `Cette Politique de confidentialité explique comment Efi Solution (« nous ») traite les données personnelles que vous fournissez via ce site. Responsable du traitement : Efi Solution. Contact : ${contactEmail}.`,
+    intro: `Cette Politique de confidentialité explique comment ${SITE.name} (« nous ») traite les données personnelles que vous fournissez via ce site. Responsable du traitement : ${SITE.name}. Contact : ${contactEmail}.`,
     sections: [
       { h: 'Données que nous collectons', p: 'Lorsque vous utilisez le formulaire de contact, nous collectons votre nom, votre e-mail et votre message. Pour mesurer l’usage du site, nous utilisons Cloudflare Web Analytics, qui produit des statistiques anonymes sans cookies.' },
       { h: 'Finalité et base légale', p: 'Nous utilisons vos données uniquement pour répondre à votre demande et en assurer le suivi. La base légale est votre consentement, donné en cochant la case et en envoyant le formulaire.' },

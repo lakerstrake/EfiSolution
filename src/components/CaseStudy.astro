@@ -148,8 +148,8 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                 </div>
                 <div class="relative aspect-[16/10] w-full overflow-hidden">
                   <picture>
-                    {hasRaster && <source srcset={`${imgBase}.avif`} type="image/avif" />}
-                    {hasRaster && <source srcset={`${imgBase}.webp`} type="image/webp" />}
+                    {hasRaster && <source srcset={`${imgBase}-640.avif 640w, ${imgBase}.avif 1024w`} sizes="(min-width: 1024px) 560px, 92vw" type="image/avif" />}
+                    {hasRaster && <source srcset={`${imgBase}-640.webp 640w, ${imgBase}.webp 1024w`} sizes="(min-width: 1024px) 560px, 92vw" type="image/webp" />}
                     <img
                       src={entry.image}
                       alt={`${imageAltPrefix[locale]} ${entry.name}`}

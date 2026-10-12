@@ -228,6 +228,14 @@
   background: rgb(var(--accent-rgb));
   pointer-events: none;
 }
+.scroll-progress.sp-css {
+  animation: scroll-progress-grow linear both;
+  animation-timeline: scroll(root);
+}
+@keyframes scroll-progress-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
 
 /* Scroll reveal. En móvil: fade+slide (barato, GPU friendly). En escritorio
    suma desenfoque y escala (estilo Linear/Vercel) — allí la GPU va sobrada. */
