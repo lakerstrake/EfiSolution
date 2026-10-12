@@ -224,8 +224,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Servicios' },
-        { href: '#casos', label: 'Proyectos' },
         { href: '#planes', label: 'Planes' },
+        { href: '#casos', label: 'Proyectos' },
         { href: '#contacto', label: 'Contacto' },
       ],
       cta: 'Solicitar auditoría',
@@ -629,8 +629,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'AI' },
         { href: '#servicios', label: 'Services' },
-        { href: '#casos', label: 'Work' },
         { href: '#planes', label: 'Plans' },
+        { href: '#casos', label: 'Work' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Request audit',
@@ -1033,8 +1033,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Serviços' },
-        { href: '#casos', label: 'Projetos' },
         { href: '#planes', label: 'Planos' },
+        { href: '#casos', label: 'Projetos' },
         { href: '#contacto', label: 'Contato' },
       ],
       cta: 'Solicitar auditoria',
@@ -1437,8 +1437,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Services' },
-        { href: '#casos', label: 'Projets' },
         { href: '#planes', label: 'Offres' },
+        { href: '#casos', label: 'Projets' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Demander un audit',
