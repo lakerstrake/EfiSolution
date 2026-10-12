@@ -397,7 +397,7 @@ const siteContent: Record<Locale, SiteContent> = {
           number: '03 / Producto',
           title: 'Que tu web sea fácil de usar',
           description: 'Que cualquiera entienda tu web y te compre fácil.',
-          bullets: ['Caminos claros para el cliente', 'Probado con personas reales', 'Mejoras continuas'],
+          bullets: ['Caminos claros para el cliente', 'Pensada para tu cliente', 'Mejoras continuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -410,10 +410,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análisis profundo de métricas y cuellos de botella.' },
-        { k: '02', v: 'Definición', d: '1 sem', desc: 'Estructuración de la arquitectura y plan de acción.' },
-        { k: '03', v: 'Construcción', d: '3-6 sem', desc: 'Desarrollo backend y frontend optimizado.' },
-        { k: '04', v: 'Lanzamiento', d: 'Día 1', desc: 'Despliegue, pruebas de estrés y monitoreo.' },
+        { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Revisamos tu negocio y tu web actual, y te decimos qué conviene hacer.' },
+        { k: '02', v: 'Plan', d: '1 sem', desc: 'Acordamos qué incluye, cuánto cuesta y la fecha de entrega, por escrito.' },
+        { k: '03', v: 'Construcción', d: '1-6 sem', desc: 'Hacemos tu web y te mostramos avances para que opines.' },
+        { k: '04', v: 'Lanzamiento', d: 'Cada mes', desc: 'Publicamos tu web, te enseñamos a usarla y la seguimos mejorando.' },
       ],
     },
     approach: {
@@ -801,7 +801,7 @@ const siteContent: Record<Locale, SiteContent> = {
           number: '03 / Product',
           title: 'Make your site easy to use',
           description: 'Anyone understands your site and buys easily.',
-          bullets: ['Clear paths for the customer', 'Tested with real people', 'Continuous improvements'],
+          bullets: ['Clear paths for the customer', 'Designed around your customer', 'Continuous improvements'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -814,10 +814,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnosis', d: '48h', desc: 'Deep analysis of metrics and bottlenecks.' },
-        { k: '02', v: 'Planning', d: '1 wk', desc: 'Architecture definition and action plan.' },
-        { k: '03', v: 'Build', d: '3-6 wk', desc: 'Optimized backend and frontend development.' },
-        { k: '04', v: 'Launch', d: 'Day 1', desc: 'Deployment, stress testing and monitoring.' },
+        { k: '01', v: 'Diagnosis', d: '48h', desc: 'We look at your business and your current site, and tell you what makes sense.' },
+        { k: '02', v: 'Plan', d: '1 wk', desc: 'We agree on scope, price and delivery date, in writing.' },
+        { k: '03', v: 'Build', d: '1-6 wk', desc: 'We build your site and show you progress so you can give feedback.' },
+        { k: '04', v: 'Launch', d: 'Monthly', desc: 'We publish your site, show you how to use it and keep improving it.' },
       ],
     },
     approach: {
@@ -1205,7 +1205,7 @@ const siteContent: Record<Locale, SiteContent> = {
           number: '03 / Produto',
           title: 'Deixe seu site fácil de usar',
           description: 'Qualquer um entende seu site e compra fácil.',
-          bullets: ['Caminhos claros para o cliente', 'Testado com pessoas reais', 'Melhorias contínuas'],
+          bullets: ['Caminhos claros para o cliente', 'Pensado para o seu cliente', 'Melhorias contínuas'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -1218,10 +1218,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Análise profunda de métricas e gargalos.' },
-        { k: '02', v: 'Planejamento', d: '1 sem', desc: 'Estruturação da arquitetura e plano de ação.' },
-        { k: '03', v: 'Construção', d: '3-6 sem', desc: 'Desenvolvimento backend e frontend otimizado.' },
-        { k: '04', v: 'Lançamento', d: 'Dia 1', desc: 'Deploy, testes de estresse e monitoramento.' },
+        { k: '01', v: 'Diagnóstico', d: '48h', desc: 'Analisamos o seu negócio e o seu site atual, e dizemos o que vale a pena fazer.' },
+        { k: '02', v: 'Plano', d: '1 sem', desc: 'Combinamos o que inclui, quanto custa e a data de entrega, por escrito.' },
+        { k: '03', v: 'Construção', d: '1-6 sem', desc: 'Criamos o seu site e mostramos o andamento para você opinar.' },
+        { k: '04', v: 'Lançamento', d: 'Todo mês', desc: 'Publicamos o seu site, ensinamos a usá-lo e seguimos melhorando.' },
       ],
     },
     approach: {
@@ -1610,7 +1610,7 @@ const siteContent: Record<Locale, SiteContent> = {
           number: '03 / Produit',
           title: 'Rendre votre site facile a utiliser',
           description: 'Tout le monde comprend votre site et achete facilement.',
-          bullets: ['Des parcours clairs pour le client', 'Teste avec de vraies personnes', 'Ameliorations continues'],
+          bullets: ['Des parcours clairs pour le client', 'Pensé pour votre client', 'Ameliorations continues'],
           iconPath: 'M6 3h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zM9 7h6M9 11h6M9 15h6',
         },
         // DECIDIR: Juan puede quitar este servicio o mantenerlo así.
@@ -1623,10 +1623,10 @@ const siteContent: Record<Locale, SiteContent> = {
         },
       ],
       steps: [
-        { k: '01', v: 'Diagnostic', d: '48h', desc: 'Analyse approfondie des metriques et des goulots d’etranglement.' },
-        { k: '02', v: 'Cadrage', d: '1 sem', desc: 'Definition de l’architecture et plan d’action.' },
-        { k: '03', v: 'Construction', d: '3-6 sem', desc: 'Developpement backend et frontend optimise.' },
-        { k: '04', v: 'Lancement', d: 'Jour 1', desc: 'Deploiement, tests de charge et monitoring.' },
+        { k: '01', v: 'Diagnostic', d: '48h', desc: 'Nous regardons votre activité et votre site actuel, et vous disons ce qui vaut la peine.' },
+        { k: '02', v: 'Plan', d: '1 sem', desc: 'Nous fixons le contenu, le prix et la date de livraison, par écrit.' },
+        { k: '03', v: 'Construction', d: '1-6 sem', desc: 'Nous créons votre site et vous montrons l’avancement pour avoir votre avis.' },
+        { k: '04', v: 'Lancement', d: 'Chaque mois', desc: 'Nous publions votre site, vous apprenons à l’utiliser et continuons à l’améliorer.' },
       ],
     },
     approach: {
