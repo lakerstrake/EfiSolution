@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 
 const base =
-  'group relative inline-flex max-w-full items-center justify-center gap-2.5 rounded-full text-center font-medium tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950 hover:-translate-y-0.5 active:scale-[0.97]';
+  'group relative inline-flex max-w-full items-center justify-center gap-2.5 rounded-lg text-center font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-50 dark:focus-visible:ring-offset-zinc-950 hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0';
 
 // Padding y tipografía reducidos en móvil: el texto más largo (FR/PT) debe
 // caber en un viewport de 320px sin desbordar. Área táctil ≥44px de alto.
@@ -33,11 +33,12 @@ const sizes: Record<string, string> = {
   lg: 'min-h-11 px-5 py-3 text-sm sm:px-7 sm:py-3.5 sm:text-base',
 };
 
+// Tinta sólida + sombra dura de brasa al pasar el cursor (firma visual).
 const variants: Record<string, string> = {
   primary:
-    'bg-accent-500 text-white shadow-[0_10px_34px_-8px_rgba(11,84,253,0.55)] hover:bg-accent-600 hover:shadow-[0_14px_38px_-6px_rgba(11,84,253,0.65)] dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200',
+    'bg-zinc-900 text-zinc-50 hover:shadow-hard-accent active:shadow-none dark:bg-zinc-50 dark:text-zinc-900',
   ghost:
-    'border border-zinc-200 dark:border-white/15 bg-white/60 dark:bg-white/[0.02] text-zinc-800 dark:text-zinc-100 backdrop-blur-md hover:border-zinc-300 dark:hover:border-white/30 hover:bg-zinc-50 dark:hover:bg-white/[0.05]',
+    'border border-zinc-900/80 text-zinc-900 hover:bg-zinc-900 hover:text-zinc-50 dark:border-zinc-200/50 dark:text-zinc-100 dark:hover:bg-zinc-50 dark:hover:text-zinc-900',
 };
 ---
 
@@ -50,12 +51,6 @@ const variants: Record<string, string> = {
   data-label={dataLabel}
   class={`${base} ${sizes[size]} ${variants[variant]}`}
 >
-  {variant === 'primary' && (
-    <span
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 rounded-full opacity-0 bg-[radial-gradient(circle,rgba(77,124,254,0.45),transparent_70%)] blur-md transition-opacity duration-500 group-hover:opacity-100"
-    ></span>
-  )}
   <span class="relative z-10"><slot /></span>
   {icon && (
     <span

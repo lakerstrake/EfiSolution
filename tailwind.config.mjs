@@ -5,21 +5,36 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Identidad: tinta + papel cálido + brasa. Lejos del azul SaaS genérico.
         accent: {
-          50: '#ebf2ff',
-          100: '#d9e6ff',
-          200: '#b4ccff',
-          300: '#7ea6ff',
-          400: '#3f7cff',
-          500: '#0b54fd',
-          600: '#0843d0',
-          700: '#0939aa',
-          800: '#0b3387',
-          900: '#102f70',
+          50: '#fff4ed',
+          100: '#ffe5d4',
+          200: '#ffc6a8',
+          300: '#ff9d71',
+          400: '#f26a35',
+          500: '#d9480f',
+          600: '#b93a0b',
+          700: '#962f0b',
+          800: '#782810',
+          900: '#622310',
+        },
+        // Neutros cálidos (sobrescriben zinc en todo el sitio).
+        zinc: {
+          50: '#faf8f3',
+          100: '#f3efe6',
+          200: '#e5dfd2',
+          300: '#cfc7b6',
+          400: '#a39a88',
+          500: '#6f675a',
+          600: '#5a5347',
+          700: '#433d34',
+          800: '#2b2721',
+          900: '#1c1915',
+          950: '#12100d',
         },
       },
       fontFamily: {
-        display: ['"Sora"', 'system-ui', 'sans-serif'],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
         sans: ['"Manrope"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
@@ -37,10 +52,12 @@ export default {
         'fluid-6xl': 'clamp(2.5rem, 1.8rem + 4.2vw, 6.5rem)',
       },
       letterSpacing: {
-        tightest: '-0.05em',
+        tightest: '-0.025em',
       },
       boxShadow: {
-        'glow-accent': '0 0 36px -10px rgba(11,84,253,0.5)',
+        'glow-accent': '0 0 36px -10px rgba(217,72,15,0.45)',
+        'hard': '4px 4px 0 0 rgb(18,16,13)',
+        'hard-accent': '4px 4px 0 0 rgb(217,72,15)',
         'soft-xl': '0 30px 80px -30px rgba(0,0,0,0.55)',
       },
       animation: {

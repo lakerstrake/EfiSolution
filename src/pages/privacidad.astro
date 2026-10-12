@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config/site';
 import Layout from '../layouts/Layout.astro';
 import { privacy, privacyLabel } from '../i18n/legal';
 import { localeHref } from '../i18n/siteContent';
@@ -7,7 +8,7 @@ const locale = 'es' as const;
 const t = privacy[locale];
 ---
 
-<Layout locale={locale} title={`${privacyLabel[locale]} | Efi Solution`} description={t.intro}>
+<Layout locale={locale} title={`${privacyLabel[locale]} | ${SITE.name}`} description={t.intro}>
   <section class="section-padding pt-28 sm:pt-32">
     <div class="container-x">
       <div class="mx-auto max-w-3xl">

@@ -11,9 +11,8 @@ type ServiceItem = {
   iconPath: string;
 };
 type ServiceStep = { k: string; v: string; d: string; desc: string };
-// TODO VERIFICAR (Juan): cada métrica con label 'Lighthouse' y valor 100 ("100/100")
-// debe confirmarse corriendo Lighthouse real sobre la URL del proyecto. Si no da 100,
-// pon el número real o elimina la métrica. Aplica a los 4 idiomas (es/en/pt/fr).
+// Solo métricas comprobables. "Lighthouse 100" se quitó: medido el 2026-10-12,
+// Navegador Social dio 81 en móvil. No volver a afirmarlo sin medir.
 type CaseMetric = { value: number; suffix: string; label: string; decimals?: number };
 type CaseItem = {
   key: string;
@@ -245,7 +244,7 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Productos cargados con IA' },
         { value: '48h', label: 'Auditoría inicial' },
-        { value: '100/100', label: 'Lighthouse en producción' },
+        { value: '0', label: 'Cookies de rastreo' },
         { value: '12h', label: 'Tiempo máx. de respuesta' },
       ],
     },
@@ -450,7 +449,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -465,7 +463,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['Cloudflare Workers', 'JavaScript', 'Web APIs', 'Edge Runtime'],
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -495,7 +492,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tiempo de cálculo' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
       ],
@@ -649,7 +645,7 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Products loaded by AI' },
         { value: '48h', label: 'Initial audit' },
-        { value: '100/100', label: 'Lighthouse in production' },
+        { value: '0', label: 'Tracking cookies' },
         { value: '12h', label: 'Max. response time' },
       ],
     },
@@ -854,7 +850,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Initial response' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -869,7 +864,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['Cloudflare Workers', 'JavaScript', 'Web APIs', 'Edge Runtime'],
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Initial response' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -899,7 +893,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Calculation time' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
       ],
@@ -1053,7 +1046,7 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Produtos cadastrados com IA' },
         { value: '48h', label: 'Auditoria inicial' },
-        { value: '100/100', label: 'Lighthouse em produção' },
+        { value: '0', label: 'Cookies de rastreamento' },
         { value: '12h', label: 'Tempo máx. de resposta' },
       ],
     },
@@ -1258,7 +1251,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Resposta inicial' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -1273,7 +1265,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['Cloudflare Workers', 'JavaScript', 'Web APIs', 'Edge Runtime'],
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Resposta inicial' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -1303,7 +1294,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tempo de cálculo' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
       ],
@@ -1458,7 +1448,7 @@ const siteContent: Record<Locale, SiteContent> = {
       metrics: [
         { value: '110+', label: 'Produits charges par IA' },
         { value: '48h', label: 'Audit initial' },
-        { value: '100/100', label: 'Lighthouse en production' },
+        { value: '0', label: 'Cookies de suivi' },
         { value: '12h', label: 'Délai max. de réponse' },
       ],
     },
@@ -1663,7 +1653,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['JavaScript', 'CSS', 'Cloudflare Workers', 'Edge Runtime'],
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Reponse initiale' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -1678,7 +1667,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['Cloudflare Workers', 'JavaScript', 'Web APIs', 'Edge Runtime'],
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Reponse initiale' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
         {
@@ -1708,7 +1696,6 @@ const siteContent: Record<Locale, SiteContent> = {
           stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Pages'],
           metrics: [
             { value: 100, suffix: 'ms', label: 'Temps de calcul' },
-            { value: 100, suffix: '/100', label: 'Lighthouse' },
           ],
         },
       ],

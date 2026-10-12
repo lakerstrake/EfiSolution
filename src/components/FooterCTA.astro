@@ -57,7 +57,6 @@ const syncDate = formatBogotaDate(syncTimestamp);
   <div class="container-x">
     <div class="reveal surface relative overflow-hidden p-8 sm:p-12">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-        <div class="absolute left-1/2 top-0 h-72 w-[580px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-accent-500/15 blur-[110px]"></div>
       </div>
 
       <div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -80,8 +79,8 @@ const syncDate = formatBogotaDate(syncTimestamp);
           {WEB3FORMS_ACCESS_KEY ? (
             <form id="contact-form" class="mt-8 space-y-4" novalidate>
               <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-              <input type="hidden" name="subject" value="Nuevo lead — sitio Efi Solution" />
-              <input type="hidden" name="from_name" value="Efi Solution Web" />
+              <input type="hidden" name="subject" value={`Nuevo lead — sitio ${SITE.name}`} />
+              <input type="hidden" name="from_name" value={`${SITE.name} Web`} />
               {/* Contexto del lead: idioma, sección de origen y URL exacta. Llegan
                   en el correo para saber de dónde viene cada contacto. */}
               <input type="hidden" name="lead_origin" value="Formulario de contacto (web)" />
@@ -115,7 +114,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
                   type="submit"
                   data-send-label={f.send}
                   data-sending-label={f.sending}
-                  class="inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                  class="inline-flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                 >
                   {f.send}
                 </button>
@@ -195,7 +194,7 @@ const syncDate = formatBogotaDate(syncTimestamp);
 
 <footer class="container-x" aria-label={t.footer.siteInfo}>
   <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-zinc-200/80 pb-10 pt-6 text-xs text-zinc-500 dark:border-white/10">
-    <p class="text-center">&copy; {new Date().getFullYear()} Efi Solution. {t.footer.madeIn}</p>
+    <p class="text-center">&copy; {new Date().getFullYear()} {SITE.name}. {t.footer.madeIn}</p>
 
     <div class="flex items-center gap-3">
       <a

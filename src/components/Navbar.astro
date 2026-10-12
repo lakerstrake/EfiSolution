@@ -1,6 +1,7 @@
 ---
 import { getSiteContent, localeHref, type Locale } from '../i18n/siteContent';
 import { equivalentPath } from '../lib/altRoutes';
+import { SITE } from '../config/site';
 
 interface Props {
   locale: Locale;
@@ -29,16 +30,16 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 px-4 pt-2 sm:px-6">
   <div class="container-x">
     <nav
-      class="header-shell flex items-center justify-between gap-2 rounded-2xl border border-zinc-200/70 bg-white/75 px-3 py-2 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-zinc-950/65 sm:px-4 sm:py-2.5"
+      class="header-shell flex items-center justify-between gap-2 rounded-xl border border-zinc-900/10 bg-zinc-50/85 px-3 py-2 backdrop-blur-md transition-all duration-300 dark:border-white/10 dark:bg-zinc-950/65 sm:px-4 sm:py-2.5"
       aria-label={t.nav.mainLabel}
     >
       <a href={localeHref(locale)} class="inline-flex items-center gap-2.5 rounded-md">
-        <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-accent-500/30 bg-accent-500/10 text-accent-500">
+        <span class="flex h-8 w-8 items-center justify-center rounded-md bg-zinc-900 text-accent-400 dark:bg-zinc-50 dark:text-accent-600">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
           </svg>
         </span>
-        <span class="font-display text-sm font-semibold text-zinc-900 dark:text-white">Efi Solution</span>
+        <span class="font-display text-base font-semibold tracking-tight text-zinc-900 dark:text-white">{SITE.name}</span>
       </a>
 
       <ul class="hidden items-center gap-1 md:flex" role="list">
@@ -124,7 +125,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
         {/* Un solo CTA primario en desktop: "Planes" ya está en el menú. */}
         <a
           href={sectionHref('#contacto')}
-          class="hidden rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(11,84,253,0.65)] transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 md:inline-flex"
+          class="hidden rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 md:inline-flex"
         >
           {t.nav.cta}
         </a>
@@ -166,7 +167,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
           <a
             href={sectionHref('#planes')}
             data-mobile-close
-            class="flex items-center justify-center rounded-xl bg-accent-500 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            class="flex items-center justify-center rounded-xl bg-zinc-900 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             {t.nav.ctaPlans}
           </a>
@@ -326,7 +327,7 @@ const langs: Array<{ code: Locale; label: string; name: string }> = [
       document.documentElement.classList.toggle('dark', next === 'dark');
       localStorage.setItem('theme', next);
       document.getElementById('meta-theme-color')
-        ?.setAttribute('content', next === 'dark' ? '#09090b' : '#f8fafc');
+        ?.setAttribute('content', next === 'dark' ? '#12100d' : '#f5f1e8');
     }, { signal });
 
     // ── Mobile menu ──────────────────────────────────────────────────────────

@@ -1,4 +1,5 @@
 ---
+import { SITE } from '../config/site';
 import Layout from '../layouts/Layout.astro';
 import CTAButton from '../components/CTAButton.astro';
 
@@ -7,7 +8,7 @@ const locale = 'es' as const;
 
 <Layout
   locale={locale}
-  title="404 - Pagina no encontrada | Efi Solution"
+  title={`404 - Página no encontrada | ${SITE.name}`}
   description="La pagina que buscas no existe o fue movida."
 >
   <section class="section-padding flex min-h-[72vh] items-center">
@@ -15,7 +16,7 @@ const locale = 'es' as const;
       <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
         <span class="eyebrow"><span class="eyebrow-dot"></span>Error 404</span>
 
-        <p class="mt-8 font-display text-[clamp(4rem,18vw,9rem)] font-bold leading-none tracking-tightest gradient-text">
+        <p class="mt-8 font-display text-[clamp(4rem,18vw,9rem)] font-bold leading-none tracking-tightest accent-text">
           404
         </p>
 

@@ -79,8 +79,6 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 
       <div class="surface relative mt-8 overflow-hidden p-6 sm:p-8 lg:p-10">
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-          <div class="absolute -left-20 top-0 h-72 w-72 rounded-full bg-accent-500/10 blur-[110px]"></div>
-          <div class="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent-500/10 blur-[110px]"></div>
         </div>
 
         {cases.map((entry, index) => {
@@ -126,7 +124,7 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
                   href={entry.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+                  class="mt-8 inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
                 >
                   {t.visit}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -219,15 +217,15 @@ const formatMetric = (value: number, decimals = 0) => value.toFixed(decimals);
 
 <style>
   .case-tab[aria-selected='true'] {
-    background-color: rgba(11, 84, 253, 0.14);
-    border-color: rgba(11, 84, 253, 0.65);
-    color: rgb(11, 84, 253);
-    box-shadow: 0 0 0 1px rgba(11, 84, 253, 0.15) inset;
+    background-color: rgba(217, 72, 15, 0.14);
+    border-color: rgba(217, 72, 15, 0.65);
+    color: rgb(185, 58, 11);
+    box-shadow: 0 0 0 1px rgba(217, 72, 15, 0.15) inset;
   }
   .dark .case-tab[aria-selected='true'] {
     color: rgb(147, 197, 253);
     border-color: rgba(147, 197, 253, 0.5);
-    background-color: rgba(11, 84, 253, 0.25);
+    background-color: rgba(217, 72, 15, 0.25);
   }
 </style>
 
