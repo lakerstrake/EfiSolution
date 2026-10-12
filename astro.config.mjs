@@ -41,4 +41,9 @@ export default defineConfig({
   // Optimiza imágenes con sharp en build (páginas prerenderizadas); en el
   // runtime de Cloudflare sharp no existe, así que 'compile' es lo correcto.
   adapter: cloudflare({ imageService: 'compile' }),
+
+  // El sitio no usa Astro.session. Sin esto el adapter activa sesiones con un
+  // KV "SESSION" inexistente y avisa "Invalid binding `SESSION`" en cada build.
+  // Driver en memoria = nada se crea ni se envía (ni KV ni cookies).
+  session: { driver: 'memory' },
 });
