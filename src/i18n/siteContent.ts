@@ -451,7 +451,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
         {
@@ -467,7 +466,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
         {
@@ -483,7 +481,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Respuesta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
         {
@@ -499,7 +496,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tiempo de cálculo' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidad' },
           ],
         },
       ],
@@ -859,7 +855,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
         {
@@ -875,7 +870,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
         {
@@ -891,7 +885,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Initial response' },
             { value: 60, suffix: 'fps', label: 'Smoothness' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
         {
@@ -907,7 +900,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 100, suffix: 'ms', label: 'Calculation time' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Availability' },
           ],
         },
       ],
@@ -1267,7 +1259,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
         {
@@ -1283,7 +1274,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
         {
@@ -1299,7 +1289,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Resposta inicial' },
             { value: 60, suffix: 'fps', label: 'Fluidez' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
         {
@@ -1315,7 +1304,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 100, suffix: 'ms', label: 'Tempo de cálculo' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilidade' },
           ],
         },
       ],
@@ -1676,7 +1664,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.3, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
         {
@@ -1692,7 +1679,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.4, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
         {
@@ -1708,7 +1694,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 0.5, suffix: 's', decimals: 1, label: 'Reponse initiale' },
             { value: 60, suffix: 'fps', label: 'Fluidite' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
         {
@@ -1724,7 +1709,6 @@ const siteContent: Record<Locale, SiteContent> = {
           metrics: [
             { value: 100, suffix: 'ms', label: 'Temps de calcul' },
             { value: 100, suffix: '/100', label: 'Lighthouse' },
-            { value: 99.9, suffix: '%', decimals: 1, label: 'Disponibilite' },
           ],
         },
       ],
