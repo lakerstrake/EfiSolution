@@ -35,7 +35,8 @@ const excerpt = review ? review.quote.split(/(?<=\.)\s/)[0] : '';
           <span class="accent-text">{t.titleB}</span>
         </h1>
 
-        <p class="hero-enter hero-enter-delay-3 mt-7 max-w-xl text-fluid-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+        {/* Sin animación: en móvil este párrafo puede ser el elemento LCP. */}
+        <p class="mt-7 max-w-xl text-fluid-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           {t.description}
         </p>
 
