@@ -51,7 +51,7 @@ const money = PRICING_BY_LOCALE[locale];
             <h3 class="font-display text-xl font-semibold text-zinc-900 dark:text-white">{plan.name}</h3>
             <p class="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{plan.tagline}</p>
 
-            <div class="mt-5 rounded-2xl border border-zinc-200/70 bg-zinc-50/70 p-4 dark:border-white/10 dark:bg-white/[0.02]">
+            <div class="mt-5 border-t border-zinc-300/70 pt-4 dark:border-white/10">
               {amount.setup && (
                 <div>
                   <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">{t.setupLabel}</p>
@@ -88,10 +88,10 @@ const money = PRICING_BY_LOCALE[locale];
               rel={waHref ? 'noopener noreferrer' : undefined}
               data-track={waHref ? 'whatsapp' : 'cta'}
               data-label={`plan-${key}`}
-              class={`mt-7 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
+              class={`mt-7 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors ${
                 recommended
                   ? 'bg-zinc-900 text-white hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200'
-                  : 'border border-zinc-200 bg-white/70 text-zinc-800 hover:border-zinc-300 dark:border-white/15 dark:bg-white/[0.03] dark:text-zinc-100'
+                  : 'border border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white dark:border-zinc-200/60 dark:text-zinc-100 dark:hover:bg-white dark:hover:text-zinc-900'
               }`}
             >
               {plan.cta}
@@ -103,8 +103,8 @@ const money = PRICING_BY_LOCALE[locale];
 
     <ul class="reveal mx-auto mt-8 grid max-w-4xl list-none gap-3 sm:grid-cols-3">
       {t.guarantees.map((guarantee) => (
-        <li class="flex items-start gap-2.5 rounded-2xl border border-zinc-200/80 bg-white/60 p-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-300">
-          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none text-emerald-500">
+        <li class="flex items-start gap-2.5 border-t border-zinc-300/70 pt-4 text-sm leading-relaxed text-zinc-700 dark:border-white/10 dark:text-zinc-300">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none text-accent-600 dark:text-accent-400">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             <path d="m9 12 2 2 4-4" />
           </svg>
