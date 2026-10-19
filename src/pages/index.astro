@@ -4,7 +4,6 @@ import Hero from '../components/Hero.astro';
 import AISpotlight from '../components/AISpotlight.astro';
 import TheProblem from '../components/TheProblem.astro';
 import Services from '../components/Services.astro';
-import Approach from '../components/Approach.astro';
 import ClientCase from '../components/ClientCase.astro';
 import CaseStudy from '../components/CaseStudy.astro';
 import Pricing from '../components/Pricing.astro';
@@ -22,9 +21,8 @@ const t = getSiteContent(locale);
   <ClientCase locale={locale} />
   <TheProblem locale={locale} />
   <Services locale={locale} />
-  <Pricing locale={locale} />
   <CaseStudy locale={locale} />
-  <Approach locale={locale} />
+  <Pricing locale={locale} />
   <FAQ locale={locale} />
   <FooterCTA locale={locale} />
 </Layout>

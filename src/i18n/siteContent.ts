@@ -49,6 +49,8 @@ type SiteContent = {
     description: string;
     ctaPrimary: string;
     ctaGhost: string;
+    waMessage: string;
+    trust: string[];
     metrics: HeroMetric[];
   };
   ai: {
@@ -123,6 +125,8 @@ type SiteContent = {
     description: string;
     statA: string;
     statB: string;
+    cta: string;
+    waMessage: string;
     sequenceLabel: string;
     blocks: ProblemBlock[];
   };
@@ -163,6 +167,9 @@ type SiteContent = {
     recommendedLabel: string;
     guarantees: string[];
     faqHint: string;
+    helpText: string;
+    helpCta: string;
+    helpWaMessage: string;
     plans: { esencial: PlanContent; profesional: PlanContent; escala: PlanContent };
   };
   faq: {
@@ -224,8 +231,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Servicios' },
-        { href: '#planes', label: 'Planes' },
         { href: '#casos', label: 'Proyectos' },
+        { href: '#planes', label: 'Planes' },
         { href: '#contacto', label: 'Contacto' },
       ],
       cta: 'Solicitar auditoría',
@@ -240,8 +247,10 @@ const siteContent: Record<Locale, SiteContent> = {
       titleB: 'resuelto con web e IA.',
       description:
         'Nos cuentas qué necesita tu negocio y construimos la solución: una web rápida y una IA que trabaja por ti.',
-      ctaPrimary: 'Quiero mi web',
-      ctaGhost: 'Agendar auditoría gratuita',
+      ctaPrimary: 'Pedir auditoría gratis',
+      ctaGhost: 'Ver planes y precios',
+      waMessage: 'Hola, quiero la auditoría gratuita para mi negocio.',
+      trust: ['Sin permanencia', 'Precio cerrado por escrito', 'Tu dominio es tuyo'],
       metrics: [
         { value: '110+', label: 'Productos cargados con IA' },
         { value: '48h', label: 'Auditoría inicial' },
@@ -353,6 +362,8 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Una web rápida genera confianza y vende más.',
       statA: 'abandonan si la web tarda más de 3 segundos (Google)',
       statB: 'menos ventas por cada segundo de espera (Akamai)',
+      cta: 'Revisar mi web gratis',
+      waMessage: 'Hola, quiero que revisen mi web gratis y me digan qué mejorar.',
       sequenceLabel: 'Secuencia problema impacto solución',
       blocks: [
         {
@@ -429,7 +440,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Proyectos',
-      title: 'Proyectos que demuestran nuestro enfoque técnico.',
+      title: 'Más proyectos hechos por nuestro equipo.',
       description: 'Proyectos propios, medidos en producción. Toca uno para ver el detalle.',
       tabLabel: 'Selección de proyectos',
       prev: 'Anterior',
@@ -511,6 +522,9 @@ const siteContent: Record<Locale, SiteContent> = {
         'Precio cerrado por escrito antes de empezar. Sin sorpresas.',
       ],
       faqHint: '¿Dudas? Mira las preguntas frecuentes',
+      helpText: '¿No sabes cuál elegir?',
+      helpCta: 'Te ayudamos por WhatsApp',
+      helpWaMessage: 'Hola, quiero ayuda para elegir el plan correcto para mi negocio.',
       plans: {
         esencial: {
           name: 'Esencial',
@@ -626,8 +640,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'AI' },
         { href: '#servicios', label: 'Services' },
-        { href: '#planes', label: 'Plans' },
         { href: '#casos', label: 'Work' },
+        { href: '#planes', label: 'Plans' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Request audit',
@@ -641,8 +655,10 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Your idea or your problem,',
       titleB: 'solved with web + AI.',
       description: 'Tell us what your business needs and we build the solution: a fast website and AI that works for you.',
-      ctaPrimary: 'I want my website',
-      ctaGhost: 'Book a free audit',
+      ctaPrimary: 'Get a free audit',
+      ctaGhost: 'See plans and pricing',
+      waMessage: 'Hi, I’d like the free audit for my business.',
+      trust: ['No lock-in contract', 'Fixed price in writing', 'Your domain is yours'],
       metrics: [
         { value: '110+', label: 'Products loaded by AI' },
         { value: '48h', label: 'Initial audit' },
@@ -754,6 +770,8 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'A fast website builds trust and sells more.',
       statA: 'bounce when loading takes over 3 seconds (Google)',
       statB: 'fewer sales for every extra second of delay (Akamai)',
+      cta: 'Review my site for free',
+      waMessage: 'Hi, I’d like a free review of my website and what to improve.',
       sequenceLabel: 'Problem impact solution sequence',
       blocks: [
         {
@@ -830,7 +848,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Selected Work',
-      title: 'Projects that show our technical approach.',
+      title: 'More projects built by our team.',
       description: 'Our own projects, measured in production. Tap one to see the detail.',
       tabLabel: 'Project selector',
       prev: 'Previous',
@@ -912,6 +930,9 @@ const siteContent: Record<Locale, SiteContent> = {
         'Fixed price in writing before we start. No surprises.',
       ],
       faqHint: 'Questions? Check the FAQ',
+      helpText: 'Not sure which one?',
+      helpCta: 'We’ll help you on WhatsApp',
+      helpWaMessage: 'Hi, I’d like help choosing the right plan for my business.',
       plans: {
         esencial: {
           name: 'Essential',
@@ -1027,8 +1048,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Serviços' },
-        { href: '#planes', label: 'Planos' },
         { href: '#casos', label: 'Projetos' },
+        { href: '#planes', label: 'Planos' },
         { href: '#contacto', label: 'Contato' },
       ],
       cta: 'Solicitar auditoria',
@@ -1042,8 +1063,10 @@ const siteContent: Record<Locale, SiteContent> = {
       titleA: 'Sua ideia ou seu problema,',
       titleB: 'resolvido com web e IA.',
       description: 'Você conta o que seu negócio precisa e nós construímos a solução: um site rápido e uma IA que trabalha por você.',
-      ctaPrimary: 'Quero meu site',
-      ctaGhost: 'Agendar auditoria gratuita',
+      ctaPrimary: 'Pedir auditoria gratuita',
+      ctaGhost: 'Ver planos e preços',
+      waMessage: 'Olá, quero a auditoria gratuita para o meu negócio.',
+      trust: ['Sem fidelidade', 'Preço fechado por escrito', 'Seu domínio é seu'],
       metrics: [
         { value: '110+', label: 'Produtos cadastrados com IA' },
         { value: '48h', label: 'Auditoria inicial' },
@@ -1155,6 +1178,8 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Um site rápido gera confiança e vende mais.',
       statA: 'abandonam se o site demora mais de 3 segundos (Google)',
       statB: 'menos vendas por cada segundo de espera (Akamai)',
+      cta: 'Revisar meu site grátis',
+      waMessage: 'Olá, quero que revisem meu site grátis e me digam o que melhorar.',
       sequenceLabel: 'Sequência problema impacto solução',
       blocks: [
         {
@@ -1231,7 +1256,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Projetos',
-      title: 'Projetos que mostram nossa abordagem técnica.',
+      title: 'Mais projetos feitos pela nossa equipe.',
       description: 'Projetos próprios, medidos em produção. Toque em um para ver o detalhe.',
       tabLabel: 'Seletor de projetos',
       prev: 'Anterior',
@@ -1313,6 +1338,9 @@ const siteContent: Record<Locale, SiteContent> = {
         'Preço fechado por escrito antes de começar. Sem surpresas.',
       ],
       faqHint: 'Dúvidas? Veja as perguntas frequentes',
+      helpText: 'Não sabe qual escolher?',
+      helpCta: 'Ajudamos você pelo WhatsApp',
+      helpWaMessage: 'Olá, quero ajuda para escolher o plano certo para o meu negócio.',
       plans: {
         esencial: {
           name: 'Essencial',
@@ -1428,8 +1456,8 @@ const siteContent: Record<Locale, SiteContent> = {
       links: [
         { href: '#ia', label: 'IA' },
         { href: '#servicios', label: 'Services' },
-        { href: '#planes', label: 'Offres' },
         { href: '#casos', label: 'Projets' },
+        { href: '#planes', label: 'Offres' },
         { href: '#contacto', label: 'Contact' },
       ],
       cta: 'Demander un audit',
@@ -1444,8 +1472,10 @@ const siteContent: Record<Locale, SiteContent> = {
       titleB: 'résolu avec web + IA.',
       description:
         'Dites-nous ce dont votre activité a besoin : nous construisons la solution, un site rapide et une IA qui travaille pour vous.',
-      ctaPrimary: 'Je veux mon site',
-      ctaGhost: 'Réserver un audit gratuit',
+      ctaPrimary: 'Demander un audit gratuit',
+      ctaGhost: 'Voir les offres et tarifs',
+      waMessage: 'Bonjour, je voudrais l’audit gratuit pour mon entreprise.',
+      trust: ['Sans engagement', 'Prix fixé par écrit', 'Votre domaine vous appartient'],
       metrics: [
         { value: '110+', label: 'Produits chargés par IA' },
         { value: '48h', label: 'Audit initial' },
@@ -1557,6 +1587,8 @@ const siteContent: Record<Locale, SiteContent> = {
       description: 'Un site rapide inspire confiance et vend plus.',
       statA: 'abandonnent si le site met plus de 3 secondes (Google)',
       statB: 'de ventes en moins par seconde d’attente (Akamai)',
+      cta: 'Faire auditer mon site gratuitement',
+      waMessage: 'Bonjour, je voudrais un audit gratuit de mon site et savoir quoi améliorer.',
       sequenceLabel: 'Séquence problème impact solution',
       blocks: [
         {
@@ -1633,7 +1665,7 @@ const siteContent: Record<Locale, SiteContent> = {
     },
     cases: {
       badge: 'Travaux',
-      title: 'Des projets qui montrent notre approche technique.',
+      title: 'D’autres projets réalisés par notre équipe.',
       description: 'Nos propres projets, mesurés en production. Touchez-en un pour voir le détail.',
       tabLabel: 'Sélecteur de projets',
       prev: 'Précédent',
@@ -1715,6 +1747,9 @@ const siteContent: Record<Locale, SiteContent> = {
         'Prix ferme par écrit avant de commencer. Sans surprises.',
       ],
       faqHint: 'Des doutes ? Consultez la FAQ',
+      helpText: 'Vous hésitez ?',
+      helpCta: 'On vous aide sur WhatsApp',
+      helpWaMessage: 'Bonjour, je voudrais de l’aide pour choisir la bonne offre pour mon entreprise.',
       plans: {
         esencial: {
           name: 'Essentiel',

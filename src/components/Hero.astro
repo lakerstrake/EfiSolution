@@ -1,5 +1,6 @@
 ---
 import CTAButton from './CTAButton.astro';
+import { whatsappHref } from '../lib/whatsapp';
 import { getSiteContent, type Locale } from '../i18n/siteContent';
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 const { locale } = Astro.props;
 const content = getSiteContent(locale);
 const t = content.hero;
+// CTA principal directo a WhatsApp: el canal donde se cierran los leads.
+const waHref = whatsappHref(t.waMessage);
 
 // Prueba real arriba del pliegue: primera frase del testimonio verificado.
 const review = content.testimonials.items[0];
@@ -41,13 +44,30 @@ const excerpt = review ? review.quote.split(/(?<=\.)\s/)[0] : '';
         </p>
 
         <div class="hero-enter hero-enter-delay-4 mt-9 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-          <CTAButton href="#planes" variant="primary" size="lg" ariaLabel={t.ctaPrimary} dataTrack="cta" dataLabel="hero">
+          <CTAButton
+            href={waHref ?? '#contacto'}
+            target={waHref ? '_blank' : undefined}
+            rel={waHref ? 'noopener noreferrer' : undefined}
+            variant="primary"
+            size="lg"
+            dataTrack={waHref ? 'whatsapp' : 'cta'}
+            dataLabel="hero"
+          >
             {t.ctaPrimary}
           </CTAButton>
-          <CTAButton href="#contacto" variant="ghost" size="lg" icon={false}>
+          <CTAButton href="#planes" variant="ghost" size="lg" icon={false} dataTrack="cta" dataLabel="hero-planes">
             {t.ctaGhost}
           </CTAButton>
         </div>
+
+        <ul class="hero-enter hero-enter-delay-4 mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+          {t.trust.map((item) => (
+            <li class="flex items-center gap-2">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flex-none text-accent-600 dark:text-accent-400"><path d="M20 6 9 17l-5-5" /></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {review && (

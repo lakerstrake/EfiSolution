@@ -1,5 +1,6 @@
 ---
 import { getSiteContent, type Locale } from '../i18n/siteContent';
+import { whatsappHref } from '../lib/whatsapp';
 
 interface Props {
   locale: Locale;
@@ -7,6 +8,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getSiteContent(locale).problem;
+const waHref = whatsappHref(t.waMessage);
 ---
 
 <section id="problema" class="cv-auto section-padding" aria-labelledby="problem-title">
@@ -24,6 +26,20 @@ const t = getSiteContent(locale).problem;
       <p class="mt-5 max-w-xl text-fluid-base leading-relaxed text-zinc-600 dark:text-zinc-400">
         {t.description}
       </p>
+
+      {waHref && (
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track="whatsapp"
+          data-label="diagnostico"
+          class="mt-7 inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+        >
+          {t.cta}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
+        </a>
+      )}
     </div>
 
     <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
